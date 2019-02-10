@@ -42,7 +42,7 @@ public class GameCompilePerformanceTest {
          Context context = new StoreContext(store, executor);
          Compiler compiler = new ResourceCompiler(context);
          Model model = new EmptyModel();         
-         Executable executable = compiler.compile("/mario/MarioGame.snap");
+         Executable executable = compiler.compile("/mario/MarioGame.tern");
          executable.execute(model, true);
       } catch(VerifyException e){
          List<VerifyError> errors = e.getErrors();

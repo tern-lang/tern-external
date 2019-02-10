@@ -24,9 +24,9 @@ public class ScriptDebugger {
       Compiler compiler = new ResourceCompiler(context);
       
       try {
-         //Executable executable = compiler.compile("/ray_tracer.snap");
-         //Executable executable = compiler.compile("/ray_tracer_no_constraints.snap");
-         Executable executable = compiler.compile("/calculate_pi.snap");
+         //Executable executable = compiler.compile("/ray_tracer.tern");
+         //Executable executable = compiler.compile("/ray_tracer_no_constraints.tern");
+         Executable executable = compiler.compile("/calculate_pi.tern");
          executable.execute();
       } catch(Exception e){
          e.printStackTrace();

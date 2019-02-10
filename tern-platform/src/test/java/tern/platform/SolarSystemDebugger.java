@@ -40,7 +40,7 @@ public class SolarSystemDebugger {
             Context context = new StoreContext(store, executor);
             Compiler compiler = new ResourceCompiler(context);
             Model model = new EmptyModel();
-            Executable executable = compiler.compile("/solarsystem/SolarSystem.snap");
+            Executable executable = compiler.compile("/solarsystem/SolarSystem.tern");
             executable.execute(model, true);
             long finish = System.currentTimeMillis();
             System.out.println("COMPILE: " +(finish-start));
@@ -58,7 +58,7 @@ public class SolarSystemDebugger {
 
    private static void execute(Compiler compiler) {
       try {
-         Executable executable = compiler.compile("/solarsystem/SolarSystem.snap");
+         Executable executable = compiler.compile("/solarsystem/SolarSystem.tern");
          executable.execute();
       } catch(VerifyException e){
          List<VerifyError> errors = e.getErrors();
