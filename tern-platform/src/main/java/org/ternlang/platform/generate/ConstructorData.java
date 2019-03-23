@@ -1,11 +1,11 @@
 package org.ternlang.platform.generate;
 
-public class ConstructorArguments {
-   
+public class ConstructorData {
+
    private final Object[] arguments;
    private final Class[] types;
 
-   public ConstructorArguments(Class[] types, Object[] arguments) {
+   public ConstructorData(Class[] types, Object[] arguments) {
       this.arguments = arguments;
       this.types = types;
    }

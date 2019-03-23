@@ -21,12 +21,12 @@ public class GameDebugger {
 
    public static void main(String[] list) throws Exception {
 //      File[] roots = new File[] {
-//            new File("C:\\Work\\development\\snapscript\\snap-develop\\snap-studio\\work\\demo\\games\\src"),
-//            new File("C:\\Work\\development\\snapscript\\snap-develop\\snap-studio\\work\\demo\\games\\assets")
+//            new File("C:\\Work\\development\\tern-lang\\tern-studio\\tern-studio\\work\\demo\\games\\src"),
+//            new File("C:\\Work\\development\\tern-lang\\tern-studio\\tern-studio\\work\\demo\\games\\assets")
 //      };
     File[] roots = new File[] {
-    new File("C:\\Work\\development\\snapscript\\snap-develop\\snap-studio\\work\\games\\mario\\src"),
-    new File("C:\\Work\\development\\snapscript\\snap-develop\\snap-studio\\work\\games\\mario\\assets")
+    new File("C:\\Work\\development\\tern-lang\\tern-studio\\tern-studio\\work\\games\\mario\\src"),
+    new File("C:\\Work\\development\\tern-lang\\tern-studio\\tern-studio\\work\\games\\mario\\assets")
     };
       Store store = new FileStore(roots);
       Executor executor = new ThreadPool(8);

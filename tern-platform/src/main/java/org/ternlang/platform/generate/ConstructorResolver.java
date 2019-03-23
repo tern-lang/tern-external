@@ -2,51 +2,34 @@ package org.ternlang.platform.generate;
 
 import static org.ternlang.core.Reserved.TYPE_CONSTRUCTOR;
 
-import java.util.List;
+import java.lang.reflect.Constructor;
 
-import org.ternlang.core.constraint.Constraint;
 import org.ternlang.core.function.ArgumentConverter;
 import org.ternlang.core.function.Function;
-import org.ternlang.core.function.Parameter;
 import org.ternlang.core.function.Signature;
 import org.ternlang.core.function.index.FunctionIndexer;
 import org.ternlang.core.function.index.FunctionPointer;
-import org.ternlang.core.scope.Scope;
 import org.ternlang.core.type.Type;
 
 public class ConstructorResolver {
    
    private final FunctionIndexer indexer;
-   private final Class[] empty;
    
    public ConstructorResolver(FunctionIndexer indexer) {
-      this.empty = new Class[]{};
       this.indexer = indexer;
    }
 
-   public ConstructorArguments resolve(Scope scope, Type type, Object... args) {
+   public ConstructorData resolve(Type type, Object... arguments) {
       try {
-         FunctionPointer call = indexer.index(type, TYPE_CONSTRUCTOR, args);
-         Function function = call.getFunction();
+         FunctionPointer pointer = indexer.index(type, TYPE_CONSTRUCTOR, arguments);
+         Function function = pointer.getFunction();
          Signature signature = function.getSignature();
          ArgumentConverter converter = signature.getConverter();
-         List<Parameter> parameters = signature.getParameters();
-         Object[] list = converter.convert(args);
-         
-         if(list.length > 0) {
-            Class[] types = new Class[list.length];
-            
-            for (int i = 0; i < types.length; i++) {
-               Parameter parameter = parameters.get(i);
-               Constraint constraint = parameter.getConstraint();
-               Type require = constraint.getType(scope);
-               Class real = require.getType();
-               
-               types[i] = real;
-            }
-            return new ConstructorArguments(types, list);
-         }
-         return new ConstructorArguments(empty, list);
+         Constructor constructor = (Constructor)signature.getSource();
+         Object[] list = converter.convert(arguments);
+         Class[] types = constructor.getParameterTypes();
+
+         return new ConstructorData(types, list);
       } catch (Exception e) {
          throw new IllegalStateException("Could not match constructor for '" + type + "'", e);
       }

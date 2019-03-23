@@ -52,11 +52,11 @@ public class ObjectGenerator {
          Context context = module.getContext();
          TypeLoader loader = context.getLoader();
          Type match = loader.loadType(base);
-         ConstructorArguments data = resolver.resolve(scope, match, arguments);
+         ConstructorData data = resolver.resolve(match, arguments);
          Object[] converted = data.getArguments();
          Class[] types = data.getTypes();
          Constructor factory = proxy.getDeclaredConstructor(types);
-         
+
          return (Bridge)factory.newInstance(converted);
       }
    }
