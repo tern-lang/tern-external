@@ -2,3 +2,11 @@
 .idea/
 .project
 *.iml
+
+tern-asm/\.classpath
+
+tern-cglib/\.classpath
+
+tern-dx/\.classpath
+
+tern-platform/\.classpath
