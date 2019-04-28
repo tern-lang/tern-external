@@ -10,6 +10,8 @@ import org.ternlang.core.scope.index.ScopeIndex;
 import org.ternlang.core.scope.index.ScopeTable;
 import org.ternlang.core.scope.index.StackIndex;
 import org.ternlang.core.scope.instance.Instance;
+import org.ternlang.core.stack.StackFrame;
+import org.ternlang.core.stack.StackTrace;
 import org.ternlang.core.type.Type;
 import org.ternlang.core.variable.Reference;
 import org.ternlang.core.variable.Value;
@@ -17,6 +19,7 @@ import org.ternlang.core.variable.Value;
 public class BridgeInstance implements Instance {
 
    private final BridgeHolder holder;
+   private final StackFrame frame;
    private final ScopeIndex index;
    private final ScopeTable table;
    private final ScopeState state;
@@ -26,6 +29,7 @@ public class BridgeInstance implements Instance {
    private final Type base;
 
    public BridgeInstance(BridgeHolder holder, Module module, Scope scope, Type real, Type base) {
+      this.frame = new StackFrame(scope);
       this.self = new Reference(this);
       this.state = new MapState(scope);
       this.index = new StackIndex(scope);
@@ -43,6 +47,11 @@ public class BridgeInstance implements Instance {
    @Override
    public Bridge getBridge() {
       return holder.getBridge();
+   }
+   
+   @Override
+   public StackTrace getStack() {
+      return frame.getTrace();
    }
    
    @Override
@@ -71,12 +80,12 @@ public class BridgeInstance implements Instance {
    }
    
    @Override
-   public Instance getStack() {
+   public Instance getChild() {
       return this;
    }
 
    @Override
-   public Instance getScope() {
+   public Instance getParent() {
       return this;
    }
 

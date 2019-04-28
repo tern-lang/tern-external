@@ -25,7 +25,7 @@ public class BridgeBuilderTest extends TestCase {
    }
    
    public void createInstance(Context context) throws Exception {
-      PlatformProvider provider = new PlatformProvider(context.getExtractor(), context.getWrapper(), context.getStack());
+      PlatformProvider provider = new PlatformProvider(context.getExtractor(), context.getWrapper());
       
       Type type = context.getLoader().defineType("foo", "Foo", CLASS.mask);
       Type panel = context.getLoader().loadType("javax.swing.JPanel");
