@@ -11,7 +11,7 @@ import org.ternlang.core.scope.instance.Instance;
 public class MockInstanceBuilder {
    
    public static void createInstance(Context context) throws Exception {
-      PlatformProvider provider = new PlatformProvider(context.getExtractor(), context.getWrapper());
+      PlatformProvider provider = new PlatformProvider(context.getExtractor(), context.getWrapper(), context.getStack());
       
       Platform builder = provider.create();
       Invocation invocation = builder.createSuperConstructor(context.getLoader().defineType("foo", "Foo", CLASS.mask), context.getLoader().loadType("javax.swing.JPanel"));
