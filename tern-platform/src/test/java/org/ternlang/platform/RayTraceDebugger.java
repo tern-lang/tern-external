@@ -17,6 +17,7 @@ public class RayTraceDebugger {
    // 27478
    // 27603
    // 27290
+   // 25187
    public static void main(String[] list) throws Exception {
       Store store = new FileStore(
             new File("C:\\Work\\development\\tern-lang\\tern-studio\\tern-studio\\work\\demo\\misc\\src"),

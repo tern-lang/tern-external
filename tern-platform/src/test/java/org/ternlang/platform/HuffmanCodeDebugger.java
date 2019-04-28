@@ -19,9 +19,6 @@ import org.ternlang.core.scope.Model;
 
 public class HuffmanCodeDebugger {
 
-   // 27478
-   // 27603
-   // 27290
    public static void main(String[] list) throws Exception {
       Store store = new FileStore(
             new File("C:\\Work\\development\\tern-lang\\tern-studio\\tern-studio\\work\\algorithms\\main\\src\\hard")
