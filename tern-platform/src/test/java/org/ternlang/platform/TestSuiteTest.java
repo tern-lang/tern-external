@@ -15,7 +15,7 @@ import org.ternlang.core.Context;
 // this test can be disabled
 public class TestSuiteTest extends TestCase {
    
-   private static final String LOCATION_OF_TEST_SUITE = "../../tern-studio/tern-studio/work/test";
+   private static final String LOCATION_OF_TEST_SUITE = "../../tern-demo/test";
    
    private static final String PATTERN = ".*ModuleImportTest.*";
    private static final String SOURCE = 

@@ -25,8 +25,8 @@ public class GameDebugger {
 //            new File("C:\\Work\\development\\tern-lang\\tern-studio\\tern-studio\\work\\demo\\games\\assets")
 //      };
     File[] roots = new File[] {
-    new File("C:\\Work\\development\\tern-lang\\tern-studio\\tern-studio\\work\\games\\mario\\src"),
-    new File("C:\\Work\\development\\tern-lang\\tern-studio\\tern-studio\\work\\games\\mario\\assets")
+    new File("C:\\Work\\development\\tern-lang\\tern-demo\\games\\mario\\src"),
+    new File("C:\\Work\\development\\tern-lang\\tern-demo\\games\\mario\\assets")
     };
       Store store = new FileStore(roots);
       Executor executor = new ThreadPool(8);
