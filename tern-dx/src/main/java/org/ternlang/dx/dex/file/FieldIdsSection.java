@@ -24,17 +24,17 @@ import org.ternlang.dx.rop.cst.CstFieldRef;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Field refs list section of a {@code .dex} file.
  */
 public final class FieldIdsSection extends MemberIdsSection {
-    /**
+    /*
      * {@code non-null;} map from field constants to {@link
      * FieldIdItem} instances
      */
     private final TreeMap<CstFieldRef, FieldIdItem> fieldIds;
 
-    /**
+    /*
      * Constructs an instance. The file offset is initially unknown.
      *
      * @param file {@code non-null;} file that this instance is part of
@@ -45,13 +45,13 @@ public final class FieldIdsSection extends MemberIdsSection {
         fieldIds = new TreeMap<CstFieldRef, FieldIdItem>();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Collection<? extends Item> items() {
         return fieldIds.values();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public IndexedItem get(Constant cst) {
         if (cst == null) {
@@ -69,7 +69,7 @@ public final class FieldIdsSection extends MemberIdsSection {
         return result;
     }
 
-    /**
+    /*
      * Writes the portion of the file header that refers to this instance.
      *
      * @param out {@code non-null;} where to write
@@ -89,7 +89,7 @@ public final class FieldIdsSection extends MemberIdsSection {
         out.writeInt(offset);
     }
 
-    /**
+    /*
      * Interns an element into this instance.
      *
      * @param field {@code non-null;} the reference to intern
@@ -112,7 +112,7 @@ public final class FieldIdsSection extends MemberIdsSection {
         return result;
     }
 
-    /**
+    /*
      * Gets the index of the given reference, which must have been added
      * to this instance.
      *

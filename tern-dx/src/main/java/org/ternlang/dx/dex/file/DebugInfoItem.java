@@ -27,12 +27,12 @@ import org.ternlang.dx.rop.cst.CstMethodRef;
 import org.ternlang.dx.util.AnnotatedOutput;
 
 public class DebugInfoItem extends OffsettedItem {
-    /** the required alignment for instances of this class */
+    /* the required alignment for instances of this class */
     private static final int ALIGNMENT = 1;
 
     private static final boolean ENABLE_ENCODER_SELF_CHECK = false;
 
-    /** {@code non-null;} the code this item represents */
+    /* {@code non-null;} the code this item represents */
     private final DalvCode code;
 
     private byte[] encoded;
@@ -53,19 +53,19 @@ public class DebugInfoItem extends OffsettedItem {
         this.ref = ref;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public ItemType itemType() {
         return ItemType.TYPE_DEBUG_INFO_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void addContents(DexFile file) {
         // No contents to add.
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void place0(Section addedTo, int offset) {
         // Encode the data and note the size.
@@ -79,13 +79,13 @@ public class DebugInfoItem extends OffsettedItem {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toHuman() {
         throw new RuntimeException("unsupported");
     }
 
-    /**
+    /*
      * Writes annotations for the elements of this list, as
      * zero-length. This is meant to be used for dumping this instance
      * directly after a code dump (with the real local list actually
@@ -99,7 +99,7 @@ public class DebugInfoItem extends OffsettedItem {
         encode(file, prefix, null, out, false);
     }
 
-    /**
+    /*
      * Does a human-friendly dump of this instance.
      *
      * @param out {@code non-null;} where to dump
@@ -109,7 +109,7 @@ public class DebugInfoItem extends OffsettedItem {
         encode(null, prefix, out, null, false);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void writeTo0(DexFile file, AnnotatedOutput out) {
         if (out.annotates()) {
@@ -125,7 +125,7 @@ public class DebugInfoItem extends OffsettedItem {
         out.write(encoded);
     }
 
-    /**
+    /*
      * Performs debug info encoding.
      *
      * @param file {@code null-ok;} file to refer to during encoding
@@ -156,7 +156,7 @@ public class DebugInfoItem extends OffsettedItem {
         return result;
     }
 
-    /**
+    /*
      * Helper for {@link #encode} to do most of the work.
      *
      * @param file {@code null-ok;} file to refer to during encoding

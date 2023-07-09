@@ -22,7 +22,7 @@ import org.ternlang.asm.Label;
 import org.ternlang.asm.Type;
 import org.ternlang.cglib.core.*;
 
-/**
+/*
  * This class implements a simple String->int mapping for a fixed set of keys.
  */
 abstract public class StringSwitcher {
@@ -37,7 +37,7 @@ abstract public class StringSwitcher {
         public Object newInstance(String[] strings, int[] ints, boolean fixedInput);
     }
 
-    /**
+    /*
      * Helper method to create a StringSwitcher.
      * For finer control over the generated instance, use a new instance of StringSwitcher.Generator
      * instead of this static method.
@@ -57,7 +57,7 @@ abstract public class StringSwitcher {
     protected StringSwitcher() {
     }
 
-    /**
+    /*
      * Return the integer associated with the given key.
      * @param s the key
      * @return the associated integer value, or <code>-1</code> if the key is unknown (unless
@@ -77,7 +77,7 @@ abstract public class StringSwitcher {
             super(SOURCE);
         }
 
-        /**
+        /*
          * Set the array of recognized Strings.
          * @param strings the array of String keys; must be the same length as the value array
          * @see #setInts
@@ -86,7 +86,7 @@ abstract public class StringSwitcher {
             this.strings = strings;
         }
 
-        /**
+        /*
          * Set the array of integer results.
          * @param ints the array of integer results; must be the same length as the key array
          * @see #setStrings
@@ -95,7 +95,7 @@ abstract public class StringSwitcher {
             this.ints = ints;
         }
 
-        /**
+        /*
          * Configure how unknown String keys will be handled.
          * @param fixedInput if false, an unknown key will be returned from {@link #intValue} as <code>-1</code>; if true,
          * the result will be undefined, and the resulting code will be faster
@@ -108,7 +108,7 @@ abstract public class StringSwitcher {
             return getClass().getClassLoader();
         }
 
-        /**
+        /*
          * Generate the <code>StringSwitcher</code>.
          */
         public StringSwitcher create() {

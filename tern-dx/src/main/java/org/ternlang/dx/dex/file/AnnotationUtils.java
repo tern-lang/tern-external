@@ -33,56 +33,56 @@ import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeList;
 
-/**
+/*
  * Utility class for dealing with annotations.
  */
 public final class AnnotationUtils {
 
-    /** {@code non-null;} type for {@code AnnotationDefault} annotations */
+    /* {@code non-null;} type for {@code AnnotationDefault} annotations */
     private static final CstType ANNOTATION_DEFAULT_TYPE =
         CstType.intern(Type.intern("Ldalvik/annotation/AnnotationDefault;"));
 
-    /** {@code non-null;} type for {@code EnclosingClass} annotations */
+    /* {@code non-null;} type for {@code EnclosingClass} annotations */
     private static final CstType ENCLOSING_CLASS_TYPE =
         CstType.intern(Type.intern("Ldalvik/annotation/EnclosingClass;"));
 
-    /** {@code non-null;} type for {@code EnclosingMethod} annotations */
+    /* {@code non-null;} type for {@code EnclosingMethod} annotations */
     private static final CstType ENCLOSING_METHOD_TYPE =
         CstType.intern(Type.intern("Ldalvik/annotation/EnclosingMethod;"));
 
-    /** {@code non-null;} type for {@code InnerClass} annotations */
+    /* {@code non-null;} type for {@code InnerClass} annotations */
     private static final CstType INNER_CLASS_TYPE =
         CstType.intern(Type.intern("Ldalvik/annotation/InnerClass;"));
 
-    /** {@code non-null;} type for {@code MemberClasses} annotations */
+    /* {@code non-null;} type for {@code MemberClasses} annotations */
     private static final CstType MEMBER_CLASSES_TYPE =
         CstType.intern(Type.intern("Ldalvik/annotation/MemberClasses;"));
 
-    /** {@code non-null;} type for {@code Signature} annotations */
+    /* {@code non-null;} type for {@code Signature} annotations */
     private static final CstType SIGNATURE_TYPE =
         CstType.intern(Type.intern("Ldalvik/annotation/Signature;"));
 
-    /** {@code non-null;} type for {@code Throws} annotations */
+    /* {@code non-null;} type for {@code Throws} annotations */
     private static final CstType THROWS_TYPE =
         CstType.intern(Type.intern("Ldalvik/annotation/Throws;"));
 
-    /** {@code non-null;} the UTF-8 constant {@code "accessFlags"} */
+    /* {@code non-null;} the UTF-8 constant {@code "accessFlags"} */
     private static final CstString ACCESS_FLAGS_STRING = new CstString("accessFlags");
 
-    /** {@code non-null;} the UTF-8 constant {@code "name"} */
+    /* {@code non-null;} the UTF-8 constant {@code "name"} */
     private static final CstString NAME_STRING = new CstString("name");
 
-    /** {@code non-null;} the UTF-8 constant {@code "value"} */
+    /* {@code non-null;} the UTF-8 constant {@code "value"} */
     private static final CstString VALUE_STRING = new CstString("value");
 
-    /**
+    /*
      * This class is uninstantiable.
      */
     private AnnotationUtils() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Constructs a standard {@code AnnotationDefault} annotation.
      *
      * @param defaults {@code non-null;} the defaults, itself as an annotation
@@ -96,7 +96,7 @@ public final class AnnotationUtils {
         return result;
     }
 
-    /**
+    /*
      * Constructs a standard {@code EnclosingClass} annotation.
      *
      * @param clazz {@code non-null;} the enclosing class
@@ -110,7 +110,7 @@ public final class AnnotationUtils {
         return result;
     }
 
-    /**
+    /*
      * Constructs a standard {@code EnclosingMethod} annotation.
      *
      * @param method {@code non-null;} the enclosing method
@@ -124,7 +124,7 @@ public final class AnnotationUtils {
         return result;
     }
 
-    /**
+    /*
      * Constructs a standard {@code InnerClass} annotation.
      *
      * @param name {@code null-ok;} the original name of the class, or
@@ -143,7 +143,7 @@ public final class AnnotationUtils {
         return result;
     }
 
-    /**
+    /*
      * Constructs a standard {@code MemberClasses} annotation.
      *
      * @param types {@code non-null;} the list of (the types of) the member classes
@@ -157,7 +157,7 @@ public final class AnnotationUtils {
         return result;
     }
 
-    /**
+    /*
      * Constructs a standard {@code Signature} annotation.
      *
      * @param signature {@code non-null;} the signature string
@@ -219,7 +219,7 @@ public final class AnnotationUtils {
         return result;
     }
 
-    /**
+    /*
      * Constructs a standard {@code Throws} annotation.
      *
      * @param types {@code non-null;} the list of thrown types
@@ -233,7 +233,7 @@ public final class AnnotationUtils {
         return result;
     }
 
-    /**
+    /*
      * Converts a {@link TypeList} to a {@link CstArray}.
      *
      * @param types {@code non-null;} the type list

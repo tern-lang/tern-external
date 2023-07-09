@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -34,21 +34,21 @@ import java.util.Map;
 import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 
-/**
+/*
  * A node that represents an LDC instruction.
  * 
  * @author Eric Bruneton
  */
 public class LdcInsnNode extends AbstractInsnNode {
 
-    /**
+    /*
      * The constant to be loaded on the stack. This parameter must be a non null
      * {@link Integer}, a {@link Float}, a {@link Long}, a {@link Double}, a
      * {@link String} or a {@link org.ternlang.asm.Type}.
      */
     public Object cst;
 
-    /**
+    /*
      * Constructs a new {@link LdcInsnNode}.
      * 
      * @param cst

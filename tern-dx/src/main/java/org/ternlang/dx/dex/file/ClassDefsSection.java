@@ -27,20 +27,20 @@ import org.ternlang.dx.rop.type.TypeList;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Class definitions list section of a {@code .dex} file.
  */
 public final class ClassDefsSection extends UniformItemSection {
-    /**
+    /*
      * {@code non-null;} map from type constants for classes to {@link
      * ClassDefItem} instances that define those classes
      */
     private final TreeMap<Type, ClassDefItem> classDefs;
 
-    /** {@code null-ok;} ordered list of classes; set in {@link #orderItems} */
+    /* {@code null-ok;} ordered list of classes; set in {@link #orderItems} */
     private ArrayList<ClassDefItem> orderedDefs;
 
-    /**
+    /*
      * Constructs an instance. The file offset is initially unknown.
      *
      * @param file {@code non-null;} file that this instance is part of
@@ -52,7 +52,7 @@ public final class ClassDefsSection extends UniformItemSection {
         orderedDefs = null;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Collection<? extends Item> items() {
         if (orderedDefs != null) {
@@ -62,7 +62,7 @@ public final class ClassDefsSection extends UniformItemSection {
         return classDefs.values();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public IndexedItem get(Constant cst) {
         if (cst == null) {
@@ -81,7 +81,7 @@ public final class ClassDefsSection extends UniformItemSection {
         return result;
     }
 
-    /**
+    /*
      * Writes the portion of the file header that refers to this instance.
      *
      * @param out {@code non-null;} where to write
@@ -101,7 +101,7 @@ public final class ClassDefsSection extends UniformItemSection {
         out.writeInt(offset);
     }
 
-    /**
+    /*
      * Adds an element to this instance. It is illegal to attempt to add more
      * than one class with the same name.
      *
@@ -126,7 +126,7 @@ public final class ClassDefsSection extends UniformItemSection {
         classDefs.put(type, clazz);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void orderItems() {
         int sz = classDefs.size();
@@ -145,7 +145,7 @@ public final class ClassDefsSection extends UniformItemSection {
         }
     }
 
-    /**
+    /*
      * Helper for {@link #orderItems}, which recursively assigns indices
      * to classes.
      *

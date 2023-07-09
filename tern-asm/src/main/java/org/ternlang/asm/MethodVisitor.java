@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -29,7 +29,7 @@
  */
 package org.ternlang.asm;
 
-/**
+/*
  * A visitor to visit a Java method. The methods of this class must be called in
  * the following order: ( <tt>visitParameter</tt> )* [
  * <tt>visitAnnotationDefault</tt> ] ( <tt>visitAnnotation</tt> |
@@ -55,19 +55,19 @@ package org.ternlang.asm;
  */
 public abstract class MethodVisitor {
 
-    /**
+    /*
      * The ASM API version implemented by this visitor. The value of this field
      * must be one of {@link Opcodes#ASM4} or {@link Opcodes#ASM5}.
      */
     protected final int api;
 
-    /**
+    /*
      * The method visitor to which this visitor must delegate method calls. May
      * be null.
      */
     protected MethodVisitor mv;
 
-    /**
+    /*
      * Constructs a new {@link MethodVisitor}.
      * 
      * @param api
@@ -78,7 +78,7 @@ public abstract class MethodVisitor {
         this(api, null);
     }
 
-    /**
+    /*
      * Constructs a new {@link MethodVisitor}.
      * 
      * @param api
@@ -100,7 +100,7 @@ public abstract class MethodVisitor {
     // Parameters, annotations and non standard attributes
     // -------------------------------------------------------------------------
 
-    /**
+    /*
      * Visits a parameter of this method.
      * 
      * @param name
@@ -119,7 +119,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits the default value of this annotation interface method.
      * 
      * @return a visitor to the visit the actual default value of this
@@ -136,7 +136,7 @@ public abstract class MethodVisitor {
         return null;
     }
 
-    /**
+    /*
      * Visits an annotation of this method.
      * 
      * @param desc
@@ -153,7 +153,7 @@ public abstract class MethodVisitor {
         return null;
     }
 
-    /**
+    /*
      * Visits an annotation on a type in the method signature.
      * 
      * @param typeRef
@@ -189,7 +189,7 @@ public abstract class MethodVisitor {
         return null;
     }
 
-    /**
+    /*
      * Visits an annotation of a parameter this method.
      * 
      * @param parameter
@@ -209,7 +209,7 @@ public abstract class MethodVisitor {
         return null;
     }
 
-    /**
+    /*
      * Visits a non standard attribute of this method.
      * 
      * @param attr
@@ -221,7 +221,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Starts the visit of the method's code, if any (i.e. non abstract method).
      */
     public void visitCode() {
@@ -230,7 +230,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits the current state of the local variables and operand stack
      * elements. This method must(*) be called <i>just before</i> any
      * instruction <b>i</b> that follows an unconditional branch instruction
@@ -316,7 +316,7 @@ public abstract class MethodVisitor {
     // Normal instructions
     // -------------------------------------------------------------------------
 
-    /**
+    /*
      * Visits a zero operand instruction.
      * 
      * @param opcode
@@ -342,7 +342,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits an instruction with a single int operand.
      * 
      * @param opcode
@@ -366,7 +366,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits a local variable instruction. A local variable instruction is an
      * instruction that loads or stores the value of a local variable.
      * 
@@ -384,7 +384,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits a type instruction. A type instruction is an instruction that
      * takes the internal name of a class as parameter.
      * 
@@ -402,7 +402,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits a field instruction. A field instruction is an instruction that
      * loads or stores the value of a field of an object.
      * 
@@ -424,7 +424,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits a method instruction. A method instruction is an instruction that
      * invokes a method.
      * 
@@ -453,7 +453,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits a method instruction. A method instruction is an instruction that
      * invokes a method.
      * 
@@ -486,7 +486,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits an invokedynamic instruction.
      * 
      * @param name
@@ -509,7 +509,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits a jump instruction. A jump instruction is an instruction that may
      * jump to another instruction.
      * 
@@ -529,7 +529,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits a label. A label designates the instruction that will be visited
      * just after it.
      * 
@@ -546,7 +546,7 @@ public abstract class MethodVisitor {
     // Special instructions
     // -------------------------------------------------------------------------
 
-    /**
+    /*
      * Visits a LDC instruction. Note that new constant types may be added in
      * future versions of the Java Virtual Machine. To easily detect new
      * constant types, implementations of this method should check for
@@ -596,7 +596,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits an IINC instruction.
      * 
      * @param var
@@ -610,7 +610,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits a TABLESWITCH instruction.
      * 
      * @param min
@@ -630,7 +630,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits a LOOKUPSWITCH instruction.
      * 
      * @param dflt
@@ -647,7 +647,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits a MULTIANEWARRAY instruction.
      * 
      * @param desc
@@ -661,7 +661,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits an annotation on an instruction. This method must be called just
      * <i>after</i> the annotated instruction. It can be called several times
      * for the same instruction.
@@ -707,7 +707,7 @@ public abstract class MethodVisitor {
     // Exceptions table entries, debug information, max stack and max locals
     // -------------------------------------------------------------------------
 
-    /**
+    /*
      * Visits a try catch block.
      * 
      * @param start
@@ -731,7 +731,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits an annotation on an exception handler type. This method must be
      * called <i>after</i> the {@link #visitTryCatchBlock} for the annotated
      * exception handler. It can be called several times for the same exception
@@ -763,7 +763,7 @@ public abstract class MethodVisitor {
         return null;
     }
 
-    /**
+    /*
      * Visits a local variable declaration.
      * 
      * @param name
@@ -793,7 +793,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits an annotation on a local variable type.
      * 
      * @param typeRef
@@ -835,7 +835,7 @@ public abstract class MethodVisitor {
         return null;
     }
 
-    /**
+    /*
      * Visits a line number declaration.
      * 
      * @param line
@@ -853,7 +853,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits the maximum stack size and the maximum number of local variables
      * of the method.
      * 
@@ -868,7 +868,7 @@ public abstract class MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Visits the end of the method. This method, which is the last one to be
      * called, is used to inform the visitor that all the annotations and
      * attributes of the method have been visited.

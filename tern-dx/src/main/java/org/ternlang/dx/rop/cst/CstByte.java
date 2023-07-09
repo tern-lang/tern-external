@@ -19,15 +19,15 @@ package org.ternlang.dx.rop.cst;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Constants of type {@code byte}.
  */
 public final class CstByte
         extends CstLiteral32 {
-    /** {@code non-null;} the value {@code 0} as an instance of this class */
+    /* {@code non-null;} the value {@code 0} as an instance of this class */
     public static final CstByte VALUE_0 = make((byte) 0);
 
-    /**
+    /*
      * Makes an instance for the given value. This may (but does not
      * necessarily) return an already-allocated instance.
      *
@@ -37,7 +37,7 @@ public final class CstByte
         return new CstByte(value);
     }
 
-    /**
+    /*
      * Makes an instance for the given {@code int} value. This
      * may (but does not necessarily) return an already-allocated
      * instance.
@@ -56,7 +56,7 @@ public final class CstByte
         return make(cast);
     }
 
-    /**
+    /*
      * Constructs an instance. This constructor is private; use {@link #make}.
      *
      * @param value the {@code byte} value
@@ -65,30 +65,30 @@ public final class CstByte
         super(value);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         int value = getIntBits();
         return "byte{0x" + Hex.u1(value) + " / " + value + '}';
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Type getType() {
         return Type.BYTE;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String typeName() {
         return "byte";
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return Integer.toString(getIntBits());
     }
 
-    /**
+    /*
      * Gets the {@code byte} value.
      *
      * @return the value

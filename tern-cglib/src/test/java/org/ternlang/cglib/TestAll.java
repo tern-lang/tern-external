@@ -25,7 +25,7 @@ import org.ternlang.cglib.util.*;
 
 import junit.framework.*;
 
-/**
+/*
  *@author     Gerhard Froehlich <a href="mailto:g-froehlich@gmx.de">
  *      g-froehlich@gmx.de</a>
  *@version    $Id: TestAll.java,v 1.66 2004/12/23 03:46:25 herbyderby Exp $

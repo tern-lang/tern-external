@@ -19,21 +19,21 @@ package org.ternlang.dx.cf.attrib;
 import org.ternlang.dx.rop.cst.CstNat;
 import org.ternlang.dx.rop.cst.CstType;
 
-/**
+/*
  * Attribute class for standards-track {@code EnclosingMethod}
  * attributes.
  */
 public final class AttEnclosingMethod extends BaseAttribute {
-    /** {@code non-null;} attribute name for attributes of this type */
+    /* {@code non-null;} attribute name for attributes of this type */
     public static final String ATTRIBUTE_NAME = "EnclosingMethod";
 
-    /** {@code non-null;} the innermost enclosing class */
+    /* {@code non-null;} the innermost enclosing class */
     private final CstType type;
 
-    /** {@code null-ok;} the name-and-type of the innermost enclosing method, if any */
+    /* {@code null-ok;} the name-and-type of the innermost enclosing method, if any */
     private final CstNat method;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param type {@code non-null;} the innermost enclosing class
@@ -51,12 +51,12 @@ public final class AttEnclosingMethod extends BaseAttribute {
         this.method = method;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int byteLength() {
         return 10;
     }
 
-    /**
+    /*
      * Gets the innermost enclosing class.
      *
      * @return {@code non-null;} the innermost enclosing class
@@ -65,7 +65,7 @@ public final class AttEnclosingMethod extends BaseAttribute {
         return type;
     }
 
-    /**
+    /*
      * Gets the name-and-type of the innermost enclosing method, if
      * any.
      *

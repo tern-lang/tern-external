@@ -18,7 +18,7 @@ package org.ternlang.dx.rop.annotation;
 
 import org.ternlang.dx.util.ToHuman;
 
-/**
+/*
  * Visibility scope of an annotation.
  */
 public enum AnnotationVisibility implements ToHuman {
@@ -27,10 +27,10 @@ public enum AnnotationVisibility implements ToHuman {
     SYSTEM("system"),
     EMBEDDED("embedded");
 
-    /** {@code non-null;} the human-oriented string representation */
+    /* {@code non-null;} the human-oriented string representation */
     private final String human;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param human {@code non-null;} the human-oriented string representation
@@ -39,7 +39,7 @@ public enum AnnotationVisibility implements ToHuman {
         this.human = human;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return human;
     }

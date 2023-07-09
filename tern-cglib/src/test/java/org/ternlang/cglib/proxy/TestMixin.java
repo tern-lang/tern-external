@@ -24,7 +24,7 @@ import org.ternlang.cglib.proxy.Mixin;
 
 import junit.framework.*;
 
-/**
+/*
  * @author Chris Nokleberg
  * @version $Id: TestMixin.java,v 1.6 2012/07/27 16:02:49 baliuka Exp $
  */

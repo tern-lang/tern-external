@@ -28,30 +28,30 @@ import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.util.ByteArray;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Parser for lists of class file members (that is, fields and methods).
  */
 abstract /*package*/ class MemberListParser {
-    /** {@code non-null;} the class file to parse from */
+    /* {@code non-null;} the class file to parse from */
     private final DirectClassFile cf;
 
-    /** {@code non-null;} class being defined */
+    /* {@code non-null;} class being defined */
     private final CstType definer;
 
-    /** offset in the byte array of the classfile to the start of the list */
+    /* offset in the byte array of the classfile to the start of the list */
     private final int offset;
 
-    /** {@code non-null;} attribute factory to use */
+    /* {@code non-null;} attribute factory to use */
     private final AttributeFactory attributeFactory;
 
-    /** {@code >= -1;} the end offset of this list in the byte array of the
+    /* {@code >= -1;} the end offset of this list in the byte array of the
      * classfile, or {@code -1} if not yet parsed */
     private int endOffset;
 
-    /** {@code null-ok;} parse observer, if any */
+    /* {@code null-ok;} parse observer, if any */
     private ParseObserver observer;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param cf {@code non-null;} the class file to parse from
@@ -80,7 +80,7 @@ abstract /*package*/ class MemberListParser {
         this.endOffset = -1;
     }
 
-    /**
+    /*
      * Gets the end offset of this constant pool in the {@code byte[]}
      * which it came from.
      *
@@ -91,7 +91,7 @@ abstract /*package*/ class MemberListParser {
         return endOffset;
     }
 
-    /**
+    /*
      * Sets the parse observer for this instance.
      *
      * @param observer {@code null-ok;} the observer
@@ -100,7 +100,7 @@ abstract /*package*/ class MemberListParser {
         this.observer = observer;
     }
 
-    /**
+    /*
      * Runs {@link #parse} if it has not yet been run successfully.
      */
     protected final void parseIfNecessary() {
@@ -109,7 +109,7 @@ abstract /*package*/ class MemberListParser {
         }
     }
 
-    /**
+    /*
      * Gets the count of elements in the list.
      *
      * @return the count
@@ -119,7 +119,7 @@ abstract /*package*/ class MemberListParser {
         return bytes.getUnsignedShort(offset);
     }
 
-    /**
+    /*
      * Gets the class file being defined.
      *
      * @return {@code non-null;} the class
@@ -128,7 +128,7 @@ abstract /*package*/ class MemberListParser {
         return definer;
     }
 
-    /**
+    /*
      * Gets the human-oriented name for what this instance is parsing.
      * Subclasses must override this method.
      *
@@ -136,7 +136,7 @@ abstract /*package*/ class MemberListParser {
      */
     protected abstract String humanName();
 
-    /**
+    /*
      * Gets the human-oriented string for the given access flags.
      * Subclasses must override this method.
      *
@@ -145,7 +145,7 @@ abstract /*package*/ class MemberListParser {
      */
     protected abstract String humanAccessFlags(int accessFlags);
 
-    /**
+    /*
      * Gets the {@code CTX_*} constant to use when parsing attributes.
      * Subclasses must override this method.
      *
@@ -153,7 +153,7 @@ abstract /*package*/ class MemberListParser {
      */
     protected abstract int getAttributeContext();
 
-    /**
+    /*
      * Sets an element in the list. Subclasses must override this method.
      *
      * @param n which element
@@ -166,7 +166,7 @@ abstract /*package*/ class MemberListParser {
     protected abstract Member set(int n, int accessFlags, CstNat nat,
             AttributeList attributes);
 
-    /**
+    /*
      * Does the actual parsing.
      */
     private void parse() {

@@ -32,17 +32,17 @@ import org.ternlang.dx.ssa.SsaMethod;
 import org.ternlang.dx.util.IntIterator;
 import org.ternlang.dx.util.IntSet;
 
-/**
+/*
  * Base class of all register allocators.
  */
 public abstract class RegisterAllocator {
-    /** method being processed */
+    /* method being processed */
     protected final SsaMethod ssaMeth;
 
-    /** interference graph, indexed by register in both dimensions */
+    /* interference graph, indexed by register in both dimensions */
     protected final InterferenceGraph interference;
 
-    /**
+    /*
      * Creates an instance. Call {@code allocateRegisters} to run.
      * @param ssaMeth method to process.
      * @param interference Interference graph, indexed by register in both
@@ -54,7 +54,7 @@ public abstract class RegisterAllocator {
         this.interference = interference;
     }
 
-    /**
+    /*
      * Indicates whether the method params were allocated at the bottom
      * of the namespace, and thus should be moved up to the top of the
      * namespace after phi removal.
@@ -63,14 +63,14 @@ public abstract class RegisterAllocator {
      */
     public abstract boolean wantsParamsMovedHigh();
 
-    /**
+    /*
      * Runs the algorithm.
      *
      * @return a register mapper to apply to the {@code SsaMethod}
      */
     public abstract RegisterMapper allocateRegisters();
 
-    /**
+    /*
      * Returns the category (width) of the definition site of the register.
      * Returns {@code 1} for undefined registers.
      *
@@ -88,7 +88,7 @@ public abstract class RegisterAllocator {
         }
     }
 
-    /**
+    /*
      * Returns the RegisterSpec of the definition of the register.
      *
      * @param reg {@code >= 0;} SSA register
@@ -101,7 +101,7 @@ public abstract class RegisterAllocator {
         return definition == null ? null : definition.getResult();
     }
 
-    /**
+    /*
      * Returns true if the definition site of this register is a
      * move-param (ie, this is a method parameter).
      *
@@ -120,7 +120,7 @@ public abstract class RegisterAllocator {
         return false;
     }
 
-    /**
+    /*
      * Inserts a move instruction for a specified SSA register before a
      * specified instruction, creating a new SSA register and adjusting the
      * interference graph in the process. The insn currently must be the

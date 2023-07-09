@@ -20,14 +20,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-/**
+/*
  * File I/O utilities.
  */
 public final class FileUtils {
     private FileUtils() {
     }
 
-    /**
+    /*
      * Reads the named file, translating {@link IOException} to a
      * {@link RuntimeException} of some sort.
      *
@@ -39,7 +39,7 @@ public final class FileUtils {
         return readFile(file);
     }
 
-    /**
+    /*
      * Reads the given file, translating {@link IOException} to a
      * {@link RuntimeException} of some sort.
      *
@@ -86,7 +86,7 @@ public final class FileUtils {
         return result;
     }
 
-    /**
+    /*
      * Returns true if {@code fileName} names a .zip, .jar, or .apk.
      */
     public static boolean hasArchiveSuffix(String fileName) {

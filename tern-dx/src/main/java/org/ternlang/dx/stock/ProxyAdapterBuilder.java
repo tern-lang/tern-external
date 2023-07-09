@@ -35,7 +35,7 @@ import org.ternlang.dx.Local;
 import org.ternlang.dx.MethodId;
 import org.ternlang.dx.TypeId;
 
-/**
+/*
  * This class is <b>not thread safe</b>.
  */
 public final class ProxyAdapterBuilder<T> {
@@ -43,7 +43,7 @@ public final class ProxyAdapterBuilder<T> {
    // of the generated proxy class changes.
    public static final int VERSION = 1;
 
-   /**
+   /*
     * A cache of all proxy classes ever generated. At the time of writing, Android's runtime doesn't 
     * support class unloading so there's little value in using weak references.
     */
@@ -61,7 +61,7 @@ public final class ProxyAdapterBuilder<T> {
       return new ProxyAdapterBuilder<T>(clazz);
    }
 
-   /**
+   /*
     * Specifies the parent ClassLoader to use when creating the proxy.
     *
     * <p>
@@ -72,7 +72,7 @@ public final class ProxyAdapterBuilder<T> {
       return this;
    }
 
-   /**
+   /*
     * Sets the directory where executable code is stored. See {@link DexMaker#generateAndLoad DexMaker.generateAndLoad()} 
     * for guidance on choosing a secure location for the dex cache.
     */
@@ -498,7 +498,7 @@ public final class ProxyAdapterBuilder<T> {
       }
    }
 
-   /**
+   /*
     * Map from primitive type to method used to unbox a boxed version of the primitive.
     * <p>
     * This is required for methods whose return type is primitive, since the {@link InvocationHandler} will 

@@ -16,22 +16,22 @@
 
 package org.ternlang.dx.dex.file;
 
-/**
+/*
  * An item in a Dalvik file which is referenced by index.
  */
 public abstract class IndexedItem extends Item {
-    /** {@code >= -1;} assigned index of the item, or {@code -1} if not
+    /* {@code >= -1;} assigned index of the item, or {@code -1} if not
      * yet assigned */
     private int index;
 
-    /**
+    /*
      * Constructs an instance. The index is initially unassigned.
      */
     public IndexedItem() {
         index = -1;
     }
 
-    /**
+    /*
      * Gets whether or not this instance has been assigned an index.
      *
      * @return {@code true} iff this instance has been assigned an index
@@ -40,7 +40,7 @@ public abstract class IndexedItem extends Item {
         return (index >= 0);
     }
 
-    /**
+    /*
      * Gets the item index.
      *
      * @return {@code >= 0;} the index
@@ -54,7 +54,7 @@ public abstract class IndexedItem extends Item {
         return index;
     }
 
-    /**
+    /*
      * Sets the item index. This method may only ever be called once
      * per instance, and this will throw a {@code RuntimeException} if
      * called a second (or subsequent) time.
@@ -69,7 +69,7 @@ public abstract class IndexedItem extends Item {
         this.index = index;
     }
 
-    /**
+    /*
      * Gets the index of this item as a string, suitable for including in
      * annotations.
      *

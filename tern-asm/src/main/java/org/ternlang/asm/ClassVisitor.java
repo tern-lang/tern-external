@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -29,7 +29,7 @@
  */
 package org.ternlang.asm;
 
-/**
+/*
  * A visitor to visit a Java class. The methods of this class must be called in
  * the following order: <tt>visit</tt> [ <tt>visitSource</tt> ] [
  * <tt>visitOuterClass</tt> ] ( <tt>visitAnnotation</tt> |
@@ -41,19 +41,19 @@ package org.ternlang.asm;
  */
 public abstract class ClassVisitor {
 
-    /**
+    /*
      * The ASM API version implemented by this visitor. The value of this field
      * must be one of {@link Opcodes#ASM4} or {@link Opcodes#ASM5}.
      */
     protected final int api;
 
-    /**
+    /*
      * The class visitor to which this visitor must delegate method calls. May
      * be null.
      */
     protected ClassVisitor cv;
 
-    /**
+    /*
      * Constructs a new {@link ClassVisitor}.
      * 
      * @param api
@@ -64,7 +64,7 @@ public abstract class ClassVisitor {
         this(api, null);
     }
 
-    /**
+    /*
      * Constructs a new {@link ClassVisitor}.
      * 
      * @param api
@@ -82,7 +82,7 @@ public abstract class ClassVisitor {
         this.cv = cv;
     }
 
-    /**
+    /*
      * Visits the header of the class.
      * 
      * @param version
@@ -114,7 +114,7 @@ public abstract class ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Visits the source of the class.
      * 
      * @param source
@@ -131,7 +131,7 @@ public abstract class ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Visits the enclosing class of the class. This method must be called only
      * if the class has an enclosing class.
      * 
@@ -152,7 +152,7 @@ public abstract class ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Visits an annotation of the class.
      * 
      * @param desc
@@ -169,7 +169,7 @@ public abstract class ClassVisitor {
         return null;
     }
 
-    /**
+    /*
      * Visits an annotation on a type in the class signature.
      * 
      * @param typeRef
@@ -202,7 +202,7 @@ public abstract class ClassVisitor {
         return null;
     }
 
-    /**
+    /*
      * Visits a non standard attribute of the class.
      * 
      * @param attr
@@ -214,7 +214,7 @@ public abstract class ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Visits information about an inner class. This inner class is not
      * necessarily a member of the class being visited.
      * 
@@ -239,7 +239,7 @@ public abstract class ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Visits a field of the class.
      * 
      * @param access
@@ -274,7 +274,7 @@ public abstract class ClassVisitor {
         return null;
     }
 
-    /**
+    /*
      * Visits a method of the class. This method <i>must</i> return a new
      * {@link MethodVisitor} instance (or <tt>null</tt>) each time it is called,
      * i.e., it should not return a previously returned visitor.
@@ -307,7 +307,7 @@ public abstract class ClassVisitor {
         return null;
     }
 
-    /**
+    /*
      * Visits the end of the class. This method, which is the last one to be
      * called, is used to inform the visitor that all the fields and methods of
      * the class have been visited.

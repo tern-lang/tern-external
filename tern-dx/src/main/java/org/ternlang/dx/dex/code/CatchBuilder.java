@@ -20,18 +20,18 @@ import java.util.HashSet;
 
 import org.ternlang.dx.rop.type.Type;
 
-/**
+/*
  * Interface for the construction of {@link CatchTable} instances.
  */
 public interface CatchBuilder {
-    /**
+    /*
      * Builds and returns the catch table for this instance.
      *
      * @return {@code non-null;} the constructed table
      */
     public CatchTable build();
 
-    /**
+    /*
      * Gets whether this instance has any catches at all (either typed
      * or catch-all).
      *
@@ -39,7 +39,7 @@ public interface CatchBuilder {
      */
     public boolean hasAnyCatches();
 
-    /**
+    /*
      * Gets the set of catch types associated with this instance.
      *
      * @return {@code non-null;} the set of catch types

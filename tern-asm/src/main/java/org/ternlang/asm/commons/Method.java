@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -34,7 +34,7 @@ import java.util.Map;
 
 import org.ternlang.asm.Type;
 
-/**
+/*
  * A named method descriptor.
  * 
  * @author Juozas Baliuka
@@ -43,17 +43,17 @@ import org.ternlang.asm.Type;
  */
 public class Method {
 
-    /**
+    /*
      * The method name.
      */
     private final String name;
 
-    /**
+    /*
      * The method descriptor.
      */
     private final String desc;
 
-    /**
+    /*
      * Maps primitive Java type names to their descriptors.
      */
     private static final Map<String, String> DESCRIPTORS;
@@ -71,7 +71,7 @@ public class Method {
         DESCRIPTORS.put("boolean", "Z");
     }
 
-    /**
+    /*
      * Creates a new {@link Method}.
      * 
      * @param name
@@ -84,7 +84,7 @@ public class Method {
         this.desc = desc;
     }
 
-    /**
+    /*
      * Creates a new {@link Method}.
      * 
      * @param name
@@ -99,7 +99,7 @@ public class Method {
         this(name, Type.getMethodDescriptor(returnType, argumentTypes));
     }
 
-    /**
+    /*
      * Creates a new {@link Method}.
      * 
      * @param m
@@ -111,7 +111,7 @@ public class Method {
         return new Method(m.getName(), Type.getMethodDescriptor(m));
     }
 
-    /**
+    /*
      * Creates a new {@link Method}.
      * 
      * @param c
@@ -123,7 +123,7 @@ public class Method {
         return new Method("<init>", Type.getConstructorDescriptor(c));
     }
 
-    /**
+    /*
      * Returns a {@link Method} corresponding to the given Java method
      * declaration.
      * 
@@ -144,7 +144,7 @@ public class Method {
         return getMethod(method, false);
     }
 
-    /**
+    /*
      * Returns a {@link Method} corresponding to the given Java method
      * declaration.
      * 
@@ -225,7 +225,7 @@ public class Method {
         return sb.toString();
     }
 
-    /**
+    /*
      * Returns the name of the method described by this object.
      * 
      * @return the name of the method described by this object.
@@ -234,7 +234,7 @@ public class Method {
         return name;
     }
 
-    /**
+    /*
      * Returns the descriptor of the method described by this object.
      * 
      * @return the descriptor of the method described by this object.
@@ -243,7 +243,7 @@ public class Method {
         return desc;
     }
 
-    /**
+    /*
      * Returns the return type of the method described by this object.
      * 
      * @return the return type of the method described by this object.
@@ -252,7 +252,7 @@ public class Method {
         return Type.getReturnType(desc);
     }
 
-    /**
+    /*
      * Returns the argument types of the method described by this object.
      * 
      * @return the argument types of the method described by this object.

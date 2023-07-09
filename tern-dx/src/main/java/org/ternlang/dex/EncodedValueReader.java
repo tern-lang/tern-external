@@ -18,7 +18,7 @@ package org.ternlang.dex;
 
 import org.ternlang.dex.util.ByteInput;
 
-/**
+/*
  * Pull parser for encoded values.
  */
 public final class EncodedValueReader {
@@ -39,7 +39,7 @@ public final class EncodedValueReader {
     public static final int ENCODED_NULL = 0x1e;
     public static final int ENCODED_BOOLEAN = 0x1f;
 
-    /** placeholder type if the type is not yet known */
+    /* placeholder type if the type is not yet known */
     private static final int MUST_READ = -1;
 
     protected final ByteInput in;
@@ -55,7 +55,7 @@ public final class EncodedValueReader {
         this(in.asByteInput());
     }
 
-    /**
+    /*
      * Creates a new encoded value reader whose only value is the specified
      * known type. This is useful for encoded values without a type prefix,
      * such as class_def_item's encoded_array or annotation_item's
@@ -70,7 +70,7 @@ public final class EncodedValueReader {
         this(in.asByteInput(), knownType);
     }
 
-    /**
+    /*
      * Returns the type of the next value to read.
      */
     public int peek() {
@@ -82,7 +82,7 @@ public final class EncodedValueReader {
         return type;
     }
 
-    /**
+    /*
      * Begins reading the elements of an array, returning the array's size. The
      * caller must follow up by calling a read method for each element in the
      * array. For example, this reads a byte array: <pre>   {@code
@@ -98,7 +98,7 @@ public final class EncodedValueReader {
         return Leb128.readUnsignedLeb128(in);
     }
 
-    /**
+    /*
      * Begins reading the fields of an annotation, returning the number of
      * fields. The caller must follow up by making alternating calls to {@link
      * #readAnnotationName()} and another read method. For example, this reads
@@ -118,7 +118,7 @@ public final class EncodedValueReader {
         return Leb128.readUnsignedLeb128(in);
     }
 
-    /**
+    /*
      * Returns the type of the annotation just returned by {@link
      * #readAnnotation()}. This method's value is undefined unless the most
      * recent call was to {@link #readAnnotation()}.
@@ -214,7 +214,7 @@ public final class EncodedValueReader {
         return arg != 0;
     }
 
-    /**
+    /*
      * Skips a single value, including its nested values if it is an array or
      * annotation.
      */

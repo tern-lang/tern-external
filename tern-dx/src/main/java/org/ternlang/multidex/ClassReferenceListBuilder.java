@@ -35,7 +35,7 @@ import org.ternlang.dx.rop.type.Prototype;
 import org.ternlang.dx.rop.type.StdTypeList;
 import org.ternlang.dx.rop.type.TypeList;
 
-/**
+/*
  * Tool to find direct class references to other classes.
  */
 public class ClassReferenceListBuilder {
@@ -48,7 +48,7 @@ public class ClassReferenceListBuilder {
         this.path = path;
     }
 
-    /**
+    /*
      * Kept for compatibility with the gradle integration, this method just forwards to
      * {@link MainDexListBuilder#main(String[])}.
      * @deprecated use {@link MainDexListBuilder#main(String[])} instead.
@@ -58,7 +58,7 @@ public class ClassReferenceListBuilder {
         MainDexListBuilder.main(args);
     }
 
-    /**
+    /*
      * @param jarOfRoots Archive containing the class files resulting of the tracing, typically
      * this is the result of running ProGuard.
      */

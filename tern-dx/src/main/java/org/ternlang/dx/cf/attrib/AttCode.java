@@ -21,29 +21,29 @@ import org.ternlang.dx.cf.code.BytecodeArray;
 import org.ternlang.dx.cf.iface.AttributeList;
 import org.ternlang.dx.util.MutabilityException;
 
-/**
+/*
  * Attribute class for standard {@code Code} attributes.
  */
 public final class AttCode extends BaseAttribute {
-    /** {@code non-null;} attribute name for attributes of this type */
+    /* {@code non-null;} attribute name for attributes of this type */
     public static final String ATTRIBUTE_NAME = "Code";
 
-    /** {@code >= 0;} the stack size */
+    /* {@code >= 0;} the stack size */
     private final int maxStack;
 
-    /** {@code >= 0;} the number of locals */
+    /* {@code >= 0;} the number of locals */
     private final int maxLocals;
 
-    /** {@code non-null;} array containing the bytecode per se */
+    /* {@code non-null;} array containing the bytecode per se */
     private final BytecodeArray code;
 
-    /** {@code non-null;} the exception table */
+    /* {@code non-null;} the exception table */
     private final ByteCatchList catches;
 
-    /** {@code non-null;} the associated list of attributes */
+    /* {@code non-null;} the associated list of attributes */
     private final AttributeList attributes;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param maxStack {@code >= 0;} the stack size
@@ -98,7 +98,7 @@ public final class AttCode extends BaseAttribute {
             attributes.byteLength();
     }
 
-    /**
+    /*
      * Gets the maximum stack size.
      *
      * @return {@code >= 0;} the maximum stack size
@@ -107,7 +107,7 @@ public final class AttCode extends BaseAttribute {
         return maxStack;
     }
 
-    /**
+    /*
      * Gets the number of locals.
      *
      * @return {@code >= 0;} the number of locals
@@ -116,7 +116,7 @@ public final class AttCode extends BaseAttribute {
         return maxLocals;
     }
 
-    /**
+    /*
      * Gets the bytecode array.
      *
      * @return {@code non-null;} the bytecode array
@@ -125,7 +125,7 @@ public final class AttCode extends BaseAttribute {
         return code;
     }
 
-    /**
+    /*
      * Gets the exception table.
      *
      * @return {@code non-null;} the exception table
@@ -134,7 +134,7 @@ public final class AttCode extends BaseAttribute {
         return catches;
     }
 
-    /**
+    /*
      * Gets the associated attribute list.
      *
      * @return {@code non-null;} the attribute list

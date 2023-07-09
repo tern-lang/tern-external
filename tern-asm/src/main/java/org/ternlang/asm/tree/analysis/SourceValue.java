@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -33,7 +33,7 @@ import java.util.Set;
 
 import org.ternlang.asm.tree.AbstractInsnNode;
 
-/**
+/*
  * A {@link Value} that is represented by its type in a two types type system.
  * This type system distinguishes the ONEWORD and TWOWORDS types.
  * 
@@ -41,12 +41,12 @@ import org.ternlang.asm.tree.AbstractInsnNode;
  */
 public class SourceValue implements Value {
 
-    /**
+    /*
      * The size of this value.
      */
     public final int size;
 
-    /**
+    /*
      * The instructions that can produce this value. For example, for the Java
      * code below, the instructions that can produce the value of <tt>i</tt> at
      * line 5 are the txo ISTORE instructions at line 1 and 3:

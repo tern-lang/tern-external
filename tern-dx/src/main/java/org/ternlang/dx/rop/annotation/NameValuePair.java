@@ -19,17 +19,17 @@ package org.ternlang.dx.rop.annotation;
 import org.ternlang.dx.rop.cst.Constant;
 import org.ternlang.dx.rop.cst.CstString;
 
-/**
+/*
  * A (name, value) pair. These are used as the contents of an annotation.
  */
 public final class NameValuePair implements Comparable<NameValuePair> {
-    /** {@code non-null;} the name */
+    /* {@code non-null;} the name */
     private final CstString name;
 
-    /** {@code non-null;} the value */
+    /* {@code non-null;} the value */
     private final Constant value;
 
-    /**
+    /*
      * Construct an instance.
      *
      * @param name {@code non-null;} the name
@@ -48,17 +48,17 @@ public final class NameValuePair implements Comparable<NameValuePair> {
         this.value = value;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toString() {
         return name.toHuman() + ":" + value;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int hashCode() {
         return name.hashCode() * 31 + value.hashCode();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public boolean equals(Object other) {
         if (! (other instanceof NameValuePair)) {
             return false;
@@ -70,7 +70,7 @@ public final class NameValuePair implements Comparable<NameValuePair> {
             && value.equals(otherPair.value);
     }
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * <p>Instances of this class compare in name-major and value-minor
@@ -86,7 +86,7 @@ public final class NameValuePair implements Comparable<NameValuePair> {
         return value.compareTo(other.value);
     }
 
-    /**
+    /*
      * Gets the name.
      *
      * @return {@code non-null;} the name
@@ -95,7 +95,7 @@ public final class NameValuePair implements Comparable<NameValuePair> {
         return name;
     }
 
-    /**
+    /*
      * Gets the value.
      *
      * @return {@code non-null;} the value

@@ -21,7 +21,7 @@ import java.util.Comparator;
 import org.ternlang.asm.ClassVisitor;
 import org.ternlang.cglib.core.*;
 
-/**
+/*
  * For the efficient sorting of multiple arrays in parallel.
  * <p>
  * Given two arrays of equal length and varying types, the standard
@@ -55,7 +55,7 @@ abstract public class ParallelSorter extends SorterTemplate {
 
     abstract public ParallelSorter newInstance(Object[] arrays);
 
-    /**
+    /*
      * Create a new ParallelSorter object for a set of arrays. You may
      * sort the arrays multiple times via the same ParallelSorter object.
      * @param arrays An array of arrays to sort. The arrays may be a mix
@@ -73,7 +73,7 @@ abstract public class ParallelSorter extends SorterTemplate {
         return ((Object[])a[0]).length;
     }
 
-    /**
+    /*
      * Sort the arrays using the quicksort algorithm.
      * @param index array (column) to sort by
      */
@@ -81,7 +81,7 @@ abstract public class ParallelSorter extends SorterTemplate {
         quickSort(index, 0, len(), null);
     }
 
-    /**
+    /*
      * Sort the arrays using the quicksort algorithm.
      * @param index array (column) to sort by
      * @param lo starting array index (row), inclusive
@@ -91,7 +91,7 @@ abstract public class ParallelSorter extends SorterTemplate {
         quickSort(index, lo, hi, null);
     }
 
-    /**
+    /*
      * Sort the arrays using the quicksort algorithm.
      * @param index array (column) to sort by
      * @param cmp Comparator to use if the specified column is non-primitive
@@ -100,7 +100,7 @@ abstract public class ParallelSorter extends SorterTemplate {
         quickSort(index, 0, len(), cmp);
     }
 
-    /**
+    /*
      * Sort the arrays using the quicksort algorithm.
      * @param index array (column) to sort by
      * @param lo starting array index (row), inclusive
@@ -112,14 +112,14 @@ abstract public class ParallelSorter extends SorterTemplate {
         super.quickSort(lo, hi - 1);
     }
 
-    /**
+    /*
      * @param index array (column) to sort by
      */
     public void mergeSort(int index) {
         mergeSort(index, 0, len(), null);
     }
 
-    /**
+    /*
      * Sort the arrays using an in-place merge sort.
      * @param index array (column) to sort by
      * @param lo starting array index (row), inclusive
@@ -129,7 +129,7 @@ abstract public class ParallelSorter extends SorterTemplate {
         mergeSort(index, lo, hi, null);
     }
 
-    /**
+    /*
      * Sort the arrays using an in-place merge sort.
      * @param index array (column) to sort by
      * @param lo starting array index (row), inclusive
@@ -139,7 +139,7 @@ abstract public class ParallelSorter extends SorterTemplate {
         mergeSort(index, 0, len(), cmp);
     }
 
-    /**
+    /*
      * Sort the arrays using an in-place merge sort.
      * @param index array (column) to sort by
      * @param lo starting array index (row), inclusive

@@ -16,15 +16,15 @@
 
 package org.ternlang.dx.rop.cst;
 
-/**
+/*
  * Constants which are literal 64-bit values of some sort.
  */
 public abstract class CstLiteral64
         extends CstLiteralBits {
-    /** the value as {@code long} bits */
+    /* the value as {@code long} bits */
     private final long bits;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param bits the value as {@code long} bits
@@ -33,7 +33,7 @@ public abstract class CstLiteral64
         this.bits = bits;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final boolean equals(Object other) {
         return (other != null) &&
@@ -41,13 +41,13 @@ public abstract class CstLiteral64
             bits == ((CstLiteral64) other).bits;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final int hashCode() {
         return (int) bits ^ (int) (bits >> 32);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected int compareTo0(Constant other) {
         long otherBits = ((CstLiteral64) other).bits;
@@ -61,25 +61,25 @@ public abstract class CstLiteral64
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final boolean isCategory2() {
         return true;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final boolean fitsInInt() {
         return (int) bits == bits;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final int getIntBits() {
         return (int) bits;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final long getLongBits() {
         return bits;

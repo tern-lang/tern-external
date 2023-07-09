@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -47,7 +47,7 @@ import org.ternlang.asm.tree.TableSwitchInsnNode;
 import org.ternlang.asm.tree.TryCatchBlockNode;
 import org.ternlang.asm.tree.VarInsnNode;
 
-/**
+/*
  * A semantic bytecode analyzer. <i>This class does not fully check that JSR and
  * RET instructions are valid.</i>
  * 
@@ -76,7 +76,7 @@ public class Analyzer<V extends Value> implements Opcodes {
 
     private int top;
 
-    /**
+    /*
      * Constructs a new {@link Analyzer}.
      * 
      * @param interpreter
@@ -87,7 +87,7 @@ public class Analyzer<V extends Value> implements Opcodes {
         this.interpreter = interpreter;
     }
 
-    /**
+    /*
      * Analyzes the given method.
      * 
      * @param owner
@@ -368,7 +368,7 @@ public class Analyzer<V extends Value> implements Opcodes {
         }
     }
 
-    /**
+    /*
      * Returns the symbolic stack frame for each instruction of the last
      * recently analyzed method.
      * 
@@ -383,7 +383,7 @@ public class Analyzer<V extends Value> implements Opcodes {
         return frames;
     }
 
-    /**
+    /*
      * Returns the exception handlers for the given instruction.
      * 
      * @param insn
@@ -395,7 +395,7 @@ public class Analyzer<V extends Value> implements Opcodes {
         return handlers[insn];
     }
 
-    /**
+    /*
      * Initializes this analyzer. This method is called just before the
      * execution of control flow analysis loop in #analyze. The default
      * implementation of this method does nothing.
@@ -410,7 +410,7 @@ public class Analyzer<V extends Value> implements Opcodes {
     protected void init(String owner, MethodNode m) throws AnalyzerException {
     }
 
-    /**
+    /*
      * Constructs a new frame with the given size.
      * 
      * @param nLocals
@@ -423,7 +423,7 @@ public class Analyzer<V extends Value> implements Opcodes {
         return new Frame<V>(nLocals, nStack);
     }
 
-    /**
+    /*
      * Constructs a new frame that is identical to the given frame.
      * 
      * @param src
@@ -434,7 +434,7 @@ public class Analyzer<V extends Value> implements Opcodes {
         return new Frame<V>(src);
     }
 
-    /**
+    /*
      * Creates a control flow graph edge. The default implementation of this
      * method does nothing. It can be overriden in order to construct the
      * control flow graph of a method (this method is called by the
@@ -448,7 +448,7 @@ public class Analyzer<V extends Value> implements Opcodes {
     protected void newControlFlowEdge(final int insn, final int successor) {
     }
 
-    /**
+    /*
      * Creates a control flow graph edge corresponding to an exception handler.
      * The default implementation of this method does nothing. It can be
      * overridden in order to construct the control flow graph of a method (this
@@ -468,7 +468,7 @@ public class Analyzer<V extends Value> implements Opcodes {
         return true;
     }
 
-    /**
+    /*
      * Creates a control flow graph edge corresponding to an exception handler.
      * The default implementation of this method delegates to
      * {@link #newControlFlowExceptionEdge(int, int)

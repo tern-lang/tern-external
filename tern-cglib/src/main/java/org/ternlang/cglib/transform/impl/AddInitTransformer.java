@@ -26,7 +26,7 @@ import org.ternlang.cglib.core.ReflectUtils;
 import org.ternlang.cglib.core.Signature;
 import org.ternlang.cglib.transform.ClassEmitterTransformer;
 
-/**
+/*
  * @author	Mark Hobson
  */
 public class AddInitTransformer extends ClassEmitterTransformer {

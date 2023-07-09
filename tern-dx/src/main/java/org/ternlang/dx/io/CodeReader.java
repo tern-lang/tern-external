@@ -19,7 +19,7 @@ package org.ternlang.dx.io;
 import org.ternlang.dex.DexException;
 import org.ternlang.dx.io.instructions.DecodedInstruction;
 
-/**
+/*
  * Walks through a block of code and calls visitor call backs.
  */
 public final class CodeReader {
@@ -29,7 +29,7 @@ public final class CodeReader {
     private Visitor fieldVisitor = null;
     private Visitor methodVisitor = null;
 
-    /**
+    /*
      * Sets {@code visitor} as the visitor for all instructions.
      */
     public void setAllVisitors(Visitor visitor) {
@@ -40,7 +40,7 @@ public final class CodeReader {
         methodVisitor = visitor;
     }
 
-    /**
+    /*
      * Sets {@code visitor} as the visitor for all instructions not
      * otherwise handled.
      */
@@ -48,28 +48,28 @@ public final class CodeReader {
         fallbackVisitor = visitor;
     }
 
-    /**
+    /*
      * Sets {@code visitor} as the visitor for all string instructions.
      */
     public void setStringVisitor(Visitor visitor) {
         stringVisitor = visitor;
     }
 
-    /**
+    /*
      * Sets {@code visitor} as the visitor for all type instructions.
      */
     public void setTypeVisitor(Visitor visitor) {
         typeVisitor = visitor;
     }
 
-    /**
+    /*
      * Sets {@code visitor} as the visitor for all field instructions.
      */
     public void setFieldVisitor(Visitor visitor) {
         fieldVisitor = visitor;
     }
 
-    /**
+    /*
      * Sets {@code visitor} as the visitor for all method instructions.
      */
     public void setMethodVisitor(Visitor visitor) {

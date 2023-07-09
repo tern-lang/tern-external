@@ -22,23 +22,23 @@ import org.ternlang.dx.rop.type.StdTypeList;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * Representation of a Java method execution frame. A frame consists
  * of a set of locals and a value stack, and it can be told to act on
  * them to load and store values between them and an "arguments /
  * results" area.
  */
 public final class Frame {
-    /** {@code non-null;} the locals */
+    /* {@code non-null;} the locals */
     private final LocalsArray locals;
 
-    /** {@code non-null;} the stack */
+    /* {@code non-null;} the stack */
     private final ExecutionStack stack;
 
-    /** {@code null-ok;} stack of labels of subroutines that this block is nested in */
+    /* {@code null-ok;} stack of labels of subroutines that this block is nested in */
     private final IntList subroutines;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param locals {@code non-null;} the locals array to use
@@ -48,7 +48,7 @@ public final class Frame {
         this(locals, stack, IntList.EMPTY);
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param locals {@code non-null;} the locals array to use
@@ -73,7 +73,7 @@ public final class Frame {
         this.subroutines = subroutines;
     }
 
-    /**
+    /*
      * Constructs an instance. The locals array initially consists of
      * all-uninitialized values (represented as {@code null}s) and
      * the stack starts out empty.
@@ -87,7 +87,7 @@ public final class Frame {
         this(new OneLocalsArray(maxLocals), new ExecutionStack(maxStack));
     }
 
-    /**
+    /*
      * Makes and returns a mutable copy of this instance. The copy
      * contains copies of the locals and stack (that is, it doesn't
      * share them with the original).
@@ -98,7 +98,7 @@ public final class Frame {
         return new Frame(locals.copy(), stack.copy(), subroutines);
     }
 
-    /**
+    /*
      * Makes this instance immutable.
      */
     public void setImmutable() {
@@ -107,7 +107,7 @@ public final class Frame {
         // "subroutines" is always immutable
     }
 
-    /**
+    /*
      * Replaces all the occurrences of the given uninitialized type in
      * this frame with its initialized equivalent.
      *
@@ -118,7 +118,7 @@ public final class Frame {
         stack.makeInitialized(type);
     }
 
-    /**
+    /*
      * Gets the locals array for this instance.
      *
      * @return {@code non-null;} the locals array
@@ -127,7 +127,7 @@ public final class Frame {
         return locals;
     }
 
-    /**
+    /*
      * Gets the execution stack for this instance.
      *
      * @return {@code non-null;} the execution stack
@@ -136,7 +136,7 @@ public final class Frame {
         return stack;
     }
 
-    /**
+    /*
      * Returns the largest subroutine nesting this block may be in. An
      * empty list is returned if this block is not in any subroutine.
      * Subroutines are identified by the label of their start block. The
@@ -149,7 +149,7 @@ public final class Frame {
         return subroutines;
     }
 
-    /**
+    /*
      * Initialize this frame with the method's parameters. Used for the first
      * frame.
      *
@@ -166,7 +166,7 @@ public final class Frame {
         }
     }
 
-    /**
+    /*
      * Returns a Frame instance representing the frame state that should
      * be used when returning from a subroutine. The stack state of all
      * subroutine invocations is identical, but the locals state may differ.
@@ -202,7 +202,7 @@ public final class Frame {
                 : new Frame(subLocals, stack, newSubroutines);
     }
 
-    /**
+    /*
      * Merges two frames. If the merged result is the same as this frame,
      * then this instance is returned.
      *
@@ -230,7 +230,7 @@ public final class Frame {
         return new Frame(resultLocals, resultStack, resultSubroutines);
     }
 
-    /**
+    /*
      * Merges this frame's subroutine lists with another. The result
      * is the deepest common nesting (effectively, the common prefix of the
      * two lists).
@@ -258,7 +258,7 @@ public final class Frame {
         return resultSubroutines;
     }
 
-    /**
+    /*
      * Adjusts a locals array to account for a merged subroutines list.
      * If a frame merge results in, effectively, a subroutine return through
      * a throw then the current locals will be a LocalsArraySet that will
@@ -299,7 +299,7 @@ public final class Frame {
         return laSet;
     }
 
-    /**
+    /*
      * Merges this frame with the frame of a subroutine caller at
      * {@code predLabel}. Only called on the frame at the first
      * block of a subroutine.
@@ -365,7 +365,7 @@ public final class Frame {
         return new Frame(resultLocals, resultStack, resultSubroutines);
     }
 
-    /**
+    /*
      * Makes a frame for a subroutine start block, given that this is the
      * ending frame of one of the subroutine's calling blocks. Subroutine
      * calls may be nested and thus may have nested locals state, so we
@@ -386,7 +386,7 @@ public final class Frame {
         return newFrame.mergeWithSubroutineCaller(this, subLabel, callerLabel);
     }
 
-    /**
+    /*
      * Makes a new frame for an exception handler block invoked from this
      * frame.
      *
@@ -402,7 +402,7 @@ public final class Frame {
         return new Frame(getLocals(), newStack, subroutines);
     }
 
-    /**
+    /*
      * Annotates (adds context to) the given exception with information
      * about this frame.
      *

@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -33,7 +33,7 @@ import org.ternlang.asm.ClassVisitor;
 import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 
-/**
+/*
  * A {@link ClassVisitor} that merges clinit methods into a single one.
  * 
  * @author Eric Bruneton

@@ -29,13 +29,13 @@ import org.ternlang.dx.rop.cst.CstString;
 import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.rop.cst.TypedConstant;
 
-/**
+/*
  * Factory for rop constants.
  */
 final class Constants {
     private Constants() {}
 
-    /**
+    /*
      * Returns a rop constant for the specified value.
      *
      * @param value null, a boxed primitive, String, Class, or TypeId.

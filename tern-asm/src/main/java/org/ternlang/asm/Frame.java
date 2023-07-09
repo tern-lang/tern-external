@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -29,7 +29,7 @@
  */
 package org.ternlang.asm;
 
-/**
+/*
  * Information about the input and output stack map frames of a basic block.
  * 
  * @author Eric Bruneton
@@ -89,23 +89,23 @@ class Frame {
      * and STACK type kinds).
      */
 
-    /**
+    /*
      * Mask to get the dimension of a frame type. This dimension is a signed
      * integer between -8 and 7.
      */
     static final int DIM = 0xF0000000;
 
-    /**
+    /*
      * Constant to be added to a type to get a type with one more dimension.
      */
     static final int ARRAY_OF = 0x10000000;
 
-    /**
+    /*
      * Constant to be added to a type to get a type with one less dimension.
      */
     static final int ELEMENT_OF = 0xF0000000;
 
-    /**
+    /*
      * Mask to get the kind of a frame type.
      * 
      * @see #BASE
@@ -114,7 +114,7 @@ class Frame {
      */
     static final int KIND = 0xF000000;
 
-    /**
+    /*
      * Flag used for LOCAL and STACK types. Indicates that if this type happens
      * to be a long or double type (during the computations of input frames),
      * then it must be set to TOP because the second word of this value has been
@@ -123,115 +123,115 @@ class Frame {
      */
     static final int TOP_IF_LONG_OR_DOUBLE = 0x800000;
 
-    /**
+    /*
      * Mask to get the value of a frame type.
      */
     static final int VALUE = 0x7FFFFF;
 
-    /**
+    /*
      * Mask to get the kind of base types.
      */
     static final int BASE_KIND = 0xFF00000;
 
-    /**
+    /*
      * Mask to get the value of base types.
      */
     static final int BASE_VALUE = 0xFFFFF;
 
-    /**
+    /*
      * Kind of the types that are not relative to an input stack map frame.
      */
     static final int BASE = 0x1000000;
 
-    /**
+    /*
      * Base kind of the base reference types. The BASE_VALUE of such types is an
      * index into the type table.
      */
     static final int OBJECT = BASE | 0x700000;
 
-    /**
+    /*
      * Base kind of the uninitialized base types. The BASE_VALUE of such types
      * in an index into the type table (the Item at that index contains both an
      * instruction offset and an internal class name).
      */
     static final int UNINITIALIZED = BASE | 0x800000;
 
-    /**
+    /*
      * Kind of the types that are relative to the local variable types of an
      * input stack map frame. The value of such types is a local variable index.
      */
     private static final int LOCAL = 0x2000000;
 
-    /**
+    /*
      * Kind of the the types that are relative to the stack of an input stack
      * map frame. The value of such types is a position relatively to the top of
      * this stack.
      */
     private static final int STACK = 0x3000000;
 
-    /**
+    /*
      * The TOP type. This is a BASE type.
      */
     static final int TOP = BASE | 0;
 
-    /**
+    /*
      * The BOOLEAN type. This is a BASE type mainly used for array types.
      */
     static final int BOOLEAN = BASE | 9;
 
-    /**
+    /*
      * The BYTE type. This is a BASE type mainly used for array types.
      */
     static final int BYTE = BASE | 10;
 
-    /**
+    /*
      * The CHAR type. This is a BASE type mainly used for array types.
      */
     static final int CHAR = BASE | 11;
 
-    /**
+    /*
      * The SHORT type. This is a BASE type mainly used for array types.
      */
     static final int SHORT = BASE | 12;
 
-    /**
+    /*
      * The INTEGER type. This is a BASE type.
      */
     static final int INTEGER = BASE | 1;
 
-    /**
+    /*
      * The FLOAT type. This is a BASE type.
      */
     static final int FLOAT = BASE | 2;
 
-    /**
+    /*
      * The DOUBLE type. This is a BASE type.
      */
     static final int DOUBLE = BASE | 3;
 
-    /**
+    /*
      * The LONG type. This is a BASE type.
      */
     static final int LONG = BASE | 4;
 
-    /**
+    /*
      * The NULL type. This is a BASE type.
      */
     static final int NULL = BASE | 5;
 
-    /**
+    /*
      * The UNINITIALIZED_THIS type. This is a BASE type.
      */
     static final int UNINITIALIZED_THIS = BASE | 6;
 
-    /**
+    /*
      * The stack size variation corresponding to each JVM instruction. This
      * stack variation is equal to the size of the values produced by an
      * instruction, minus the size of the values consumed by this instruction.
      */
     static final int[] SIZE;
 
-    /**
+    /*
      * Computes the stack size variation corresponding to each JVM instruction.
      */
     static {
@@ -460,33 +460,33 @@ class Frame {
         // System.err.println();
     }
 
-    /**
+    /*
      * The label (i.e. basic block) to which these input and output stack map
      * frames correspond.
      */
     Label owner;
 
-    /**
+    /*
      * The input stack map frame locals.
      */
     int[] inputLocals;
 
-    /**
+    /*
      * The input stack map frame stack.
      */
     int[] inputStack;
 
-    /**
+    /*
      * The output stack map frame locals.
      */
     private int[] outputLocals;
 
-    /**
+    /*
      * The output stack map frame stack.
      */
     private int[] outputStack;
 
-    /**
+    /*
      * Relative size of the output stack. The exact semantics of this field
      * depends on the algorithm that is used.
      * 
@@ -498,14 +498,14 @@ class Frame {
      */
     int outputStackTop;
 
-    /**
+    /*
      * Number of types that are initialized in the basic block.
      * 
      * @see #initializations
      */
     private int initializationCount;
 
-    /**
+    /*
      * The types that are initialized in the basic block. A constructor
      * invocation on an UNINITIALIZED or UNINITIALIZED_THIS type must replace
      * <i>every occurence</i> of this type in the local variables and in the
@@ -520,7 +520,7 @@ class Frame {
      */
     private int[] initializations;
 
-    /**
+    /*
      * Sets this frame to the given value.
      * 
      * @param cw
@@ -561,7 +561,7 @@ class Frame {
         initializationCount = 0;
     }
 
-    /**
+    /*
      * Converts types from the MethodWriter.visitFrame() format to the Frame
      * format.
      * 
@@ -605,7 +605,7 @@ class Frame {
         return i;
     }
 
-    /**
+    /*
      * Sets this frame to the value of the given frame. WARNING: after this
      * method is called the two frames share the same data structures. It is
      * recommended to discard the given frame f to avoid unexpected side
@@ -624,7 +624,7 @@ class Frame {
         initializations = f.initializations;
     }
 
-    /**
+    /*
      * Returns the output frame local variable type at the given index.
      * 
      * @param local
@@ -647,7 +647,7 @@ class Frame {
         }
     }
 
-    /**
+    /*
      * Sets the output frame local variable type at the given index.
      * 
      * @param local
@@ -670,7 +670,7 @@ class Frame {
         outputLocals[local] = type;
     }
 
-    /**
+    /*
      * Pushes a new type onto the output frame stack.
      * 
      * @param type
@@ -696,7 +696,7 @@ class Frame {
         }
     }
 
-    /**
+    /*
      * Pushes a new type onto the output frame stack.
      * 
      * @param cw
@@ -716,7 +716,7 @@ class Frame {
         }
     }
 
-    /**
+    /*
      * Returns the int encoding of the given type.
      * 
      * @param cw
@@ -790,7 +790,7 @@ class Frame {
         }
     }
 
-    /**
+    /*
      * Pops a type from the output frame stack and returns its value.
      * 
      * @return the type that has been popped from the output frame stack.
@@ -804,7 +804,7 @@ class Frame {
         }
     }
 
-    /**
+    /*
      * Pops the given number of types from the output frame stack.
      * 
      * @param elements
@@ -822,7 +822,7 @@ class Frame {
         }
     }
 
-    /**
+    /*
      * Pops a type from the output frame stack.
      * 
      * @param desc
@@ -841,7 +841,7 @@ class Frame {
         }
     }
 
-    /**
+    /*
      * Adds a new type to the list of types on which a constructor is invoked in
      * the basic block.
      * 
@@ -863,7 +863,7 @@ class Frame {
         initializations[initializationCount++] = var;
     }
 
-    /**
+    /*
      * Replaces the given type with the appropriate type if it is one of the
      * types on which a constructor is invoked in the basic block.
      * 
@@ -900,7 +900,7 @@ class Frame {
         return t;
     }
 
-    /**
+    /*
      * Initializes the input frame of the first basic block from the method
      * descriptor.
      * 
@@ -937,7 +937,7 @@ class Frame {
         }
     }
 
-    /**
+    /*
      * Simulates the action of the given instruction on the output stack frame.
      * 
      * @param opcode
@@ -1372,7 +1372,7 @@ class Frame {
         }
     }
 
-    /**
+    /*
      * Merges the input frame of the given basic block with the input and output
      * frames of this basic block. Returns <tt>true</tt> if the input frame of
      * the given label has been changed by this operation.
@@ -1480,7 +1480,7 @@ class Frame {
         return changed;
     }
 
-    /**
+    /*
      * Merges the type at the given index in the given type array with the given
      * type. Returns <tt>true</tt> if the type array has been modified by this
      * operation.

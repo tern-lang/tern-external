@@ -1,4 +1,4 @@
-/***
+/**
  * ASM XML Adapter
  * Copyright (c) 2004-2011, Eugene Kuleshov
  * All rights reserved.
@@ -47,7 +47,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-/**
+/*
  * A {@link org.xml.sax.ContentHandler ContentHandler} that transforms XML
  * document into Java class file. This class can be feeded by any kind of SAX
  * 2.0 event producers, e.g. XML parser, XSLT or XPath engines, or custom code.
@@ -59,23 +59,23 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class ASMContentHandler extends DefaultHandler implements Opcodes {
 
-    /**
+    /*
      * Stack of the intermediate processing contexts.
      */
     private final ArrayList<Object> stack = new ArrayList<Object>();
 
-    /**
+    /*
      * Complete name of the current element.
      */
     String match = "";
 
-    /**
+    /*
      * Current instance of the {@link ClassVisitor ClassVisitor} used to visit
      * classfile bytecode.
      */
     protected ClassVisitor cv;
 
-    /**
+    /*
      * Map of the active {@link Label Label} instances for current method.
      */
     protected Map<Object, Label> labels;
@@ -150,7 +150,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         public static final int INSN_MULTIANEWARRAY = 9;
     }
 
-    /**
+    /*
      * Map of the opcode names to opcode and opcode group
      */
     static final HashMap<String, Opcode> OPCODES = new HashMap<String, Opcode>();
@@ -324,7 +324,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * Constructs a new {@link ASMContentHandler ASMContentHandler} object.
      * 
      * @param cv
@@ -335,7 +335,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         this.cv = cv;
     }
 
-    /**
+    /*
      * Process notification of the start of an XML element being reached.
      * 
      * @param ns
@@ -376,7 +376,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * Process notification of the end of an XML element being reached.
      * 
      * @param ns
@@ -415,7 +415,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * Return the top object on the stack without removing it. If there are no
      * objects on the stack, return <code>null</code>.
      * 
@@ -426,7 +426,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         return size == 0 ? null : stack.get(size - 1);
     }
 
-    /**
+    /*
      * Pop the top object off of the stack, and return it. If there are no
      * objects on the stack, return <code>null</code>.
      * 
@@ -437,7 +437,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         return size == 0 ? null : stack.remove(size - 1);
     }
 
-    /**
+    /*
      * Push a new object onto the top of the object stack.
      * 
      * @param object
@@ -491,7 +491,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * Rule
      */
     protected abstract class Rule {
@@ -679,7 +679,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * ClassRule
      */
     final class ClassRule extends Rule {
@@ -711,7 +711,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * InterfaceRule
      */
     final class InterfaceRule extends Rule {
@@ -724,7 +724,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * InterfacesRule
      */
     final class InterfacesRule extends Rule {
@@ -744,7 +744,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * OuterClassRule
      */
     final class OuterClassRule extends Rule {
@@ -758,7 +758,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * InnerClassRule
      */
     final class InnerClassRule extends Rule {
@@ -773,7 +773,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * FieldRule
      */
     final class FieldRule extends Rule {
@@ -795,7 +795,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * MethodRule
      */
     final class MethodRule extends Rule {
@@ -820,7 +820,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * ExceptionRule
      */
     final class ExceptionRule extends Rule {
@@ -833,7 +833,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * ExceptionsRule
      */
     final class ExceptionsRule extends Rule {
@@ -852,7 +852,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * MethodParameterRule
      */
     final class MethodParameterRule extends Rule {
@@ -864,7 +864,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * TableSwitchRule
      */
     final class TableSwitchRule extends Rule {
@@ -891,7 +891,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * TableSwitchLabelRule
      */
     final class TableSwitchLabelRule extends Rule {
@@ -904,7 +904,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * LookupSwitchRule
      */
     final class LookupSwitchRule extends Rule {
@@ -934,7 +934,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * LookupSwitchLabelRule
      */
     final class LookupSwitchLabelRule extends Rule {
@@ -949,7 +949,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * FrameRule
      */
     final class FrameRule extends Rule {
@@ -1016,7 +1016,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * LabelRule
      */
     final class LabelRule extends Rule {
@@ -1027,7 +1027,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * TryCatchRule
      */
     final class TryCatchRule extends Rule {
@@ -1042,7 +1042,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * LineNumberRule
      */
     final class LineNumberRule extends Rule {
@@ -1055,7 +1055,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * LocalVarRule
      */
     final class LocalVarRule extends Rule {
@@ -1073,7 +1073,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * InvokeDynamicRule
      */
     final class InvokeDynamicRule extends Rule {
@@ -1097,7 +1097,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * InvokeDynamicBsmArgumentsRule
      */
     final class InvokeDynamicBsmArgumentsRule extends Rule {
@@ -1110,7 +1110,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * OpcodesRule
      */
     final class OpcodesRule extends Rule {
@@ -1192,7 +1192,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * MaxRule
      */
     final class MaxRule extends Rule {
@@ -1446,7 +1446,7 @@ public class ASMContentHandler extends DefaultHandler implements Opcodes {
         }
     }
 
-    /**
+    /*
      * Opcode
      */
     static final class Opcode {

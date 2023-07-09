@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -54,7 +54,7 @@ import org.ternlang.asm.tree.MethodNode;
 import org.ternlang.asm.tree.TableSwitchInsnNode;
 import org.ternlang.asm.tree.TryCatchBlockNode;
 
-/**
+/*
  * A {@link org.ternlang.asm.MethodVisitor} that removes JSR instructions and
  * inlines the referenced subroutines.
  * 
@@ -66,25 +66,25 @@ public class JSRInlinerAdapter extends MethodNode implements Opcodes {
 
     private static final boolean LOGGING = false;
 
-    /**
+    /*
      * For each label that is jumped to by a JSR, we create a BitSet instance.
      */
     private final Map<LabelNode, BitSet> subroutineHeads = new HashMap<LabelNode, BitSet>();
 
-    /**
+    /*
      * This subroutine instance denotes the line of execution that is not
      * contained within any subroutine; i.e., the "subroutine" that is executing
      * when a method first begins.
      */
     private final BitSet mainSubroutine = new BitSet();
 
-    /**
+    /*
      * This BitSet contains the index of every instruction that belongs to more
      * than one subroutine. This should not happen often.
      */
     final BitSet dualCitizens = new BitSet();
 
-    /**
+    /*
      * Creates a new JSRInliner. <i>Subclasses must not use this
      * constructor</i>. Instead, they must use the
      * {@link #JSRInlinerAdapter(int, MethodVisitor, int, String, String, String, String[])}
@@ -119,7 +119,7 @@ public class JSRInlinerAdapter extends MethodNode implements Opcodes {
         }
     }
 
-    /**
+    /*
      * Creates a new JSRInliner.
      * 
      * @param api
@@ -150,7 +150,7 @@ public class JSRInlinerAdapter extends MethodNode implements Opcodes {
         this.mv = mv;
     }
 
-    /**
+    /*
      * Detects a JSR instruction and sets a flag to indicate we will need to do
      * inlining.
      */
@@ -163,7 +163,7 @@ public class JSRInlinerAdapter extends MethodNode implements Opcodes {
         }
     }
 
-    /**
+    /*
      * If any JSRs were seen, triggers the inlining process. Otherwise, forwards
      * the byte codes untouched.
      */
@@ -188,7 +188,7 @@ public class JSRInlinerAdapter extends MethodNode implements Opcodes {
         }
     }
 
-    /**
+    /*
      * Walks the method and determines which internal subroutine(s), if any,
      * each instruction is a method of.
      */
@@ -211,7 +211,7 @@ public class JSRInlinerAdapter extends MethodNode implements Opcodes {
         }
     }
 
-    /**
+    /*
      * Performs a depth first search walking the normal byte code path starting
      * at <code>index</code>, and adding each instruction encountered into the
      * subroutine <code>sub</code>. After this walk is complete, iterates over
@@ -271,7 +271,7 @@ public class JSRInlinerAdapter extends MethodNode implements Opcodes {
         }
     }
 
-    /**
+    /*
      * Performs a simple DFS of the instructions, assigning each to the
      * subroutine <code>sub</code>. Starts from <code>index</code>. Invoked only
      * by <code>markSubroutineWalk()</code>.
@@ -371,7 +371,7 @@ public class JSRInlinerAdapter extends MethodNode implements Opcodes {
         }
     }
 
-    /**
+    /*
      * Creates the new instructions, inlining each instantiation of each
      * subroutine until the code is fully elaborated.
      */
@@ -396,7 +396,7 @@ public class JSRInlinerAdapter extends MethodNode implements Opcodes {
         localVariables = newLocalVariables;
     }
 
-    /**
+    /*
      * Emits one instantiation of one subroutine, specified by
      * <code>instant</code>. May add new instantiations that are invoked by this
      * one to the <code>worklist</code> parameter, and new try/catch blocks to
@@ -573,7 +573,7 @@ public class JSRInlinerAdapter extends MethodNode implements Opcodes {
         System.err.println(str);
     }
 
-    /**
+    /*
      * A class that represents an instantiation of a subroutine. Each
      * instantiation has an associate "stack" --- which is a listing of those
      * instantiations that were active when this particular instance of this
@@ -583,18 +583,18 @@ public class JSRInlinerAdapter extends MethodNode implements Opcodes {
      */
     private class Instantiation extends AbstractMap<LabelNode, LabelNode> {
 
-        /**
+        /*
          * Previous instantiations; the stack must be statically predictable to
          * be inlinable.
          */
         final Instantiation previous;
 
-        /**
+        /*
          * The subroutine this is an instantiation of.
          */
         public final BitSet subroutine;
 
-        /**
+        /*
          * This table maps Labels from the original source to Labels pointing at
          * code specific to this instantiation, for use in remapping try/catch
          * blocks,as well as gotos.
@@ -610,7 +610,7 @@ public class JSRInlinerAdapter extends MethodNode implements Opcodes {
          */
         public final Map<LabelNode, LabelNode> rangeTable = new HashMap<LabelNode, LabelNode>();
 
-        /**
+        /*
          * All returns for this instantiation will be mapped to this label
          */
         public final LabelNode returnLabel;
@@ -664,7 +664,7 @@ public class JSRInlinerAdapter extends MethodNode implements Opcodes {
             }
         }
 
-        /**
+        /*
          * Returns the "owner" of a particular instruction relative to this
          * instantiation: the owner referes to the Instantiation which will emit
          * the version of this instruction that we will execute.
@@ -703,7 +703,7 @@ public class JSRInlinerAdapter extends MethodNode implements Opcodes {
             return own;
         }
 
-        /**
+        /*
          * Looks up the label <code>l</code> in the <code>gotoTable</code>, thus
          * translating it from a Label in the original code, to a Label in the
          * inlined code that is appropriate for use by an instruction that
@@ -721,7 +721,7 @@ public class JSRInlinerAdapter extends MethodNode implements Opcodes {
             return owner.rangeTable.get(l);
         }
 
-        /**
+        /*
          * Looks up the label <code>l</code> in the <code>rangeTable</code>,
          * thus translating it from a Label in the original code, to a Label in
          * the inlined code that is appropriate for use by an try/catch or

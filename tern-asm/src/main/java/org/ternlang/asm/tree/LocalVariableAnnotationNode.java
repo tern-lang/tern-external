@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -40,33 +40,33 @@ import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.TypePath;
 import org.ternlang.asm.TypeReference;
 
-/**
+/*
  * A node that represents a type annotation on a local or resource variable.
  * 
  * @author Eric Bruneton
  */
 public class LocalVariableAnnotationNode extends TypeAnnotationNode {
 
-    /**
+    /*
      * The fist instructions corresponding to the continuous ranges that make
      * the scope of this local variable (inclusive). Must not be <tt>null</tt>.
      */
     public List<LabelNode> start;
 
-    /**
+    /*
      * The last instructions corresponding to the continuous ranges that make
      * the scope of this local variable (exclusive). This list must have the
      * same size as the 'start' list. Must not be <tt>null</tt>.
      */
     public List<LabelNode> end;
 
-    /**
+    /*
      * The local variable's index in each range. This list must have the same
      * size as the 'start' list. Must not be <tt>null</tt>.
      */
     public List<Integer> index;
 
-    /**
+    /*
      * Constructs a new {@link LocalVariableAnnotationNode}. <i>Subclasses must
      * not use this constructor</i>. Instead, they must use the
      * {@link #LocalVariableAnnotationNode(int, TypePath, LabelNode[], LabelNode[], int[], String)}
@@ -96,7 +96,7 @@ public class LocalVariableAnnotationNode extends TypeAnnotationNode {
         this(Opcodes.ASM5, typeRef, typePath, start, end, index, desc);
     }
 
-    /**
+    /*
      * Constructs a new {@link LocalVariableAnnotationNode}.
      * 
      * @param api
@@ -134,7 +134,7 @@ public class LocalVariableAnnotationNode extends TypeAnnotationNode {
         }
     }
 
-    /**
+    /*
      * Makes the given visitor visit this type annotation.
      * 
      * @param mv

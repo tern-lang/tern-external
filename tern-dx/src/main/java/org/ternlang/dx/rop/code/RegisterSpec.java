@@ -24,35 +24,35 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeBearer;
 import org.ternlang.dx.util.ToHuman;
 
-/**
+/*
  * Combination of a register number and a type, used as the sources and
  * destinations of register-based operations.
  */
 public final class RegisterSpec
         implements TypeBearer, ToHuman, Comparable<RegisterSpec> {
-    /** {@code non-null;} string to prefix register numbers with */
+    /* {@code non-null;} string to prefix register numbers with */
     public static final String PREFIX = "v";
 
-    /** {@code non-null;} intern table for instances */
+    /* {@code non-null;} intern table for instances */
     private static final HashMap<Object, RegisterSpec> theInterns =
         new HashMap<Object, RegisterSpec>(1000);
 
-    /** {@code non-null;} common comparison instance used while interning */
+    /* {@code non-null;} common comparison instance used while interning */
     private static final ForComparison theInterningItem = new ForComparison();
 
-    /** {@code >= 0;} register number */
+    /* {@code >= 0;} register number */
     private final int reg;
 
-    /** {@code non-null;} type loaded or stored */
+    /* {@code non-null;} type loaded or stored */
     private final TypeBearer type;
 
-    /**
+    /*
      * {@code null-ok;} local variable info associated with this register,
      * if any
      */
     private final LocalItem local;
 
-    /**
+    /*
      * Intern the given triple as an instance of this class.
      *
      * @param reg {@code >= 0;} the register number
@@ -77,7 +77,7 @@ public final class RegisterSpec
         }
     }
 
-    /**
+    /*
      * Returns an instance for the given register number and type, with
      * no variable info. This method is allowed to return shared
      * instances (but doesn't necessarily do so).
@@ -91,7 +91,7 @@ public final class RegisterSpec
         return intern(reg, type, null);
     }
 
-    /**
+    /*
      * Returns an instance for the given register number, type, and
      * variable info. This method is allowed to return shared
      * instances (but doesn't necessarily do so).
@@ -111,7 +111,7 @@ public final class RegisterSpec
         return intern(reg, type, local);
     }
 
-    /**
+    /*
      * Returns an instance for the given register number, type, and
      * variable info. This method is allowed to return shared
      * instances (but doesn't necessarily do so).
@@ -129,7 +129,7 @@ public final class RegisterSpec
         return intern(reg, type, local);
     }
 
-    /**
+    /*
      * Gets the string form for the given register number.
      *
      * @param reg {@code >= 0;} the register number
@@ -139,7 +139,7 @@ public final class RegisterSpec
         return PREFIX + reg;
     }
 
-    /**
+    /*
      * Constructs an instance. This constructor is private. Use
      * {@link #make}.
      *
@@ -162,7 +162,7 @@ public final class RegisterSpec
         this.local = local;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof RegisterSpec)) {
@@ -177,7 +177,7 @@ public final class RegisterSpec
         return equals(spec.reg, spec.type, spec.local);
     }
 
-    /**
+    /*
      * Like {@code equals}, but only consider the simple types of the
      * registers. That is, this compares {@code getType()} on the types
      * to ignore whatever arbitrary extra stuff might be carried around
@@ -195,7 +195,7 @@ public final class RegisterSpec
         return (reg == other.reg);
     }
 
-    /**
+    /*
      * Like {@link #equalsUsingSimpleType} but ignoring the register number.
      * This is useful to determine if two instances refer to the "same"
      * local variable.
@@ -214,7 +214,7 @@ public final class RegisterSpec
                     || ((local != null) && local.equals(other.local)));
     }
 
-    /**
+    /*
      * Helper for {@link #equals} and {@link #ForComparison.equals},
      * which actually does the test.
      *
@@ -231,7 +231,7 @@ public final class RegisterSpec
                     || ((this.local != null) && this.local.equals(local)));
     }
 
-    /**
+    /*
      * Compares by (in priority order) register number, unwrapped type
      * (that is types not {@link TypeBearer}s, and local info.
      *
@@ -260,13 +260,13 @@ public final class RegisterSpec
         return this.local.compareTo(other.local);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         return hashCodeOf(reg, type, local);
     }
 
-    /**
+    /*
      * Helper for {@link #hashCode} and {@link #ForComparison.hashCode},
      * which actually does the calculation.
      *
@@ -282,43 +282,43 @@ public final class RegisterSpec
         return hash;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         return toString0(false);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return toString0(true);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Type getType() {
         return type.getType();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public TypeBearer getFrameType() {
         return type.getFrameType();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final int getBasicType() {
         return type.getBasicType();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final int getBasicFrameType() {
         return type.getBasicFrameType();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final boolean isConstant() {
         return false;
     }
 
-    /**
+    /*
      * Gets the register number.
      *
      * @return {@code >= 0;} the register number
@@ -327,7 +327,7 @@ public final class RegisterSpec
         return reg;
     }
 
-    /**
+    /*
      * Gets the type (or actual value) which is loaded from or stored
      * to the register associated with this instance.
      *
@@ -337,7 +337,7 @@ public final class RegisterSpec
         return type;
     }
 
-    /**
+    /*
      * Gets the variable info associated with this instance, if any.
      *
      * @return {@code null-ok;} the variable info, or {@code null} if this
@@ -347,7 +347,7 @@ public final class RegisterSpec
         return local;
     }
 
-    /**
+    /*
      * Gets the next available register number after the one in this
      * instance. This is equal to the register number plus the width
      * (category) of the type used. Among other things, this may also
@@ -360,7 +360,7 @@ public final class RegisterSpec
         return reg + getCategory();
     }
 
-    /**
+    /*
      * Gets the category of this instance's type. This is just a convenient
      * shorthand for {@code getType().getCategory()}.
      *
@@ -372,7 +372,7 @@ public final class RegisterSpec
         return type.getType().getCategory();
     }
 
-    /**
+    /*
      * Gets whether this instance's type is category 1. This is just a
      * convenient shorthand for {@code getType().isCategory1()}.
      *
@@ -384,7 +384,7 @@ public final class RegisterSpec
         return type.getType().isCategory1();
     }
 
-    /**
+    /*
      * Gets whether this instance's type is category 2. This is just a
      * convenient shorthand for {@code getType().isCategory2()}.
      *
@@ -396,7 +396,7 @@ public final class RegisterSpec
         return type.getType().isCategory2();
     }
 
-    /**
+    /*
      * Gets the string form for just the register number of this instance.
      *
      * @return {@code non-null;} the register string form
@@ -405,7 +405,7 @@ public final class RegisterSpec
         return regString(reg);
     }
 
-    /**
+    /*
      * Returns an instance that is the intersection between this instance
      * and the given one, if any. The intersection is defined as follows:
      *
@@ -472,7 +472,7 @@ public final class RegisterSpec
             make(reg, resultTypeBearer, resultLocal);
     }
 
-    /**
+    /*
      * Returns an instance that is identical to this one, except that the
      * register number is replaced by the given one.
      *
@@ -487,7 +487,7 @@ public final class RegisterSpec
         return makeLocalOptional(newReg, type, local);
     }
 
-    /**
+    /*
      * Returns an instance that is identical to this one, except that
      * the type is replaced by the given one.
      *
@@ -498,7 +498,7 @@ public final class RegisterSpec
         return makeLocalOptional(reg, newType, local);
     }
 
-    /**
+    /*
      * Returns an instance that is identical to this one, except that the
      * register number is offset by the given amount.
      *
@@ -513,7 +513,7 @@ public final class RegisterSpec
         return withReg(reg + delta);
     }
 
-    /**
+    /*
      * Returns an instance that is identical to this one, except that
      * the type bearer is replaced by the actual underlying type
      * (thereby stripping off non-type information) with any
@@ -542,7 +542,7 @@ public final class RegisterSpec
         return makeLocalOptional(reg, newType, local);
     }
 
-    /**
+    /*
      * Returns an instance that is identical to this one except that the
      * local variable is as specified in the parameter.
      *
@@ -559,14 +559,14 @@ public final class RegisterSpec
         return makeLocalOptional(reg, type, local);
     }
 
-    /**
+    /*
      * @return boolean specifying if this instance is an even register or not.
      */
     public boolean isEvenRegister() {
       return ((getReg() & 1) == 0);
     }
 
-    /**
+    /*
      * Helper for {@link #toString} and {@link #toHuman}.
      *
      * @param human whether to be human-oriented
@@ -599,25 +599,25 @@ public final class RegisterSpec
         return sb.toString();
     }
 
-    /**
+    /*
      * Holder of register spec data for the purposes of comparison (so that
      * {@code RegisterSpec} itself can still keep {@code final}
      * instance variables.
      */
     private static class ForComparison {
-        /** {@code >= 0;} register number */
+        /* {@code >= 0;} register number */
         private int reg;
 
-        /** {@code non-null;} type loaded or stored */
+        /* {@code non-null;} type loaded or stored */
         private TypeBearer type;
 
-        /**
+        /*
          * {@code null-ok;} local variable associated with this
          * register, if any
          */
         private LocalItem local;
 
-        /**
+        /*
          * Set all the instance variables.
          *
          * @param reg {@code >= 0;} the register number
@@ -633,7 +633,7 @@ public final class RegisterSpec
             this.local = local;
         }
 
-        /**
+        /*
          * Construct a {@code RegisterSpec} of this instance's
          * contents.
          *
@@ -643,7 +643,7 @@ public final class RegisterSpec
             return new RegisterSpec(reg, type, local);
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         @Override
         public boolean equals(Object other) {
             if (!(other instanceof RegisterSpec)) {
@@ -654,7 +654,7 @@ public final class RegisterSpec
             return spec.equals(reg, type, local);
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         @Override
         public int hashCode() {
             return hashCodeOf(reg, type, local);

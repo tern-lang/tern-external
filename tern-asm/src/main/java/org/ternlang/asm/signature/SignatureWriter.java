@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -31,7 +31,7 @@ package org.ternlang.asm.signature;
 
 import org.ternlang.asm.Opcodes;
 
-/**
+/*
  * A signature visitor that generates signatures in string format.
  * 
  * @author Thomas Hallgren
@@ -39,22 +39,22 @@ import org.ternlang.asm.Opcodes;
  */
 public class SignatureWriter extends SignatureVisitor {
 
-    /**
+    /*
      * Builder used to construct the signature.
      */
     private final StringBuilder buf = new StringBuilder();
 
-    /**
+    /*
      * Indicates if the signature contains formal type parameters.
      */
     private boolean hasFormals;
 
-    /**
+    /*
      * Indicates if the signature contains method parameter types.
      */
     private boolean hasParameters;
 
-    /**
+    /*
      * Stack used to keep track of class types that have arguments. Each element
      * of this stack is a boolean encoded in one bit. The top of the stack is
      * the lowest order bit. Pushing false = *2, pushing true = *2+1, popping =
@@ -62,7 +62,7 @@ public class SignatureWriter extends SignatureVisitor {
      */
     private int argumentStack;
 
-    /**
+    /*
      * Constructs a new {@link SignatureWriter} object.
      */
     public SignatureWriter() {
@@ -191,7 +191,7 @@ public class SignatureWriter extends SignatureVisitor {
         buf.append(';');
     }
 
-    /**
+    /*
      * Returns the signature that was built by this signature writer.
      * 
      * @return the signature that was built by this signature writer.
@@ -205,7 +205,7 @@ public class SignatureWriter extends SignatureVisitor {
     // Utility methods
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Ends the formal type parameters section of the signature.
      */
     private void endFormals() {
@@ -215,7 +215,7 @@ public class SignatureWriter extends SignatureVisitor {
         }
     }
 
-    /**
+    /*
      * Ends the type arguments of a class or inner class type.
      */
     private void endArguments() {

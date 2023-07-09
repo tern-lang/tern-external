@@ -21,12 +21,12 @@ import org.ternlang.dx.rop.cst.CstNat;
 import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.rop.cst.TypedConstant;
 
-/**
+/*
  * Standard implementation of {@link Field}, which directly stores
  * all the associated data.
  */
 public final class StdField extends StdMember implements Field {
-    /**
+    /*
      * Constructs an instance.
      *
      * @param definingClass {@code non-null;} the defining class
@@ -39,7 +39,7 @@ public final class StdField extends StdMember implements Field {
         super(definingClass, accessFlags, nat, attributes);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public TypedConstant getConstantValue() {
         AttributeList attribs = getAttributes();
         AttConstantValue cval = (AttConstantValue)

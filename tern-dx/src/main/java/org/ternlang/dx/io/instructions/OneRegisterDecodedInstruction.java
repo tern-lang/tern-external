@@ -18,14 +18,14 @@ package org.ternlang.dx.io.instructions;
 
 import org.ternlang.dx.io.IndexType;
 
-/**
+/*
  * A decoded Dalvik instruction which has one register argument.
  */
 public final class OneRegisterDecodedInstruction extends DecodedInstruction {
-    /** register argument "A" */
+    /* register argument "A" */
     private final int a;
 
-    /**
+    /*
      * Constructs an instance.
      */
     public OneRegisterDecodedInstruction(InstructionCodec format, int opcode,
@@ -36,17 +36,17 @@ public final class OneRegisterDecodedInstruction extends DecodedInstruction {
         this.a = a;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public int getRegisterCount() {
         return 1;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public int getA() {
         return a;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public DecodedInstruction withIndex(int newIndex) {
         return new OneRegisterDecodedInstruction(
                 getFormat(), getOpcode(), newIndex, getIndexType(),

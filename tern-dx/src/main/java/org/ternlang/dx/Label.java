@@ -25,7 +25,7 @@ import org.ternlang.dx.rop.code.Insn;
 import org.ternlang.dx.rop.code.InsnList;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * A branch target in a list of instructions.
  */
 public final class Label {
@@ -36,13 +36,13 @@ public final class Label {
 
     boolean marked = false;
 
-    /** an immutable list of labels corresponding to the types in the catch list */
+    /* an immutable list of labels corresponding to the types in the catch list */
     List<Label> catchLabels = Collections.emptyList();
 
-    /** contains the next instruction if no branch occurs */
+    /* contains the next instruction if no branch occurs */
     Label primarySuccessor;
 
-    /** contains the instruction to jump to if the if is true */
+    /* contains the instruction to jump to if the if is true */
     Label alternateSuccessor;
 
     int id = -1;

@@ -29,18 +29,18 @@ import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.AnnotatedOutput;
 
-/**
+/*
  * Instruction format {@code 35c}. See the instruction format spec
  * for details.
  */
 public final class Form35c extends InsnFormat {
-    /** {@code non-null;} unique instance of this class */
+    /* {@code non-null;} unique instance of this class */
     public static final InsnFormat THE_ONE = new Form35c();
 
-    /** Maximal number of operands */
+    /* Maximal number of operands */
     private static final int MAX_NUM_OPS = 5;
 
-    /**
+    /*
      * Constructs an instance. This class is not publicly
      * instantiable. Use {@link #THE_ONE}.
      */
@@ -48,14 +48,14 @@ public final class Form35c extends InsnFormat {
         // This space intentionally left blank.
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String insnArgString(DalvInsn insn) {
         RegisterSpecList regs = explicitize(insn.getRegisters());
         return regListString(regs) + ", " + cstString(insn);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String insnCommentString(DalvInsn insn, boolean noteIndices) {
         if (noteIndices) {
@@ -65,13 +65,13 @@ public final class Form35c extends InsnFormat {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int codeSize() {
         return 3;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean isCompatible(DalvInsn insn) {
         if (!(insn instanceof CstInsn)) {
@@ -95,7 +95,7 @@ public final class Form35c extends InsnFormat {
         return (wordCount(regs) >= 0);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public BitSet compatibleRegs(DalvInsn insn) {
         RegisterSpecList regs = insn.getRegisters();
@@ -117,7 +117,7 @@ public final class Form35c extends InsnFormat {
         return bits;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void writeTo(AnnotatedOutput out, DalvInsn insn) {
         int cpi = ((CstInsn) insn).getIndex();
@@ -136,7 +136,7 @@ public final class Form35c extends InsnFormat {
               codeUnit(r0, r1, r2, r3));
     }
 
-    /**
+    /*
      * Gets the number of words required for the given register list, where
      * category-2 values count as two words. Return {@code -1} if the
      * list requires more than five words or contains registers that need
@@ -173,7 +173,7 @@ public final class Form35c extends InsnFormat {
         return (result <= MAX_NUM_OPS) ? result : -1;
     }
 
-    /**
+    /*
      * Returns a register list which is equivalent to the given one,
      * except that it splits category-2 registers into two explicit
      * entries. This returns the original list if no modification is

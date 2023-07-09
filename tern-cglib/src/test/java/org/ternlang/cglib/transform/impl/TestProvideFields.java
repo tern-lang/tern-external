@@ -22,7 +22,7 @@ import org.ternlang.cglib.transform.impl.FieldProviderTransformer;
 
 import junit.framework.*;
 
-/**
+/*
  *
  * @author  baliuka
  */
@@ -30,11 +30,11 @@ public class TestProvideFields extends AbstractTransformTest{
     
     String field = "test";
     
-    /** Creates a new instance of TestProvideFields */
+    /* Creates a new instance of TestProvideFields */
     public TestProvideFields() {
     }
     
-    /** Creates a new instance of TestProvideFields */
+    /* Creates a new instance of TestProvideFields */
     public TestProvideFields(String name) {
         super(name);
     }

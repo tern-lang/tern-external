@@ -26,7 +26,7 @@ import java.security.ProtectionDomain;
 import java.util.Collections;
 import java.util.List;
 
-/**
+/*
  * Generates classes to handle multi-valued keys, for use in things such as Maps and Sets.
  * Code for <code>equals</code> and <code>hashCode</code> methods follow the
  * the rules laid out in <i>Effective Java</i> by Joshua Bloch. 
@@ -113,7 +113,7 @@ abstract public class KeyFactory {
         }
     };
 
-    /**
+    /*
      * {@link Type#hashCode()} is very expensive as it traverses full descriptor to calculate hash code.
      * This customizer uses {@link Type#getSort()} as a hash code.
      */
@@ -127,7 +127,7 @@ abstract public class KeyFactory {
         }
     };
 
-    /**
+    /*
      * @deprecated this customizer might result in unexpected class leak since key object still holds a strong reference to the Object and class.
      *             It is recommended to have pre-processing method that would strip Objects and represent Classes as Strings
      */
@@ -196,7 +196,7 @@ abstract public class KeyFactory {
         	return ReflectUtils.getProtectionDomain(keyInterface);
         }
 
-        /**
+        /*
          * @deprecated Use {@link #addCustomizer(KeyFactoryCustomizer)} instead.
          */
         @Deprecated

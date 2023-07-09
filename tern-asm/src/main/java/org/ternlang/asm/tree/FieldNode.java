@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -39,42 +39,42 @@ import org.ternlang.asm.FieldVisitor;
 import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.TypePath;
 
-/**
+/*
  * A node that represents a field.
  * 
  * @author Eric Bruneton
  */
 public class FieldNode extends FieldVisitor {
 
-    /**
+    /*
      * The field's access flags (see {@link org.ternlang.asm.Opcodes}). This
      * field also indicates if the field is synthetic and/or deprecated.
      */
     public int access;
 
-    /**
+    /*
      * The field's name.
      */
     public String name;
 
-    /**
+    /*
      * The field's descriptor (see {@link org.ternlang.asm.Type}).
      */
     public String desc;
 
-    /**
+    /*
      * The field's signature. May be <tt>null</tt>.
      */
     public String signature;
 
-    /**
+    /*
      * The field's initial value. This field, which may be <tt>null</tt> if the
      * field does not have an initial value, must be an {@link Integer}, a
      * {@link Float}, a {@link Long}, a {@link Double} or a {@link String}.
      */
     public Object value;
 
-    /**
+    /*
      * The runtime visible annotations of this field. This list is a list of
      * {@link AnnotationNode} objects. May be <tt>null</tt>.
      * 
@@ -83,7 +83,7 @@ public class FieldNode extends FieldVisitor {
      */
     public List<AnnotationNode> visibleAnnotations;
 
-    /**
+    /*
      * The runtime invisible annotations of this field. This list is a list of
      * {@link AnnotationNode} objects. May be <tt>null</tt>.
      * 
@@ -92,7 +92,7 @@ public class FieldNode extends FieldVisitor {
      */
     public List<AnnotationNode> invisibleAnnotations;
 
-    /**
+    /*
      * The runtime visible type annotations of this field. This list is a list
      * of {@link TypeAnnotationNode} objects. May be <tt>null</tt>.
      * 
@@ -101,7 +101,7 @@ public class FieldNode extends FieldVisitor {
      */
     public List<TypeAnnotationNode> visibleTypeAnnotations;
 
-    /**
+    /*
      * The runtime invisible type annotations of this field. This list is a list
      * of {@link TypeAnnotationNode} objects. May be <tt>null</tt>.
      * 
@@ -110,7 +110,7 @@ public class FieldNode extends FieldVisitor {
      */
     public List<TypeAnnotationNode> invisibleTypeAnnotations;
 
-    /**
+    /*
      * The non standard attributes of this field. This list is a list of
      * {@link Attribute} objects. May be <tt>null</tt>.
      * 
@@ -118,7 +118,7 @@ public class FieldNode extends FieldVisitor {
      */
     public List<Attribute> attrs;
 
-    /**
+    /*
      * Constructs a new {@link FieldNode}. <i>Subclasses must not use this
      * constructor</i>. Instead, they must use the
      * {@link #FieldNode(int, int, String, String, String, Object)} version.
@@ -150,7 +150,7 @@ public class FieldNode extends FieldVisitor {
         }
     }
 
-    /**
+    /*
      * Constructs a new {@link FieldNode}. <i>Subclasses must not use this
      * constructor</i>.
      * 
@@ -240,7 +240,7 @@ public class FieldNode extends FieldVisitor {
     // Accept methods
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Checks that this field node is compatible with the given ASM API version.
      * This methods checks that this node, and all its nodes recursively, do not
      * contain elements that were introduced in more recent versions of the ASM
@@ -263,7 +263,7 @@ public class FieldNode extends FieldVisitor {
         }
     }
 
-    /**
+    /*
      * Makes the given class visitor visit this field.
      * 
      * @param cv

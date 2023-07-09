@@ -16,18 +16,18 @@
 
 package org.ternlang.dx.util;
 
-/**
+/*
  * Utilities for parsing hexadecimal text.
  */
 public final class HexParser {
-    /**
+    /*
      * This class is uninstantiable.
      */
     private HexParser() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Parses the given text as hex, returning a {@code byte[]}
      * corresponding to the text. The format is simple: Each line may
      * start with a hex offset followed by a colon (which is verified

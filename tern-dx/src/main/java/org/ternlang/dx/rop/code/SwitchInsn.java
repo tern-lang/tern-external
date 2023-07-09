@@ -21,15 +21,15 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeList;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * Instruction which contains switch cases.
  */
 public final class SwitchInsn
         extends Insn {
-    /** {@code non-null;} list of switch cases */
+    /* {@code non-null;} list of switch cases */
     private final IntList cases;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param opcode {@code non-null;} the opcode
@@ -53,31 +53,31 @@ public final class SwitchInsn
         this.cases = cases;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String getInlineString() {
         return cases.toString();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public TypeList getCatches() {
         return StdTypeList.EMPTY;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void accept(Visitor visitor) {
         visitor.visitSwitchInsn(this);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withAddedCatch(Type type) {
         throw new UnsupportedOperationException("unsupported");
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withRegisterOffset(int delta) {
         return new SwitchInsn(getOpcode(), getPosition(),
@@ -86,7 +86,7 @@ public final class SwitchInsn
                               cases);
     }
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * <p> SwitchInsn always compares false. The current use for this method
@@ -97,7 +97,7 @@ public final class SwitchInsn
         return false;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withNewRegisters(RegisterSpec result,
             RegisterSpecList sources) {
@@ -108,7 +108,7 @@ public final class SwitchInsn
                               cases);
     }
 
-    /**
+    /*
      * Gets the list of switch cases.
      *
      * @return {@code non-null;} the case list

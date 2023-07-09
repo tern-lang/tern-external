@@ -34,7 +34,7 @@ import org.ternlang.dex.SizeOf;
 import org.ternlang.dex.TableOfContents;
 import org.ternlang.dex.TypeList;
 
-/**
+/*
  * Combine two dex files into one.
  */
 public final class DexMerger {
@@ -48,7 +48,7 @@ public final class DexMerger {
 
     private final Dex.Section headerOut;
 
-    /** All IDs and definitions sections */
+    /* All IDs and definitions sections */
     private final Dex.Section idsDefsOut;
 
     private final Dex.Section mapListOut;
@@ -65,23 +65,23 @@ public final class DexMerger {
 
     private final Dex.Section encodedArrayOut;
 
-    /** annotations directory on a type */
+    /* annotations directory on a type */
     private final Dex.Section annotationsDirectoryOut;
 
-    /** sets of annotations on a member, parameter or type */
+    /* sets of annotations on a member, parameter or type */
     private final Dex.Section annotationSetOut;
 
-    /** parameter lists */
+    /* parameter lists */
     private final Dex.Section annotationSetRefListOut;
 
-    /** individual annotations, each containing zero or more fields */
+    /* individual annotations, each containing zero or more fields */
     private final Dex.Section annotationOut;
 
     private final TableOfContents contentsOut;
 
     private final InstructionTransformer instructionTransformer;
 
-    /** minimum number of wasted bytes before it's worthwhile to compact the result */
+    /* minimum number of wasted bytes before it's worthwhile to compact the result */
     private int compactWasteThreshold = 1024 * 1024; // 1MiB
 
     public DexMerger(Dex[] dexes, CollisionPolicy collisionPolicy)
@@ -219,7 +219,7 @@ public final class DexMerger {
         return result;
     }
 
-    /**
+    /*
      * Reads an IDs section of two dex files and writes an IDs section of a
      * merged dex file. Populates maps from old to new indices in the process.
      */
@@ -230,7 +230,7 @@ public final class DexMerger {
             this.out = out;
         }
 
-        /**
+        /*
          * Merges already-sorted sections, reading one value from each dex into memory
          * at a time.
          */
@@ -285,7 +285,7 @@ public final class DexMerger {
             return offset;
         }
 
-        /**
+        /*
          * Merges unsorted sections by reading them completely into memory and
          * sorting in memory.
          */
@@ -535,7 +535,7 @@ public final class DexMerger {
         }
     }
 
-    /**
+    /*
      * Returns the union of classes from both files, sorted in order such that
      * a class is always preceded by its supertype and implemented interfaces.
      */
@@ -574,7 +574,7 @@ public final class DexMerger {
                 : sortableTypes;
     }
 
-    /**
+    /*
      * Reads just enough data on each class so that we can sort it and then find
      * it later.
      */
@@ -593,7 +593,7 @@ public final class DexMerger {
         }
     }
 
-    /**
+    /*
      * Copy annotation sets from each input to the output.
      *
      * TODO: this may write multiple copies of the same annotation set.
@@ -654,7 +654,7 @@ public final class DexMerger {
         }
     }
 
-    /**
+    /*
      * Reads a class_def_item beginning at {@code in} and writes the index and
      * data.
      */
@@ -684,7 +684,7 @@ public final class DexMerger {
         idsDefsOut.writeInt(indexMap.adjustStaticValues(staticValuesOff));
     }
 
-    /**
+    /*
      * Transform all annotations on a class.
      */
     private void transformAnnotationDirectory(
@@ -733,7 +733,7 @@ public final class DexMerger {
         }
     }
 
-    /**
+    /*
      * Transform all annotations on a single type, member or parameter.
      */
     private void transformAnnotationSet(IndexMap indexMap, Dex.Section setIn) {
@@ -749,7 +749,7 @@ public final class DexMerger {
         }
     }
 
-    /**
+    /*
      * Transform all annotation set ref lists.
      */
     private void transformAnnotationSetRefList(IndexMap indexMap, Dex.Section refListIn) {
@@ -855,7 +855,7 @@ public final class DexMerger {
         }
     }
 
-    /**
+    /*
      * Writes the catch handlers to {@code codeOut} and returns their indices.
      */
     private int[] transformCatchHandlers(IndexMap indexMap, Code.CatchHandler[] catchHandlers) {
@@ -987,7 +987,7 @@ public final class DexMerger {
         indexMap.adjustEncodedArray(in.readEncodedArray()).writeTo(encodedArrayOut);
     }
 
-    /**
+    /*
      * Byte counts for the sections written when creating a dex. Target sizes
      * are defined in one of two ways:
      * <ul>
@@ -1013,7 +1013,7 @@ public final class DexMerger {
         private int annotationsSetRefList;
         private int annotation;
 
-        /**
+        /*
          * Compute sizes for merging several dexes.
          */
         public WriterSizes(Dex[] dexes) {

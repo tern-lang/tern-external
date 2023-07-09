@@ -35,31 +35,31 @@ import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.ssa.BasicRegisterMapper;
 
-/**
+/*
  * Processor for instruction lists, which takes a "first cut" of
  * instruction selection as a basis and produces a "final cut" in the
  * form of a {@link DalvInsnList} instance.
  */
 public final class OutputFinisher {
-    /** {@code non-null;} options for dex output */
+    /* {@code non-null;} options for dex output */
     private final DexOptions dexOptions;
 
-    /**
+    /*
      * {@code >= 0;} register count for the method, not including any extra
      * "reserved" registers needed to translate "difficult" instructions
      */
     private final int unreservedRegCount;
 
-    /** {@code non-null;} the list of instructions, per se */
+    /* {@code non-null;} the list of instructions, per se */
     private ArrayList<DalvInsn> insns;
 
-    /** whether any instruction has position info */
+    /* whether any instruction has position info */
     private boolean hasAnyPositionInfo;
 
-    /** whether any instruction has local variable info */
+    /* whether any instruction has local variable info */
     private boolean hasAnyLocalInfo;
 
-    /**
+    /*
      * {@code >= 0;} the count of reserved registers (low-numbered
      * registers used when expanding instructions that can't be
      * represented simply); becomes valid after a call to {@link
@@ -67,17 +67,17 @@ public final class OutputFinisher {
      */
     private int reservedCount;
 
-    /**
+    /*
      * {@code >= 0;} the count of reserved registers just before parameters in order to align them.
      */
     private int reservedParameterCount;
 
-    /**
+    /*
      * Size, in register units, of all the parameters to this method
      */
     private final int paramSize;
 
-    /**
+    /*
      * Constructs an instance. It initially contains no instructions.
      *
      * @param dexOptions {@code non-null;} options for dex output
@@ -96,7 +96,7 @@ public final class OutputFinisher {
         this.paramSize = paramSize;
     }
 
-    /**
+    /*
      * Returns whether any of the instructions added to this instance
      * come with position info.
      *
@@ -107,7 +107,7 @@ public final class OutputFinisher {
         return hasAnyPositionInfo;
     }
 
-    /**
+    /*
      * Returns whether this instance has any local variable information.
      *
      * @return whether this instance has any local variable information
@@ -116,7 +116,7 @@ public final class OutputFinisher {
         return hasAnyLocalInfo;
     }
 
-    /**
+    /*
      * Helper for {@link #add} which scrutinizes a single
      * instruction for local variable information.
      *
@@ -143,7 +143,7 @@ public final class OutputFinisher {
         return false;
     }
 
-    /**
+    /*
      * Helper for {@link #hasAnyLocalInfo} which scrutinizes a single
      * register spec.
      *
@@ -156,7 +156,7 @@ public final class OutputFinisher {
             && (spec.getLocalItem().getName() != null);
     }
 
-    /**
+    /*
      * Returns the set of all constants referred to by instructions added
      * to this instance.
      *
@@ -172,7 +172,7 @@ public final class OutputFinisher {
         return result;
     }
 
-    /**
+    /*
      * Helper for {@link #getAllConstants} which adds all the info for
      * a single instruction.
      *
@@ -196,7 +196,7 @@ public final class OutputFinisher {
         }
     }
 
-    /**
+    /*
      * Helper for {@link #getAllConstants} which adds all the info for
      * a single {@code RegisterSpec}.
      *
@@ -227,7 +227,7 @@ public final class OutputFinisher {
         }
     }
 
-    /**
+    /*
      * Adds an instruction to the output.
      *
      * @param insn {@code non-null;} the instruction to add
@@ -237,7 +237,7 @@ public final class OutputFinisher {
         updateInfo(insn);
     }
 
-    /**
+    /*
      * Inserts an instruction in the output at the given offset.
      *
      * @param at {@code >= 0;} what index to insert at
@@ -248,7 +248,7 @@ public final class OutputFinisher {
         updateInfo(insn);
     }
 
-    /**
+    /*
      * Helper for {@link #add} and {@link #insert},
      * which updates the position and local info flags.
      *
@@ -269,7 +269,7 @@ public final class OutputFinisher {
         }
     }
 
-    /**
+    /*
      * Reverses a branch which is buried a given number of instructions
      * backward in the output. It is illegal to call this unless the
      * indicated instruction really is a reversible branch.
@@ -302,7 +302,7 @@ public final class OutputFinisher {
         insns.set(index, targetInsn.withNewTargetAndReversed(newTarget));
     }
 
-    /**
+    /*
      * Assigns indices in all instructions that need them, using the
      * given callback to perform lookups. This should be called before
      * calling {@link #finishProcessingAndGetList}.
@@ -317,7 +317,7 @@ public final class OutputFinisher {
         }
     }
 
-    /**
+    /*
      * Helper for {@link #assignIndices} which does assignment for one
      * instruction.
      *
@@ -343,7 +343,7 @@ public final class OutputFinisher {
         }
     }
 
-    /**
+    /*
      * Does final processing on this instance and gets the output as
      * a {@link DalvInsnList}. Final processing consists of:
      *
@@ -380,7 +380,7 @@ public final class OutputFinisher {
             + reservedParameterCount);
     }
 
-    /**
+    /*
      * Helper for {@link #finishProcessingAndGetList}, which extracts
      * the opcode out of each instruction into a separate array, to be
      * further manipulated as things progress.
@@ -398,7 +398,7 @@ public final class OutputFinisher {
         return result;
     }
 
-    /**
+    /*
      * Helper for {@link #finishProcessingAndGetList}, which figures
      * out how many reserved registers are required and then reserving
      * them. It also updates the given {@code opcodes} array so
@@ -454,7 +454,7 @@ public final class OutputFinisher {
         return reservedCountExpanded;
     }
 
-    /**
+    /*
      * Helper for {@link #reserveRegisters}, which does one
      * pass over the instructions, calculating the number of
      * registers that need to be reserved. It also updates the
@@ -502,7 +502,7 @@ public final class OutputFinisher {
         return newReservedCount;
     }
 
-    /**
+    /*
      * Attempts to fit the given instruction into a specific opcode,
      * returning the opcode whose format that the instruction fits
      * into or {@code null} to indicate that the instruction will need
@@ -542,7 +542,7 @@ public final class OutputFinisher {
         return guess;
     }
 
-    /**
+    /*
      * Finds the proper opcode for the given instruction, ignoring
      * register constraints.
      *
@@ -557,7 +557,7 @@ public final class OutputFinisher {
         return result;
     }
 
-    /**
+    /*
      * Helper for {@link #finishProcessingAndGetList}, which goes
      * through each instruction in the output, making sure its opcode
      * can accomodate its arguments. In cases where the opcode is
@@ -608,7 +608,7 @@ public final class OutputFinisher {
         }
     }
 
-    /**
+    /*
      * Helper for {@link #massageInstructions}, which constructs a
      * replacement list, where each {link DalvInsn} instance that
      * couldn't be represented simply (due to register representation
@@ -683,7 +683,7 @@ public final class OutputFinisher {
         return result;
     }
 
-    /**
+    /*
      * Helper for {@link #finishProcessingAndGetList}, which assigns
      * addresses to each instruction, possibly rewriting branches to
      * fix ones that wouldn't otherwise be able to reach their
@@ -698,7 +698,7 @@ public final class OutputFinisher {
         }
     }
 
-    /**
+    /*
      * Helper for {@link #assignAddressesAndFixBranches}, which
      * assigns an address to each instruction, in order.
      */
@@ -713,7 +713,7 @@ public final class OutputFinisher {
         }
     }
 
-    /**
+    /*
      * Helper for {@link #assignAddressesAndFixBranches}, which checks
      * the branch target size requirement of each branch instruction
      * to make sure it fits. For instructions that don't fit, this

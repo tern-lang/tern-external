@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -38,30 +38,30 @@ import org.ternlang.asm.Label;
 import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 
-/**
+/*
  * A node that represents a LOOKUPSWITCH instruction.
  * 
  * @author Eric Bruneton
  */
 public class LookupSwitchInsnNode extends AbstractInsnNode {
 
-    /**
+    /*
      * Beginning of the default handler block.
      */
     public LabelNode dflt;
 
-    /**
+    /*
      * The values of the keys. This list is a list of {@link Integer} objects.
      */
     public List<Integer> keys;
 
-    /**
+    /*
      * Beginnings of the handler blocks. This list is a list of
      * {@link LabelNode} objects.
      */
     public List<LabelNode> labels;
 
-    /**
+    /*
      * Constructs a new {@link LookupSwitchInsnNode}.
      * 
      * @param dflt

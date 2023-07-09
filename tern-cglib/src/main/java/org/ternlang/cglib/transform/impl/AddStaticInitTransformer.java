@@ -21,7 +21,7 @@ import org.ternlang.asm.Type;
 import org.ternlang.cglib.core.*;
 import org.ternlang.cglib.transform.*;
 
-/**
+/*
  * @author Juozas Baliuka, Chris Nokleberg
  */
 public class AddStaticInitTransformer extends ClassEmitterTransformer {

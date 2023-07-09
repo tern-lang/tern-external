@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -40,7 +40,7 @@ import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.Type;
 
-/**
+/*
  * A {@link org.ternlang.asm.MethodVisitor} to insert before, after and around
  * advices in methods and constructors.
  * <p>
@@ -78,7 +78,7 @@ public abstract class AdviceAdapter extends GeneratorAdapter implements Opcodes 
 
     private Map<Label, List<Object>> branches;
 
-    /**
+    /*
      * Creates a new {@link AdviceAdapter}.
      * 
      * @param api
@@ -589,7 +589,7 @@ public abstract class AdviceAdapter extends GeneratorAdapter implements Opcodes 
         stackFrame.add(o);
     }
 
-    /**
+    /*
      * Called at the beginning of the method or after super class call in
      * the constructor. <br>
      * <br>
@@ -600,7 +600,7 @@ public abstract class AdviceAdapter extends GeneratorAdapter implements Opcodes 
     protected void onMethodEnter() {
     }
 
-    /**
+    /*
      * Called before explicit exit from the method using either return or throw.
      * Top element on the stack contains the return value or exception instance.
      * For example:

@@ -16,7 +16,7 @@
 
 package org.ternlang.dx.dex.file;
 
-/**
+/*
  * Constants for the dex debug info state machine format.
  */
 public interface DebugInfoConstants {
@@ -25,14 +25,14 @@ public interface DebugInfoConstants {
      * normal opcodes
      */
 
-    /**
+    /*
      * Terminates a debug info sequence for a method.<p>
      * Args: none
      *
      */
     static final int DBG_END_SEQUENCE = 0x00;
 
-    /**
+    /*
      * Advances the program counter/address register without emitting
      * a positions entry.<p>
      *
@@ -43,7 +43,7 @@ public interface DebugInfoConstants {
      */
     static final int DBG_ADVANCE_PC = 0x01;
 
-    /**
+    /*
      * Advances the line register without emitting
      * a positions entry.<p>
      *
@@ -54,7 +54,7 @@ public interface DebugInfoConstants {
      */
     static final int DBG_ADVANCE_LINE = 0x02;
 
-    /**
+    /*
      * Introduces a local variable at the current address.<p>
      *
      * Args:
@@ -66,7 +66,7 @@ public interface DebugInfoConstants {
      */
     static final int DBG_START_LOCAL = 0x03;
 
-    /**
+    /*
      * Introduces a local variable at the current address with a type
      * signature specified.<p>
      *
@@ -81,7 +81,7 @@ public interface DebugInfoConstants {
      */
     static final int DBG_START_LOCAL_EXTENDED = 0x04;
 
-    /**
+    /*
      * Marks a currently-live local variable as out of scope at the
      * current address.<p>
      *
@@ -92,7 +92,7 @@ public interface DebugInfoConstants {
      */
     static final int DBG_END_LOCAL = 0x05;
 
-    /**
+    /*
      * Re-introduces a local variable at the current address. The name
      * and type are the same as the last local that was live in the specified
      * register.<p>
@@ -105,7 +105,7 @@ public interface DebugInfoConstants {
     static final int DBG_RESTART_LOCAL = 0x06;
 
 
-    /**
+    /*
      * Sets the "prologue_end" state machine register, indicating that the
      * next position entry that is added should be considered the end of
      * a method prologue (an appropriate place for a method breakpoint).<p>
@@ -115,7 +115,7 @@ public interface DebugInfoConstants {
      */
     static final int DBG_SET_PROLOGUE_END = 0x07;
 
-    /**
+    /*
      * Sets the "epilogue_begin" state machine register, indicating that the
      * next position entry that is added should be considered the beginning of
      * a method epilogue (an appropriate place to suspend execution before
@@ -126,7 +126,7 @@ public interface DebugInfoConstants {
      */
     static final int DBG_SET_EPILOGUE_BEGIN = 0x08;
 
-    /**
+    /*
      * Sets the current file that that line numbers refer to. All subsequent
      * line number entries make reference to this source file name, instead
      * of the default name specified in code_item.
@@ -146,7 +146,7 @@ public interface DebugInfoConstants {
      * the line number program header in DWARFv3, Section 6.2.4
      */
 
-    /** the smallest value a special opcode can take */
+    /* the smallest value a special opcode can take */
     static final int DBG_FIRST_SPECIAL = 0x0a;
     static final int DBG_LINE_BASE = -4;
     static final int DBG_LINE_RANGE = 15;

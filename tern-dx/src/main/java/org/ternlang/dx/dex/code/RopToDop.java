@@ -30,15 +30,15 @@ import org.ternlang.dx.rop.cst.CstString;
 import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.rop.type.Type;
 
-/**
+/*
  * Translator from rop-level {@link Insn} instances to corresponding
  * {@link Dop} instances.
  */
 public final class RopToDop {
-    /** {@code non-null;} map from all the common rops to dalvik opcodes */
+    /* {@code non-null;} map from all the common rops to dalvik opcodes */
     private static final HashMap<Rop, Dop> MAP;
 
-    /**
+    /*
      * This class is uninstantiable.
      */
     private RopToDop() {
@@ -446,7 +446,7 @@ public final class RopToDop {
          */
     }
 
-    /**
+    /*
      * Returns the dalvik opcode appropriate for the given register-based
      * instruction.
      *

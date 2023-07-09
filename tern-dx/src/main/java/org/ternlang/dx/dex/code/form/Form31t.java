@@ -24,15 +24,15 @@ import org.ternlang.dx.dex.code.TargetInsn;
 import org.ternlang.dx.rop.code.RegisterSpecList;
 import org.ternlang.dx.util.AnnotatedOutput;
 
-/**
+/*
  * Instruction format {@code 31t}. See the instruction format spec
  * for details.
  */
 public final class Form31t extends InsnFormat {
-    /** {@code non-null;} unique instance of this class */
+    /* {@code non-null;} unique instance of this class */
     public static final InsnFormat THE_ONE = new Form31t();
 
-    /**
+    /*
      * Constructs an instance. This class is not publicly
      * instantiable. Use {@link #THE_ONE}.
      */
@@ -40,26 +40,26 @@ public final class Form31t extends InsnFormat {
         // This space intentionally left blank.
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String insnArgString(DalvInsn insn) {
         RegisterSpecList regs = insn.getRegisters();
         return regs.get(0).regString() + ", " + branchString(insn);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String insnCommentString(DalvInsn insn, boolean noteIndices) {
         return branchComment(insn);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int codeSize() {
         return 3;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean isCompatible(DalvInsn insn) {
         RegisterSpecList regs = insn.getRegisters();
@@ -73,7 +73,7 @@ public final class Form31t extends InsnFormat {
         return true;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public BitSet compatibleRegs(DalvInsn insn) {
         RegisterSpecList regs = insn.getRegisters();
@@ -83,13 +83,13 @@ public final class Form31t extends InsnFormat {
         return bits;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean branchFits(TargetInsn insn) {
         return true;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void writeTo(AnnotatedOutput out, DalvInsn insn) {
         RegisterSpecList regs = insn.getRegisters();

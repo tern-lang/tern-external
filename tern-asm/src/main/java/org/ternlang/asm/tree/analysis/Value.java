@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -29,14 +29,14 @@
  */
 package org.ternlang.asm.tree.analysis;
 
-/**
+/*
  * An immutable symbolic value for semantic interpretation of bytecode.
  * 
  * @author Eric Bruneton
  */
 public interface Value {
 
-    /**
+    /*
      * Returns the size of this value in words.
      * 
      * @return either 1 or 2.

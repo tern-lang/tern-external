@@ -23,14 +23,14 @@ import org.ternlang.dx.rop.cst.Constant;
 import org.ternlang.dx.rop.type.Prototype;
 import org.ternlang.dx.rop.type.Type;
 
-/**
+/*
  * Interface for machines capable of executing bytecode by acting
  * upon a {@link Frame}. A machine conceptually contains four arbitrary-value
  * argument slots, slots for several literal-value arguments, and slots for
  * branch target information.
  */
 public interface Machine {
-    /**
+    /*
      * Gets the effective prototype of the method that this instance is
      * being used for. The <i>effective</i> prototype includes an initial
      * {@code this} argument for instance methods.
@@ -39,12 +39,12 @@ public interface Machine {
      */
     public Prototype getPrototype();
 
-    /**
+    /*
      * Clears the regular and auxiliary arguments area.
      */
     public void clearArgs();
 
-    /**
+    /*
      * Pops the given number of values from the stack (of either category),
      * and store them in the arguments area, indicating that there are now
      * that many arguments. Also, clear the auxiliary arguments.
@@ -54,7 +54,7 @@ public interface Machine {
      */
     public void popArgs(Frame frame, int count);
 
-    /**
+    /*
      * Pops values from the stack of the types indicated by the given
      * {@code Prototype} (popped in reverse of the argument
      * order, so the first prototype argument type is for the deepest
@@ -67,7 +67,7 @@ public interface Machine {
      */
     public void popArgs(Frame frame, Prototype prototype);
 
-    /**
+    /*
      * Pops a value from the stack of the indicated type, and store it
      * in the arguments area, indicating that there are now that many
      * arguments. Also, clear the auxiliary arguments.
@@ -77,7 +77,7 @@ public interface Machine {
      */
     public void popArgs(Frame frame, Type type);
 
-    /**
+    /*
      * Pops values from the stack of the indicated types (popped in
      * reverse argument order, so the first indicated type is for the
      * deepest element of the stack), and store them in the arguments
@@ -90,7 +90,7 @@ public interface Machine {
      */
     public void popArgs(Frame frame, Type type1, Type type2);
 
-    /**
+    /*
      * Pops values from the stack of the indicated types (popped in
      * reverse argument order, so the first indicated type is for the
      * deepest element of the stack), and store them in the arguments
@@ -104,7 +104,7 @@ public interface Machine {
      */
     public void popArgs(Frame frame, Type type1, Type type2, Type type3);
 
-    /**
+    /*
      * Loads the local variable with the given index as the sole argument in
      * the arguments area. Also, clear the auxiliary arguments.
      *
@@ -113,7 +113,7 @@ public interface Machine {
      */
     public void localArg(Frame frame, int idx);
 
-    /**
+    /*
      * Used to specify if a loaded local variable has info in the local
      * variable table.
      *
@@ -121,7 +121,7 @@ public interface Machine {
      */
     public void localInfo(boolean local);
 
-    /**
+    /*
      * Indicates that the salient type of this operation is as
      * given. This differentiates between, for example, the various
      * arithmetic opcodes, which, by the time they hit a
@@ -133,7 +133,7 @@ public interface Machine {
      */
     public void auxType(Type type);
 
-    /**
+    /*
      * Indicates that there is an auxiliary (inline, not stack)
      * argument of type {@code int}, with the given value.
      *
@@ -154,7 +154,7 @@ public interface Machine {
      */
     public void auxIntArg(int value);
 
-    /**
+    /*
      * Indicates that there is an auxiliary (inline, not stack) object
      * argument, with the value based on the given constant.
      *
@@ -166,7 +166,7 @@ public interface Machine {
      */
     public void auxCstArg(Constant cst);
 
-    /**
+    /*
      * Indicates that there is an auxiliary (inline, not stack) argument
      * indicating a branch target.
      *
@@ -174,7 +174,7 @@ public interface Machine {
      */
     public void auxTargetArg(int target);
 
-    /**
+    /*
      * Indicates that there is an auxiliary (inline, not stack) argument
      * consisting of a {@code switch*} table.
      *
@@ -186,7 +186,7 @@ public interface Machine {
      */
     public void auxSwitchArg(SwitchList cases);
 
-    /**
+    /*
      * Indicates that there is an auxiliary (inline, not stack) argument
      * consisting of a list of initial values for a newly created array.
      *
@@ -195,7 +195,7 @@ public interface Machine {
      */
     public void auxInitValues(ArrayList<Constant> initValues);
 
-    /**
+    /*
      * Indicates that the target of this operation is the given local.
      *
      * @param idx {@code >= 0;} the local variable index
@@ -204,7 +204,7 @@ public interface Machine {
      */
     public void localTarget(int idx, Type type, LocalItem local);
 
-    /**
+    /*
      * "Runs" the indicated opcode in an appropriate way, using the arguments
      * area as appropriate, and modifying the given frame in response.
      *

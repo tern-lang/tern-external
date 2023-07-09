@@ -33,17 +33,17 @@ import org.ternlang.dx.rop.cst.CstLiteralBits;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeBearer;
 
-/**
+/*
  * Upgrades insn to their literal (constant-immediate) equivalent if possible.
  * Also switches IF instructions that compare with a constant zero or null
  * to be their IF_*Z equivalents.
  */
 public class LiteralOpUpgrader {
 
-    /** method we're processing */
+    /* method we're processing */
     private final SsaMethod ssaMeth;
 
-    /**
+    /*
      * Process a method.
      *
      * @param ssaMethod {@code non-null;} method to process
@@ -60,7 +60,7 @@ public class LiteralOpUpgrader {
         this.ssaMeth = ssaMethod;
     }
 
-    /**
+    /*
      * Returns true if the register contains an integer 0 or a known-null
      * object reference
      *
@@ -76,7 +76,7 @@ public class LiteralOpUpgrader {
         return false;
     }
 
-    /**
+    /*
      * Run the literal op upgrader
      */
     private void run() {
@@ -136,7 +136,7 @@ public class LiteralOpUpgrader {
         });
     }
 
-    /**
+    /*
      * Tries to replace an instruction with a const instruction. The given
      * instruction must have a constant result for it to be replaced.
      *
@@ -172,7 +172,7 @@ public class LiteralOpUpgrader {
         return false;
     }
 
-    /**
+    /*
      * Replaces an SsaInsn containing a PlainInsn with a new PlainInsn. The
      * new PlainInsn is constructed with a new RegOp and new sources.
      *

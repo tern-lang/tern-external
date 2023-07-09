@@ -19,12 +19,12 @@ package org.ternlang.dx.dex.code;
 import org.ternlang.dx.rop.code.RegisterSpecList;
 import org.ternlang.dx.rop.code.SourcePosition;
 
-/**
+/*
  * Instruction which has no extra info beyond the basics provided for in
  * the base class.
  */
 public final class SimpleInsn extends FixedSizeInsn {
-    /**
+    /*
      * Constructs an instance. The output address of this instance is initially
      * unknown ({@code -1}).
      *
@@ -39,19 +39,19 @@ public final class SimpleInsn extends FixedSizeInsn {
         super(opcode, position, registers);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public DalvInsn withOpcode(Dop opcode) {
         return new SimpleInsn(opcode, getPosition(), getRegisters());
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public DalvInsn withRegisters(RegisterSpecList registers) {
         return new SimpleInsn(getOpcode(), getPosition(), registers);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected String argString() {
         return null;

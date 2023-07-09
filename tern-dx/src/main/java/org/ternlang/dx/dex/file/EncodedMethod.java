@@ -27,21 +27,21 @@ import org.ternlang.dx.rop.type.TypeList;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Class that representats a method of a class.
  */
 public final class EncodedMethod extends EncodedMember
         implements Comparable<EncodedMethod> {
-    /** {@code non-null;} constant for the method */
+    /* {@code non-null;} constant for the method */
     private final CstMethodRef method;
 
-    /**
+    /*
      * {@code null-ok;} code for the method, if the method is neither
      * {@code abstract} nor {@code native}
      */
     private final CodeItem code;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param method {@code non-null;} constant for the method
@@ -69,7 +69,7 @@ public final class EncodedMethod extends EncodedMember
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public boolean equals(Object other) {
         if (! (other instanceof EncodedMethod)) {
             return false;
@@ -78,7 +78,7 @@ public final class EncodedMethod extends EncodedMember
         return compareTo((EncodedMethod) other) == 0;
     }
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * <p><b>Note:</b> This compares the method constants only,
@@ -90,7 +90,7 @@ public final class EncodedMethod extends EncodedMember
         return method.compareTo(other.method);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer(100);
@@ -111,7 +111,7 @@ public final class EncodedMethod extends EncodedMember
         return sb.toString();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void addContents(DexFile file) {
         MethodIdsSection methodIds = file.getMethodIds();
@@ -124,18 +124,18 @@ public final class EncodedMethod extends EncodedMember
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final String toHuman() {
         return method.toHuman();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final CstString getName() {
         return method.getNat().getName();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void debugPrint(PrintWriter out, boolean verbose) {
         if (code == null) {
@@ -145,7 +145,7 @@ public final class EncodedMethod extends EncodedMember
         }
     }
 
-    /**
+    /*
      * Gets the constant for the method.
      *
      * @return {@code non-null;} the constant
@@ -154,7 +154,7 @@ public final class EncodedMethod extends EncodedMember
         return method;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int encode(DexFile file, AnnotatedOutput out,
             int lastIndex, int dumpSeq) {

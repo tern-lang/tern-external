@@ -26,7 +26,7 @@ import org.ternlang.dx.rop.code.RegisterSpecList;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeBearer;
 
-/**
+/*
  * Resolves the result types of phi instructions. When phi instructions
  * are inserted, their result types are set to BT_VOID (which is a nonsensical
  * type for a register) but must be resolve to a real type before converting
@@ -44,10 +44,10 @@ import org.ternlang.dx.rop.type.TypeBearer;
 public class PhiTypeResolver {
 
     SsaMethod ssaMeth;
-    /** indexed by register; all registers still defined by unresolved phis */
+    /* indexed by register; all registers still defined by unresolved phis */
     private final BitSet worklist;
 
-    /**
+    /*
      * Resolves all phi types in the method
      * @param ssaMeth method to process
      */
@@ -60,7 +60,7 @@ public class PhiTypeResolver {
         worklist = new BitSet(ssaMeth.getRegCount());
     }
 
-    /**
+    /*
      * Runs the phi-type resolver.
      */
     private void run() {
@@ -106,7 +106,7 @@ public class PhiTypeResolver {
         }
     }
 
-    /**
+    /*
      * Returns true if a and b are equal, whether
      * or not either of them are null.
      * @param a
@@ -117,7 +117,7 @@ public class PhiTypeResolver {
         return (a == b) || ((a != null) && a.equals(b));
     }
 
-    /**
+    /*
      * Resolves the result of a phi insn based on its operands. The "void"
      * type, which is a nonsensical type for a register, is used for
      * registers defined by as-of-yet-unresolved phi operations.

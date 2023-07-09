@@ -21,62 +21,62 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeList;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Class that describes all the immutable parts of register-based operations.
  */
 public final class Rop {
-    /** minimum {@code BRANCH_*} value */
+    /* minimum {@code BRANCH_*} value */
     public static final int BRANCH_MIN = 1;
 
-    /** indicates a non-branching op */
+    /* indicates a non-branching op */
     public static final int BRANCH_NONE = 1;
 
-    /** indicates a function/method return */
+    /* indicates a function/method return */
     public static final int BRANCH_RETURN = 2;
 
-    /** indicates an unconditional goto */
+    /* indicates an unconditional goto */
     public static final int BRANCH_GOTO = 3;
 
-    /** indicates a two-way branch */
+    /* indicates a two-way branch */
     public static final int BRANCH_IF = 4;
 
-    /** indicates a switch-style branch */
+    /* indicates a switch-style branch */
     public static final int BRANCH_SWITCH = 5;
 
-    /** indicates a throw-style branch (both always-throws and may-throw) */
+    /* indicates a throw-style branch (both always-throws and may-throw) */
     public static final int BRANCH_THROW = 6;
 
-    /** maximum {@code BRANCH_*} value */
+    /* maximum {@code BRANCH_*} value */
     public static final int BRANCH_MAX = 6;
 
-    /** the opcode; one of the constants in {@link RegOps} */
+    /* the opcode; one of the constants in {@link RegOps} */
     private final int opcode;
 
-    /**
+    /*
      * {@code non-null;} result type of this operation; {@link Type#VOID} for
      * no-result operations
      */
     private final Type result;
 
-    /** {@code non-null;} types of all the sources of this operation */
+    /* {@code non-null;} types of all the sources of this operation */
     private final TypeList sources;
 
-    /** {@code non-null;} list of possible types thrown by this operation */
+    /* {@code non-null;} list of possible types thrown by this operation */
     private final TypeList exceptions;
 
-    /**
+    /*
      * the branchingness of this op; one of the {@code BRANCH_*}
      * constants in this class
      */
     private final int branchingness;
 
-    /** whether this is a function/method call op or similar */
+    /* whether this is a function/method call op or similar */
     private final boolean isCallLike;
 
-    /** {@code null-ok;} nickname, if specified (used for debugging) */
+    /* {@code null-ok;} nickname, if specified (used for debugging) */
     private final String nickname;
 
-    /**
+    /*
      * Constructs an instance. This method is private. Use one of the
      * public constructors.
      *
@@ -124,7 +124,7 @@ public final class Rop {
         this.nickname = nickname;
     }
 
-    /**
+    /*
      * Constructs an instance. The constructed instance is never a
      * call-like op (see {@link #isCallLike}).
      *
@@ -144,7 +144,7 @@ public final class Rop {
              nickname);
     }
 
-    /**
+    /*
      * Constructs a no-exception instance. The constructed instance is never a
      * call-like op (see {@link #isCallLike}).
      *
@@ -162,7 +162,7 @@ public final class Rop {
              nickname);
     }
 
-    /**
+    /*
      * Constructs a non-branching no-exception instance. The
      * {@code branchingness} is always {@code BRANCH_NONE},
      * and it is never a call-like op (see {@link #isCallLike}).
@@ -178,7 +178,7 @@ public final class Rop {
              false, nickname);
     }
 
-    /**
+    /*
      * Constructs a non-empty exceptions instance. Its
      * {@code branchingness} is always {@code BRANCH_THROW},
      * but it is never a call-like op (see {@link #isCallLike}).
@@ -197,7 +197,7 @@ public final class Rop {
              nickname);
     }
 
-    /**
+    /*
      * Constructs a non-nicknamed instance with non-empty exceptions, which
      * is always a call-like op (see {@link #isCallLike}). Its
      * {@code branchingness} is always {@code BRANCH_THROW}.
@@ -212,7 +212,7 @@ public final class Rop {
              null);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean equals(Object other) {
         if (this == other) {
@@ -233,7 +233,7 @@ public final class Rop {
             exceptions.equals(rop.exceptions);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         int h = (opcode * 31) + branchingness;
@@ -244,7 +244,7 @@ public final class Rop {
         return h;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer(40);
@@ -304,7 +304,7 @@ public final class Rop {
         return sb.toString();
     }
 
-    /**
+    /*
      * Gets the opcode.
      *
      * @return the opcode
@@ -313,7 +313,7 @@ public final class Rop {
         return opcode;
     }
 
-    /**
+    /*
      * Gets the result type. A return value of {@link Type#VOID}
      * means this operation returns nothing.
      *
@@ -323,7 +323,7 @@ public final class Rop {
         return result;
     }
 
-    /**
+    /*
      * Gets the source types.
      *
      * @return {@code non-null;} the source types
@@ -332,7 +332,7 @@ public final class Rop {
         return sources;
     }
 
-    /**
+    /*
      * Gets the list of exception types that might be thrown.
      *
      * @return {@code non-null;} the list of exception types
@@ -341,7 +341,7 @@ public final class Rop {
         return exceptions;
     }
 
-    /**
+    /*
      * Gets the branchingness of this instance.
      *
      * @return the branchingness
@@ -350,7 +350,7 @@ public final class Rop {
         return branchingness;
     }
 
-    /**
+    /*
      * Gets whether this opcode is a function/method call or similar.
      *
      * @return {@code true} iff this opcode is call-like
@@ -360,7 +360,7 @@ public final class Rop {
     }
 
 
-    /**
+    /*
      * Gets whether this opcode is commutative (the order of its sources are
      * unimportant) or not. All commutative Rops have exactly two sources and
      * have no branchiness.
@@ -380,7 +380,7 @@ public final class Rop {
         }
     }
 
-    /**
+    /*
      * Gets the nickname. If this instance has no nickname, this returns
      * the result of calling {@link #toString}.
      *
@@ -394,7 +394,7 @@ public final class Rop {
         return toString();
     }
 
-    /**
+    /*
      * Gets whether this operation can possibly throw an exception. This
      * is just a convenient wrapper for
      * {@code getExceptions().size() != 0}.

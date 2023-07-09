@@ -18,27 +18,27 @@ package org.ternlang.dx.util;
 
 import java.util.Arrays;
 
-/**
+/*
  * Simple list of {@code int}s.
  */
 public final class IntList extends MutabilityControl {
-    /** {@code non-null;} immutable, no-element instance */
+    /* {@code non-null;} immutable, no-element instance */
     public static final IntList EMPTY = new IntList(0);
 
-    /** {@code non-null;} array of elements */
+    /* {@code non-null;} array of elements */
     private int[] values;
 
-    /** {@code >= 0;} current size of the list */
+    /* {@code >= 0;} current size of the list */
     private int size;
 
-    /** whether the values are currently sorted */
+    /* whether the values are currently sorted */
     private boolean sorted;
 
     static {
         EMPTY.setImmutable();
     }
 
-    /**
+    /*
      * Constructs a new immutable instance with the given element.
      *
      * @param value the sole value in the list
@@ -52,7 +52,7 @@ public final class IntList extends MutabilityControl {
         return result;
     }
 
-    /**
+    /*
      * Constructs a new immutable instance with the given elements.
      *
      * @param value0 the first value in the list
@@ -68,14 +68,14 @@ public final class IntList extends MutabilityControl {
         return result;
     }
 
-    /**
+    /*
      * Constructs an empty instance with a default initial capacity.
      */
     public IntList() {
         this(4);
     }
 
-    /**
+    /*
      * Constructs an empty instance.
      *
      * @param initialCapacity {@code >= 0;} initial capacity of the list
@@ -94,7 +94,7 @@ public final class IntList extends MutabilityControl {
         sorted = true;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         int result = 0;
@@ -106,7 +106,7 @@ public final class IntList extends MutabilityControl {
         return result;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -136,7 +136,7 @@ public final class IntList extends MutabilityControl {
         return true;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer(size * 5 + 10);
@@ -155,14 +155,14 @@ public final class IntList extends MutabilityControl {
         return sb.toString();
     }
 
-    /**
+    /*
      * Gets the number of elements in this list.
      */
     public int size() {
         return size;
     }
 
-    /**
+    /*
      * Gets the indicated value.
      *
      * @param n {@code >= 0, < size();} which element
@@ -181,7 +181,7 @@ public final class IntList extends MutabilityControl {
         }
     }
 
-    /**
+    /*
      * Sets the value at the given index.
      *
      * @param n {@code >= 0, < size();} which element
@@ -205,7 +205,7 @@ public final class IntList extends MutabilityControl {
         }
     }
 
-    /**
+    /*
      * Adds an element to the end of the list. This will increase the
      * list's capacity if necessary.
      *
@@ -223,7 +223,7 @@ public final class IntList extends MutabilityControl {
         }
     }
 
-    /**
+    /*
      * Inserts element into specified index, moving elements at and above
      * that index up one. May not be used to insert at an index beyond the
      * current size (that is, insertion as a last element is legal but
@@ -248,7 +248,7 @@ public final class IntList extends MutabilityControl {
                 && (n == (size - 1) || value < values[n+1]);
     }
 
-    /**
+    /*
      * Removes an element at a given index, shifting elements at greater
      * indicies down one.
      *
@@ -265,7 +265,7 @@ public final class IntList extends MutabilityControl {
         // sort status is unchanged
     }
 
-    /**
+    /*
      * Increases size of array if needed
      */
     private void growIfNeeded() {
@@ -277,7 +277,7 @@ public final class IntList extends MutabilityControl {
         }
     }
 
-    /**
+    /*
      * Returns the last element in the array without modifying the array
      *
      * @return last value in the array
@@ -287,7 +287,7 @@ public final class IntList extends MutabilityControl {
         return get(size - 1);
     }
 
-    /**
+    /*
      * Pops an element off the end of the list and decreasing the size by one.
      *
      * @return value from what was the last element
@@ -304,7 +304,7 @@ public final class IntList extends MutabilityControl {
         return result;
     }
 
-    /**
+    /*
      * Pops N elements off the end of the list and decreasing the size by N.
      *
      * @param n {@code >= 0;} number of elements to remove from end
@@ -316,7 +316,7 @@ public final class IntList extends MutabilityControl {
         size -= n;
     }
 
-    /**
+    /*
      * Shrinks the size of the list.
      *
      * @param newSize {@code >= 0;} the new size
@@ -335,7 +335,7 @@ public final class IntList extends MutabilityControl {
         size = newSize;
     }
 
-    /**
+    /*
      * Makes and returns a mutable copy of the list.
      *
      * @return {@code non-null;} an appropriately-constructed instance
@@ -351,7 +351,7 @@ public final class IntList extends MutabilityControl {
         return result;
     }
 
-    /**
+    /*
      * Sorts the elements in the list in-place.
      */
     public void sort() {
@@ -363,7 +363,7 @@ public final class IntList extends MutabilityControl {
         }
     }
 
-    /**
+    /*
      * Returns the index of the given value, or -1 if the value does not
      * appear in the list.  This will do a binary search if the list is
      * sorted or a linear search if not.
@@ -378,7 +378,7 @@ public final class IntList extends MutabilityControl {
 
     }
 
-    /**
+    /*
      * Performs a binary search on a sorted list, returning the index of
      * the given value if it is present or
      * {@code (-(insertion point) - 1)} if the value is not present.
@@ -437,7 +437,7 @@ public final class IntList extends MutabilityControl {
     }
 
 
-    /**
+    /*
      * Returns whether or not the given value appears in the list.
      * This will do a binary search if the list is sorted or a linear
      * search if not.

@@ -29,18 +29,18 @@ import java.util.zip.ZipFile;
 
 import org.ternlang.dex.util.FileUtils;
 
-/**
+/*
  * Opens all the class files found in a class path element. Path elements
  * can point to class files, {jar,zip,apk} files, or directories containing
  * class files.
  */
 public class ClassPathOpener {
 
-    /** {@code non-null;} pathname to start with */
+    /* {@code non-null;} pathname to start with */
     private final String pathname;
-    /** {@code non-null;} callback interface */
+    /* {@code non-null;} callback interface */
     private final Consumer consumer;
-    /**
+    /*
      * If true, sort such that classes appear before their inner
      * classes and "package-info" occurs before all other classes in that
      * package.
@@ -48,12 +48,12 @@ public class ClassPathOpener {
     private final boolean sort;
     private FileNameFilter filter;
 
-    /**
+    /*
      * Callback interface for {@code ClassOpener}.
      */
     public interface Consumer {
 
-        /**
+        /*
          * Provides the file name and byte array for a class path element.
          *
          * @param name {@code non-null;} filename of element. May not be a valid
@@ -67,7 +67,7 @@ public class ClassPathOpener {
          */
         boolean processFileBytes(String name, long lastModified, byte[] bytes);
 
-        /**
+        /*
          * Informs consumer that an exception occurred while processing
          * this path element. Processing will continue if possible.
          *
@@ -75,7 +75,7 @@ public class ClassPathOpener {
          */
         void onException(Exception ex);
 
-        /**
+        /*
          * Informs consumer that processing of an archive file has begun.
          *
          * @param file {@code non-null;} archive file being processed
@@ -83,7 +83,7 @@ public class ClassPathOpener {
         void onProcessArchiveStart(File file);
     }
 
-    /**
+    /*
      * Filter interface for {@code ClassOpener}.
      */
     public interface FileNameFilter {
@@ -91,7 +91,7 @@ public class ClassPathOpener {
         boolean accept(String path);
     }
 
-    /**
+    /*
      * An accept all filter.
      */
     public static final FileNameFilter acceptAll = new FileNameFilter() {
@@ -102,7 +102,7 @@ public class ClassPathOpener {
         }
     };
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param pathname {@code non-null;} path element to process
@@ -115,7 +115,7 @@ public class ClassPathOpener {
         this(pathname, sort, acceptAll, consumer);
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param pathname {@code non-null;} path element to process
@@ -132,7 +132,7 @@ public class ClassPathOpener {
         this.filter = filter;
     }
 
-    /**
+    /*
      * Processes a path element.
      *
      * @return the OR of all return values
@@ -144,7 +144,7 @@ public class ClassPathOpener {
         return processOne(file, true);
     }
 
-    /**
+    /*
      * Processes one file.
      *
      * @param file {@code non-null;} the file to process
@@ -177,7 +177,7 @@ public class ClassPathOpener {
         }
     }
 
-    /**
+    /*
      * Sorts java class names such that outer classes preceed their inner
      * classes and "package-info" preceeds all other classes in its package.
      *
@@ -200,7 +200,7 @@ public class ClassPathOpener {
         return a.compareTo(b);
     }
 
-    /**
+    /*
      * Processes a directory recursively.
      *
      * @param dir {@code non-null;} file representing the directory
@@ -232,7 +232,7 @@ public class ClassPathOpener {
         return any;
     }
 
-    /**
+    /*
      * Processes the contents of an archive ({@code .zip},
      * {@code .jar}, or {@code .apk}).
      *

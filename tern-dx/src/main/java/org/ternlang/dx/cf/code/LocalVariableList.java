@@ -21,16 +21,16 @@ import org.ternlang.dx.rop.cst.CstString;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.FixedSizeList;
 
-/**
+/*
  * List of "local variable" entries, which are the contents of
  * {@code LocalVariableTable} and {@code LocalVariableTypeTable}
  * attributes, as well as combinations of the two.
  */
 public final class LocalVariableList extends FixedSizeList {
-    /** {@code non-null;} zero-size instance */
+    /* {@code non-null;} zero-size instance */
     public static final LocalVariableList EMPTY = new LocalVariableList(0);
 
-    /**
+    /*
      * Returns an instance which is the concatenation of the two given
      * instances. The result is immutable.
      *
@@ -61,7 +61,7 @@ public final class LocalVariableList extends FixedSizeList {
         return result;
     }
 
-    /**
+    /*
      * Returns an instance which is the result of merging the two
      * given instances, where one instance should have only type
      * descriptors and the other only type signatures. The merged
@@ -94,7 +94,7 @@ public final class LocalVariableList extends FixedSizeList {
         return result;
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param count the number of elements to be in the list
@@ -103,7 +103,7 @@ public final class LocalVariableList extends FixedSizeList {
         super(count);
     }
 
-    /**
+    /*
      * Gets the indicated item.
      *
      * @param n {@code >= 0;} which item
@@ -113,7 +113,7 @@ public final class LocalVariableList extends FixedSizeList {
         return (Item) get0(n);
     }
 
-    /**
+    /*
      * Sets the item at the given index.
      *
      * @param n {@code >= 0, < size();} which element
@@ -127,7 +127,7 @@ public final class LocalVariableList extends FixedSizeList {
         set0(n, item);
     }
 
-    /**
+    /*
      * Sets the item at the given index.
      *
      * <p><b>Note:</b> At least one of {@code descriptor} or
@@ -147,7 +147,7 @@ public final class LocalVariableList extends FixedSizeList {
         set0(n, new Item(startPc, length, name, descriptor, signature, index));
     }
 
-    /**
+    /*
      * Gets the local variable information in this instance which matches
      * the given {@link org.ternlang.dx.cf.code.LocalVariableList.Item}
      * in all respects but the type descriptor and signature, if any.
@@ -171,7 +171,7 @@ public final class LocalVariableList extends FixedSizeList {
         return null;
     }
 
-    /**
+    /*
      * Gets the local variable information associated with a given address
      * and local index, if any. <b>Note:</b> In standard classfiles, a
      * variable's start point is listed as the address of the instruction
@@ -196,29 +196,29 @@ public final class LocalVariableList extends FixedSizeList {
         return null;
     }
 
-    /**
+    /*
      * Item in a local variable table.
      */
     public static class Item {
-        /** {@code >= 0;} the start pc of this variable's scope */
+        /* {@code >= 0;} the start pc of this variable's scope */
         private final int startPc;
 
-        /** {@code >= 0;} the length (in bytecodes) of this variable's scope */
+        /* {@code >= 0;} the length (in bytecodes) of this variable's scope */
         private final int length;
 
-        /** {@code non-null;} the variable's name */
+        /* {@code non-null;} the variable's name */
         private final CstString name;
 
-        /** {@code null-ok;} the variable's type descriptor */
+        /* {@code null-ok;} the variable's type descriptor */
         private final CstString descriptor;
 
-        /** {@code null-ok;} the variable's type signature */
+        /* {@code null-ok;} the variable's type signature */
         private final CstString signature;
 
-        /** {@code >= 0;} the variable's local index */
+        /* {@code >= 0;} the variable's local index */
         private final int index;
 
-        /**
+        /*
          * Constructs an instance.
          *
          * <p><b>Note:</b> At least one of {@code descriptor} or
@@ -263,7 +263,7 @@ public final class LocalVariableList extends FixedSizeList {
             this.index = index;
         }
 
-        /**
+        /*
          * Gets the start pc of this variable's scope.
          *
          * @return {@code >= 0;} the start pc of this variable's scope
@@ -272,7 +272,7 @@ public final class LocalVariableList extends FixedSizeList {
             return startPc;
         }
 
-        /**
+        /*
          * Gets the length (in bytecodes) of this variable's scope.
          *
          * @return {@code >= 0;} the length (in bytecodes) of this variable's scope
@@ -281,7 +281,7 @@ public final class LocalVariableList extends FixedSizeList {
             return length;
         }
 
-        /**
+        /*
          * Gets the variable's type descriptor.
          *
          * @return {@code null-ok;} the variable's type descriptor
@@ -290,7 +290,7 @@ public final class LocalVariableList extends FixedSizeList {
             return descriptor;
         }
 
-        /**
+        /*
          * Gets the variable's LocalItem, a (name, signature) tuple
          *
          * @return {@code null-ok;} the variable's type descriptor
@@ -299,7 +299,7 @@ public final class LocalVariableList extends FixedSizeList {
             return LocalItem.make(name, signature);
         }
 
-        /**
+        /*
          * Gets the variable's type signature. Private because if you need this,
          * you want getLocalItem() instead.
          *
@@ -309,7 +309,7 @@ public final class LocalVariableList extends FixedSizeList {
             return signature;
         }
 
-        /**
+        /*
          * Gets the variable's local index.
          *
          * @return {@code >= 0;} the variable's local index
@@ -318,7 +318,7 @@ public final class LocalVariableList extends FixedSizeList {
             return index;
         }
 
-        /**
+        /*
          * Gets the variable's type descriptor. This is a convenient shorthand
          * for {@code Type.intern(getDescriptor().getString())}.
          *
@@ -328,7 +328,7 @@ public final class LocalVariableList extends FixedSizeList {
             return Type.intern(descriptor.getString());
         }
 
-        /**
+        /*
          * Constructs and returns an instance which is identical to this
          * one, except that the signature is changed to the given value.
          *
@@ -340,7 +340,7 @@ public final class LocalVariableList extends FixedSizeList {
                     index);
         }
 
-        /**
+        /*
          * Gets whether this instance matches (describes) the given
          * address and index.
          *
@@ -355,7 +355,7 @@ public final class LocalVariableList extends FixedSizeList {
                 (pc < (startPc + length));
         }
 
-        /**
+        /*
          * Gets whether this instance matches (describes) the given
          * other instance exactly in all fields except type descriptor and
          * type signature.

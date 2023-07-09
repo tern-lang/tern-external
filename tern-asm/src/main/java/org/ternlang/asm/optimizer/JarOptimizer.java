@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -53,7 +53,7 @@ import org.ternlang.asm.FieldVisitor;
 import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 
-/**
+/*
  * A Jar file optimizer.
  * 
  * @author Eric Bruneton

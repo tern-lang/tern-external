@@ -35,53 +35,53 @@ import org.ternlang.dx.rop.code.Rops;
 import org.ternlang.dx.rop.code.SourcePosition;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * A method in SSA form.
  */
 public final class SsaMethod {
-    /** basic blocks, indexed by block index */
+    /* basic blocks, indexed by block index */
     private ArrayList<SsaBasicBlock> blocks;
 
-    /** Index of first executed block in method */
+    /* Index of first executed block in method */
     private int entryBlockIndex;
 
-    /**
+    /*
      * Index of exit block, which exists only in SSA form,
      * or or {@code -1} if there is none
      */
     private int exitBlockIndex;
 
-    /** total number of registers required */
+    /* total number of registers required */
     private int registerCount;
 
-    /** first register number to use for any temporary "spares" */
+    /* first register number to use for any temporary "spares" */
     private int spareRegisterBase;
 
-    /** current count of spare registers used */
+    /* current count of spare registers used */
     private int borrowedSpareRegisters;
 
-    /** really one greater than the max label */
+    /* really one greater than the max label */
     private int maxLabel;
 
-    /** the total width, in register-units, of the method's parameters */
+    /* the total width, in register-units, of the method's parameters */
     private final int paramWidth;
 
-    /** true if this method has no {@code this} pointer argument */
+    /* true if this method has no {@code this} pointer argument */
     private final boolean isStatic;
 
-    /**
+    /*
      * indexed by register: the insn where said register is defined or null
      * if undefined. null until (lazily) created.
      */
     private SsaInsn[] definitionList;
 
-    /** indexed by register: the list of all insns that use a register */
+    /* indexed by register: the list of all insns that use a register */
     private ArrayList<SsaInsn>[] useList;
 
-    /** A version of useList with each List unmodifiable */
+    /* A version of useList with each List unmodifiable */
     private List<SsaInsn>[] unmodifiableUseList;
 
-    /**
+    /*
      * "back-convert mode". Set during back-conversion when registers
      * are about to be mapped into a non-SSA namespace. When true,
      * use and def lists are unavailable.
@@ -90,7 +90,7 @@ public final class SsaMethod {
      */
     private boolean backMode;
 
-    /**
+    /*
      * @param ropMethod rop-form method to convert from
      * @param paramWidth the total width, in register-units, of the
      * method's parameters
@@ -106,7 +106,7 @@ public final class SsaMethod {
         return result;
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param ropMethod {@code non-null;} the original rop-form method that
@@ -125,7 +125,7 @@ public final class SsaMethod {
         this.spareRegisterBase = registerCount;
     }
 
-    /**
+    /*
      * Builds a BitSet of block indices from a basic block list and a list
      * of labels taken from Rop form.
      *
@@ -144,7 +144,7 @@ public final class SsaMethod {
         return result;
     }
 
-    /**
+    /*
      * Builds an IntList of block indices from a basic block list and a list
      * of labels taken from Rop form.
      *
@@ -186,7 +186,7 @@ public final class SsaMethod {
         exitBlockIndex = -1; // This gets made later.
     }
 
-    /**
+    /*
      * Creates an exit block and attaches it to the CFG if this method
      * exits. Methods that never exit will not have an exit block. This
      * is called after edge-splitting and phi insertion, since the edges
@@ -215,7 +215,7 @@ public final class SsaMethod {
         }
     }
 
-    /**
+    /*
      * Gets a new {@code GOTO} insn.
      *
      * @param block block to which this GOTO will be added
@@ -228,7 +228,7 @@ public final class SsaMethod {
                     null, RegisterSpecList.EMPTY), block);
     }
 
-    /**
+    /*
      * Makes a new basic block for this method, which is empty besides
      * a single {@code GOTO}. Successors and predecessors are not yet
      * set.
@@ -245,28 +245,28 @@ public final class SsaMethod {
         return newBlock;
     }
 
-    /**
+    /*
      * @return block index of first execution block
      */
     public int getEntryBlockIndex() {
         return entryBlockIndex;
     }
 
-    /**
+    /*
      * @return first execution block
      */
     public SsaBasicBlock getEntryBlock() {
         return blocks.get(entryBlockIndex);
     }
 
-    /**
+    /*
      * @return block index of exit block or {@code -1} if there is none
      */
     public int getExitBlockIndex() {
         return exitBlockIndex;
     }
 
-    /**
+    /*
      * @return {@code null-ok;} block of exit block or {@code null} if
      * there is none
      */
@@ -274,7 +274,7 @@ public final class SsaMethod {
         return exitBlockIndex < 0 ? null : blocks.get(exitBlockIndex);
     }
 
-    /**
+    /*
      * @param bi block index or {@code -1} for none
      * @return rop label or {code -1} if {@code bi} was {@code -1}
      */
@@ -285,14 +285,14 @@ public final class SsaMethod {
         return blocks.get(bi).getRopLabel();
     }
 
-    /**
+    /*
      * @return count of registers used in this method
      */
     public int getRegCount() {
         return registerCount;
     }
 
-    /**
+    /*
      * @return the total width, in register units, of the method's
      * parameters
      */
@@ -300,7 +300,7 @@ public final class SsaMethod {
         return paramWidth;
     }
 
-    /**
+    /*
      * Returns {@code true} if this is a static method.
      *
      * @return {@code true} if this is a static method
@@ -309,7 +309,7 @@ public final class SsaMethod {
         return isStatic;
     }
 
-    /**
+    /*
      * Borrows a register to use as a temp. Used in the phi removal process.
      * Call returnSpareRegisters() when done.
      *
@@ -325,21 +325,21 @@ public final class SsaMethod {
         return result;
     }
 
-    /**
+    /*
      * Returns all borrowed registers.
      */
     public void returnSpareRegisters() {
         borrowedSpareRegisters = 0;
     }
 
-    /**
+    /*
      * @return {@code non-null;} basic block list. Do not modify.
      */
     public ArrayList<SsaBasicBlock> getBlocks() {
         return blocks;
     }
 
-    /**
+    /*
      * Returns the count of reachable blocks in this method: blocks that have
      * predecessors (or are the start block)
      *
@@ -358,7 +358,7 @@ public final class SsaMethod {
         return ret;
     }
 
-    /**
+    /*
      * Computes reachability for all blocks in the method. First clears old
      * values from all blocks, then starts with the entry block and walks down
      * the control flow graph, marking all blocks it finds as reachable.
@@ -384,7 +384,7 @@ public final class SsaMethod {
         }
     }
 
-    /**
+    /*
      * Remaps unversioned registers.
      *
      * @param mapper maps old registers to new.
@@ -400,7 +400,7 @@ public final class SsaMethod {
         spareRegisterBase = registerCount;
     }
 
-    /**
+    /*
      * Returns the insn that defines the given register
      * @param reg register in question
      * @return insn (actual instance from code) that defined this reg or null
@@ -435,7 +435,7 @@ public final class SsaMethod {
         return definitionList[reg];
     }
 
-    /**
+    /*
      * Builds useList and unmodifiableUseList.
      */
     private void buildUseList() {
@@ -450,19 +450,19 @@ public final class SsaMethod {
         }
 
         forEachInsn(new SsaInsn.Visitor() {
-            /** {@inheritDoc} */
+            /* {@inheritDoc} */
             public void visitMoveInsn (NormalSsaInsn insn) {
                 addToUses(insn);
             }
-            /** {@inheritDoc} */
+            /* {@inheritDoc} */
             public void visitPhiInsn (PhiInsn phi) {
                 addToUses(phi);
             }
-            /** {@inheritDoc} */
+            /* {@inheritDoc} */
             public void visitNonMoveInsn (NormalSsaInsn insn) {
                 addToUses(insn);
             }
-            /**
+            /*
              * Adds specified insn to the uses list for all of its sources.
              * @param insn {@code non-null;} insn to process
              */
@@ -483,7 +483,7 @@ public final class SsaMethod {
         }
     }
 
-    /**
+    /*
      * Updates the use list for a single change in source register.
      *
      * @param insn {@code non-null;} insn being changed
@@ -508,7 +508,7 @@ public final class SsaMethod {
         useList[reg].add(insn);
     }
 
-    /**
+    /*
      * Updates the use list for a source list change.
      *
      * @param insn {@code insn non-null;} insn being changed.
@@ -533,7 +533,7 @@ public final class SsaMethod {
         }
     }
 
-    /**
+    /*
      * Removes a given {@code insn} from the use lists for the given
      * {@code oldSources} (rather than the sources currently
      * returned by insn.getSources()).
@@ -555,7 +555,7 @@ public final class SsaMethod {
         }
     }
 
-    /**
+    /*
      * Adds an insn to both the use and def lists. For use when adding
      * a new insn to the method.
      *
@@ -566,7 +566,7 @@ public final class SsaMethod {
         updateOneDefinition(insn, null);
     }
 
-    /**
+    /*
      * Removes an instruction from use and def lists. For use during
      * instruction removal.
      *
@@ -583,7 +583,7 @@ public final class SsaMethod {
         }
     }
 
-    /**
+    /*
      * Indicates that the instruction list has changed or the SSA register
      * count has increased, so that internal datastructures that rely on
      * it should be rebuild. In general, the various other on* methods
@@ -599,7 +599,7 @@ public final class SsaMethod {
         unmodifiableUseList = null;
     }
 
-    /**
+    /*
      * Updates a single definition.
      *
      * @param insn {@code non-null;} insn who's result should be recorded as
@@ -629,7 +629,7 @@ public final class SsaMethod {
         }
     }
 
-    /**
+    /*
      * Returns the list of all source uses (not results) for a register.
      *
      * @param reg register in question
@@ -644,7 +644,7 @@ public final class SsaMethod {
         return unmodifiableUseList[reg];
     }
 
-    /**
+    /*
      * Returns a modifiable copy of the register use list.
      *
      * @return modifiable copy of the use-list, indexed by register
@@ -664,7 +664,7 @@ public final class SsaMethod {
         return useListCopy;
     }
 
-    /**
+    /*
      * Checks to see if the given SSA reg is ever associated with a local
      * local variable. Each SSA reg may be associated with at most one
      * local var.
@@ -696,7 +696,7 @@ public final class SsaMethod {
         return false;
     }
 
-    /**
+    /*
      * Sets the new register count after renaming.
      *
      * @param newRegCount new register count
@@ -707,7 +707,7 @@ public final class SsaMethod {
         onInsnsChanged();
     }
 
-    /**
+    /*
      * Makes a new SSA register. For use after renaming has completed.
      *
      * @return {@code >=0;} new SSA register.
@@ -719,7 +719,7 @@ public final class SsaMethod {
         return reg;
     }
 
-    /**
+    /*
      * Visits all insns in this method.
      *
      * @param visitor {@code non-null;} callback interface
@@ -730,7 +730,7 @@ public final class SsaMethod {
         }
     }
 
-    /**
+    /*
      * Visits each phi insn in this method
      * @param v {@code non-null;} callback.
      *
@@ -742,7 +742,7 @@ public final class SsaMethod {
     }
 
 
-    /**
+    /*
      * Walks the basic block tree in depth-first order, calling the visitor
      * method once for every block. This depth-first walk may be run forward
      * from the method entry point or backwards from the method exit points.
@@ -786,7 +786,7 @@ public final class SsaMethod {
         }
     }
 
-    /**
+    /*
      * Visits blocks in dom-tree order, starting at the current node.
      * The {@code parent} parameter of the Visitor.visitBlock callback
      * is currently always set to null.
@@ -815,7 +815,7 @@ public final class SsaMethod {
         }
     }
 
-    /**
+    /*
      * Deletes all insns in the set from this method.
      *
      * @param deletedInsns {@code non-null;} insns to delete
@@ -860,7 +860,7 @@ public final class SsaMethod {
         }
     }
 
-    /**
+    /*
      * Sets "back-convert mode". Set during back-conversion when registers
      * are about to be mapped into a non-SSA namespace. When true,
      * use and def lists are unavailable.

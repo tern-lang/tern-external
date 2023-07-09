@@ -16,22 +16,22 @@
 
 package org.ternlang.dx.io.instructions;
 
-/**
+/*
  * A decoded Dalvik instruction which contains the payload for
  * a {@code packed-switch} instruction.
  */
 public final class PackedSwitchPayloadDecodedInstruction
         extends DecodedInstruction {
-    /** first key value */
+    /* first key value */
     private final int firstKey;
 
-    /**
+    /*
      * array of target addresses. These are absolute, not relative,
      * addresses.
      */
     private final int[] targets;
 
-    /**
+    /*
      * Constructs an instance.
      */
     public PackedSwitchPayloadDecodedInstruction(InstructionCodec format,
@@ -42,7 +42,7 @@ public final class PackedSwitchPayloadDecodedInstruction
         this.targets = targets;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public int getRegisterCount() {
         return 0;
     }
@@ -55,7 +55,7 @@ public final class PackedSwitchPayloadDecodedInstruction
         return targets;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public DecodedInstruction withIndex(int newIndex) {
         throw new UnsupportedOperationException("no index in instruction");
     }

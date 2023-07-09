@@ -19,18 +19,18 @@ package org.ternlang.dx.ssa;
 import org.ternlang.dx.rop.code.RegisterSpec;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * This class maps one register space into another, with
  * each mapping built up individually and added via addMapping()
  */
 public class BasicRegisterMapper extends RegisterMapper {
-    /** indexed by old register, containing new name */
+    /* indexed by old register, containing new name */
     private IntList oldToNew;
 
-    /** running count of used registers in new namespace */
+    /* running count of used registers in new namespace */
     private int runningCountNewRegisters;
 
-    /**
+    /*
      * Creates a new OneToOneRegisterMapper.
      *
      * @param countOldRegisters the number of registers in the old name space
@@ -39,13 +39,13 @@ public class BasicRegisterMapper extends RegisterMapper {
         oldToNew = new IntList(countOldRegisters);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int getNewRegisterCount() {
         return runningCountNewRegisters;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public RegisterSpec map(RegisterSpec registerSpec) {
         if (registerSpec == null) {
@@ -66,7 +66,7 @@ public class BasicRegisterMapper extends RegisterMapper {
         return registerSpec.withReg(newReg);
     }
 
-    /**
+    /*
      * Returns the new-namespace mapping for the specified
      * old-namespace register, or -1 if one exists.
      *
@@ -81,7 +81,7 @@ public class BasicRegisterMapper extends RegisterMapper {
         return oldToNew.get(oldReg);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         StringBuilder sb = new StringBuilder();
 
@@ -103,7 +103,7 @@ public class BasicRegisterMapper extends RegisterMapper {
         return sb.toString();
     }
 
-    /**
+    /*
      * Adds a mapping to the mapper. If oldReg has already been mapped,
      * overwrites previous mapping with new mapping.
      *

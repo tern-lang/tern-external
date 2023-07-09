@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -36,7 +36,7 @@ import org.ternlang.asm.signature.SignatureReader;
 import org.ternlang.asm.signature.SignatureVisitor;
 import org.ternlang.asm.signature.SignatureWriter;
 
-/**
+/*
  * A class responsible for remapping types and names. Subclasses can override
  * the following methods:
  * 
@@ -144,7 +144,7 @@ public abstract class Remapper {
         return value;
     }
 
-    /**
+    /*
      * @param signature
      *            signature for mapper
      * @param typeSignature
@@ -168,7 +168,7 @@ public abstract class Remapper {
         return w.toString();
     }
 
-    /**
+    /*
      * @deprecated use {@link #createSignatureRemapper} instead.
      */
     @Deprecated
@@ -182,7 +182,7 @@ public abstract class Remapper {
         return createRemappingSignatureAdapter(v);
     }
 
-    /**
+    /*
      * Map method name to the new name. Subclasses can override.
      * 
      * @param owner
@@ -197,7 +197,7 @@ public abstract class Remapper {
         return name;
     }
 
-    /**
+    /*
      * Map invokedynamic method name to the new name. Subclasses can override.
      * 
      * @param name
@@ -210,7 +210,7 @@ public abstract class Remapper {
         return name;
     }
 
-    /**
+    /*
      * Map field name to the new name. Subclasses can override.
      * 
      * @param owner
@@ -225,7 +225,7 @@ public abstract class Remapper {
         return name;
     }
 
-    /**
+    /*
      * Map type name to the new name. Subclasses can override.
      * 
      * @param typeName

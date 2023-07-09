@@ -24,7 +24,7 @@ import org.ternlang.cglib.transform.MethodFilter;
 import org.ternlang.cglib.transform.MethodFilterTransformer;
 import org.ternlang.cglib.transform.TransformingClassGenerator;
 
-/**
+/*
  * A {@link GeneratorStrategy} suitable for use with {@link org.ternlang.cglib.Enhancer} which
  * causes all undeclared exceptions thrown from within a proxied method to be wrapped
  * in an alternative exception of your choice.
@@ -34,7 +34,7 @@ public class UndeclaredThrowableStrategy extends DefaultGeneratorStrategy {
 
     private Class wrapper;
 
-	/**
+	/*
      * Create a new instance of this strategy.
      * @param wrapper a class which extends either directly or
      * indirectly from <code>Throwable</code> and which has at least one

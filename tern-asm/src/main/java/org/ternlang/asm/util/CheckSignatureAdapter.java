@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -32,28 +32,28 @@ package org.ternlang.asm.util;
 import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.signature.SignatureVisitor;
 
-/**
+/*
  * A {@link SignatureVisitor} that checks that its methods are properly used.
  * 
  * @author Eric Bruneton
  */
 public class CheckSignatureAdapter extends SignatureVisitor {
 
-    /**
+    /*
      * Type to be used to check class signatures. See
      * {@link #CheckSignatureAdapter(int, SignatureVisitor)
      * CheckSignatureAdapter}.
      */
     public static final int CLASS_SIGNATURE = 0;
 
-    /**
+    /*
      * Type to be used to check method signatures. See
      * {@link #CheckSignatureAdapter(int, SignatureVisitor)
      * CheckSignatureAdapter}.
      */
     public static final int METHOD_SIGNATURE = 1;
 
-    /**
+    /*
      * Type to be used to check type signatures.See
      * {@link #CheckSignatureAdapter(int, SignatureVisitor)
      * CheckSignatureAdapter}.
@@ -78,28 +78,28 @@ public class CheckSignatureAdapter extends SignatureVisitor {
 
     private static final int END = 256;
 
-    /**
+    /*
      * Type of the signature to be checked.
      */
     private final int type;
 
-    /**
+    /*
      * State of the automaton used to check the order of method calls.
      */
     private int state;
 
-    /**
+    /*
      * <tt>true</tt> if the checked type signature can be 'V'.
      */
     private boolean canBeVoid;
 
-    /**
+    /*
      * The visitor to which this adapter must delegate calls. May be
      * <tt>null</tt>.
      */
     private final SignatureVisitor sv;
 
-    /**
+    /*
      * Creates a new {@link CheckSignatureAdapter} object. <i>Subclasses must
      * not use this constructor</i>. Instead, they must use the
      * {@link #CheckSignatureAdapter(int, int, SignatureVisitor)} version.
@@ -116,7 +116,7 @@ public class CheckSignatureAdapter extends SignatureVisitor {
         this(Opcodes.ASM5, type, sv);
     }
 
-    /**
+    /*
      * Creates a new {@link CheckSignatureAdapter} object.
      * 
      * @param api

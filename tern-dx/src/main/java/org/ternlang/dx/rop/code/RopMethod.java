@@ -19,29 +19,29 @@ package org.ternlang.dx.rop.code;
 import org.ternlang.dx.util.Hex;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * All of the parts that make up a method at the rop layer.
  */
 public final class RopMethod {
-    /** {@code non-null;} basic block list of the method */
+    /* {@code non-null;} basic block list of the method */
     private final BasicBlockList blocks;
 
-    /** {@code >= 0;} label for the block which starts the method */
+    /* {@code >= 0;} label for the block which starts the method */
     private final int firstLabel;
 
-    /**
+    /*
      * {@code null-ok;} array of predecessors for each block, indexed by block
      * label
      */
     private IntList[] predecessors;
 
-    /**
+    /*
      * {@code null-ok;} the predecessors for the implicit "exit" block, that is
      * the labels for the blocks that return, if calculated
      */
     private IntList exitPredecessors;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param blocks {@code non-null;} basic block list of the method
@@ -63,7 +63,7 @@ public final class RopMethod {
         this.exitPredecessors = null;
     }
 
-    /**
+    /*
      * Gets the basic block list for this method.
      *
      * @return {@code non-null;} the list
@@ -72,7 +72,7 @@ public final class RopMethod {
         return blocks;
     }
 
-    /**
+    /*
      * Gets the label for the first block in the method that this list
      * represents.
      *
@@ -82,7 +82,7 @@ public final class RopMethod {
         return firstLabel;
     }
 
-    /**
+    /*
      * Gets the predecessors associated with the given block. This throws
      * an exception if there is no block with the given label.
      *
@@ -103,7 +103,7 @@ public final class RopMethod {
         return result;
     }
 
-    /**
+    /*
      * Gets the exit predecessors for this instance.
      *
      * @return {@code non-null;} the exit predecessors
@@ -117,7 +117,7 @@ public final class RopMethod {
     }
 
 
-    /**
+    /*
      * Returns an instance that is identical to this one, except that
      * the registers in each instruction are offset by the given
      * amount.
@@ -143,7 +143,7 @@ public final class RopMethod {
         return result;
     }
 
-    /**
+    /*
      * Calculates the predecessor sets for each block as well as for the
      * exit.
      */

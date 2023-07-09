@@ -23,14 +23,14 @@ import org.ternlang.dx.rop.code.RegisterSpec;
 import org.ternlang.dx.rop.code.RegisterSpecList;
 import org.ternlang.dx.rop.code.Rop;
 
-/**
+/*
  * A "normal" (non-phi) instruction in SSA form. Always wraps a rop insn.
  */
 public final class NormalSsaInsn extends SsaInsn implements Cloneable {
-    /** {@code non-null;} rop insn that we're wrapping */
+    /* {@code non-null;} rop insn that we're wrapping */
     private Insn insn;
 
-    /**
+    /*
      * Creates an instance.
      *
      * @param insn Rop insn to wrap
@@ -41,7 +41,7 @@ public final class NormalSsaInsn extends SsaInsn implements Cloneable {
         this.insn = insn;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final void mapSourceRegisters(RegisterMapper mapper) {
         RegisterSpecList oldSources = insn.getSources();
@@ -53,7 +53,7 @@ public final class NormalSsaInsn extends SsaInsn implements Cloneable {
         }
     }
 
-    /**
+    /*
      * Changes one of the insn's sources. New source should be of same type
      * and category.
      *
@@ -83,7 +83,7 @@ public final class NormalSsaInsn extends SsaInsn implements Cloneable {
         insn = insn.withNewRegisters(getResult(), newSources);
     }
 
-    /**
+    /*
      * Changes the source list of the insn. New source list should be the
      * same size and consist of sources of identical types.
      *
@@ -99,13 +99,13 @@ public final class NormalSsaInsn extends SsaInsn implements Cloneable {
         insn = insn.withNewRegisters(getResult(), newSources);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public NormalSsaInsn clone() {
         return (NormalSsaInsn) super.clone();
     }
 
-    /**
+    /*
      * Like rop.Insn.getSources().
      *
      * @return {@code null-ok;} sources list
@@ -115,18 +115,18 @@ public final class NormalSsaInsn extends SsaInsn implements Cloneable {
         return insn.getSources();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return toRopInsn().toHuman();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn toRopInsn() {
         return insn.withNewRegisters(getResult(), insn.getSources());
     }
 
-    /**
+    /*
      * @return the Rop opcode for this insn
      */
     @Override
@@ -134,13 +134,13 @@ public final class NormalSsaInsn extends SsaInsn implements Cloneable {
         return insn.getOpcode();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn getOriginalRopInsn() {
         return insn;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public RegisterSpec getLocalAssignment() {
         RegisterSpec assignment;
@@ -164,7 +164,7 @@ public final class NormalSsaInsn extends SsaInsn implements Cloneable {
         return assignment;
     }
 
-    /**
+    /*
      * Upgrades this insn to a version that represents the constant source
      * literally. If the upgrade is not possible, this does nothing.
      *
@@ -177,7 +177,7 @@ public final class NormalSsaInsn extends SsaInsn implements Cloneable {
         getBlock().getParent().onSourcesChanged(this, oldSources);
     }
 
-    /**
+    /*
      * @return true if this is a move (but not a move-operand) instruction
      */
     @Override
@@ -185,19 +185,19 @@ public final class NormalSsaInsn extends SsaInsn implements Cloneable {
         return insn.getOpcode().getOpcode() == RegOps.MOVE;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean isMoveException() {
         return insn.getOpcode().getOpcode() == RegOps.MOVE_EXCEPTION;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean canThrow() {
         return insn.canThrow();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void accept(Visitor v) {
         if (isNormalMoveInsn()) {
@@ -207,13 +207,13 @@ public final class NormalSsaInsn extends SsaInsn implements Cloneable {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public  boolean isPhiOrMove() {
         return isNormalMoveInsn();
     }
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * TODO: Increase the scope of this.

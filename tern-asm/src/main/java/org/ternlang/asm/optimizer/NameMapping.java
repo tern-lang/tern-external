@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -39,7 +39,7 @@ import java.util.Set;
 
 import org.ternlang.asm.Type;
 
-/**
+/*
  * A MAPPING from names to names, used to rename classes, fields and methods.
  * 
  * @author Eric Bruneton

@@ -27,24 +27,24 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeList;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * Constructor of {@link CatchTable} instances from {@link RopMethod}
  * and associated data.
  */
 public final class StdCatchBuilder implements CatchBuilder {
-    /** the maximum range of a single catch handler, in code units */
+    /* the maximum range of a single catch handler, in code units */
     private static final int MAX_CATCH_RANGE = 65535;
 
-    /** {@code non-null;} method to build the list for */
+    /* {@code non-null;} method to build the list for */
     private final RopMethod method;
 
-    /** {@code non-null;} block output order */
+    /* {@code non-null;} block output order */
     private final int[] order;
 
-    /** {@code non-null;} address objects for each block */
+    /* {@code non-null;} address objects for each block */
     private final BlockAddresses addresses;
 
-    /**
+    /*
      * Constructs an instance. It merely holds onto its parameters for
      * a subsequent call to {@link #build}.
      *
@@ -71,12 +71,12 @@ public final class StdCatchBuilder implements CatchBuilder {
         this.addresses = addresses;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public CatchTable build() {
         return build(method, order, addresses);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public boolean hasAnyCatches() {
         BasicBlockList blocks = method.getBlocks();
         int size = blocks.size();
@@ -92,7 +92,7 @@ public final class StdCatchBuilder implements CatchBuilder {
         return false;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public HashSet<Type> getCatchTypes() {
         HashSet<Type> result = new HashSet<Type>(20);
         BasicBlockList blocks = method.getBlocks();
@@ -111,7 +111,7 @@ public final class StdCatchBuilder implements CatchBuilder {
         return result;
     }
 
-    /**
+    /*
      * Builds and returns the catch table for a given method.
      *
      * @param method {@code non-null;} method to build the list for
@@ -206,7 +206,7 @@ public final class StdCatchBuilder implements CatchBuilder {
         return result;
     }
 
-    /**
+    /*
      * Makes the {@link CatchHandlerList} for the given basic block.
      *
      * @param block {@code non-null;} block to get entries for
@@ -262,7 +262,7 @@ public final class StdCatchBuilder implements CatchBuilder {
         return result;
     }
 
-    /**
+    /*
      * Makes a {@link CatchTable#Entry} for the given block range and
      * handlers.
      *
@@ -287,7 +287,7 @@ public final class StdCatchBuilder implements CatchBuilder {
                 endAddress.getAddress(), handlers);
     }
 
-    /**
+    /*
      * Gets whether the address range for the given two blocks is valid
      * for a catch handler. This is true as long as the covered range is
      * under 65536 code units.

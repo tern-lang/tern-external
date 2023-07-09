@@ -22,15 +22,15 @@ import org.ternlang.dx.rop.cst.CstString;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.ToHuman;
 
-/**
+/*
  * Representation of a member (field or method) of a class, for the
  * purposes of encoding it inside a {@link ClassDataItem}.
  */
 public abstract class EncodedMember implements ToHuman {
-    /** access flags */
+    /* access flags */
     private final int accessFlags;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param accessFlags access flags for the member
@@ -39,7 +39,7 @@ public abstract class EncodedMember implements ToHuman {
         this.accessFlags = accessFlags;
     }
 
-    /**
+    /*
      * Gets the access flags.
      *
      * @return the access flags
@@ -48,14 +48,14 @@ public abstract class EncodedMember implements ToHuman {
         return accessFlags;
     }
 
-    /**
+    /*
      * Gets the name.
      *
      * @return {@code non-null;} the name
      */
     public abstract CstString getName();
 
-    /**
+    /*
      * Does a human-friendly dump of this instance.
      *
      * @param out {@code non-null;} where to dump
@@ -63,14 +63,14 @@ public abstract class EncodedMember implements ToHuman {
      */
     public abstract void debugPrint(PrintWriter out, boolean verbose);
 
-    /**
+    /*
      * Populates a {@link DexFile} with items from within this instance.
      *
      * @param file {@code non-null;} the file to populate
      */
     public abstract void addContents(DexFile file);
 
-    /**
+    /*
      * Encodes this instance to the given output.
      *
      * @param file {@code non-null;} file this instance is part of

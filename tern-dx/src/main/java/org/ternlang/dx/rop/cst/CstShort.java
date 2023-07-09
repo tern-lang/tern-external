@@ -19,15 +19,15 @@ package org.ternlang.dx.rop.cst;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Constants of type {@code short}.
  */
 public final class CstShort
         extends CstLiteral32 {
-    /** {@code non-null;} the value {@code 0} as an instance of this class */
+    /* {@code non-null;} the value {@code 0} as an instance of this class */
     public static final CstShort VALUE_0 = make((short) 0);
 
-    /**
+    /*
      * Makes an instance for the given value. This may (but does not
      * necessarily) return an already-allocated instance.
      *
@@ -38,7 +38,7 @@ public final class CstShort
         return new CstShort(value);
     }
 
-    /**
+    /*
      * Makes an instance for the given {@code int} value. This
      * may (but does not necessarily) return an already-allocated
      * instance.
@@ -57,7 +57,7 @@ public final class CstShort
         return make(cast);
     }
 
-    /**
+    /*
      * Constructs an instance. This constructor is private; use {@link #make}.
      *
      * @param value the {@code short} value
@@ -66,30 +66,30 @@ public final class CstShort
         super(value);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         int value = getIntBits();
         return "short{0x" + Hex.u2(value) + " / " + value + '}';
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Type getType() {
         return Type.SHORT;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String typeName() {
         return "short";
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return Integer.toString(getIntBits());
     }
 
-    /**
+    /*
      * Gets the {@code short} value.
      *
      * @return the value

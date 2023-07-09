@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -34,7 +34,7 @@ import java.util.List;
 import org.ternlang.asm.Type;
 import org.ternlang.asm.tree.AbstractInsnNode;
 
-/**
+/*
  * A semantic bytecode interpreter. More precisely, this interpreter only
  * manages the computation of values from other values: it does not manage the
  * transfer of values to or from the stack, and to or from the local variables.
@@ -55,7 +55,7 @@ public abstract class Interpreter<V extends Value> {
         this.api = api;
     }
 
-    /**
+    /*
      * Creates a new value that represents the given type.
      * 
      * Called for method parameters (including <code>this</code>), exception
@@ -70,7 +70,7 @@ public abstract class Interpreter<V extends Value> {
      */
     public abstract V newValue(Type type);
 
-    /**
+    /*
      * Interprets a bytecode instruction without arguments. This method is
      * called for the following opcodes:
      * 
@@ -87,7 +87,7 @@ public abstract class Interpreter<V extends Value> {
     public abstract V newOperation(AbstractInsnNode insn)
             throws AnalyzerException;
 
-    /**
+    /*
      * Interprets a bytecode instruction that moves a value on the stack or to
      * or from local variables. This method is called for the following opcodes:
      * 
@@ -106,7 +106,7 @@ public abstract class Interpreter<V extends Value> {
     public abstract V copyOperation(AbstractInsnNode insn, V value)
             throws AnalyzerException;
 
-    /**
+    /*
      * Interprets a bytecode instruction with a single argument. This method is
      * called for the following opcodes:
      * 
@@ -127,7 +127,7 @@ public abstract class Interpreter<V extends Value> {
     public abstract V unaryOperation(AbstractInsnNode insn, V value)
             throws AnalyzerException;
 
-    /**
+    /*
      * Interprets a bytecode instruction with two arguments. This method is
      * called for the following opcodes:
      * 
@@ -151,7 +151,7 @@ public abstract class Interpreter<V extends Value> {
     public abstract V binaryOperation(AbstractInsnNode insn, V value1, V value2)
             throws AnalyzerException;
 
-    /**
+    /*
      * Interprets a bytecode instruction with three arguments. This method is
      * called for the following opcodes:
      * 
@@ -172,7 +172,7 @@ public abstract class Interpreter<V extends Value> {
     public abstract V ternaryOperation(AbstractInsnNode insn, V value1,
             V value2, V value3) throws AnalyzerException;
 
-    /**
+    /*
      * Interprets a bytecode instruction with a variable number of arguments.
      * This method is called for the following opcodes:
      * 
@@ -190,7 +190,7 @@ public abstract class Interpreter<V extends Value> {
     public abstract V naryOperation(AbstractInsnNode insn,
             List<? extends V> values) throws AnalyzerException;
 
-    /**
+    /*
      * Interprets a bytecode return instruction. This method is called for the
      * following opcodes:
      * 
@@ -208,7 +208,7 @@ public abstract class Interpreter<V extends Value> {
     public abstract void returnOperation(AbstractInsnNode insn, V value,
             V expected) throws AnalyzerException;
 
-    /**
+    /*
      * Merges two values. The merge operation must return a value that
      * represents both values (for instance, if the two values are two types,
      * the merged value must be a common super type of the two types. If the two

@@ -24,17 +24,17 @@ import org.ternlang.dx.rop.type.Prototype;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Proto (method prototype) identifiers list section of a
  * {@code .dex} file.
  */
 public final class ProtoIdsSection extends UniformItemSection {
-    /**
+    /*
      * {@code non-null;} map from method prototypes to {@link ProtoIdItem} instances
      */
     private final TreeMap<Prototype, ProtoIdItem> protoIds;
 
-    /**
+    /*
      * Constructs an instance. The file offset is initially unknown.
      *
      * @param file {@code non-null;} file that this instance is part of
@@ -45,19 +45,19 @@ public final class ProtoIdsSection extends UniformItemSection {
         protoIds = new TreeMap<Prototype, ProtoIdItem>();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Collection<? extends Item> items() {
         return protoIds.values();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public IndexedItem get(Constant cst) {
         throw new UnsupportedOperationException("unsupported");
     }
 
-    /**
+    /*
      * Writes the portion of the file header that refers to this instance.
      *
      * @param out {@code non-null;} where to write
@@ -81,7 +81,7 @@ public final class ProtoIdsSection extends UniformItemSection {
         out.writeInt(offset);
     }
 
-    /**
+    /*
      * Interns an element into this instance.
      *
      * @param prototype {@code non-null;} the prototype to intern
@@ -104,7 +104,7 @@ public final class ProtoIdsSection extends UniformItemSection {
         return result;
     }
 
-    /**
+    /*
      * Gets the index of the given prototype, which must have
      * been added to this instance.
      *
@@ -127,7 +127,7 @@ public final class ProtoIdsSection extends UniformItemSection {
         return item.getIndex();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void orderItems() {
         int idx = 0;

@@ -37,81 +37,81 @@ import org.ternlang.dx.util.Hex;
 import org.ternlang.dx.util.IntList;
 import org.ternlang.dx.util.IntSet;
 
-/**
+/*
  * An SSA representation of a basic block.
  */
 public final class SsaBasicBlock {
-    /**
+    /*
      * {@code non-null;} comparator for instances of this class that
      * just compares block labels
      */
     public static final Comparator<SsaBasicBlock> LABEL_COMPARATOR =
         new LabelComparator();
 
-    /** {@code non-null;} insn list associated with this instance */
+    /* {@code non-null;} insn list associated with this instance */
     private ArrayList<SsaInsn> insns;
 
-    /** {@code non-null;} predecessor set (by block list index) */
+    /* {@code non-null;} predecessor set (by block list index) */
     private BitSet predecessors;
 
-    /** {@code non-null;} successor set (by block list index) */
+    /* {@code non-null;} successor set (by block list index) */
     private BitSet successors;
 
-    /**
+    /*
      * {@code non-null;} ordered successor list
      * (same block may be listed more than once)
      */
     private IntList successorList;
 
-    /**
+    /*
      * block list index of primary successor, or {@code -1} for no primary
      * successor
      */
     private int primarySuccessor = -1;
 
-    /** label of block in rop form */
+    /* label of block in rop form */
     private int ropLabel;
 
-    /** {@code non-null;} method we belong to */
+    /* {@code non-null;} method we belong to */
     private SsaMethod parent;
 
-    /** our index into parent.getBlock() */
+    /* our index into parent.getBlock() */
     private int index;
 
-    /** list of dom children */
+    /* list of dom children */
     private final ArrayList<SsaBasicBlock> domChildren;
 
-    /**
+    /*
      * the number of moves added to the end of the block during the
      * phi-removal process. Retained for subsequent move scheduling.
      */
     private int movesFromPhisAtEnd = 0;
 
-    /**
+    /*
      * the number of moves added to the beginning of the block during the
      * phi-removal process. Retained for subsequent move scheduling.
      */
     private int movesFromPhisAtBeginning = 0;
 
-    /**
+    /*
      * contains last computed value of reachability of this block, or -1
      * if reachability hasn't been calculated yet
      */
     private int reachable = -1;
 
-    /**
+    /*
      * {@code null-ok;} indexed by reg: the regs that are live-in at
      * this block
      */
     private IntSet liveIn;
 
-    /**
+    /*
      * {@code null-ok;} indexed by reg: the regs that are live-out at
      * this block
      */
     private IntSet liveOut;
 
-    /**
+    /*
      * Creates a new empty basic block.
      *
      * @param basicBlockIndex index this block will have
@@ -132,7 +132,7 @@ public final class SsaBasicBlock {
         domChildren = new ArrayList<SsaBasicBlock>();
     }
 
-    /**
+    /*
      * Creates a new SSA basic block from a ROP form basic block.
      *
      * @param rmeth original method
@@ -176,7 +176,7 @@ public final class SsaBasicBlock {
         return result;
     }
 
-    /**
+    /*
      * Adds a basic block as a dom child for this block. Used when constructing
      * the dom tree.
      *
@@ -186,7 +186,7 @@ public final class SsaBasicBlock {
         domChildren.add(child);
     }
 
-    /**
+    /*
      * Gets the dom children for this node. Don't modify this list.
      *
      * @return {@code non-null;} list of dom children
@@ -195,7 +195,7 @@ public final class SsaBasicBlock {
         return domChildren;
     }
 
-    /**
+    /*
      * Adds a phi insn to the beginning of this block. The result type of
      * the phi will be set to void, to indicate that it's currently unknown.
      *
@@ -205,7 +205,7 @@ public final class SsaBasicBlock {
         insns.add(0, new PhiInsn(reg, this));
     }
 
-    /**
+    /*
      * Adds a phi insn to the beginning of this block. This is to be used
      * when the result type or local-association can be determined at phi
      * insert time.
@@ -216,7 +216,7 @@ public final class SsaBasicBlock {
         insns.add(0, new PhiInsn(resultSpec, this));
     }
 
-    /**
+    /*
      * Adds an insn to the head of this basic block, just after any phi
      * insns.
      *
@@ -228,7 +228,7 @@ public final class SsaBasicBlock {
         parent.onInsnAdded(newInsn);
     }
 
-    /**
+    /*
      * Replaces the last insn in this block. The provided insn must have
      * some branchingness.
      *
@@ -248,7 +248,7 @@ public final class SsaBasicBlock {
         parent.onInsnAdded(newInsn);
     }
 
-    /**
+    /*
      * Visits each phi insn.
      *
      * @param v {@code non-null;} the callback
@@ -270,7 +270,7 @@ public final class SsaBasicBlock {
         }
     }
 
-    /**
+    /*
      * Deletes all phi insns. Do this after adding appropriate move insns.
      */
     public void removeAllPhiInsns() {
@@ -282,7 +282,7 @@ public final class SsaBasicBlock {
         insns.subList(0, getCountPhiInsns()).clear();
     }
 
-    /**
+    /*
      * Gets the number of phi insns at the top of this basic block.
      *
      * @return count of phi insns
@@ -301,7 +301,7 @@ public final class SsaBasicBlock {
         return countPhiInsns;
     }
 
-    /**
+    /*
      * @return {@code non-null;} the (mutable) instruction list for this block,
      * with phi insns at the beginning
      */
@@ -309,49 +309,49 @@ public final class SsaBasicBlock {
         return insns;
     }
 
-    /**
+    /*
      * @return {@code non-null;} the (mutable) list of phi insns for this block
      */
     public List<SsaInsn> getPhiInsns() {
         return insns.subList(0, getCountPhiInsns());
     }
 
-    /**
+    /*
      * @return the block index of this block
      */
     public int getIndex() {
         return index;
     }
 
-    /**
+    /*
      * @return the label of this block in rop form
      */
     public int getRopLabel() {
         return ropLabel;
     }
 
-    /**
+    /*
      * @return the label of this block in rop form as a hex string
      */
     public String getRopLabelString() {
         return Hex.u2(ropLabel);
     }
 
-    /**
+    /*
      * @return {@code non-null;} predecessors set, indexed by block index
      */
     public BitSet getPredecessors() {
         return predecessors;
     }
 
-    /**
+    /*
      * @return {@code non-null;} successors set, indexed by block index
      */
     public BitSet getSuccessors() {
         return successors;
     }
 
-    /**
+    /*
      * @return {@code non-null;} ordered successor list, containing block
      * indicies
      */
@@ -359,7 +359,7 @@ public final class SsaBasicBlock {
         return successorList;
     }
 
-    /**
+    /*
      * @return {@code >= -1;} block index of primary successor or
      * {@code -1} if no primary successor
      */
@@ -367,14 +367,14 @@ public final class SsaBasicBlock {
         return primarySuccessor;
     }
 
-    /**
+    /*
      * @return rop label of primary successor
      */
     public int getPrimarySuccessorRopLabel() {
         return parent.blockIndexToRopLabel(primarySuccessor);
     }
 
-    /**
+    /*
      * @return {@code null-ok;} the primary successor block or {@code null}
      * if there is none
      */
@@ -386,7 +386,7 @@ public final class SsaBasicBlock {
         }
     }
 
-    /**
+    /*
      * @return successor list of rop labels
      */
     public IntList getRopLabelSuccessorList() {
@@ -400,14 +400,14 @@ public final class SsaBasicBlock {
         return result;
     }
 
-    /**
+    /*
      * @return {@code non-null;} method that contains this block
      */
     public SsaMethod getParent() {
         return parent;
     }
 
-    /**
+    /*
      * Inserts a new empty GOTO block as a predecessor to this block.
      * All previous predecessors will be predecessors to the new block.
      *
@@ -439,7 +439,7 @@ public final class SsaBasicBlock {
         return newPred;
     }
 
-    /**
+    /*
      * Constructs and inserts a new empty GOTO block {@code Z} between
      * this block ({@code A}) and a current successor block
      * ({@code B}). The new block will replace B as A's successor and
@@ -484,7 +484,7 @@ public final class SsaBasicBlock {
         return newSucc;
     }
 
-    /**
+    /*
      * Replaces an old successor with a new successor. This will throw
      * RuntimeException if {@code oldIndex} was not a successor.
      *
@@ -518,7 +518,7 @@ public final class SsaBasicBlock {
         parent.getBlocks().get(oldIndex).predecessors.clear(index);
     }
 
-    /**
+    /*
      * Removes a successor from this block's successor list.
      *
      * @param oldIndex index of successor block to remove
@@ -539,7 +539,7 @@ public final class SsaBasicBlock {
         parent.getBlocks().get(oldIndex).predecessors.clear(index);
     }
 
-    /**
+    /*
      * Attaches block to an exit block if necessary. If this block
      * is not an exit predecessor or is the exit block, this block does
      * nothing. For use by {@link org.ternlang.dx.ssa.SsaMethod#makeExitBlock}
@@ -563,7 +563,7 @@ public final class SsaBasicBlock {
         }
     }
 
-    /**
+    /*
      * Adds a move instruction to the end of this basic block, just
      * before the last instruction. If the result of the final instruction
      * is the source in question, then the move is placed at the beginning of
@@ -623,7 +623,7 @@ public final class SsaBasicBlock {
         }
     }
 
-    /**
+    /*
      * Adds a move instruction after the phi insn block.
      *
      * @param result move destination
@@ -644,7 +644,7 @@ public final class SsaBasicBlock {
         movesFromPhisAtBeginning++;
     }
 
-    /**
+    /*
      * Sets the register as used in a bitset, taking into account its
      * category/width.
      *
@@ -658,7 +658,7 @@ public final class SsaBasicBlock {
         }
     }
 
-    /**
+    /*
      * Checks to see if the register is used in a bitset, taking
      * into account its category/width.
      *
@@ -675,7 +675,7 @@ public final class SsaBasicBlock {
                 || (category == 2 ? regsUsed.get(reg + 1) : false);
     }
 
-    /**
+    /*
      * Ensures that all move operations in this block occur such that
      * reads of any register happen before writes to that register.
      * NOTE: caller is expected to returnSpareRegisters()!
@@ -782,7 +782,7 @@ public final class SsaBasicBlock {
         }
     }
 
-    /**
+    /*
      * Adds {@code regV} to the live-out list for this block. This is called
      * by the liveness analyzer.
      *
@@ -796,7 +796,7 @@ public final class SsaBasicBlock {
         liveOut.add(regV);
     }
 
-    /**
+    /*
      * Adds {@code regV} to the live-in list for this block. This is
      * called by the liveness analyzer.
      *
@@ -810,7 +810,7 @@ public final class SsaBasicBlock {
         liveIn.add(regV);
     }
 
-    /**
+    /*
      * Returns the set of live-in registers. Valid after register
      * interference graph has been generated, otherwise empty.
      *
@@ -823,7 +823,7 @@ public final class SsaBasicBlock {
         return liveIn;
     }
 
-    /**
+    /*
      * Returns the set of live-out registers. Valid after register
      * interference graph has been generated, otherwise empty.
      *
@@ -836,14 +836,14 @@ public final class SsaBasicBlock {
         return liveOut;
     }
 
-    /**
+    /*
      * @return true if this is the one-and-only exit block for this method
      */
     public boolean isExitBlock() {
         return index == parent.getExitBlockIndex();
     }
 
-    /**
+    /*
      * Returns true if this block was last calculated to be reachable.
      * Recalculates reachability if value has never been computed.
      *
@@ -856,7 +856,7 @@ public final class SsaBasicBlock {
         return (reachable == 1);
     }
 
-    /**
+    /*
      * Sets reachability of block to specified value
      *
      * @param reach new value of reachability for block
@@ -865,7 +865,7 @@ public final class SsaBasicBlock {
         reachable = reach;
     }
 
-    /**
+    /*
      * Sorts move instructions added via {@code addMoveToEnd} during
      * phi removal so that results don't overwrite sources that are used.
      * For use after all phis have been removed and all calls to
@@ -977,7 +977,7 @@ public final class SsaBasicBlock {
 
     }
 
-    /**
+    /*
      * Visits all insns in this block.
      *
      * @param visitor {@code non-null;} callback interface
@@ -991,17 +991,17 @@ public final class SsaBasicBlock {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         return "{" + index + ":" + Hex.u2(ropLabel) + '}';
     }
 
-    /**
+    /*
      * Visitor interface for basic blocks.
      */
     public interface Visitor {
-        /**
+        /*
          * Indicates a block has been visited by an iterator method.
          *
          * @param v {@code non-null;} block visited
@@ -1010,12 +1010,12 @@ public final class SsaBasicBlock {
         void visitBlock (SsaBasicBlock v, SsaBasicBlock parent);
     }
 
-    /**
+    /*
      * Label comparator.
      */
     public static final class LabelComparator
             implements Comparator<SsaBasicBlock> {
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public int compare(SsaBasicBlock b1, SsaBasicBlock b2) {
             int label1 = b1.ropLabel;
             int label2 = b2.ropLabel;

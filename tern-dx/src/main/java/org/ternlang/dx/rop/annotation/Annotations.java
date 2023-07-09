@@ -24,22 +24,22 @@ import java.util.TreeMap;
 import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.util.MutabilityControl;
 
-/**
+/*
  * List of {@link Annotation} instances.
  */
 public final class Annotations extends MutabilityControl
         implements Comparable<Annotations> {
-    /** {@code non-null;} immutable empty instance */
+    /* {@code non-null;} immutable empty instance */
     public static final Annotations EMPTY = new Annotations();
 
     static {
         EMPTY.setImmutable();
     }
 
-    /** {@code non-null;} map from types to annotations */
+    /* {@code non-null;} map from types to annotations */
     private final TreeMap<CstType, Annotation> annotations;
 
-    /**
+    /*
      * Constructs an immutable instance which is the combination of the
      * two given instances. The two instances must contain disjoint sets
      * of types.
@@ -59,7 +59,7 @@ public final class Annotations extends MutabilityControl
         return result;
     }
 
-    /**
+    /*
      * Constructs an immutable instance which is the combination of the
      * given instance with the given additional annotation. The latter's
      * type must not already appear in the former.
@@ -80,20 +80,20 @@ public final class Annotations extends MutabilityControl
         return result;
     }
 
-    /**
+    /*
      * Constructs an empty instance.
      */
     public Annotations() {
         annotations = new TreeMap<CstType, Annotation>();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         return annotations.hashCode();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean equals(Object other) {
         if (! (other instanceof Annotations)) {
@@ -105,7 +105,7 @@ public final class Annotations extends MutabilityControl
         return annotations.equals(otherAnnotations.annotations);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int compareTo(Annotations other) {
         Iterator<Annotation> thisIter = annotations.values().iterator();
         Iterator<Annotation> otherIter = other.annotations.values().iterator();
@@ -129,7 +129,7 @@ public final class Annotations extends MutabilityControl
         return 0;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toString() {
         StringBuilder sb = new StringBuilder();
         boolean first = true;
@@ -149,7 +149,7 @@ public final class Annotations extends MutabilityControl
         return sb.toString();
     }
 
-    /**
+    /*
      * Gets the number of elements in this instance.
      *
      * @return {@code >= 0;} the size
@@ -158,7 +158,7 @@ public final class Annotations extends MutabilityControl
         return annotations.size();
     }
 
-    /**
+    /*
      * Adds an element to this instance. There must not already be an
      * element of the same type.
      *
@@ -182,7 +182,7 @@ public final class Annotations extends MutabilityControl
         annotations.put(type, annotation);
     }
 
-    /**
+    /*
      * Adds all of the elements of the given instance to this one. The
      * instances must not have any duplicate types.
      *
@@ -201,7 +201,7 @@ public final class Annotations extends MutabilityControl
         }
     }
 
-    /**
+    /*
      * Gets the set of annotations contained in this instance. The
      * result is always unmodifiable.
      *

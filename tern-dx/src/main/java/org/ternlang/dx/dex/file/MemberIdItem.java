@@ -22,15 +22,15 @@ import org.ternlang.dx.rop.cst.CstNat;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Representation of a member (field or method) reference inside a
  * Dalvik file.
  */
 public abstract class MemberIdItem extends IdItem {
-    /** {@code non-null;} the constant for the member */
+    /* {@code non-null;} the constant for the member */
     private final CstMemberRef cst;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param cst {@code non-null;} the constant for the member
@@ -41,13 +41,13 @@ public abstract class MemberIdItem extends IdItem {
         this.cst = cst;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int writeSize() {
         return SizeOf.MEMBER_ID_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void addContents(DexFile file) {
         super.addContents(file);
@@ -56,7 +56,7 @@ public abstract class MemberIdItem extends IdItem {
         stringIds.intern(getRef().getNat().getName());
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final void writeTo(DexFile file, AnnotatedOutput out) {
         TypeIdsSection typeIds = file.getTypeIds();
@@ -79,7 +79,7 @@ public abstract class MemberIdItem extends IdItem {
         out.writeInt(nameIdx);
     }
 
-    /**
+    /*
      * Returns the index of the type-like thing associated with
      * this item, in order that it may be written out. Subclasses must
      * override this to get whatever it is they need to store.
@@ -89,7 +89,7 @@ public abstract class MemberIdItem extends IdItem {
      */
     protected abstract int getTypoidIdx(DexFile file);
 
-    /**
+    /*
      * Returns the field name of the type-like thing associated with
      * this item, for listing-generating purposes. Subclasses must override
      * this.
@@ -98,7 +98,7 @@ public abstract class MemberIdItem extends IdItem {
      */
     protected abstract String getTypoidName();
 
-    /**
+    /*
      * Gets the member constant.
      *
      * @return {@code non-null;} the constant

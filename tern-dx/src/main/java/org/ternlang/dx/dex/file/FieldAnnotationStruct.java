@@ -22,18 +22,18 @@ import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 import org.ternlang.dx.util.ToHuman;
 
-/**
+/*
  * Association of a field and its annotations.
  */
 public final class FieldAnnotationStruct
         implements ToHuman, Comparable<FieldAnnotationStruct> {
-    /** {@code non-null;} the field in question */
+    /* {@code non-null;} the field in question */
     private final CstFieldRef field;
 
-    /** {@code non-null;} the associated annotations */
+    /* {@code non-null;} the associated annotations */
     private AnnotationSetItem annotations;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param field {@code non-null;} the field in question
@@ -53,12 +53,12 @@ public final class FieldAnnotationStruct
         this.annotations = annotations;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int hashCode() {
         return field.hashCode();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public boolean equals(Object other) {
         if (! (other instanceof FieldAnnotationStruct)) {
             return false;
@@ -67,12 +67,12 @@ public final class FieldAnnotationStruct
         return field.equals(((FieldAnnotationStruct) other).field);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int compareTo(FieldAnnotationStruct other) {
         return field.compareTo(other.field);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void addContents(DexFile file) {
         FieldIdsSection fieldIds = file.getFieldIds();
         MixedItemSection wordData = file.getWordData();
@@ -81,7 +81,7 @@ public final class FieldAnnotationStruct
         annotations = wordData.intern(annotations);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void writeTo(DexFile file, AnnotatedOutput out) {
         int fieldIdx = file.getFieldIds().indexOf(field);
         int annotationsOff = annotations.getAbsoluteOffset();
@@ -97,12 +97,12 @@ public final class FieldAnnotationStruct
         out.writeInt(annotationsOff);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return field.toHuman() + ": " + annotations;
     }
 
-    /**
+    /*
      * Gets the field this item is for.
      *
      * @return {@code non-null;} the field
@@ -111,7 +111,7 @@ public final class FieldAnnotationStruct
         return field;
     }
 
-    /**
+    /*
      * Gets the associated annotations.
      *
      * @return {@code non-null;} the annotations

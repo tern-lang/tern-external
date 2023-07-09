@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -31,46 +31,46 @@ package org.ternlang.asm.tree;
 
 import org.ternlang.asm.MethodVisitor;
 
-/**
+/*
  * A node that represents a local variable declaration.
  * 
  * @author Eric Bruneton
  */
 public class LocalVariableNode {
 
-    /**
+    /*
      * The name of a local variable.
      */
     public String name;
 
-    /**
+    /*
      * The type descriptor of this local variable.
      */
     public String desc;
 
-    /**
+    /*
      * The signature of this local variable. May be <tt>null</tt>.
      */
     public String signature;
 
-    /**
+    /*
      * The first instruction corresponding to the scope of this local variable
      * (inclusive).
      */
     public LabelNode start;
 
-    /**
+    /*
      * The last instruction corresponding to the scope of this local variable
      * (exclusive).
      */
     public LabelNode end;
 
-    /**
+    /*
      * The local variable's index.
      */
     public int index;
 
-    /**
+    /*
      * Constructs a new {@link LocalVariableNode}.
      * 
      * @param name
@@ -99,7 +99,7 @@ public class LocalVariableNode {
         this.index = index;
     }
 
-    /**
+    /*
      * Makes the given visitor visit this local variable declaration.
      * 
      * @param mv

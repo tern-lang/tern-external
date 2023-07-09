@@ -1,7 +1,7 @@
 
 package org.ternlang.cglib.transform.impl;
 
-/**
+/*
  *
  * @author  baliuka
  */
@@ -10,7 +10,7 @@ public class PersistenceCapableImpl implements PersistenceCapable {
     Object persistenceManager;
     Object pc;//transformed class instance
     
-    /** Creates a new instance of PersistenceCapableImpl,
+    /* Creates a new instance of PersistenceCapableImpl,
      transformed class uses this constructor */
     
     public PersistenceCapableImpl(Object _this) {

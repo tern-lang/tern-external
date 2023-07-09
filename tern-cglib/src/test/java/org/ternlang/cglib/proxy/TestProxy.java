@@ -27,7 +27,7 @@ import org.ternlang.cglib.proxysample.ProxySampleInterface_ReturnsBasic;
 
 import junit.framework.*;
 
-/**
+/*
  * @author Chris Nokleberg <a href="mailto:chris@nokleberg.com">chris@nokleberg.com</a>
  * @version $Id: TestProxy.java,v 1.6 2012/07/27 16:02:49 baliuka Exp $
  */

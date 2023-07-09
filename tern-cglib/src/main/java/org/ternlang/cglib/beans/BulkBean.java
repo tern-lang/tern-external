@@ -24,7 +24,7 @@ import java.util.*;
 import org.ternlang.asm.ClassVisitor;
 import org.ternlang.cglib.core.*;
 
-/**
+/*
  * @author Juozas Baliuka
  */
 abstract public class BulkBean

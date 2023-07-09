@@ -21,7 +21,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/*
  * Uses heuristics to guess the application's private data directory.
  */
 class AppDataDirGuesser {
@@ -64,7 +64,7 @@ class AppDataDirGuesser {
         return processClassLoaderString(result);
     }
 
-    /**
+    /*
      * Given the result of a ClassLoader.toString() call, process the result so that guessPath
      * can use it. There are currently two variants. For Android 4.3 and later, the string
      * "DexPathList" should be recognized and the array of dex path elements is parsed. for

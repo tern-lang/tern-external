@@ -27,19 +27,19 @@ import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.FixedSizeList;
 
-/**
+/*
  * List of local variables. Each local variable entry indicates a
  * range of code which it is valid for, a register number, a name,
  * and a type.
  */
 public final class LocalList extends FixedSizeList {
-    /** {@code non-null;} empty instance */
+    /* {@code non-null;} empty instance */
     public static final LocalList EMPTY = new LocalList(0);
 
-    /** whether to run the self-check code */
+    /* whether to run the self-check code */
     private static final boolean DEBUG = false;
 
-    /**
+    /*
      * Constructs an instance. All indices initially contain {@code null}.
      *
      * @param size {@code >= 0;} the size of the list
@@ -48,7 +48,7 @@ public final class LocalList extends FixedSizeList {
         super(size);
     }
 
-    /**
+    /*
      * Gets the element at the given index. It is an error to call
      * this with the index for an element which was never set; if you
      * do that, this will throw {@code NullPointerException}.
@@ -60,7 +60,7 @@ public final class LocalList extends FixedSizeList {
         return (Entry) get0(n);
     }
 
-    /**
+    /*
      * Sets the entry at the given index.
      *
      * @param n {@code >= 0, < size();} which index
@@ -70,7 +70,7 @@ public final class LocalList extends FixedSizeList {
         set0(n, entry);
     }
 
-    /**
+    /*
      * Does a human-friendly dump of this instance.
      *
      * @param out {@code non-null;} where to dump
@@ -85,52 +85,52 @@ public final class LocalList extends FixedSizeList {
         }
     }
 
-    /**
+    /*
      * Disposition of a local entry.
      */
     public static enum Disposition {
-        /** local started (introduced) */
+        /* local started (introduced) */
         START,
 
-        /** local ended without being replaced */
+        /* local ended without being replaced */
         END_SIMPLY,
 
-        /** local ended because it was directly replaced */
+        /* local ended because it was directly replaced */
         END_REPLACED,
 
-        /** local ended because it was moved to a different register */
+        /* local ended because it was moved to a different register */
         END_MOVED,
 
-        /**
+        /*
          * local ended because the previous local clobbered this one
          * (because it is category-2)
          */
         END_CLOBBERED_BY_PREV,
 
-        /**
+        /*
          * local ended because the next local clobbered this one
          * (because this one is a category-2)
          */
         END_CLOBBERED_BY_NEXT;
     }
 
-    /**
+    /*
      * Entry in a local list.
      */
     public static class Entry implements Comparable<Entry> {
-        /** {@code >= 0;} address */
+        /* {@code >= 0;} address */
         private final int address;
 
-        /** {@code non-null;} disposition of the local */
+        /* {@code non-null;} disposition of the local */
         private final Disposition disposition;
 
-        /** {@code non-null;} register spec representing the variable */
+        /* {@code non-null;} register spec representing the variable */
         private final RegisterSpec spec;
 
-        /** {@code non-null;} variable type (derived from {@code spec}) */
+        /* {@code non-null;} variable type (derived from {@code spec}) */
         private final CstType type;
 
-        /**
+        /*
          * Constructs an instance.
          *
          * @param address {@code >= 0;} address
@@ -163,13 +163,13 @@ public final class LocalList extends FixedSizeList {
             this.type = CstType.intern(spec.getType());
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public String toString() {
             return Integer.toHexString(address) + " " + disposition + " " +
                 spec;
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public boolean equals(Object other) {
             if (!(other instanceof Entry)) {
                 return false;
@@ -178,7 +178,7 @@ public final class LocalList extends FixedSizeList {
             return (compareTo((Entry) other) == 0);
         }
 
-        /**
+        /*
          * Compares by (in priority order) address, end then start
          * disposition (variants of end are all consistered
          * equivalent), and spec.
@@ -203,7 +203,7 @@ public final class LocalList extends FixedSizeList {
             return spec.compareTo(other.spec);
         }
 
-        /**
+        /*
          * Gets the address.
          *
          * @return {@code >= 0;} the address
@@ -212,7 +212,7 @@ public final class LocalList extends FixedSizeList {
             return address;
         }
 
-        /**
+        /*
          * Gets the disposition.
          *
          * @return {@code non-null;} the disposition
@@ -221,7 +221,7 @@ public final class LocalList extends FixedSizeList {
             return disposition;
         }
 
-        /**
+        /*
          * Gets whether this is a local start. This is just shorthand for
          * {@code getDisposition() == Disposition.START}.
          *
@@ -231,7 +231,7 @@ public final class LocalList extends FixedSizeList {
             return disposition == Disposition.START;
         }
 
-        /**
+        /*
          * Gets the variable name.
          *
          * @return {@code null-ok;} the variable name
@@ -240,7 +240,7 @@ public final class LocalList extends FixedSizeList {
             return spec.getLocalItem().getName();
         }
 
-        /**
+        /*
          * Gets the variable signature.
          *
          * @return {@code null-ok;} the variable signature
@@ -249,7 +249,7 @@ public final class LocalList extends FixedSizeList {
             return spec.getLocalItem().getSignature();
         }
 
-        /**
+        /*
          * Gets the variable's type.
          *
          * @return {@code non-null;} the type
@@ -258,7 +258,7 @@ public final class LocalList extends FixedSizeList {
             return type;
         }
 
-        /**
+        /*
          * Gets the number of the register holding the variable.
          *
          * @return {@code >= 0;} the number of the register holding
@@ -268,7 +268,7 @@ public final class LocalList extends FixedSizeList {
             return spec.getReg();
         }
 
-        /**
+        /*
          * Gets the RegisterSpec of the register holding the variable.
          *
          * @return {@code non-null;} RegisterSpec of the holding register.
@@ -277,7 +277,7 @@ public final class LocalList extends FixedSizeList {
             return spec;
         }
 
-        /**
+        /*
          * Returns whether or not this instance matches the given spec.
          *
          * @param otherSpec {@code non-null;} the spec in question
@@ -288,7 +288,7 @@ public final class LocalList extends FixedSizeList {
             return spec.equalsUsingSimpleType(otherSpec);
         }
 
-        /**
+        /*
          * Returns whether or not this instance matches the spec in
          * the given instance.
          *
@@ -300,7 +300,7 @@ public final class LocalList extends FixedSizeList {
             return matches(other.spec);
         }
 
-        /**
+        /*
          * Returns an instance just like this one but with the disposition
          * set as given.
          *
@@ -316,7 +316,7 @@ public final class LocalList extends FixedSizeList {
         }
     }
 
-    /**
+    /*
      * Constructs an instance for the given method, based on the given
      * block order and intermediate local information.
      *
@@ -366,7 +366,7 @@ public final class LocalList extends FixedSizeList {
         return result;
     }
 
-    /**
+    /*
      * Debugging helper that verifies the constraint that a list doesn't
      * contain any redundant local starts and that local ends that are
      * due to replacements are properly annotated.
@@ -384,7 +384,7 @@ public final class LocalList extends FixedSizeList {
 
     }
 
-    /**
+    /*
      * Helper for {@link #debugVerify} which does most of the work.
      */
     private static void debugVerify0(LocalList locals) {
@@ -448,29 +448,29 @@ public final class LocalList extends FixedSizeList {
         }
     }
 
-    /**
+    /*
      * Intermediate state when constructing a local list.
      */
     public static class MakeState {
-        /** {@code non-null;} result being collected */
+        /* {@code non-null;} result being collected */
         private final ArrayList<Entry> result;
 
-        /**
+        /*
          * {@code >= 0;} running count of nulled result entries, to help with
          * sizing the final list
          */
         private int nullResultCount;
 
-        /** {@code null-ok;} current register mappings */
+        /* {@code null-ok;} current register mappings */
         private RegisterSpecSet regs;
 
-        /** {@code null-ok;} result indices where local ends are stored */
+        /* {@code null-ok;} result indices where local ends are stored */
         private int[] endIndices;
 
-        /** {@code >= 0;} last address seen */
+        /* {@code >= 0;} last address seen */
         private int lastAddress;
 
-        /**
+        /*
          * Constructs an instance.
          */
         public MakeState(int initialSize) {
@@ -481,7 +481,7 @@ public final class LocalList extends FixedSizeList {
             lastAddress = 0;
         }
 
-        /**
+        /*
          * Checks the address and other vitals as a prerequisite to
          * further processing.
          *
@@ -522,7 +522,7 @@ public final class LocalList extends FixedSizeList {
             }
         }
 
-        /**
+        /*
          * Sets the local state at the given address to the given snapshot.
          * The first call on this instance must be to this method, so that
          * the register state can be properly sized.
@@ -559,7 +559,7 @@ public final class LocalList extends FixedSizeList {
             }
         }
 
-        /**
+        /*
          * Starts a local at the given address.
          *
          * @param address {@code >= 0;} the address
@@ -681,7 +681,7 @@ public final class LocalList extends FixedSizeList {
             add(address, Disposition.START, startedLocal);
         }
 
-        /**
+        /*
          * Ends a local at the given address, using the disposition
          * {@code END_SIMPLY}.
          *
@@ -693,7 +693,7 @@ public final class LocalList extends FixedSizeList {
             endLocal(address, endedLocal, Disposition.END_SIMPLY);
         }
 
-        /**
+        /*
          * Ends a local at the given address.
          *
          * @param address {@code >= 0;} the address
@@ -730,7 +730,7 @@ public final class LocalList extends FixedSizeList {
             add(address, disposition, endedLocal);
         }
 
-        /**
+        /*
          * Helper for {@link #endLocal}, which handles the cases where
          * and end local is issued at the same address as a start local
          * for the same register. If this case is found, then this
@@ -812,7 +812,7 @@ public final class LocalList extends FixedSizeList {
             return true;
         }
 
-        /**
+        /*
          * Converts a given spec into the form acceptable for use in a
          * local list. This, in particular, transforms the "known
          * null" type into simply {@code Object}. This method needs to
@@ -835,7 +835,7 @@ public final class LocalList extends FixedSizeList {
             return orig;
         }
 
-        /**
+        /*
          * Adds an entry to the result, updating the adjunct tables
          * accordingly.
          *
@@ -858,7 +858,7 @@ public final class LocalList extends FixedSizeList {
             }
         }
 
-        /**
+        /*
          * Adds or updates an end local (changing its disposition). If
          * this would cause an empty range for a local, this instead
          * removes the local entirely.
@@ -894,7 +894,7 @@ public final class LocalList extends FixedSizeList {
             endLocal(address, spec, disposition);
         }
 
-        /**
+        /*
          * Finishes processing altogether and gets the result.
          *
          * @return {@code non-null;} the result list

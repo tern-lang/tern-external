@@ -18,15 +18,15 @@ package org.ternlang.dx.io.instructions;
 
 import java.io.EOFException;
 
-/**
+/*
  * Implementation of {@code CodeInput} that reads from a {@code short[]}.
  */
 public final class ShortArrayCodeInput extends BaseCodeCursor
         implements CodeInput {
-    /** source array to read from */
+    /* source array to read from */
     private final short[] array;
 
-    /**
+    /*
      * Constructs an instance.
      */
     public ShortArrayCodeInput(short[] array) {
@@ -37,12 +37,12 @@ public final class ShortArrayCodeInput extends BaseCodeCursor
         this.array = array;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public boolean hasMore() {
         return cursor() < array.length;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public int read() throws EOFException {
         try {
             int value = array[cursor()];
@@ -53,7 +53,7 @@ public final class ShortArrayCodeInput extends BaseCodeCursor
         }
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public int readInt() throws EOFException {
         int short0 = read();
         int short1 = read();
@@ -61,7 +61,7 @@ public final class ShortArrayCodeInput extends BaseCodeCursor
         return short0 | (short1 << 16);
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public long readLong() throws EOFException {
         long short0 = read();
         long short1 = read();

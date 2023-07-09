@@ -19,17 +19,17 @@ package org.ternlang.dx.cf.attrib;
 import org.ternlang.dx.rop.type.TypeList;
 import org.ternlang.dx.util.MutabilityException;
 
-/**
+/*
  * Attribute class for standard {@code Exceptions} attributes.
  */
 public final class AttExceptions extends BaseAttribute {
-    /** {@code non-null;} attribute name for attributes of this type */
+    /* {@code non-null;} attribute name for attributes of this type */
     public static final String ATTRIBUTE_NAME = "Exceptions";
 
-    /** {@code non-null;} list of exception classes */
+    /* {@code non-null;} list of exception classes */
     private final TypeList exceptions;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param exceptions {@code non-null;} list of classes, presumed but not
@@ -50,12 +50,12 @@ public final class AttExceptions extends BaseAttribute {
         this.exceptions = exceptions;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int byteLength() {
         return 8 + exceptions.size() * 2;
     }
 
-    /**
+    /*
      * Gets the list of classes associated with this instance. In
      * general, these classes are not pre-verified to be subclasses of
      * {@code Throwable}.

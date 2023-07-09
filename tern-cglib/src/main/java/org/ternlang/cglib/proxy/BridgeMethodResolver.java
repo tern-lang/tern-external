@@ -32,7 +32,7 @@ import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 import org.ternlang.cglib.core.Signature;
 
-/**
+/*
  * Uses bytecode reflection to figure out the targets of all bridge methods
  * that use invokespecial, so that we can later rewrite them to use invokevirtual.
  * 
@@ -48,7 +48,7 @@ class BridgeMethodResolver {
         this.classLoader = classLoader;
     }
 
-    /**
+    /*
      * Finds all bridge methods that are being called with invokespecial &
      * returns them.
      */

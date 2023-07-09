@@ -18,13 +18,13 @@ package org.ternlang.dx.cf.iface;
 
 import org.ternlang.dx.util.FixedSizeList;
 
-/**
+/*
  * Standard implementation of {@link AttributeList}, which directly stores
  * an array of {@link Attribute} objects and can be made immutable.
  */
 public final class StdAttributeList extends FixedSizeList
         implements AttributeList {
-    /**
+    /*
      * Constructs an instance. All indices initially contain {@code null}.
      *
      * @param size the size of the list
@@ -33,12 +33,12 @@ public final class StdAttributeList extends FixedSizeList
         super(size);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Attribute get(int n) {
         return (Attribute) get0(n);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int byteLength() {
         int sz = size();
         int result = 2; // u2 attributes_count
@@ -50,7 +50,7 @@ public final class StdAttributeList extends FixedSizeList
         return result;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Attribute findFirst(String name) {
         int sz = size();
 
@@ -64,7 +64,7 @@ public final class StdAttributeList extends FixedSizeList
         return null;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Attribute findNext(Attribute attrib) {
         int sz = size();
         int at;
@@ -92,7 +92,7 @@ public final class StdAttributeList extends FixedSizeList
         return null;
     }
 
-    /**
+    /*
      * Sets the attribute at the given index.
      *
      * @param n {@code >= 0, < size();} which attribute

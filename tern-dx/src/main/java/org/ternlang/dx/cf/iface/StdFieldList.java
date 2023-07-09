@@ -18,12 +18,12 @@ package org.ternlang.dx.cf.iface;
 
 import org.ternlang.dx.util.FixedSizeList;
 
-/**
+/*
  * Standard implementation of {@link FieldList}, which directly stores
  * an array of {@link Field} objects and can be made immutable.
  */
 public final class StdFieldList extends FixedSizeList implements FieldList {
-    /**
+    /*
      * Constructs an instance. All indices initially contain {@code null}.
      *
      * @param size the size of the list
@@ -32,12 +32,12 @@ public final class StdFieldList extends FixedSizeList implements FieldList {
         super(size);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Field get(int n) {
         return (Field) get0(n);
     }
 
-    /**
+    /*
      * Sets the field at the given index.
      *
      * @param n {@code >= 0, < size();} which field

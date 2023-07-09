@@ -21,7 +21,7 @@ import java.util.Map;
 
 import org.ternlang.dx.rop.cst.CstType;
 
-/**
+/*
  * A primitive type, interface or class.
  *
  * <p><strong>Warning:</strong> Use care when dealing with boxed primitive
@@ -33,37 +33,37 @@ import org.ternlang.dx.rop.cst.CstType;
  * expected.
  */
 public final class TypeId<T> {
-    /** The {@code boolean} primitive type. */
+    /* The {@code boolean} primitive type. */
     public static final TypeId<Boolean> BOOLEAN = new TypeId<Boolean>(org.ternlang.dx.rop.type.Type.BOOLEAN);
 
-    /** The {@code byte} primitive type. */
+    /* The {@code byte} primitive type. */
     public static final TypeId<Byte> BYTE = new TypeId<Byte>(org.ternlang.dx.rop.type.Type.BYTE);
 
-    /** The {@code char} primitive type. */
+    /* The {@code char} primitive type. */
     public static final TypeId<Character> CHAR = new TypeId<Character>(org.ternlang.dx.rop.type.Type.CHAR);
 
-    /** The {@code double} primitive type. */
+    /* The {@code double} primitive type. */
     public static final TypeId<Double> DOUBLE = new TypeId<Double>(org.ternlang.dx.rop.type.Type.DOUBLE);
 
-    /** The {@code float} primitive type. */
+    /* The {@code float} primitive type. */
     public static final TypeId<Float> FLOAT = new TypeId<Float>(org.ternlang.dx.rop.type.Type.FLOAT);
 
-    /** The {@code int} primitive type. */
+    /* The {@code int} primitive type. */
     public static final TypeId<Integer> INT = new TypeId<Integer>(org.ternlang.dx.rop.type.Type.INT);
 
-    /** The {@code long} primitive type. */
+    /* The {@code long} primitive type. */
     public static final TypeId<Long> LONG = new TypeId<Long>(org.ternlang.dx.rop.type.Type.LONG);
 
-    /** The {@code short} primitive type. */
+    /* The {@code short} primitive type. */
     public static final TypeId<Short> SHORT = new TypeId<Short>(org.ternlang.dx.rop.type.Type.SHORT);
 
-    /** The {@code void} primitive type. Only used as a return type. */
+    /* The {@code void} primitive type. Only used as a return type. */
     public static final TypeId<Void> VOID = new TypeId<Void>(org.ternlang.dx.rop.type.Type.VOID);
 
-    /** The {@code Object} type. */
+    /* The {@code Object} type. */
     public static final TypeId<Object> OBJECT = new TypeId<Object>(org.ternlang.dx.rop.type.Type.OBJECT);
 
-    /** The {@code String} type. */
+    /* The {@code String} type. */
     public static final TypeId<String> STRING = new TypeId<String>(org.ternlang.dx.rop.type.Type.STRING);
 
     private static final Map<Class<?>, TypeId<?>> PRIMITIVE_TO_TYPE = new HashMap<Class<?>, TypeId<?>>();
@@ -81,7 +81,7 @@ public final class TypeId<T> {
 
     final String name;
 
-    /** cached converted values */
+    /* cached converted values */
     final org.ternlang.dx.rop.type.Type ropType;
     final CstType constant;
 
@@ -98,7 +98,7 @@ public final class TypeId<T> {
         this.constant = CstType.intern(ropType);
     }
 
-    /**
+    /*
      * @param name a descriptor like "Ljava/lang/Class;".
      */
     public static <T> TypeId<T> get(String name) {

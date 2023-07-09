@@ -18,12 +18,12 @@ package org.ternlang.dx.cf.iface;
 
 import org.ternlang.dx.util.ByteArray;
 
-/**
+/*
  * Observer of parsing in action. This is used to supply feedback from
  * the various things that parse particularly to the dumping utilities.
  */
 public interface ParseObserver {
-    /**
+    /*
      * Indicate that the level of indentation for a dump should increase
      * or decrease (positive or negative argument, respectively).
      *
@@ -31,7 +31,7 @@ public interface ParseObserver {
      */
     public void changeIndent(int indentDelta);
 
-    /**
+    /*
      * Indicate that a particular member is now being parsed.
      *
      * @param bytes {@code non-null;} the source that is being parsed
@@ -43,7 +43,7 @@ public interface ParseObserver {
     public void startParsingMember(ByteArray bytes, int offset, String name,
                                    String descriptor);
 
-    /**
+    /*
      * Indicate that a particular member is no longer being parsed.
      *
      * @param bytes {@code non-null;} the source that was parsed
@@ -56,7 +56,7 @@ public interface ParseObserver {
     public void endParsingMember(ByteArray bytes, int offset, String name,
                                  String descriptor, Member member);
 
-    /**
+    /*
      * Indicate that some parsing happened.
      *
      * @param bytes {@code non-null;} the source that was parsed

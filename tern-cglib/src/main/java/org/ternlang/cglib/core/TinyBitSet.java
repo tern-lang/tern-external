@@ -55,7 +55,7 @@ public class TinyBitSet {
         return log2(topbit(value));
     }
 
-    /**
+    /*
      * If bit 31 is set then this method results in an infinite loop.
      *
      * @return the number of bits set to <code>true</code> in this TinyBitSet.

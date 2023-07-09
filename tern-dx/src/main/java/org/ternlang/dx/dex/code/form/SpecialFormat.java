@@ -20,7 +20,7 @@ import org.ternlang.dx.dex.code.DalvInsn;
 import org.ternlang.dx.dex.code.InsnFormat;
 import org.ternlang.dx.util.AnnotatedOutput;
 
-/**
+/*
  * Instruction format for nonstandard format instructions, which aren't
  * generally real instructions but do end up appearing in instruction
  * lists. Most of the overridden methods on this class end up throwing
@@ -29,10 +29,10 @@ import org.ternlang.dx.util.AnnotatedOutput;
  * always returns {@code true}.
  */
 public final class SpecialFormat extends InsnFormat {
-    /** {@code non-null;} unique instance of this class */
+    /* {@code non-null;} unique instance of this class */
     public static final InsnFormat THE_ONE = new SpecialFormat();
 
-    /**
+    /*
      * Constructs an instance. This class is not publicly
      * instantiable. Use {@link #THE_ONE}.
      */
@@ -40,31 +40,31 @@ public final class SpecialFormat extends InsnFormat {
         // This space intentionally left blank.
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String insnArgString(DalvInsn insn) {
         throw new RuntimeException("unsupported");
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String insnCommentString(DalvInsn insn, boolean noteIndices) {
         throw new RuntimeException("unsupported");
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int codeSize() {
         throw new RuntimeException("unsupported");
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean isCompatible(DalvInsn insn) {
         return true;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void writeTo(AnnotatedOutput out, DalvInsn insn) {
         throw new RuntimeException("unsupported");

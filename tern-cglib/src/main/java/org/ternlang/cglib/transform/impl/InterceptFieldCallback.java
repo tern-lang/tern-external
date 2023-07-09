@@ -15,7 +15,7 @@
  */
 package org.ternlang.cglib.transform.impl;
 
-/**
+/*
  * @author Juozas Baliuka
  */
 public interface InterceptFieldCallback {

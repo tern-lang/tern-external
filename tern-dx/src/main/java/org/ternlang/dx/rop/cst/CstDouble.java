@@ -19,20 +19,20 @@ package org.ternlang.dx.rop.cst;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Constants of type {@code CONSTANT_Double_info}.
  */
 public final class CstDouble
         extends CstLiteral64 {
-    /** {@code non-null;} instance representing {@code 0} */
+    /* {@code non-null;} instance representing {@code 0} */
     public static final CstDouble VALUE_0 =
         new CstDouble(Double.doubleToLongBits(0.0));
 
-    /** {@code non-null;} instance representing {@code 1} */
+    /* {@code non-null;} instance representing {@code 1} */
     public static final CstDouble VALUE_1 =
         new CstDouble(Double.doubleToLongBits(1.0));
 
-    /**
+    /*
      * Makes an instance for the given value. This may (but does not
      * necessarily) return an already-allocated instance.
      *
@@ -46,7 +46,7 @@ public final class CstDouble
         return new CstDouble(bits);
     }
 
-    /**
+    /*
      * Constructs an instance. This constructor is private; use {@link #make}.
      *
      * @param bits the {@code double} value as {@code long} bits
@@ -55,7 +55,7 @@ public final class CstDouble
         super(bits);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         long bits = getLongBits();
@@ -63,23 +63,23 @@ public final class CstDouble
             Double.longBitsToDouble(bits) + '}';
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Type getType() {
         return Type.DOUBLE;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String typeName() {
         return "double";
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return Double.toString(Double.longBitsToDouble(getLongBits()));
     }
 
-    /**
+    /*
      * Gets the {@code double} value.
      *
      * @return the value

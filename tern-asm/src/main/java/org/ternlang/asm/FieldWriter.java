@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -29,69 +29,69 @@
  */
 package org.ternlang.asm;
 
-/**
+/*
  * An {@link FieldVisitor} that generates Java fields in bytecode form.
  * 
  * @author Eric Bruneton
  */
 final class FieldWriter extends FieldVisitor {
 
-    /**
+    /*
      * The class writer to which this field must be added.
      */
     private final ClassWriter cw;
 
-    /**
+    /*
      * Access flags of this field.
      */
     private final int access;
 
-    /**
+    /*
      * The index of the constant pool item that contains the name of this
      * method.
      */
     private final int name;
 
-    /**
+    /*
      * The index of the constant pool item that contains the descriptor of this
      * field.
      */
     private final int desc;
 
-    /**
+    /*
      * The index of the constant pool item that contains the signature of this
      * field.
      */
     private int signature;
 
-    /**
+    /*
      * The index of the constant pool item that contains the constant value of
      * this field.
      */
     private int value;
 
-    /**
+    /*
      * The runtime visible annotations of this field. May be <tt>null</tt>.
      */
     private AnnotationWriter anns;
 
-    /**
+    /*
      * The runtime invisible annotations of this field. May be <tt>null</tt>.
      */
     private AnnotationWriter ianns;
 
-    /**
+    /*
      * The runtime visible type annotations of this field. May be <tt>null</tt>.
      */
     private AnnotationWriter tanns;
 
-    /**
+    /*
      * The runtime invisible type annotations of this field. May be
      * <tt>null</tt>.
      */
     private AnnotationWriter itanns;
 
-    /**
+    /*
      * The non standard attributes of this field. May be <tt>null</tt>.
      */
     private Attribute attrs;
@@ -100,7 +100,7 @@ final class FieldWriter extends FieldVisitor {
     // Constructor
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Constructs a new {@link FieldWriter}.
      * 
      * @param cw
@@ -198,7 +198,7 @@ final class FieldWriter extends FieldVisitor {
     // Utility methods
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Returns the size of this field.
      * 
      * @return the size of this field.
@@ -246,7 +246,7 @@ final class FieldWriter extends FieldVisitor {
         return size;
     }
 
-    /**
+    /*
      * Puts the content of this field into the given byte vector.
      * 
      * @param out

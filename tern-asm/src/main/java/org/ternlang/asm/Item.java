@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -29,7 +29,7 @@
  */
 package org.ternlang.asm;
 
-/**
+/*
  * A constant pool item. Constant pool items can be created with the 'newXXX'
  * methods in the {@link ClassWriter} class.
  * 
@@ -37,12 +37,12 @@ package org.ternlang.asm;
  */
 final class Item {
 
-    /**
+    /*
      * Index of this item in the constant pool.
      */
     int index;
 
-    /**
+    /*
      * Type of this constant pool item. A single class is used to represent all
      * constant pool item types, in order to minimize the bytecode size of this
      * package. The value of this field is one of {@link ClassWriter#INT},
@@ -66,52 +66,52 @@ final class Item {
      */
     int type;
 
-    /**
+    /*
      * Value of this item, for an integer item.
      */
     int intVal;
 
-    /**
+    /*
      * Value of this item, for a long item.
      */
     long longVal;
 
-    /**
+    /*
      * First part of the value of this item, for items that do not hold a
      * primitive value.
      */
     String strVal1;
 
-    /**
+    /*
      * Second part of the value of this item, for items that do not hold a
      * primitive value.
      */
     String strVal2;
 
-    /**
+    /*
      * Third part of the value of this item, for items that do not hold a
      * primitive value.
      */
     String strVal3;
 
-    /**
+    /*
      * The hash code value of this constant pool item.
      */
     int hashCode;
 
-    /**
+    /*
      * Link to another constant pool item, used for collision lists in the
      * constant pool's hash table.
      */
     Item next;
 
-    /**
+    /*
      * Constructs an uninitialized {@link Item}.
      */
     Item() {
     }
 
-    /**
+    /*
      * Constructs an uninitialized {@link Item} for constant pool element at
      * given position.
      * 
@@ -122,7 +122,7 @@ final class Item {
         this.index = index;
     }
 
-    /**
+    /*
      * Constructs a copy of the given item.
      * 
      * @param index
@@ -141,7 +141,7 @@ final class Item {
         hashCode = i.hashCode;
     }
 
-    /**
+    /*
      * Sets this item to an integer item.
      * 
      * @param intVal
@@ -153,7 +153,7 @@ final class Item {
         this.hashCode = 0x7FFFFFFF & (type + intVal);
     }
 
-    /**
+    /*
      * Sets this item to a long item.
      * 
      * @param longVal
@@ -165,7 +165,7 @@ final class Item {
         this.hashCode = 0x7FFFFFFF & (type + (int) longVal);
     }
 
-    /**
+    /*
      * Sets this item to a float item.
      * 
      * @param floatVal
@@ -177,7 +177,7 @@ final class Item {
         this.hashCode = 0x7FFFFFFF & (type + (int) floatVal);
     }
 
-    /**
+    /*
      * Sets this item to a double item.
      * 
      * @param doubleVal
@@ -189,7 +189,7 @@ final class Item {
         this.hashCode = 0x7FFFFFFF & (type + (int) doubleVal);
     }
 
-    /**
+    /*
      * Sets this item to an item that do not hold a primitive value.
      * 
      * @param type
@@ -232,7 +232,7 @@ final class Item {
         }
     }
 
-    /**
+    /*
      * Sets the item to an InvokeDynamic item.
      * 
      * @param name
@@ -251,7 +251,7 @@ final class Item {
                 * strVal1.hashCode() * strVal2.hashCode());
     }
 
-    /**
+    /*
      * Sets the item to a BootstrapMethod item.
      * 
      * @param position
@@ -267,7 +267,7 @@ final class Item {
         this.hashCode = hashCode;
     }
 
-    /**
+    /*
      * Indicates if the given item is equal to this one. <i>This method assumes
      * that the two items have the same {@link #type}</i>.
      * 

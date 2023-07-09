@@ -24,7 +24,7 @@ import org.ternlang.dx.io.OpcodeInfo;
 import org.ternlang.dx.io.Opcodes;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Representation of an instruction format, which knows how to decode into
  * and encode from instances of {@link DecodedInstruction}.
  */
@@ -750,19 +750,19 @@ public enum InstructionCodec {
         }
     };
 
-    /**
+    /*
      * Decodes an instruction specified by the given opcode unit, reading
      * any required additional code units from the given input source.
      */
     public abstract DecodedInstruction decode(int opcodeUnit, CodeInput in)
         throws EOFException;
 
-    /**
+    /*
      * Encodes the given instruction.
      */
     public abstract void encode(DecodedInstruction insn, CodeOutput out);
 
-    /**
+    /*
      * Helper method that decodes any of the register-list formats.
      */
     private static DecodedInstruction decodeRegisterList(
@@ -816,7 +816,7 @@ public enum InstructionCodec {
                 + Hex.uNibble(registerCount));
     }
 
-    /**
+    /*
      * Helper method that encodes any of the register-list formats.
      */
     private static void encodeRegisterList(DecodedInstruction insn,
@@ -827,7 +827,7 @@ public enum InstructionCodec {
                 codeUnit(insn.getA(), insn.getB(), insn.getC(), insn.getD()));
     }
 
-    /**
+    /*
      * Helper method that decodes any of the three-unit register-range formats.
      */
     private static DecodedInstruction decodeRegisterRange(
@@ -844,7 +844,7 @@ public enum InstructionCodec {
                 a, registerCount);
     }
 
-    /**
+    /*
      * Helper method that encodes any of the three-unit register-range formats.
      */
     private static void encodeRegisterRange(DecodedInstruction insn,

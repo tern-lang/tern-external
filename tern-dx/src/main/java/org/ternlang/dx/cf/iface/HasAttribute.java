@@ -16,12 +16,12 @@
 
 package org.ternlang.dx.cf.iface;
 
-/**
+/*
  * An element that can have {@link Attribute}
  */
 public interface HasAttribute {
 
-    /**
+    /*
      * Get the element {@code attributes} (along with
      * {@code attributes_count}).
      *

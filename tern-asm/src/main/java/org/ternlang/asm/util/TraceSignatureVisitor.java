@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -32,7 +32,7 @@ package org.ternlang.asm.util;
 import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.signature.SignatureVisitor;
 
-/**
+/*
  * A {@link SignatureVisitor} that prints a disassembled view of the signature
  * it visits.
  * 
@@ -57,7 +57,7 @@ public final class TraceSignatureVisitor extends SignatureVisitor {
 
     private StringBuilder exceptions;
 
-    /**
+    /*
      * Stack used to keep track of class types that have arguments. Each element
      * of this stack is a boolean encoded in one bit. The top of the stack is
      * the lowest order bit. Pushing false = *2, pushing true = *2+1, popping =
@@ -65,7 +65,7 @@ public final class TraceSignatureVisitor extends SignatureVisitor {
      */
     private int argumentStack;
 
-    /**
+    /*
      * Stack used to keep track of array class types. Each element of this stack
      * is a boolean encoded in one bit. The top of the stack is the lowest order
      * bit. Pushing false = *2, pushing true = *2+1, popping = /2.

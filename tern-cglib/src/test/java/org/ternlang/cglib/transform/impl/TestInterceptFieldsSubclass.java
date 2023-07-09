@@ -18,7 +18,7 @@ package org.ternlang.cglib.transform.impl;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-/**
+/*
  * @author Juozas
  *
  */

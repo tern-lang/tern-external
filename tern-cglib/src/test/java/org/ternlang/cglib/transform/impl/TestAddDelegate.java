@@ -19,13 +19,13 @@ import org.ternlang.cglib.transform.*;
 import org.ternlang.cglib.transform.impl.AddDelegateTransformer;
 
 import junit.framework.*;
-/**
+/*
  *
  * @author  baliuka
  */
 public class TestAddDelegate extends AbstractTransformTest {
     
-    /** Creates a new instance of TestAddDelegate */
+    /* Creates a new instance of TestAddDelegate */
     public TestAddDelegate(String name) {
         super(name);
     }

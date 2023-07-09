@@ -22,11 +22,11 @@ import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Representation of a type reference inside a Dalvik file.
  */
 public final class TypeIdItem extends IdItem {
-    /**
+    /*
      * Constructs an instance.
      *
      * @param type {@code non-null;} the constant for the type
@@ -35,25 +35,25 @@ public final class TypeIdItem extends IdItem {
         super(type);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public ItemType itemType() {
         return ItemType.TYPE_TYPE_ID_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int writeSize() {
         return SizeOf.TYPE_ID_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void addContents(DexFile file) {
         file.getStringIds().intern(getDefiningClass().getDescriptor());
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void writeTo(DexFile file, AnnotatedOutput out) {
         CstType type = getDefiningClass();

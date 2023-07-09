@@ -61,22 +61,22 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeList;
 import org.ternlang.dx.ssa.Optimizer;
 
-/**
+/*
  * Static method that turns {@code byte[]}s containing Java
  * classfiles into {@link ClassDefItem} instances.
  */
 public class CfTranslator {
-    /** set to {@code true} to enable development-time debugging code */
+    /* set to {@code true} to enable development-time debugging code */
     private static final boolean DEBUG = false;
 
-    /**
+    /*
      * This class is uninstantiable.
      */
     private CfTranslator() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Takes a {@code byte[]}, interprets it as a Java classfile, and
      * translates it into a {@link ClassDefItem}.
      *
@@ -97,7 +97,7 @@ public class CfTranslator {
         }
     }
 
-    /**
+    /*
      * Performs the main act of translation. This method is separated
      * from {@link #translate} just to keep things a bit simpler in
      * terms of exception handling.
@@ -156,7 +156,7 @@ public class CfTranslator {
         return out;
     }
 
-    /**
+    /*
      * Processes the fields of the given class.
      *
      * @param cf {@code non-null;} class being translated
@@ -201,7 +201,7 @@ public class CfTranslator {
         }
     }
 
-    /**
+    /*
      * Helper for {@link #processFields}, which translates constants into
      * more specific types if necessary.
      *
@@ -236,7 +236,7 @@ public class CfTranslator {
         }
     }
 
-    /**
+    /*
      * Processes the methods of the given class.
      *
      * @param cf {@code non-null;} class being translated
@@ -371,7 +371,7 @@ public class CfTranslator {
         }
     }
 
-    /**
+    /*
      * Helper that updates the dex statistics.
      */
     private static void updateDexStatistics(CfOptions cfOptions, DexOptions dexOptions,

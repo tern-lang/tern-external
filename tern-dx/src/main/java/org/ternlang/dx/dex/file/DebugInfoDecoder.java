@@ -48,52 +48,52 @@ import org.ternlang.dx.rop.type.Prototype;
 import org.ternlang.dx.rop.type.StdTypeList;
 import org.ternlang.dx.rop.type.Type;
 
-/**
+/*
  * A decoder for the dex debug info state machine format.
  * This code exists mostly as a reference implementation and test for
  * for the {@code DebugInfoEncoder}
  */
 public class DebugInfoDecoder {
-    /** encoded debug info */
+    /* encoded debug info */
     private final byte[] encoded;
 
-    /** positions decoded */
+    /* positions decoded */
     private final ArrayList<PositionEntry> positions;
 
-    /** locals decoded */
+    /* locals decoded */
     private final ArrayList<LocalEntry> locals;
 
-    /** size of code block in code units */
+    /* size of code block in code units */
     private final int codesize;
 
-    /** indexed by register, the last local variable live in a reg */
+    /* indexed by register, the last local variable live in a reg */
     private final LocalEntry[] lastEntryForReg;
 
-    /** method descriptor of method this debug info is for */
+    /* method descriptor of method this debug info is for */
     private final Prototype desc;
 
-    /** true if method is static */
+    /* true if method is static */
     private final boolean isStatic;
 
-    /** dex file this debug info will be stored in */
+    /* dex file this debug info will be stored in */
     private final DexFile file;
 
-    /**
+    /*
      * register size, in register units, of the register space
      * used by this method
      */
     private final int regSize;
 
-    /** current decoding state: line number */
+    /* current decoding state: line number */
     private int line = 1;
 
-    /** current decoding state: bytecode address */
+    /* current decoding state: bytecode address */
     private int address = 0;
 
-    /** string index of the string "this" */
+    /* string index of the string "this" */
     private final int thisStringIdx;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param encoded encoded debug info
@@ -136,14 +136,14 @@ public class DebugInfoDecoder {
         thisStringIdx = idx;
     }
 
-    /**
+    /*
      * An entry in the resulting postions table
      */
     static private class PositionEntry {
-        /** bytecode address */
+        /* bytecode address */
         public int address;
 
-        /** line number */
+        /* line number */
         public int line;
 
         public PositionEntry(int address, int line) {
@@ -152,26 +152,26 @@ public class DebugInfoDecoder {
         }
     }
 
-    /**
+    /*
      * An entry in the resulting locals table
      */
     static private class LocalEntry {
-        /** address of event */
+        /* address of event */
         public int address;
 
-        /** {@code true} iff it's a local start */
+        /* {@code true} iff it's a local start */
         public boolean isStart;
 
-        /** register number */
+        /* register number */
         public int reg;
 
-        /** index of name in strings table */
+        /* index of name in strings table */
         public int nameIndex;
 
-        /** index of type in types table */
+        /* index of type in types table */
         public int typeIndex;
 
-        /** index of type signature in strings table */
+        /* index of type signature in strings table */
         public int signatureIndex;
 
         public LocalEntry(int address, boolean isStart, int reg, int nameIndex,
@@ -191,7 +191,7 @@ public class DebugInfoDecoder {
         }
     }
 
-    /**
+    /*
      * Gets the decoded positions list.
      * Valid after calling {@code decode}.
      *
@@ -201,7 +201,7 @@ public class DebugInfoDecoder {
         return positions;
     }
 
-    /**
+    /*
      * Gets the decoded locals list, in ascending start-address order.
      * Valid after calling {@code decode}.
      *
@@ -211,7 +211,7 @@ public class DebugInfoDecoder {
         return locals;
     }
 
-    /**
+    /*
      * Decodes the debug info sequence.
      */
     public void decode() {
@@ -223,7 +223,7 @@ public class DebugInfoDecoder {
         }
     }
 
-    /**
+    /*
      * Reads a string index. String indicies are offset by 1, and a 0 value
      * in the stream (-1 as returned by this method) means "null"
      *
@@ -236,7 +236,7 @@ public class DebugInfoDecoder {
         return offsetIndex - 1;
     }
 
-    /**
+    /*
      * Gets the register that begins the method's parameter range (including
      * the 'this' parameter for non-static methods). The range continues until
      * {@code regSize}
@@ -416,7 +416,7 @@ public class DebugInfoDecoder {
         }
     }
 
-    /**
+    /*
      * Validates an encoded debug info stream against data used to encode it,
      * throwing an exception if they do not match. Used to validate the
      * encoder.

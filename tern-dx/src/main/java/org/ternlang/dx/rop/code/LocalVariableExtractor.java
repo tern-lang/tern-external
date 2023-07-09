@@ -19,24 +19,24 @@ package org.ternlang.dx.rop.code;
 import org.ternlang.dx.util.Bits;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * Code to figure out which local variables are active at which points in
  * a method.
  */
 public final class LocalVariableExtractor {
-    /** {@code non-null;} method being extracted from */
+    /* {@code non-null;} method being extracted from */
     private final RopMethod method;
 
-    /** {@code non-null;} block list for the method */
+    /* {@code non-null;} block list for the method */
     private final BasicBlockList blocks;
 
-    /** {@code non-null;} result in-progress */
+    /* {@code non-null;} result in-progress */
     private final LocalVariableInfo resultInfo;
 
-    /** {@code non-null;} work set indicating blocks needing to be processed */
+    /* {@code non-null;} work set indicating blocks needing to be processed */
     private final int[] workSet;
 
-    /**
+    /*
      * Extracts out all the local variable information from the given method.
      *
      * @param method {@code non-null;} the method to extract from
@@ -47,7 +47,7 @@ public final class LocalVariableExtractor {
         return lve.doit();
     }
 
-    /**
+    /*
      * Constructs an instance. This method is private. Use {@link #extract}.
      *
      * @param method {@code non-null;} the method to extract from
@@ -66,7 +66,7 @@ public final class LocalVariableExtractor {
         this.workSet = Bits.makeBitSet(maxLabel);
     }
 
-    /**
+    /*
      * Does the extraction.
      *
      * @return {@code non-null;} the extracted information
@@ -83,7 +83,7 @@ public final class LocalVariableExtractor {
         return resultInfo;
     }
 
-    /**
+    /*
      * Processes a single block.
      *
      * @param label {@code >= 0;} label of the block to process

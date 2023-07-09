@@ -33,17 +33,17 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.ByteArray;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Bytecode visitor to use when "observing" bytecode getting parsed.
  */
 public class CodeObserver implements BytecodeArray.Visitor {
-    /** {@code non-null;} actual array of bytecode */
+    /* {@code non-null;} actual array of bytecode */
     private final ByteArray bytes;
 
-    /** {@code non-null;} observer to inform of parsing */
+    /* {@code non-null;} observer to inform of parsing */
     private final ParseObserver observer;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param bytes {@code non-null;} actual array of bytecode
@@ -62,17 +62,17 @@ public class CodeObserver implements BytecodeArray.Visitor {
         this.observer = observer;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void visitInvalid(int opcode, int offset, int length) {
         observer.parsed(bytes, offset, length, header(offset));
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void visitNoArgs(int opcode, int offset, int length, Type type) {
         observer.parsed(bytes, offset, length, header(offset));
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void visitLocal(int opcode, int offset, int length,
             int idx, Type type, int value) {
         String idxStr = (length <= 3) ? Hex.u1(idx) : Hex.u2(idx);
@@ -94,7 +94,7 @@ public class CodeObserver implements BytecodeArray.Visitor {
                         idxStr + valueStr + catStr);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void visitConstant(int opcode, int offset, int length,
             Constant cst, int value) {
         if (cst instanceof CstKnownNull) {
@@ -140,7 +140,7 @@ public class CodeObserver implements BytecodeArray.Visitor {
                         header(offset) + " " + cst + valueStr);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void visitBranch(int opcode, int offset, int length,
                             int target) {
         String targetStr = (length <= 3) ? Hex.u2(target) : Hex.u4(target);
@@ -148,7 +148,7 @@ public class CodeObserver implements BytecodeArray.Visitor {
                         header(offset) + " " + targetStr);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void visitSwitch(int opcode, int offset, int length,
             SwitchList cases, int padding) {
         int sz = cases.size();
@@ -174,7 +174,7 @@ public class CodeObserver implements BytecodeArray.Visitor {
         observer.parsed(bytes, offset, length, sb.toString());
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void visitNewarray(int offset, int length, CstType cst,
             ArrayList<Constant> intVals) {
         String commentOrSpace = (length == 1) ? " // " : " ";
@@ -184,17 +184,17 @@ public class CodeObserver implements BytecodeArray.Visitor {
                         header(offset) + commentOrSpace + typeName);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void setPreviousOffset(int offset) {
         // Do nothing
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int getPreviousOffset() {
         return -1;
     }
 
-    /**
+    /*
      * Helper to produce the first bit of output for each instruction.
      *
      * @param offset the offset to the start of the instruction
@@ -215,7 +215,7 @@ public class CodeObserver implements BytecodeArray.Visitor {
         return Hex.u2(offset) + ": " + name;
     }
 
-    /**
+    /*
      * Helper for {@link #visitConstant} where the constant is an
      * {@code int}.
      *
@@ -242,7 +242,7 @@ public class CodeObserver implements BytecodeArray.Visitor {
                         header(offset) + commentOrSpace + valueStr);
     }
 
-    /**
+    /*
      * Helper for {@link #visitConstant} where the constant is a
      * {@code long}.
      *
@@ -266,7 +266,7 @@ public class CodeObserver implements BytecodeArray.Visitor {
                         header(offset) + commentOrLit + valueStr);
     }
 
-    /**
+    /*
      * Helper for {@link #visitConstant} where the constant is a
      * {@code float}.
      *
@@ -284,7 +284,7 @@ public class CodeObserver implements BytecodeArray.Visitor {
                         Float.intBitsToFloat(bits));
     }
 
-    /**
+    /*
      * Helper for {@link #visitConstant} where the constant is a
      * {@code double}.
      *

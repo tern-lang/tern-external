@@ -16,35 +16,35 @@
 
 package org.ternlang.dex;
 
-/**
+/*
  * Constants that show up in and are otherwise related to {@code .dex}
  * files, and helper methods for same.
  */
 public final class DexFormat {
     private DexFormat() {}
 
-    /**
+    /*
      * API level to target in order to produce the most modern file
      * format
      */
     public static final int API_CURRENT = 24;
 
-    /** API level to target in order to suppress extended opcode usage */
+    /* API level to target in order to suppress extended opcode usage */
     public static final int API_NO_EXTENDED_OPCODES = 13;
 
-    /**
+    /*
      * file name of the primary {@code .dex} file inside an
      * application or library {@code .jar} file
      */
     public static final String DEX_IN_JAR_NAME = "classes.dex";
 
-    /** common prefix for all dex file "magic numbers" */
+    /* common prefix for all dex file "magic numbers" */
     public static final String MAGIC_PREFIX = "dex\n";
 
-    /** common suffix for all dex file "magic numbers" */
+    /* common suffix for all dex file "magic numbers" */
     public static final String MAGIC_SUFFIX = "\0";
 
-    /**
+    /*
      * Dex file version number for dalvik.
      * <p>
      * Note: Dex version 36 was loadable in some versions of Dalvik but was never fully supported or
@@ -53,28 +53,28 @@ public final class DexFormat {
      */
     public static final String VERSION_CURRENT = "037";
 
-    /** dex file version number for API level 13 and earlier */
+    /* dex file version number for API level 13 and earlier */
     public static final String VERSION_FOR_API_13 = "035";
 
-    /**
+    /*
      * value used to indicate endianness of file contents
      */
     public static final int ENDIAN_TAG = 0x12345678;
 
-    /**
+    /*
      * Maximum addressable field or method index.
      * The largest addressable member is 0xffff, in the "instruction formats" spec as field@CCCC or
      * meth@CCCC.
      */
     public static final int MAX_MEMBER_IDX = 0xFFFF;
 
-    /**
+    /*
      * Maximum addressable type index.
      * The largest addressable type is 0xffff, in the "instruction formats" spec as type@CCCC.
      */
     public static final int MAX_TYPE_IDX = 0xFFFF;
 
-    /**
+    /*
      * Returns the API level corresponding to the given magic number,
      * or {@code -1} if the given array is not a well-formed dex file
      * magic number.
@@ -100,7 +100,7 @@ public final class DexFormat {
         return -1;
     }
 
-    /**
+    /*
      * Returns the magic number corresponding to the given target API level.
      */
     public static String apiToMagic(int targetApiLevel) {

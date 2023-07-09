@@ -16,24 +16,24 @@
 
 package org.ternlang.dx.util;
 
-/**
+/*
  * Very simple base class that implements a flag to control the mutability
  * of instances. This class just provides the flag and a utility to check
  * and throw the right exception, but it is up to subclasses to place calls
  * to the checker in all the right places.
  */
 public class MutabilityControl {
-    /** whether this instance is mutable */
+    /* whether this instance is mutable */
     private boolean mutable;
 
-    /**
+    /*
      * Constructs an instance. It is initially mutable.
      */
     public MutabilityControl() {
         mutable = true;
     }
 
-    /**
+    /*
      * Constructs an instance, explicitly indicating the mutability.
      *
      * @param mutable {@code true} iff this instance is mutable
@@ -42,14 +42,14 @@ public class MutabilityControl {
         this.mutable = mutable;
     }
 
-    /**
+    /*
      * Makes this instance immutable.
      */
     public void setImmutable() {
         mutable = false;
     }
 
-    /**
+    /*
      * Checks to see whether or not this instance is immutable. This is the
      * same as calling {@code !isMutable()}.
      *
@@ -59,7 +59,7 @@ public class MutabilityControl {
         return !mutable;
     }
 
-    /**
+    /*
      * Checks to see whether or not this instance is mutable.
      *
      * @return {@code true} iff this instance is mutable
@@ -68,7 +68,7 @@ public class MutabilityControl {
         return mutable;
     }
 
-    /**
+    /*
      * Throws {@link MutabilityException} if this instance is
      * immutable.
      */
@@ -78,7 +78,7 @@ public class MutabilityControl {
         }
     }
 
-    /**
+    /*
      * Throws {@link MutabilityException} if this instance is mutable.
      */
     public final void throwIfMutable() {

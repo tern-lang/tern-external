@@ -18,7 +18,7 @@ package org.ternlang.dex;
 
 import static org.ternlang.dex.EncodedValueReader.ENCODED_ANNOTATION;
 
-/**
+/*
  * An annotation.
  */
 public final class Annotation implements Comparable<Annotation> {

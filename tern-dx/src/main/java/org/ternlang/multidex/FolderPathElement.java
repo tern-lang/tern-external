@@ -22,7 +22,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-/**
+/*
  * A folder element.
  */
 class FolderPathElement implements ClassPathElement {

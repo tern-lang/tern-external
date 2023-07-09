@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -33,7 +33,7 @@ import java.util.Map;
 
 import org.ternlang.asm.MethodVisitor;
 
-/**
+/*
  * A node that represents a local variable instruction. A local variable
  * instruction is an instruction that loads or stores the value of a local
  * variable.
@@ -42,13 +42,13 @@ import org.ternlang.asm.MethodVisitor;
  */
 public class VarInsnNode extends AbstractInsnNode {
 
-    /**
+    /*
      * The operand of this instruction. This operand is the index of a local
      * variable.
      */
     public int var;
 
-    /**
+    /*
      * Constructs a new {@link VarInsnNode}.
      * 
      * @param opcode
@@ -64,7 +64,7 @@ public class VarInsnNode extends AbstractInsnNode {
         this.var = var;
     }
 
-    /**
+    /*
      * Sets the opcode of this instruction.
      * 
      * @param opcode

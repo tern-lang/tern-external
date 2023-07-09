@@ -16,18 +16,18 @@
 
 package org.ternlang.dx.util;
 
-/**
+/*
  * Utilities for formatting numbers as hexadecimal.
  */
 public final class Hex {
-    /**
+    /*
      * This class is uninstantiable.
      */
     private Hex() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Formats a {@code long} as an 8-byte unsigned hex value.
      *
      * @param v value to format
@@ -43,7 +43,7 @@ public final class Hex {
         return new String(result);
     }
 
-    /**
+    /*
      * Formats an {@code int} as a 4-byte unsigned hex value.
      *
      * @param v value to format
@@ -59,7 +59,7 @@ public final class Hex {
         return new String(result);
     }
 
-    /**
+    /*
      * Formats an {@code int} as a 3-byte unsigned hex value.
      *
      * @param v value to format
@@ -75,7 +75,7 @@ public final class Hex {
         return new String(result);
     }
 
-    /**
+    /*
      * Formats an {@code int} as a 2-byte unsigned hex value.
      *
      * @param v value to format
@@ -91,7 +91,7 @@ public final class Hex {
         return new String(result);
     }
 
-    /**
+    /*
      * Formats an {@code int} as either a 2-byte unsigned hex value
      * (if the value is small enough) or a 4-byte unsigned hex value (if
      * not).
@@ -107,7 +107,7 @@ public final class Hex {
         }
     }
 
-    /**
+    /*
      * Formats an {@code int} as a 1-byte unsigned hex value.
      *
      * @param v value to format
@@ -123,7 +123,7 @@ public final class Hex {
         return new String(result);
     }
 
-    /**
+    /*
      * Formats an {@code int} as a 4-bit unsigned hex nibble.
      *
      * @param v value to format
@@ -136,7 +136,7 @@ public final class Hex {
         return new String(result);
     }
 
-    /**
+    /*
      * Formats a {@code long} as an 8-byte signed hex value.
      *
      * @param v value to format
@@ -160,7 +160,7 @@ public final class Hex {
         return new String(result);
     }
 
-    /**
+    /*
      * Formats an {@code int} as a 4-byte signed hex value.
      *
      * @param v value to format
@@ -184,7 +184,7 @@ public final class Hex {
         return new String(result);
     }
 
-    /**
+    /*
      * Formats an {@code int} as a 2-byte signed hex value.
      *
      * @param v value to format
@@ -208,7 +208,7 @@ public final class Hex {
         return new String(result);
     }
 
-    /**
+    /*
      * Formats an {@code int} as a 1-byte signed hex value.
      *
      * @param v value to format
@@ -232,7 +232,7 @@ public final class Hex {
         return new String(result);
     }
 
-    /**
+    /*
      * Formats a hex dump of a portion of a {@code byte[]}. The result
      * is always newline-terminated, unless the passed-in length was zero,
      * in which case the result is always the empty string ({@code ""}).

@@ -21,7 +21,7 @@ import org.ternlang.cglib.beans.ImmutableBean;
 
 import junit.framework.*;
 
-/**
+/*
  *
  * @author baliuka
  */

@@ -16,12 +16,12 @@
 
 package org.ternlang.dx.util;
 
-/**
+/*
  * Simple interface for objects that can return a "human" (as opposed to
  * a complete but often hard to read) string form.
  */
 public interface ToHuman {
-    /**
+    /*
      * Return the "human" string form of this instance.  This is
      * generally less "debuggy" than {@code toString()}.
      *

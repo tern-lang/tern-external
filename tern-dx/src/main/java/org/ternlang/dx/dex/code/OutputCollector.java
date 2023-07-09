@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 import org.ternlang.dx.dex.DexOptions;
 
-/**
+/*
  * Destination for {@link DalvInsn} instances being output. This class
  * receives and collects instructions in two pieces &mdash; a primary
  * list and a suffix (generally consisting of adjunct data referred to
@@ -29,19 +29,19 @@ import org.ternlang.dx.dex.DexOptions;
  * instance.
  */
 public final class OutputCollector {
-    /**
+    /*
      * {@code non-null;} the associated finisher (which holds the instruction
      * list in-progress)
      */
     private final OutputFinisher finisher;
 
-    /**
+    /*
      * {@code null-ok;} suffix for the output, or {@code null} if the suffix
      * has been appended to the main output (by {@link #appendSuffixToOutput})
      */
     private ArrayList<DalvInsn> suffix;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param dexOptions {@code non-null;} options for dex output
@@ -57,7 +57,7 @@ public final class OutputCollector {
         this.suffix = new ArrayList<DalvInsn>(suffixInitialCapacity);
     }
 
-    /**
+    /*
      * Adds an instruction to the output.
      *
      * @param insn {@code non-null;} the instruction to add
@@ -66,7 +66,7 @@ public final class OutputCollector {
         finisher.add(insn);
     }
 
-    /**
+    /*
      * Reverses a branch which is buried a given number of instructions
      * backward in the output. It is illegal to call this unless the
      * indicated instruction really is a reversible branch.
@@ -80,7 +80,7 @@ public final class OutputCollector {
         finisher.reverseBranch(which, newTarget);
     }
 
-    /**
+    /*
      * Adds an instruction to the output suffix.
      *
      * @param insn {@code non-null;} the instruction to add
@@ -89,7 +89,7 @@ public final class OutputCollector {
         suffix.add(insn);
     }
 
-    /**
+    /*
      * Gets the results of all the calls on this instance, in the form of
      * an {@link OutputFinisher}.
      *
@@ -106,7 +106,7 @@ public final class OutputCollector {
         return finisher;
     }
 
-    /**
+    /*
      * Helper for {@link #getFinisher}, which appends the suffix to
      * the primary output.
      */

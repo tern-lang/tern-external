@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -32,7 +32,7 @@ package org.ternlang.asm.util;
 import org.ternlang.asm.AnnotationVisitor;
 import org.ternlang.asm.Opcodes;
 
-/**
+/*
  * An {@link AnnotationVisitor} that prints the annotations it visits with a
  * {@link Printer}.
  * 

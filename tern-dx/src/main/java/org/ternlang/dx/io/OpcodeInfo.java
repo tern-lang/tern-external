@@ -19,7 +19,7 @@ package org.ternlang.dx.io;
 import org.ternlang.dx.io.instructions.InstructionCodec;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Information about each Dalvik opcode.
  */
 public final class OpcodeInfo {
@@ -28,10 +28,10 @@ public final class OpcodeInfo {
      * this one.
      */
 
-    /** non-null; array containing all the information */
+    /* non-null; array containing all the information */
     private static final Info[] INFO;
 
-    /**
+    /*
      * pseudo-opcode used for nonstandard formatted "instructions"
      * (which are mostly not actually instructions, though they do
      * appear in instruction lists). TODO: Retire the usage of this
@@ -1167,14 +1167,14 @@ public final class OpcodeInfo {
         // END(opcode-info-init)
     }
 
-    /**
+    /*
      * This class is uninstantiable.
      */
     private OpcodeInfo() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Gets the {@link @Info} for the given opcode value.
      *
      * @param opcode {@code Opcodes.MIN_VALUE..Opcodes.MAX_VALUE;} the
@@ -1197,14 +1197,14 @@ public final class OpcodeInfo {
                 + Hex.u2or4(opcode));
     }
 
-    /**
+    /*
      * Gets the name of the given opcode.
      */
     public static String getName(int opcode) {
         return get(opcode).getName();
     }
 
-    /**
+    /*
      * Gets the format (an {@link InstructionCodec}) for the given opcode
      * value.
      */
@@ -1212,14 +1212,14 @@ public final class OpcodeInfo {
         return get(opcode).getFormat();
     }
 
-    /**
+    /*
      * Gets the {@link IndexType} for the given opcode value.
      */
     public static IndexType getIndexType(int opcode) {
         return get(opcode).getIndexType();
     }
 
-    /**
+    /*
      * Puts the given opcode into the table of all ops.
      *
      * @param opcode non-null; the opcode
@@ -1229,7 +1229,7 @@ public final class OpcodeInfo {
         INFO[idx] = opcode;
     }
 
-    /**
+    /*
      * Information about an opcode.
      */
     public static class Info {

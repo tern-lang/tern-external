@@ -37,14 +37,14 @@ import org.ternlang.dx.rop.type.TypeList;
 import org.ternlang.dx.util.ByteArray;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Class file with info taken from a {@code byte[]} or slice thereof.
  */
 public class DirectClassFile implements ClassFile {
-    /** the expected value of the ClassFile.magic field */
+    /* the expected value of the ClassFile.magic field */
     private static final int CLASS_FILE_MAGIC = 0xcafebabe;
 
-    /**
+    /*
      * minimum {@code .class} file major version
      *
      * See http://en.wikipedia.org/wiki/Java_class_file for an up-to-date
@@ -64,26 +64,26 @@ public class DirectClassFile implements ClassFile {
      */
     private static final int CLASS_FILE_MIN_MAJOR_VERSION = 45;
 
-    /**
+    /*
      * maximum {@code .class} file major version
      *
      * Note: if you change this, please change "java.class.version" in System.java.
      */
     private static final int CLASS_FILE_MAX_MAJOR_VERSION = 51;
 
-    /** maximum {@code .class} file minor version */
+    /* maximum {@code .class} file minor version */
     private static final int CLASS_FILE_MAX_MINOR_VERSION = 0;
 
-    /**
+    /*
      * {@code non-null;} the file path for the class, excluding any base directory
      * specification
      */
     private final String filePath;
 
-    /** {@code non-null;} the bytes of the file */
+    /* {@code non-null;} the bytes of the file */
     private final ByteArray bytes;
 
-    /**
+    /*
      * whether to be strict about parsing; if
      * {@code false}, this avoids doing checks that only exist
      * for purposes of verification (such as magic number matching and
@@ -91,64 +91,64 @@ public class DirectClassFile implements ClassFile {
      */
     private final boolean strictParse;
 
-    /**
+    /*
      * {@code null-ok;} the constant pool; only ever {@code null}
      * before the constant pool is successfully parsed
      */
     private StdConstantPool pool;
 
-    /**
+    /*
      * the class file field {@code access_flags}; will be {@code -1}
      * before the file is successfully parsed
      */
     private int accessFlags;
 
-    /**
+    /*
      * {@code null-ok;} the class file field {@code this_class},
      * interpreted as a type constant; only ever {@code null}
      * before the file is successfully parsed
      */
     private CstType thisClass;
 
-    /**
+    /*
      * {@code null-ok;} the class file field {@code super_class}, interpreted
      * as a type constant if non-zero
      */
     private CstType superClass;
 
-    /**
+    /*
      * {@code null-ok;} the class file field {@code interfaces}; only
      * ever {@code null} before the file is successfully
      * parsed
      */
     private TypeList interfaces;
 
-    /**
+    /*
      * {@code null-ok;} the class file field {@code fields}; only ever
      * {@code null} before the file is successfully parsed
      */
     private FieldList fields;
 
-    /**
+    /*
      * {@code null-ok;} the class file field {@code methods}; only ever
      * {@code null} before the file is successfully parsed
      */
     private MethodList methods;
 
-    /**
+    /*
      * {@code null-ok;} the class file field {@code attributes}; only
      * ever {@code null} before the file is successfully
      * parsed
      */
     private StdAttributeList attributes;
 
-    /** {@code null-ok;} attribute factory, if any */
+    /* {@code null-ok;} attribute factory, if any */
     private AttributeFactory attributeFactory;
 
-    /** {@code null-ok;} parse observer, if any */
+    /* {@code null-ok;} parse observer, if any */
     private ParseObserver observer;
 
-    /**
+    /*
      * Returns the string form of an object or {@code "(none)"}
      * (rather than {@code "null"}) for {@code null}.
      *
@@ -163,7 +163,7 @@ public class DirectClassFile implements ClassFile {
         return obj.toString();
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param bytes {@code non-null;} the bytes of the file
@@ -190,7 +190,7 @@ public class DirectClassFile implements ClassFile {
         this.accessFlags = -1;
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param bytes {@code non-null;} the bytes of the file
@@ -206,7 +206,7 @@ public class DirectClassFile implements ClassFile {
         this(new ByteArray(bytes), filePath, strictParse);
     }
 
-    /**
+    /*
      * Sets the parse observer for this instance.
      *
      * @param observer {@code null-ok;} the observer
@@ -215,7 +215,7 @@ public class DirectClassFile implements ClassFile {
         this.observer = observer;
     }
 
-    /**
+    /*
      * Sets the attribute factory to use.
      *
      * @param attributeFactory {@code non-null;} the attribute factory
@@ -228,7 +228,7 @@ public class DirectClassFile implements ClassFile {
         this.attributeFactory = attributeFactory;
     }
 
-    /**
+    /*
      * Gets the path where this class file is located.
      *
      * @return {@code non-null;} the filePath
@@ -237,7 +237,7 @@ public class DirectClassFile implements ClassFile {
       return filePath;
     }
 
-    /**
+    /*
      * Gets the {@link ByteArray} that this instance's data comes from.
      *
      * @return {@code non-null;} the bytes
@@ -246,73 +246,73 @@ public class DirectClassFile implements ClassFile {
         return bytes;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int getMagic() {
         parseToInterfacesIfNecessary();
         return getMagic0();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int getMinorVersion() {
         parseToInterfacesIfNecessary();
         return getMinorVersion0();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int getMajorVersion() {
         parseToInterfacesIfNecessary();
         return getMajorVersion0();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int getAccessFlags() {
         parseToInterfacesIfNecessary();
         return accessFlags;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public CstType getThisClass() {
         parseToInterfacesIfNecessary();
         return thisClass;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public CstType getSuperclass() {
         parseToInterfacesIfNecessary();
         return superClass;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public ConstantPool getConstantPool() {
         parseToInterfacesIfNecessary();
         return pool;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public TypeList getInterfaces() {
         parseToInterfacesIfNecessary();
         return interfaces;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public FieldList getFields() {
         parseToEndIfNecessary();
         return fields;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public MethodList getMethods() {
         parseToEndIfNecessary();
         return methods;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public AttributeList getAttributes() {
         parseToEndIfNecessary();
         return attributes;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public CstString getSourceFile() {
         AttributeList attribs = getAttributes();
         Attribute attSf = attribs.findFirst(AttSourceFile.ATTRIBUTE_NAME);
@@ -324,7 +324,7 @@ public class DirectClassFile implements ClassFile {
         return null;
     }
 
-    /**
+    /*
      * Constructs and returns an instance of {@link TypeList} whose
      * data comes from the bytes of this instance, interpreted as a
      * list of constant pool indices for classes, which are in turn
@@ -349,7 +349,7 @@ public class DirectClassFile implements ClassFile {
         return new DcfTypeList(bytes, offset, size, pool, observer);
     }
 
-    /**
+    /*
      * Gets the class file field {@code magic}, but without doing any
      * checks or parsing first.
      *
@@ -359,7 +359,7 @@ public class DirectClassFile implements ClassFile {
         return bytes.getInt(0);
     }
 
-    /**
+    /*
      * Gets the class file field {@code minor_version}, but
      * without doing any checks or parsing first.
      *
@@ -369,7 +369,7 @@ public class DirectClassFile implements ClassFile {
         return bytes.getUnsignedShort(4);
     }
 
-    /**
+    /*
      * Gets the class file field {@code major_version}, but
      * without doing any checks or parsing first.
      *
@@ -379,7 +379,7 @@ public class DirectClassFile implements ClassFile {
         return bytes.getUnsignedShort(6);
     }
 
-    /**
+    /*
      * Runs {@link #parse} if it has not yet been run to cover up to
      * the interfaces list.
      */
@@ -389,7 +389,7 @@ public class DirectClassFile implements ClassFile {
         }
     }
 
-    /**
+    /*
      * Runs {@link #parse} if it has not yet been run successfully.
      */
     private void parseToEndIfNecessary() {
@@ -398,7 +398,7 @@ public class DirectClassFile implements ClassFile {
         }
     }
 
-    /**
+    /*
      * Does the parsing, handing exceptions.
      */
     private void parse() {
@@ -414,7 +414,7 @@ public class DirectClassFile implements ClassFile {
         }
     }
 
-    /**
+    /*
      * Sees if the .class file header magic has the good value.
      *
      * @param magic the value of a classfile "magic" field
@@ -424,7 +424,7 @@ public class DirectClassFile implements ClassFile {
         return magic == CLASS_FILE_MAGIC;
     }
 
-    /**
+    /*
      * Sees if the .class file header version are within
      * range.
      *
@@ -454,7 +454,7 @@ public class DirectClassFile implements ClassFile {
         return false;
     }
 
-    /**
+    /*
      * Does the actual parsing.
      */
     private void parse0() {
@@ -569,7 +569,7 @@ public class DirectClassFile implements ClassFile {
         }
     }
 
-    /**
+    /*
      * Implementation of {@link TypeList} whose data comes directly
      * from the bytes of an instance of this (outer) class,
      * interpreted as a list of constant pool indices for classes
@@ -579,16 +579,16 @@ public class DirectClassFile implements ClassFile {
      * {@code Class}.
      */
     private static class DcfTypeList implements TypeList {
-        /** {@code non-null;} array containing the data */
+        /* {@code non-null;} array containing the data */
         private final ByteArray bytes;
 
-        /** number of elements in the list (not number of bytes) */
+        /* number of elements in the list (not number of bytes) */
         private final int size;
 
-        /** {@code non-null;} the constant pool */
+        /* {@code non-null;} the constant pool */
         private final StdConstantPool pool;
 
-        /**
+        /*
          * Constructs an instance.
          *
          * @param bytes {@code non-null;} original classfile's bytes
@@ -625,29 +625,29 @@ public class DirectClassFile implements ClassFile {
             }
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public boolean isMutable() {
             return false;
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public int size() {
             return size;
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public int getWordCount() {
             // It is the same as size because all elements are classes.
             return size;
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public Type getType(int n) {
             int idx = bytes.getUnsignedShort(n * 2);
             return ((CstType) pool.get(idx)).getClassType();
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public TypeList withAddedType(Type type) {
             throw new UnsupportedOperationException("unsupported");
         }

@@ -25,7 +25,7 @@ import org.ternlang.cglib.core.*;
 
 
 
-/**
+/*
  * <code>Mixin</code> allows
  * multiple objects to be combined into a single larger object. The
  * methods in the generated object simply call the original methods in the
@@ -48,7 +48,7 @@ abstract public class Mixin {
 
     abstract public Mixin newInstance(Object[] delegates);
 
-    /**
+    /*
      * Helper method to create an interface mixin. For finer control over the
      * generated instance, use a new instance of <code>Mixin</code>
      * instead of this static method.
@@ -60,7 +60,7 @@ abstract public class Mixin {
         return gen.create();
     }
 
-    /**
+    /*
      * Helper method to create an interface mixin. For finer control over the
      * generated instance, use a new instance of <code>Mixin</code>
      * instead of this static method.
@@ -79,7 +79,7 @@ abstract public class Mixin {
         return createBean(null, beans);
     
     }
-    /**
+    /*
      * Helper method to create a bean mixin. For finer control over the
      * generated instance, use a new instance of <code>Mixin</code>
      * instead of this static method.

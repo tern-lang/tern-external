@@ -20,32 +20,32 @@ import java.io.FilterWriter;
 import java.io.IOException;
 import java.io.Writer;
 
-/**
+/*
  * Writer that wraps another writer and passes width-limited and
  * optionally-prefixed output to its subordinate. When lines are
  * wrapped they are automatically indented based on the start of the
  * line.
  */
 public final class IndentingWriter extends FilterWriter {
-    /** {@code null-ok;} optional prefix for every line */
+    /* {@code null-ok;} optional prefix for every line */
     private final String prefix;
 
-    /** {@code > 0;} the maximum output width */
+    /* {@code > 0;} the maximum output width */
     private final int width;
 
-    /** {@code > 0;} the maximum indent */
+    /* {@code > 0;} the maximum indent */
     private final int maxIndent;
 
-    /** {@code >= 0;} current output column (zero-based) */
+    /* {@code >= 0;} current output column (zero-based) */
     private int column;
 
-    /** whether indent spaces are currently being collected */
+    /* whether indent spaces are currently being collected */
     private boolean collectingIndent;
 
-    /** {@code >= 0;} current indent amount */
+    /* {@code >= 0;} current indent amount */
     private int indent;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param out {@code non-null;} writer to send final output to
@@ -75,7 +75,7 @@ public final class IndentingWriter extends FilterWriter {
         bol();
     }
 
-    /**
+    /*
      * Constructs a no-prefix instance.
      *
      * @param out {@code non-null;} writer to send final output to
@@ -86,7 +86,7 @@ public final class IndentingWriter extends FilterWriter {
         this(out, width, "");
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void write(int c) throws IOException {
         synchronized (lock) {
@@ -134,7 +134,7 @@ public final class IndentingWriter extends FilterWriter {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void write(char[] cbuf, int off, int len) throws IOException {
         synchronized (lock) {
@@ -146,7 +146,7 @@ public final class IndentingWriter extends FilterWriter {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void write(String str, int off, int len) throws IOException {
         synchronized (lock) {
@@ -158,7 +158,7 @@ public final class IndentingWriter extends FilterWriter {
         }
     }
 
-    /**
+    /*
      * Indicates that output is at the beginning of a line.
      */
     private void bol() {

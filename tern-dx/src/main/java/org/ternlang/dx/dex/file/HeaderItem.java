@@ -22,36 +22,36 @@ import org.ternlang.dx.rop.cst.CstString;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * File header section of a {@code .dex} file.
  */
 public final class HeaderItem extends IndexedItem {
-    /**
+    /*
      * Constructs an instance.
      */
     public HeaderItem() {
         // This space intentionally left blank.
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public ItemType itemType() {
         return ItemType.TYPE_HEADER_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int writeSize() {
         return SizeOf.HEADER_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void addContents(DexFile file) {
         // Nothing to do here.
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void writeTo(DexFile file, AnnotatedOutput out) {
         int mapOff = file.getMap().getFileOffset();

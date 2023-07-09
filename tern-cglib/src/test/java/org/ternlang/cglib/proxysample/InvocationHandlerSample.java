@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
 
 import org.ternlang.cglib.proxy.InvocationHandler;
 
-/**
+/*
  * @author neeme
  *
  */
@@ -27,7 +27,7 @@ public class InvocationHandlerSample implements InvocationHandler {
 
     private Object o;
 
-    /**
+    /*
      * Constructor for InvocationHandlerSample.
      */
     public InvocationHandlerSample(Object o) {

@@ -21,17 +21,17 @@ import java.util.ArrayList;
 import org.ternlang.dx.ssa.SetFactory;
 import org.ternlang.dx.util.IntSet;
 
-/**
+/*
  * A register interference graph
  */
 public class InterferenceGraph {
-    /**
+    /*
      * {@code non-null;} interference graph, indexed by register in
      * both dimensions
      */
     private final ArrayList<IntSet> interference;
 
-    /**
+    /*
      * Creates a new graph.
      *
      * @param countRegs {@code >= 0;} the start count of registers in
@@ -45,7 +45,7 @@ public class InterferenceGraph {
         }
     }
 
-    /**
+    /*
      * Adds a register pair to the interference/liveness graph. Parameter
      * order is insignificant.
      *
@@ -59,7 +59,7 @@ public class InterferenceGraph {
         interference.get(regW).add(regV);
     }
 
-    /**
+    /*
      * Dumps interference graph to stdout for debugging.
      */
     public void dumpToStdout() {
@@ -74,7 +74,7 @@ public class InterferenceGraph {
         }
     }
 
-    /**
+    /*
      * Merges the interference set for a register into a given bit set
      *
      * @param reg {@code >= 0;} register
@@ -87,7 +87,7 @@ public class InterferenceGraph {
         }
     }
 
-    /**
+    /*
      * Ensures that the interference graph is appropriately sized.
      *
      * @param size requested minumum size

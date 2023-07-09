@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -34,34 +34,34 @@ import java.util.NoSuchElementException;
 
 import org.ternlang.asm.MethodVisitor;
 
-/**
+/*
  * A doubly linked list of {@link AbstractInsnNode} objects. <i>This
  * implementation is not thread safe</i>.
  */
 public class InsnList {
 
-    /**
+    /*
      * The number of instructions in this list.
      */
     private int size;
 
-    /**
+    /*
      * The first instruction in this list. May be <tt>null</tt>.
      */
     private AbstractInsnNode first;
 
-    /**
+    /*
      * The last instruction in this list. May be <tt>null</tt>.
      */
     private AbstractInsnNode last;
 
-    /**
+    /*
      * A cache of the instructions of this list. This cache is used to improve
      * the performance of the {@link #get} method.
      */
     AbstractInsnNode[] cache;
 
-    /**
+    /*
      * Returns the number of instructions in this list.
      * 
      * @return the number of instructions in this list.
@@ -70,7 +70,7 @@ public class InsnList {
         return size;
     }
 
-    /**
+    /*
      * Returns the first instruction in this list.
      * 
      * @return the first instruction in this list, or <tt>null</tt> if the list
@@ -80,7 +80,7 @@ public class InsnList {
         return first;
     }
 
-    /**
+    /*
      * Returns the last instruction in this list.
      * 
      * @return the last instruction in this list, or <tt>null</tt> if the list
@@ -90,7 +90,7 @@ public class InsnList {
         return last;
     }
 
-    /**
+    /*
      * Returns the instruction whose index is given. This method builds a cache
      * of the instructions in this list to avoid scanning the whole list each
      * time it is called. Once the cache is built, this method run in constant
@@ -112,7 +112,7 @@ public class InsnList {
         return cache[index];
     }
 
-    /**
+    /*
      * Returns <tt>true</tt> if the given instruction belongs to this list. This
      * method always scans the instructions of this list until it finds the
      * given instruction or reaches the end of the list.
@@ -129,7 +129,7 @@ public class InsnList {
         return i != null;
     }
 
-    /**
+    /*
      * Returns the index of the given instruction in this list. This method
      * builds a cache of the instruction indexes to avoid scanning the whole
      * list each time it is called. Once the cache is built, this method run in
@@ -150,7 +150,7 @@ public class InsnList {
         return insn.index;
     }
 
-    /**
+    /*
      * Makes the given visitor visit all of the instructions in this list.
      * 
      * @param mv
@@ -164,7 +164,7 @@ public class InsnList {
         }
     }
 
-    /**
+    /*
      * Returns an iterator over the instructions in this list.
      * 
      * @return an iterator over the instructions in this list.
@@ -173,7 +173,7 @@ public class InsnList {
         return iterator(0);
     }
 
-    /**
+    /*
      * Returns an iterator over the instructions in this list.
      * 
      * @param index
@@ -186,7 +186,7 @@ public class InsnList {
         return new InsnListIterator(index);
     }
 
-    /**
+    /*
      * Returns an array containing all of the instructions in this list.
      * 
      * @return an array containing all of the instructions in this list.
@@ -203,7 +203,7 @@ public class InsnList {
         return insns;
     }
 
-    /**
+    /*
      * Replaces an instruction of this list with another instruction.
      * 
      * @param location
@@ -239,7 +239,7 @@ public class InsnList {
         location.next = null;
     }
 
-    /**
+    /*
      * Adds the given instruction to the end of this list.
      * 
      * @param insn
@@ -260,7 +260,7 @@ public class InsnList {
         insn.index = 0; // insn now belongs to an InsnList
     }
 
-    /**
+    /*
      * Adds the given instructions to the end of this list.
      * 
      * @param insns
@@ -285,7 +285,7 @@ public class InsnList {
         insns.removeAll(false);
     }
 
-    /**
+    /*
      * Inserts the given instruction at the begining of this list.
      * 
      * @param insn
@@ -306,7 +306,7 @@ public class InsnList {
         insn.index = 0; // insn now belongs to an InsnList
     }
 
-    /**
+    /*
      * Inserts the given instructions at the begining of this list.
      * 
      * @param insns
@@ -331,7 +331,7 @@ public class InsnList {
         insns.removeAll(false);
     }
 
-    /**
+    /*
      * Inserts the given instruction after the specified instruction.
      * 
      * @param location
@@ -357,7 +357,7 @@ public class InsnList {
         insn.index = 0; // insn now belongs to an InsnList
     }
 
-    /**
+    /*
      * Inserts the given instructions after the specified instruction.
      * 
      * @param location
@@ -387,7 +387,7 @@ public class InsnList {
         insns.removeAll(false);
     }
 
-    /**
+    /*
      * Inserts the given instruction before the specified instruction.
      * 
      * @param location
@@ -413,7 +413,7 @@ public class InsnList {
         insn.index = 0; // insn now belongs to an InsnList
     }
 
-    /**
+    /*
      * Inserts the given instructions before the specified instruction.
      * 
      * @param location
@@ -444,7 +444,7 @@ public class InsnList {
         insns.removeAll(false);
     }
 
-    /**
+    /*
      * Removes the given instruction from this list.
      * 
      * @param insn
@@ -477,7 +477,7 @@ public class InsnList {
         insn.next = null;
     }
 
-    /**
+    /*
      * Removes all of the instructions of this list.
      * 
      * @param mark
@@ -501,14 +501,14 @@ public class InsnList {
         cache = null;
     }
 
-    /**
+    /*
      * Removes all of the instructions of this list.
      */
     public void clear() {
         removeAll(false);
     }
 
-    /**
+    /*
      * Reset all labels in the instruction list. This method should be called
      * before reusing same instructions list between several
      * <code>ClassWriter</code>s.

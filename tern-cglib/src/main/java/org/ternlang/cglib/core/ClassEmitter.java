@@ -25,7 +25,7 @@ import org.ternlang.cglib.transform.ClassTransformer;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
+/*
  * @author Juozas Baliuka, Chris Nokleberg
  */
 public class ClassEmitter extends ClassTransformer {

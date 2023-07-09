@@ -25,18 +25,18 @@ import org.ternlang.dx.rop.cst.CstString;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Strings list section of a {@code .dex} file.
  */
 public final class StringIdsSection
         extends UniformItemSection {
-    /**
+    /*
      * {@code non-null;} map from string constants to {@link
      * StringIdItem} instances
      */
     private final TreeMap<CstString, StringIdItem> strings;
 
-    /**
+    /*
      * Constructs an instance. The file offset is initially unknown.
      *
      * @param file {@code non-null;} file that this instance is part of
@@ -47,13 +47,13 @@ public final class StringIdsSection
         strings = new TreeMap<CstString, StringIdItem>();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Collection<? extends Item> items() {
         return strings.values();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public IndexedItem get(Constant cst) {
         if (cst == null) {
@@ -71,7 +71,7 @@ public final class StringIdsSection
         return result;
     }
 
-    /**
+    /*
      * Writes the portion of the file header that refers to this instance.
      *
      * @param out {@code non-null;} where to write
@@ -91,7 +91,7 @@ public final class StringIdsSection
         out.writeInt(offset);
     }
 
-    /**
+    /*
      * Interns an element into this instance.
      *
      * @param string {@code non-null;} the string to intern, as a regular Java
@@ -102,7 +102,7 @@ public final class StringIdsSection
         return intern(new StringIdItem(new CstString(string)));
     }
 
-    /**
+    /*
      * Interns an element into this instance.
      *
      * @param string {@code non-null;} the string to intern, as a constant
@@ -112,7 +112,7 @@ public final class StringIdsSection
         return intern(new StringIdItem(string));
     }
 
-    /**
+    /*
      * Interns an element into this instance.
      *
      * @param string {@code non-null;} the string to intern
@@ -136,7 +136,7 @@ public final class StringIdsSection
         return string;
     }
 
-    /**
+    /*
      * Interns the components of a name-and-type into this instance.
      *
      * @param nat {@code non-null;} the name-and-type
@@ -146,7 +146,7 @@ public final class StringIdsSection
         intern(nat.getDescriptor());
     }
 
-    /**
+    /*
      * Gets the index of the given string, which must have been added
      * to this instance.
      *
@@ -169,7 +169,7 @@ public final class StringIdsSection
         return s.getIndex();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void orderItems() {
         int idx = 0;

@@ -20,15 +20,15 @@ import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.util.FixedSizeList;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Ordered list of (exception type, handler address) entries.
  */
 public final class CatchHandlerList extends FixedSizeList
         implements Comparable<CatchHandlerList> {
-    /** {@code non-null;} empty instance */
+    /* {@code non-null;} empty instance */
     public static final CatchHandlerList EMPTY = new CatchHandlerList(0);
 
-    /**
+    /*
      * Constructs an instance. All indices initially contain {@code null}.
      *
      * @param size {@code >= 0;} the size of the list
@@ -37,7 +37,7 @@ public final class CatchHandlerList extends FixedSizeList
         super(size);
     }
 
-    /**
+    /*
      * Gets the element at the given index. It is an error to call
      * this with the index for an element which was never set; if you
      * do that, this will throw {@code NullPointerException}.
@@ -49,12 +49,12 @@ public final class CatchHandlerList extends FixedSizeList
         return (Entry) get0(n);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return toHuman("", "");
     }
 
-    /**
+    /*
      * Get the human form of this instance, prefixed on each line
      * with the string.
      *
@@ -93,7 +93,7 @@ public final class CatchHandlerList extends FixedSizeList
         return sb.toString();
     }
 
-    /**
+    /*
      * Returns whether or not this instance ends with a "catch-all"
      * handler.
      *
@@ -111,7 +111,7 @@ public final class CatchHandlerList extends FixedSizeList
         return last.getExceptionType().equals(CstType.OBJECT);
     }
 
-    /**
+    /*
      * Sets the entry at the given index.
      *
      * @param n {@code >= 0, < size();} which index
@@ -122,7 +122,7 @@ public final class CatchHandlerList extends FixedSizeList
         set0(n, new Entry(exceptionType, handler));
     }
 
-    /**
+    /*
      * Sets the entry at the given index.
      *
      * @param n {@code >= 0, < size();} which index
@@ -132,7 +132,7 @@ public final class CatchHandlerList extends FixedSizeList
         set0(n, entry);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int compareTo(CatchHandlerList other) {
         if (this == other) {
             // Easy out.
@@ -161,17 +161,17 @@ public final class CatchHandlerList extends FixedSizeList
         return 0;
     }
 
-    /**
+    /*
      * Entry in the list.
      */
     public static class Entry implements Comparable<Entry> {
-        /** {@code non-null;} type of exception handled */
+        /* {@code non-null;} type of exception handled */
         private final CstType exceptionType;
 
-        /** {@code >= 0;} exception handler address */
+        /* {@code >= 0;} exception handler address */
         private final int handler;
 
-        /**
+        /*
          * Constructs an instance.
          *
          * @param exceptionType {@code non-null;} type of exception handled
@@ -190,13 +190,13 @@ public final class CatchHandlerList extends FixedSizeList
             this.exceptionType = exceptionType;
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         @Override
         public int hashCode() {
             return (handler * 31) + exceptionType.hashCode();
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         @Override
         public boolean equals(Object other) {
             if (other instanceof Entry) {
@@ -206,7 +206,7 @@ public final class CatchHandlerList extends FixedSizeList
             return false;
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public int compareTo(Entry other) {
             if (handler < other.handler) {
                 return -1;
@@ -217,7 +217,7 @@ public final class CatchHandlerList extends FixedSizeList
             return exceptionType.compareTo(other.exceptionType);
         }
 
-        /**
+        /*
          * Gets the exception type handled.
          *
          * @return {@code non-null;} the exception type
@@ -226,7 +226,7 @@ public final class CatchHandlerList extends FixedSizeList
             return exceptionType;
         }
 
-        /**
+        /*
          * Gets the handler address.
          *
          * @return {@code >= 0;} the handler address

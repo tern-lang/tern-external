@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -33,7 +33,7 @@ import java.util.List;
 
 import org.ternlang.asm.Type;
 
-/**
+/*
  * An extended {@link BasicVerifier} that performs more precise verifications.
  * This verifier computes exact class types, instead of using a single "object
  * reference" type (as done in the {@link BasicVerifier}).
@@ -43,39 +43,39 @@ import org.ternlang.asm.Type;
  */
 public class SimpleVerifier extends BasicVerifier {
 
-    /**
+    /*
      * The class that is verified.
      */
     private final Type currentClass;
 
-    /**
+    /*
      * The super class of the class that is verified.
      */
     private final Type currentSuperClass;
 
-    /**
+    /*
      * The interfaces implemented by the class that is verified.
      */
     private final List<Type> currentClassInterfaces;
 
-    /**
+    /*
      * If the class that is verified is an interface.
      */
     private final boolean isInterface;
 
-    /**
+    /*
      * The loader to use for referenced classes.
      */
     private ClassLoader loader = getClass().getClassLoader();
 
-    /**
+    /*
      * Constructs a new {@link SimpleVerifier}.
      */
     public SimpleVerifier() {
         this(null, null, false);
     }
 
-    /**
+    /*
      * Constructs a new {@link SimpleVerifier} to verify a specific class. This
      * class will not be loaded into the JVM since it may be incorrect.
      * 
@@ -91,7 +91,7 @@ public class SimpleVerifier extends BasicVerifier {
         this(currentClass, currentSuperClass, null, isInterface);
     }
 
-    /**
+    /*
      * Constructs a new {@link SimpleVerifier} to verify a specific class. This
      * class will not be loaded into the JVM since it may be incorrect.
      * 
@@ -121,7 +121,7 @@ public class SimpleVerifier extends BasicVerifier {
         this.isInterface = isInterface;
     }
 
-    /**
+    /*
      * Set the <code>ClassLoader</code> which will be used to load referenced
      * classes. This is useful if you are verifying multiple interdependent
      * classes.

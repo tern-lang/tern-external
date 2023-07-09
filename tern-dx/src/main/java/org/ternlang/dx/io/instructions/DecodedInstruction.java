@@ -24,7 +24,7 @@ import org.ternlang.dx.io.OpcodeInfo;
 import org.ternlang.dx.io.Opcodes;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * A decoded Dalvik instruction. This consists of a format codec, a
  * numeric opcode, an optional index type, and any additional
  * arguments of the instruction. The additional arguments (if any) are
@@ -38,33 +38,33 @@ import org.ternlang.dx.util.Hex;
  * consistently named alphabetically.</p>
  */
 public abstract class DecodedInstruction {
-    /** non-null; instruction format / codec */
+    /* non-null; instruction format / codec */
     private final InstructionCodec format;
 
-    /** opcode number */
+    /* opcode number */
     private final int opcode;
 
-    /** constant index argument */
+    /* constant index argument */
     private final int index;
 
-    /** null-ok; index type */
+    /* null-ok; index type */
     private final IndexType indexType;
 
-    /**
+    /*
      * target address argument. This is an absolute address, not just
      * a signed offset. <b>Note:</b> The address is unsigned, even
      * though it is stored in an {@code int}.
      */
     private final int target;
 
-    /**
+    /*
      * literal value argument; also used for special verification error
      * constants (format 20bc) as well as should-be-zero values
      * (formats 10x, 20t, 30t, and 32x)
      */
     private final long literal;
 
-    /**
+    /*
      * Decodes an instruction from the given input source.
      */
     public static DecodedInstruction decode(CodeInput in) throws EOFException {
@@ -75,7 +75,7 @@ public abstract class DecodedInstruction {
         return format.decode(opcodeUnit, in);
     }
 
-    /**
+    /*
      * Decodes an array of instructions. The result has non-null
      * elements at each offset that represents the start of an
      * instruction.
@@ -96,7 +96,7 @@ public abstract class DecodedInstruction {
         return decoded;
     }
 
-    /**
+    /*
      * Constructs an instance.
      */
     public DecodedInstruction(InstructionCodec format, int opcode,
@@ -125,7 +125,7 @@ public abstract class DecodedInstruction {
         return opcode;
     }
 
-    /**
+    /*
      * Gets the opcode, as a code unit.
      */
     public final short getOpcodeUnit() {
@@ -136,7 +136,7 @@ public abstract class DecodedInstruction {
         return index;
     }
 
-    /**
+    /*
      * Gets the index, as a code unit.
      */
     public final short getIndexUnit() {
@@ -147,21 +147,21 @@ public abstract class DecodedInstruction {
         return indexType;
     }
 
-    /**
+    /*
      * Gets the raw target.
      */
     public final int getTarget() {
         return target;
     }
 
-    /**
+    /*
      * Gets the target as a relative offset from the given address.
      */
     public final int getTarget(int baseAddress) {
         return target - baseAddress;
     }
 
-    /**
+    /*
      * Gets the target as a relative offset from the given base
      * address, as a code unit. This will throw if the value is out of
      * the range of a signed code unit.
@@ -177,7 +177,7 @@ public abstract class DecodedInstruction {
         return (short) relativeTarget;
     }
 
-    /**
+    /*
      * Gets the target as a relative offset from the given base
      * address, masked to be a byte in size. This will throw if the
      * value is out of the range of a signed byte.
@@ -197,7 +197,7 @@ public abstract class DecodedInstruction {
         return literal;
     }
 
-    /**
+    /*
      * Gets the literal value, masked to be an int in size. This will
      * throw if the value is out of the range of a signed int.
      */
@@ -209,7 +209,7 @@ public abstract class DecodedInstruction {
         return (int) literal;
     }
 
-    /**
+    /*
      * Gets the literal value, as a code unit. This will throw if the
      * value is out of the range of a signed code unit.
      */
@@ -221,7 +221,7 @@ public abstract class DecodedInstruction {
         return (short) literal;
     }
 
-    /**
+    /*
      * Gets the literal value, masked to be a byte in size. This will
      * throw if the value is out of the range of a signed byte.
      */
@@ -233,7 +233,7 @@ public abstract class DecodedInstruction {
         return (int) literal & 0xff;
     }
 
-    /**
+    /*
      * Gets the literal value, masked to be a nibble in size. This
      * will throw if the value is out of the range of a signed nibble.
      */
@@ -267,7 +267,7 @@ public abstract class DecodedInstruction {
         return 0;
     }
 
-    /**
+    /*
      * Gets the register count, as a code unit. This will throw if the
      * value is out of the range of an unsigned code unit.
      */
@@ -282,7 +282,7 @@ public abstract class DecodedInstruction {
         return (short) registerCount;
     }
 
-    /**
+    /*
      * Gets the A register number, as a code unit. This will throw if the
      * value is out of the range of an unsigned code unit.
      */
@@ -296,7 +296,7 @@ public abstract class DecodedInstruction {
         return (short) a;
     }
 
-    /**
+    /*
      * Gets the A register number, as a byte. This will throw if the
      * value is out of the range of an unsigned byte.
      */
@@ -310,7 +310,7 @@ public abstract class DecodedInstruction {
         return (short) a;
     }
 
-    /**
+    /*
      * Gets the A register number, as a nibble. This will throw if the
      * value is out of the range of an unsigned nibble.
      */
@@ -324,7 +324,7 @@ public abstract class DecodedInstruction {
         return (short) a;
     }
 
-    /**
+    /*
      * Gets the B register number, as a code unit. This will throw if the
      * value is out of the range of an unsigned code unit.
      */
@@ -338,7 +338,7 @@ public abstract class DecodedInstruction {
         return (short) b;
     }
 
-    /**
+    /*
      * Gets the B register number, as a byte. This will throw if the
      * value is out of the range of an unsigned byte.
      */
@@ -352,7 +352,7 @@ public abstract class DecodedInstruction {
         return (short) b;
     }
 
-    /**
+    /*
      * Gets the B register number, as a nibble. This will throw if the
      * value is out of the range of an unsigned nibble.
      */
@@ -366,7 +366,7 @@ public abstract class DecodedInstruction {
         return (short) b;
     }
 
-    /**
+    /*
      * Gets the C register number, as a code unit. This will throw if the
      * value is out of the range of an unsigned code unit.
      */
@@ -380,7 +380,7 @@ public abstract class DecodedInstruction {
         return (short) c;
     }
 
-    /**
+    /*
      * Gets the C register number, as a byte. This will throw if the
      * value is out of the range of an unsigned byte.
      */
@@ -394,7 +394,7 @@ public abstract class DecodedInstruction {
         return (short) c;
     }
 
-    /**
+    /*
      * Gets the C register number, as a nibble. This will throw if the
      * value is out of the range of an unsigned nibble.
      */
@@ -408,7 +408,7 @@ public abstract class DecodedInstruction {
         return (short) c;
     }
 
-    /**
+    /*
      * Gets the D register number, as a code unit. This will throw if the
      * value is out of the range of an unsigned code unit.
      */
@@ -422,7 +422,7 @@ public abstract class DecodedInstruction {
         return (short) d;
     }
 
-    /**
+    /*
      * Gets the D register number, as a byte. This will throw if the
      * value is out of the range of an unsigned byte.
      */
@@ -436,7 +436,7 @@ public abstract class DecodedInstruction {
         return (short) d;
     }
 
-    /**
+    /*
      * Gets the D register number, as a nibble. This will throw if the
      * value is out of the range of an unsigned nibble.
      */
@@ -450,7 +450,7 @@ public abstract class DecodedInstruction {
         return (short) d;
     }
 
-    /**
+    /*
      * Gets the E register number, as a nibble. This will throw if the
      * value is out of the range of an unsigned nibble.
      */
@@ -464,14 +464,14 @@ public abstract class DecodedInstruction {
         return (short) e;
     }
 
-    /**
+    /*
      * Encodes this instance to the given output.
      */
     public final void encode(CodeOutput out) {
         format.encode(this, out);
     }
 
-    /**
+    /*
      * Returns an instance just like this one, except with the index replaced
      * with the given one.
      */

@@ -26,15 +26,15 @@ import org.ternlang.dx.rop.cst.Constant;
 import org.ternlang.dx.rop.cst.CstLiteralBits;
 import org.ternlang.dx.util.AnnotatedOutput;
 
-/**
+/*
  * Instruction format {@code 22s}. See the instruction format spec
  * for details.
  */
 public final class Form22s extends InsnFormat {
-    /** {@code non-null;} unique instance of this class */
+    /* {@code non-null;} unique instance of this class */
     public static final InsnFormat THE_ONE = new Form22s();
 
-    /**
+    /*
      * Constructs an instance. This class is not publicly
      * instantiable. Use {@link #THE_ONE}.
      */
@@ -42,7 +42,7 @@ public final class Form22s extends InsnFormat {
         // This space intentionally left blank.
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String insnArgString(DalvInsn insn) {
         RegisterSpecList regs = insn.getRegisters();
@@ -52,20 +52,20 @@ public final class Form22s extends InsnFormat {
             + ", " + literalBitsString(value);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String insnCommentString(DalvInsn insn, boolean noteIndices) {
         CstLiteralBits value = (CstLiteralBits) ((CstInsn) insn).getConstant();
         return literalBitsComment(value, 16);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int codeSize() {
         return 2;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean isCompatible(DalvInsn insn) {
         RegisterSpecList regs = insn.getRegisters();
@@ -88,7 +88,7 @@ public final class Form22s extends InsnFormat {
         return cb.fitsInInt() && signedFitsInShort(cb.getIntBits());
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public BitSet compatibleRegs(DalvInsn insn) {
         RegisterSpecList regs = insn.getRegisters();
@@ -99,7 +99,7 @@ public final class Form22s extends InsnFormat {
         return bits;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void writeTo(AnnotatedOutput out, DalvInsn insn) {
         RegisterSpecList regs = insn.getRegisters();

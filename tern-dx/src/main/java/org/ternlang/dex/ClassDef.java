@@ -16,7 +16,7 @@
 
 package org.ternlang.dex;
 
-/**
+/*
  * A type definition.
  */
 public final class ClassDef {

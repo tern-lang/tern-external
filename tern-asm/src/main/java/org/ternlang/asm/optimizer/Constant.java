@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -34,14 +34,14 @@ import java.util.Arrays;
 import org.ternlang.asm.ClassWriter;
 import org.ternlang.asm.Handle;
 
-/**
+/*
  * A constant pool item.
  * 
  * @author Eric Bruneton
  */
 class Constant {
 
-    /**
+    /*
      * Type of this constant pool item. A single class is used to represent all
      * constant pool item types, in order to minimize the bytecode size of this
      * package. The value of this field is I, J, F, D, S, s, C, T, G, M, N, y,
@@ -66,50 +66,50 @@ class Constant {
      */
     char type;
 
-    /**
+    /*
      * Value of this item, for an integer item.
      */
     int intVal;
 
-    /**
+    /*
      * Value of this item, for a long item.
      */
     long longVal;
 
-    /**
+    /*
      * Value of this item, for a float item.
      */
     float floatVal;
 
-    /**
+    /*
      * Value of this item, for a double item.
      */
     double doubleVal;
 
-    /**
+    /*
      * First part of the value of this item, for items that do not hold a
      * primitive value.
      */
     String strVal1;
 
-    /**
+    /*
      * Second part of the value of this item, for items that do not hold a
      * primitive value.
      */
     String strVal2;
 
-    /**
+    /*
      * Third part of the value of this item, for items that do not hold a
      * primitive value.
      */
     Object objVal3;
 
-    /**
+    /*
      * InvokeDynamic's constant values.
      */
     Object[] objVals;
 
-    /**
+    /*
      * The hash code value of this constant pool item.
      */
     int hashCode;
@@ -130,7 +130,7 @@ class Constant {
         hashCode = i.hashCode;
     }
 
-    /**
+    /*
      * Sets this item to an integer item.
      * 
      * @param intVal
@@ -142,7 +142,7 @@ class Constant {
         this.hashCode = 0x7FFFFFFF & (type + intVal);
     }
 
-    /**
+    /*
      * Sets this item to a long item.
      * 
      * @param longVal
@@ -154,7 +154,7 @@ class Constant {
         this.hashCode = 0x7FFFFFFF & (type + (int) longVal);
     }
 
-    /**
+    /*
      * Sets this item to a float item.
      * 
      * @param floatVal
@@ -166,7 +166,7 @@ class Constant {
         this.hashCode = 0x7FFFFFFF & (type + (int) floatVal);
     }
 
-    /**
+    /*
      * Sets this item to a double item.
      * 
      * @param doubleVal
@@ -178,7 +178,7 @@ class Constant {
         this.hashCode = 0x7FFFFFFF & (type + (int) doubleVal);
     }
 
-    /**
+    /*
      * Sets this item to an item that do not hold a primitive value.
      * 
      * @param type
@@ -217,7 +217,7 @@ class Constant {
         }
     }
 
-    /**
+    /*
      * Set this item to an InvokeDynamic item.
      * 
      * @param name

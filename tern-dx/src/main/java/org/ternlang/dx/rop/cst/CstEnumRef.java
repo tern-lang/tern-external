@@ -18,15 +18,15 @@ package org.ternlang.dx.rop.cst;
 
 import org.ternlang.dx.rop.type.Type;
 
-/**
+/*
  * Constant type to represent a reference to a particular constant
  * value of an enumerated type.
  */
 public final class CstEnumRef extends CstMemberRef {
-    /** {@code null-ok;} the corresponding field ref, lazily initialized */
+    /* {@code null-ok;} the corresponding field ref, lazily initialized */
     private CstFieldRef fieldRef;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param nat {@code non-null;} the name-and-type; the defining class is derived
@@ -38,13 +38,13 @@ public final class CstEnumRef extends CstMemberRef {
         fieldRef = null;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String typeName() {
         return "enum";
     }
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * <b>Note:</b> This returns the enumerated type.
@@ -53,7 +53,7 @@ public final class CstEnumRef extends CstMemberRef {
         return getDefiningClass().getClassType();
     }
 
-    /**
+    /*
      * Get a {@link CstFieldRef} that corresponds with this instance.
      *
      * @return {@code non-null;} the corresponding field reference

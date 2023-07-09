@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -31,7 +31,7 @@ package org.ternlang.asm.commons;
 
 import org.ternlang.asm.Label;
 
-/**
+/*
  * A code generator for switch statements.
  * 
  * @author Juozas Baliuka
@@ -40,7 +40,7 @@ import org.ternlang.asm.Label;
  */
 public interface TableSwitchGenerator {
 
-    /**
+    /*
      * Generates the code for a switch case.
      * 
      * @param key
@@ -50,7 +50,7 @@ public interface TableSwitchGenerator {
      */
     void generateCase(int key, Label end);
 
-    /**
+    /*
      * Generates the code for the default switch case.
      */
     void generateDefault();

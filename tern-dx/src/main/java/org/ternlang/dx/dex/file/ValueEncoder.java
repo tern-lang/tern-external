@@ -42,66 +42,66 @@ import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Handler for writing out {@code encoded_values} and parts
  * thereof.
  */
 public final class ValueEncoder {
-    /** annotation value type constant: {@code byte} */
+    /* annotation value type constant: {@code byte} */
     private static final int VALUE_BYTE = 0x00;
 
-    /** annotation value type constant: {@code short} */
+    /* annotation value type constant: {@code short} */
     private static final int VALUE_SHORT = 0x02;
 
-    /** annotation value type constant: {@code char} */
+    /* annotation value type constant: {@code char} */
     private static final int VALUE_CHAR = 0x03;
 
-    /** annotation value type constant: {@code int} */
+    /* annotation value type constant: {@code int} */
     private static final int VALUE_INT = 0x04;
 
-    /** annotation value type constant: {@code long} */
+    /* annotation value type constant: {@code long} */
     private static final int VALUE_LONG = 0x06;
 
-    /** annotation value type constant: {@code float} */
+    /* annotation value type constant: {@code float} */
     private static final int VALUE_FLOAT = 0x10;
 
-    /** annotation value type constant: {@code double} */
+    /* annotation value type constant: {@code double} */
     private static final int VALUE_DOUBLE = 0x11;
 
-    /** annotation value type constant: {@code string} */
+    /* annotation value type constant: {@code string} */
     private static final int VALUE_STRING = 0x17;
 
-    /** annotation value type constant: {@code type} */
+    /* annotation value type constant: {@code type} */
     private static final int VALUE_TYPE = 0x18;
 
-    /** annotation value type constant: {@code field} */
+    /* annotation value type constant: {@code field} */
     private static final int VALUE_FIELD = 0x19;
 
-    /** annotation value type constant: {@code method} */
+    /* annotation value type constant: {@code method} */
     private static final int VALUE_METHOD = 0x1a;
 
-    /** annotation value type constant: {@code enum} */
+    /* annotation value type constant: {@code enum} */
     private static final int VALUE_ENUM = 0x1b;
 
-    /** annotation value type constant: {@code array} */
+    /* annotation value type constant: {@code array} */
     private static final int VALUE_ARRAY = 0x1c;
 
-    /** annotation value type constant: {@code annotation} */
+    /* annotation value type constant: {@code annotation} */
     private static final int VALUE_ANNOTATION = 0x1d;
 
-    /** annotation value type constant: {@code null} */
+    /* annotation value type constant: {@code null} */
     private static final int VALUE_NULL = 0x1e;
 
-    /** annotation value type constant: {@code boolean} */
+    /* annotation value type constant: {@code boolean} */
     private static final int VALUE_BOOLEAN = 0x1f;
 
-    /** {@code non-null;} file being written */
+    /* {@code non-null;} file being written */
     private final DexFile file;
 
-    /** {@code non-null;} output stream to write to */
+    /* {@code non-null;} output stream to write to */
     private final AnnotatedOutput out;
 
-    /**
+    /*
      * Construct an instance.
      *
      * @param file {@code non-null;} file being written
@@ -120,7 +120,7 @@ public final class ValueEncoder {
         this.out = out;
     }
 
-    /**
+    /*
      * Writes out the encoded form of the given constant.
      *
      * @param cst {@code non-null;} the constant to write
@@ -206,7 +206,7 @@ public final class ValueEncoder {
         }
     }
 
-    /**
+    /*
      * Gets the value type for the given constant.
      *
      * @param cst {@code non-null;} the constant
@@ -255,7 +255,7 @@ public final class ValueEncoder {
         }
     }
 
-    /**
+    /*
      * Writes out the encoded form of the given array, that is, as
      * an {@code encoded_array} and not including a
      * {@code value_type} prefix. If the output stream keeps
@@ -293,7 +293,7 @@ public final class ValueEncoder {
         }
     }
 
-    /**
+    /*
      * Writes out the encoded form of the given annotation, that is,
      * as an {@code encoded_annotation} and not including a
      * {@code value_type} prefix. If the output stream keeps
@@ -357,7 +357,7 @@ public final class ValueEncoder {
         }
     }
 
-    /**
+    /*
      * Gets the colloquial type name and human form of the type of the
      * given constant, when used as an encoded value.
      *
@@ -380,7 +380,7 @@ public final class ValueEncoder {
         return sb.toString();
     }
 
-    /**
+    /*
      * Helper for {@code addContents()} methods, which adds
      * contents for a particular {@link Annotation}, calling itself
      * recursively should it encounter a nested annotation.
@@ -400,7 +400,7 @@ public final class ValueEncoder {
         }
     }
 
-    /**
+    /*
      * Helper for {@code addContents()} methods, which adds
      * contents for a particular constant, calling itself recursively
      * should it encounter a {@link CstArray} and calling {@link

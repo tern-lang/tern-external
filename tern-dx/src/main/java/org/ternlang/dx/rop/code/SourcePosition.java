@@ -19,31 +19,31 @@ package org.ternlang.dx.rop.code;
 import org.ternlang.dx.rop.cst.CstString;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Information about a source position for code, which includes both a
  * line number and original bytecode address.
  */
 public final class SourcePosition {
-    /** {@code non-null;} convenient "no information known" instance */
+    /* {@code non-null;} convenient "no information known" instance */
     public static final SourcePosition NO_INFO =
         new SourcePosition(null, -1, -1);
 
-    /** {@code null-ok;} name of the file of origin or {@code null} if unknown */
+    /* {@code null-ok;} name of the file of origin or {@code null} if unknown */
     private final CstString sourceFile;
 
-    /**
+    /*
      * {@code >= -1;} the bytecode address, or {@code -1} if that
      * information is unknown
      */
     private final int address;
 
-    /**
+    /*
      * {@code >= -1;} the line number, or {@code -1} if that
      * information is unknown
      */
     private final int line;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param sourceFile {@code null-ok;} name of the file of origin or
@@ -67,7 +67,7 @@ public final class SourcePosition {
         this.line = line;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer(50);
@@ -92,7 +92,7 @@ public final class SourcePosition {
         return sb.toString();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof SourcePosition)) {
@@ -108,13 +108,13 @@ public final class SourcePosition {
         return (address == pos.address) && sameLineAndFile(pos);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         return sourceFile.hashCode() + address + line;
     }
 
-    /**
+    /*
      * Returns whether the lines match between this instance and
      * the one given.
      *
@@ -125,7 +125,7 @@ public final class SourcePosition {
         return (line == other.line);
     }
 
-    /**
+    /*
      * Returns whether the lines and files match between this instance and
      * the one given.
      *
@@ -138,7 +138,7 @@ public final class SourcePosition {
              ((sourceFile != null) && sourceFile.equals(other.sourceFile)));
     }
 
-    /**
+    /*
      * Gets the source file, if known.
      *
      * @return {@code null-ok;} the source file or {@code null} if unknown
@@ -147,7 +147,7 @@ public final class SourcePosition {
         return sourceFile;
     }
 
-    /**
+    /*
      * Gets the original bytecode address.
      *
      * @return {@code >= -1;} the address or {@code -1} if unknown
@@ -156,7 +156,7 @@ public final class SourcePosition {
         return address;
     }
 
-    /**
+    /*
      * Gets the original line number.
      *
      * @return {@code >= -1;} the original line number or {@code -1} if

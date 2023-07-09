@@ -21,15 +21,15 @@ import org.ternlang.dx.dex.code.InsnFormat;
 import org.ternlang.dx.dex.code.TargetInsn;
 import org.ternlang.dx.util.AnnotatedOutput;
 
-/**
+/*
  * Instruction format {@code 20t}. See the instruction format spec
  * for details.
  */
 public final class Form20t extends InsnFormat {
-    /** {@code non-null;} unique instance of this class */
+    /* {@code non-null;} unique instance of this class */
     public static final InsnFormat THE_ONE = new Form20t();
 
-    /**
+    /*
      * Constructs an instance. This class is not publicly
      * instantiable. Use {@link #THE_ONE}.
      */
@@ -37,25 +37,25 @@ public final class Form20t extends InsnFormat {
         // This space intentionally left blank.
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String insnArgString(DalvInsn insn) {
         return branchString(insn);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String insnCommentString(DalvInsn insn, boolean noteIndices) {
         return branchComment(insn);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int codeSize() {
         return 2;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean isCompatible(DalvInsn insn) {
         if (!((insn instanceof TargetInsn) &&
@@ -67,7 +67,7 @@ public final class Form20t extends InsnFormat {
         return ti.hasTargetOffset() ? branchFits(ti) : true;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean branchFits(TargetInsn insn) {
         int offset = insn.getTargetOffset();
@@ -76,7 +76,7 @@ public final class Form20t extends InsnFormat {
         return (offset != 0) && signedFitsInShort(offset);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void writeTo(AnnotatedOutput out, DalvInsn insn) {
         int offset = ((TargetInsn) insn).getTargetOffset();

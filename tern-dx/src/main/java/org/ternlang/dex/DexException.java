@@ -18,7 +18,7 @@ package org.ternlang.dex;
 
 import org.ternlang.dex.util.ExceptionWithContext;
 
-/**
+/*
  * Thrown when there's a format problem reading, writing, or generally
  * processing a dex file.
  */

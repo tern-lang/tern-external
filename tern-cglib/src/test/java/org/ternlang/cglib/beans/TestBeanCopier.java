@@ -22,7 +22,7 @@ import org.ternlang.cglib.core.Converter;
 
 import junit.framework.*;
 
-/**
+/*
  *
  * @author baliuka
  */

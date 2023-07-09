@@ -25,16 +25,16 @@ import org.ternlang.dx.rop.code.RegOps;
 import org.ternlang.dx.rop.code.RegisterSpec;
 import org.ternlang.dx.rop.cst.CstInteger;
 
-/**
+/*
  * Combine identical move-param insns, which may result from Ropper's
  * handling of synchronized methods.
  */
 public class MoveParamCombiner {
 
-    /** method to process */
+    /* method to process */
     private final SsaMethod ssaMeth;
 
-    /**
+    /*
      * Processes a method with this optimization step.
      *
      * @param ssaMethod method to process
@@ -47,7 +47,7 @@ public class MoveParamCombiner {
         this.ssaMeth = ssaMeth;
     }
 
-    /**
+    /*
      * Runs this optimization step.
      */
     private void run() {
@@ -105,12 +105,12 @@ public class MoveParamCombiner {
                      */
 
                     RegisterMapper mapper = new RegisterMapper() {
-                        /** @inheritDoc */
+                        /* @inheritDoc */
                         public int getNewRegisterCount() {
                             return ssaMeth.getRegCount();
                         }
 
-                        /** @inheritDoc */
+                        /* @inheritDoc */
                         public RegisterSpec map(RegisterSpec registerSpec) {
                             if (registerSpec.getReg() == specB.getReg()) {
                                 return specA;
@@ -138,7 +138,7 @@ public class MoveParamCombiner {
         ssaMeth.deleteInsns(deletedInsns);
     }
 
-    /**
+    /*
      * Returns the parameter index associated with a move-param insn. Does
      * not verify that the insn is a move-param insn.
      *

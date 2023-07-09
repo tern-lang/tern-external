@@ -29,21 +29,21 @@ import org.ternlang.dx.rop.cst.CstString;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Base class for all instruction format handlers. Instruction format
  * handlers know how to translate {@link DalvInsn} instances into
  * streams of code units, as well as human-oriented listing strings
  * representing such translations.
  */
 public abstract class InsnFormat {
-    /**
+    /*
      * flag to enable/disable the new extended opcode formats; meant as a
      * temporary measure until VM support for the salient opcodes is
      * added. TODO: Remove this declaration when the VM can deal.
      */
     public static boolean ALLOW_EXTENDED_OPCODES = true;
 
-    /**
+    /*
      * Returns the string form, suitable for inclusion in a listing
      * dump, of the given instruction. The instruction must be of this
      * instance's format for proper operation.
@@ -74,7 +74,7 @@ public abstract class InsnFormat {
         return sb.toString();
     }
 
-    /**
+    /*
      * Returns the string form of the arguments to the given instruction.
      * The instruction must be of this instance's format. If the instruction
      * has no arguments, then the result should be {@code ""}, not
@@ -87,7 +87,7 @@ public abstract class InsnFormat {
      */
     public abstract String insnArgString(DalvInsn insn);
 
-    /**
+    /*
      * Returns the associated comment for the given instruction, if any.
      * The instruction must be of this instance's format. If the instruction
      * has no comment, then the result should be {@code ""}, not
@@ -103,7 +103,7 @@ public abstract class InsnFormat {
     public abstract String insnCommentString(DalvInsn insn,
             boolean noteIndices);
 
-    /**
+    /*
      * Gets the code size of instructions that use this format. The
      * size is a number of 16-bit code units, not bytes. This should
      * throw an exception if this format is of variable size.
@@ -112,7 +112,7 @@ public abstract class InsnFormat {
      */
     public abstract int codeSize();
 
-    /**
+    /*
      * Returns whether or not the given instruction's arguments will
      * fit in this instance's format. This includes such things as
      * counting register arguments, checking register ranges, and
@@ -129,7 +129,7 @@ public abstract class InsnFormat {
      */
     public abstract boolean isCompatible(DalvInsn insn);
 
-    /**
+    /*
      * Returns which of a given instruction's registers will fit in
      * this instance's format.
      *
@@ -145,7 +145,7 @@ public abstract class InsnFormat {
         return new BitSet();
     }
 
-    /**
+    /*
      * Returns whether or not the given instruction's branch offset will
      * fit in this instance's format. This always returns {@code false}
      * for formats that don't include a branch offset.
@@ -162,7 +162,7 @@ public abstract class InsnFormat {
         return false;
     }
 
-    /**
+    /*
      * Writes the code units for the given instruction to the given
      * output destination. The instruction must be of this instance's format.
      *
@@ -173,7 +173,7 @@ public abstract class InsnFormat {
      */
     public abstract void writeTo(AnnotatedOutput out, DalvInsn insn);
 
-    /**
+    /*
      * Helper method to return a register list string.
      *
      * @param list {@code non-null;} the list of registers
@@ -197,7 +197,7 @@ public abstract class InsnFormat {
         return sb.toString();
     }
 
-    /**
+    /*
      * Helper method to return a register range string.
      *
      * @param list {@code non-null;} the list of registers (which must be
@@ -240,7 +240,7 @@ public abstract class InsnFormat {
         return sb.toString();
     }
 
-    /**
+    /*
      * Helper method to return a literal bits argument string.
      *
      * @param value the value
@@ -262,7 +262,7 @@ public abstract class InsnFormat {
         return sb.toString();
     }
 
-    /**
+    /*
      * Helper method to return a literal bits comment string.
      *
      * @param value the value
@@ -298,7 +298,7 @@ public abstract class InsnFormat {
         return sb.toString();
     }
 
-    /**
+    /*
      * Helper method to return a branch address string.
      *
      * @param insn {@code non-null;} the instruction in question
@@ -312,7 +312,7 @@ public abstract class InsnFormat {
         return (address == (char) address) ? Hex.u2(address) : Hex.u4(address);
     }
 
-    /**
+    /*
      * Helper method to return the comment for a branch.
      *
      * @param insn {@code non-null;} the instruction in question
@@ -325,7 +325,7 @@ public abstract class InsnFormat {
         return (offset == (short) offset) ? Hex.s2(offset) : Hex.s4(offset);
     }
 
-    /**
+    /*
      * Helper method to return the constant string for a {@link CstInsn}
      * in human form.
      *
@@ -340,7 +340,7 @@ public abstract class InsnFormat {
         return cst instanceof CstString ? ((CstString) cst).toQuoted() : cst.toHuman();
     }
 
-    /**
+    /*
      * Helper method to return an instruction comment for a constant.
      *
      * @param insn {@code non-null;} a constant-bearing instruction
@@ -368,7 +368,7 @@ public abstract class InsnFormat {
         return sb.toString();
     }
 
-    /**
+    /*
      * Helper method to determine if a signed int value fits in a nibble.
      *
      * @param value the value in question
@@ -378,7 +378,7 @@ public abstract class InsnFormat {
         return (value >= -8) && (value <= 7);
     }
 
-    /**
+    /*
      * Helper method to determine if an unsigned int value fits in a nibble.
      *
      * @param value the value in question
@@ -388,7 +388,7 @@ public abstract class InsnFormat {
         return value == (value & 0xf);
     }
 
-    /**
+    /*
      * Helper method to determine if a signed int value fits in a byte.
      *
      * @param value the value in question
@@ -398,7 +398,7 @@ public abstract class InsnFormat {
         return (byte) value == value;
     }
 
-    /**
+    /*
      * Helper method to determine if an unsigned int value fits in a byte.
      *
      * @param value the value in question
@@ -408,7 +408,7 @@ public abstract class InsnFormat {
         return value == (value & 0xff);
     }
 
-    /**
+    /*
      * Helper method to determine if a signed int value fits in a short.
      *
      * @param value the value in question
@@ -418,7 +418,7 @@ public abstract class InsnFormat {
         return (short) value == value;
     }
 
-    /**
+    /*
      * Helper method to determine if an unsigned int value fits in a short.
      *
      * @param value the value in question
@@ -428,7 +428,7 @@ public abstract class InsnFormat {
         return value == (value & 0xffff);
     }
 
-    /**
+    /*
      * Helper method to determine if a list of registers are sequential,
      * including degenerate cases for empty or single-element lists.
      *
@@ -456,7 +456,7 @@ public abstract class InsnFormat {
         return true;
     }
 
-    /**
+    /*
      * Helper method to extract the callout-argument index from an
      * appropriate instruction.
      *
@@ -473,7 +473,7 @@ public abstract class InsnFormat {
         return arg;
     }
 
-    /**
+    /*
      * Helper method to combine an opcode and a second byte of data into
      * the appropriate form for emitting into a code buffer.
      *
@@ -495,7 +495,7 @@ public abstract class InsnFormat {
         return (short) (opcode | (arg << 8));
     }
 
-    /**
+    /*
      * Helper method to get an extended (16-bit) opcode out of an
      * instruction, returning it as a code unit. The opcode
      * <i>must</i> be an extended opcode.
@@ -514,7 +514,7 @@ public abstract class InsnFormat {
         return (short) opcode;
     }
 
-    /**
+    /*
      * Helper method to combine two bytes into a code unit.
      *
      * @param low {@code 0..255;} low byte
@@ -533,7 +533,7 @@ public abstract class InsnFormat {
         return (short) (low | (high << 8));
     }
 
-    /**
+    /*
      * Helper method to combine four nibbles into a code unit.
      *
      * @param n0 {@code 0..15;} low nibble
@@ -562,7 +562,7 @@ public abstract class InsnFormat {
         return (short) (n0 | (n1 << 4) | (n2 << 8) | (n3 << 12));
     }
 
-    /**
+    /*
      * Helper method to combine two nibbles into a byte.
      *
      * @param low {@code 0..15;} low nibble
@@ -581,7 +581,7 @@ public abstract class InsnFormat {
         return low | (high << 4);
     }
 
-    /**
+    /*
      * Writes one code unit to the given output destination.
      *
      * @param out {@code non-null;} where to write to
@@ -591,7 +591,7 @@ public abstract class InsnFormat {
         out.writeShort(c0);
     }
 
-    /**
+    /*
      * Writes two code units to the given output destination.
      *
      * @param out {@code non-null;} where to write to
@@ -603,7 +603,7 @@ public abstract class InsnFormat {
         out.writeShort(c1);
     }
 
-    /**
+    /*
      * Writes three code units to the given output destination.
      *
      * @param out {@code non-null;} where to write to
@@ -618,7 +618,7 @@ public abstract class InsnFormat {
         out.writeShort(c2);
     }
 
-    /**
+    /*
      * Writes four code units to the given output destination.
      *
      * @param out {@code non-null;} where to write to
@@ -635,7 +635,7 @@ public abstract class InsnFormat {
         out.writeShort(c3);
     }
 
-    /**
+    /*
      * Writes five code units to the given output destination.
      *
      * @param out {@code non-null;} where to write to
@@ -654,7 +654,7 @@ public abstract class InsnFormat {
         out.writeShort(c4);
     }
 
-    /**
+    /*
      * Writes three code units to the given output destination, where the
      * second and third are represented as single <code>int</code> and emitted
      * in little-endian order.
@@ -667,7 +667,7 @@ public abstract class InsnFormat {
         write(out, c0, (short) c1c2, (short) (c1c2 >> 16));
     }
 
-    /**
+    /*
      * Writes four code units to the given output destination, where the
      * second and third are represented as single <code>int</code> and emitted
      * in little-endian order.
@@ -682,7 +682,7 @@ public abstract class InsnFormat {
         write(out, c0, (short) c1c2, (short) (c1c2 >> 16), c3);
     }
 
-    /**
+    /*
      * Writes five code units to the given output destination, where the
      * second and third are represented as single <code>int</code> and emitted
      * in little-endian order.
@@ -698,7 +698,7 @@ public abstract class InsnFormat {
         write(out, c0, (short) c1c2, (short) (c1c2 >> 16), c3, c4);
     }
 
-    /**
+    /*
      * Writes five code units to the given output destination, where the
      * second through fifth are represented as single <code>long</code>
      * and emitted in little-endian order.

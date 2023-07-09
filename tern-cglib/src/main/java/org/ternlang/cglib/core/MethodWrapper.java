@@ -22,7 +22,7 @@ public class MethodWrapper {
     private static final MethodWrapperKey KEY_FACTORY =
       (MethodWrapperKey)KeyFactory.create(MethodWrapperKey.class);
 
-    /** Internal interface, only public due to ClassLoader issues. */
+    /* Internal interface, only public due to ClassLoader issues. */
     public interface MethodWrapperKey {
         public Object newInstance(String name, String[] parameterTypes, String returnType);
     }

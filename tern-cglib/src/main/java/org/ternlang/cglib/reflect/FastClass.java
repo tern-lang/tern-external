@@ -148,7 +148,7 @@ abstract public class FastClass
         return type.equals(((FastClass)o).type);
     }
 
-    /**
+    /*
      * Return the index of the matching method. The index may be used
      * later to invoke the method with less overhead. If more than one
      * method matches (i.e. they differ by return type only), one is
@@ -160,7 +160,7 @@ abstract public class FastClass
      */
     abstract public int getIndex(String name, Class[] parameterTypes);
 
-    /**
+    /*
      * Return the index of the matching constructor. The index may be used
      * later to create a new instance with less overhead.
      * @see #newInstance(int, Object[])
@@ -169,7 +169,7 @@ abstract public class FastClass
      */
     abstract public int getIndex(Class[] parameterTypes);
 
-    /**
+    /*
      * Invoke the method with the specified index.
      * @see getIndex(name, Class[])
      * @param index the method index
@@ -179,7 +179,7 @@ abstract public class FastClass
      */
     abstract public Object invoke(int index, Object obj, Object[] args) throws InvocationTargetException;
 
-    /**
+    /*
      * Create a new instance using the specified constructor index and arguments.
      * @see getIndex(Class[])
      * @param index the constructor index
@@ -190,7 +190,7 @@ abstract public class FastClass
 
     abstract public int getIndex(Signature sig);
 
-    /**
+    /*
      * Returns the maximum method index for this class.
      */
     abstract public int getMaxIndex();

@@ -18,15 +18,15 @@ package org.ternlang.dx.rop.code;
 
 import org.ternlang.dx.rop.cst.Constant;
 
-/**
+/*
  * Instruction which contains an explicit reference to a constant.
  */
 public abstract class CstInsn
         extends Insn {
-    /** {@code non-null;} the constant */
+    /* {@code non-null;} the constant */
     private final Constant cst;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param opcode {@code non-null;} the opcode
@@ -46,13 +46,13 @@ public abstract class CstInsn
         this.cst = cst;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String getInlineString() {
         return cst.toHuman();
     }
 
-    /**
+    /*
      * Gets the constant.
      *
      * @return {@code non-null;} the constant
@@ -61,7 +61,7 @@ public abstract class CstInsn
         return cst;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean contentEquals(Insn b) {
         /*

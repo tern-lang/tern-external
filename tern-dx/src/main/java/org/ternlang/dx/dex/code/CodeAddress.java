@@ -19,7 +19,7 @@ package org.ternlang.dx.dex.code;
 import org.ternlang.dx.rop.code.RegisterSpecList;
 import org.ternlang.dx.rop.code.SourcePosition;
 
-/**
+/*
  * Pseudo-instruction which is used to track an address within a code
  * array. Instances are used for such things as branch targets and
  * exception handler ranges. Its code size is zero, and so instances
@@ -27,10 +27,10 @@ import org.ternlang.dx.rop.code.SourcePosition;
  * human-oriented or binary file).
  */
 public final class CodeAddress extends ZeroSizeInsn {
-    /** If this address should bind closely to the following real instruction */
+    /* If this address should bind closely to the following real instruction */
     private final boolean bindsClosely;
 
-    /**
+    /*
      * Constructs an instance. The output address of this instance is initially
      * unknown ({@code -1}).
      *
@@ -40,7 +40,7 @@ public final class CodeAddress extends ZeroSizeInsn {
         this(position, false);
     }
 
-    /**
+    /*
      * Constructs an instance. The output address of this instance is initially
      * unknown ({@code -1}).
      *
@@ -53,25 +53,25 @@ public final class CodeAddress extends ZeroSizeInsn {
         this.bindsClosely = bindsClosely;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final DalvInsn withRegisters(RegisterSpecList registers) {
         return new CodeAddress(getPosition());
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected String argString() {
         return null;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected String listingString0(boolean noteIndices) {
         return "code-address";
     }
 
-    /**
+    /*
      * Gets whether this address binds closely to the following "real"
      * (non-zero-length) instruction.
      *

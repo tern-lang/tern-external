@@ -83,7 +83,7 @@ public final class Code {
             return instructionCount;
         }
 
-        /**
+        /*
          * Returns this try's catch handler <strong>index</strong>. Note that
          * this is distinct from the its catch handler <strong>offset</strong>.
          */

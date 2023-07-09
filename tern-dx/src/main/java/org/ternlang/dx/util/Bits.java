@@ -16,18 +16,18 @@
 
 package org.ternlang.dx.util;
 
-/**
+/*
  * Utilities for treating {@code int[]}s as bit sets.
  */
 public final class Bits {
-    /**
+    /*
      * This class is uninstantiable.
      */
     private Bits() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Constructs a bit set to contain bits up to the given index (exclusive).
      *
      * @param max {@code >= 0;} the maximum bit index (exclusive)
@@ -38,7 +38,7 @@ public final class Bits {
         return new int[size];
     }
 
-    /**
+    /*
      * Gets the maximum index (exclusive) for the given bit set.
      *
      * @param bits {@code non-null;} bit set in question
@@ -48,7 +48,7 @@ public final class Bits {
         return bits.length * 0x20;
     }
 
-    /**
+    /*
      * Gets the value of the bit at the given index.
      *
      * @param bits {@code non-null;} bit set to operate on
@@ -61,7 +61,7 @@ public final class Bits {
         return (bits[arrayIdx] & bit) != 0;
     }
 
-    /**
+    /*
      * Sets the given bit to the given value.
      *
      * @param bits {@code non-null;} bit set to operate on
@@ -79,7 +79,7 @@ public final class Bits {
         }
     }
 
-    /**
+    /*
      * Sets the given bit to {@code true}.
      *
      * @param bits {@code non-null;} bit set to operate on
@@ -91,7 +91,7 @@ public final class Bits {
         bits[arrayIdx] |= bit;
     }
 
-    /**
+    /*
      * Sets the given bit to {@code false}.
      *
      * @param bits {@code non-null;} bit set to operate on
@@ -103,7 +103,7 @@ public final class Bits {
         bits[arrayIdx] &= ~bit;
     }
 
-    /**
+    /*
      * Returns whether or not the given bit set is empty, that is, whether
      * no bit is set to {@code true}.
      *
@@ -122,7 +122,7 @@ public final class Bits {
         return true;
     }
 
-    /**
+    /*
      * Gets the number of bits set to {@code true} in the given bit set.
      *
      * @param bits {@code non-null;} bit set to operate on
@@ -139,7 +139,7 @@ public final class Bits {
         return count;
     }
 
-    /**
+    /*
      * Returns whether any bits are set to {@code true} in the
      * specified range.
      *
@@ -154,7 +154,7 @@ public final class Bits {
         return (idx >= 0) && (idx < end);
     }
 
-    /**
+    /*
      * Finds the lowest-order bit set at or after the given index in the
      * given bit set.
      *
@@ -181,7 +181,7 @@ public final class Bits {
         return -1;
     }
 
-    /**
+    /*
      * Finds the lowest-order bit set at or after the given index in the
      * given {@code int}.
      *
@@ -196,7 +196,7 @@ public final class Bits {
         return (result == 32) ? -1 : result;
     }
 
-    /**
+    /*
      * Ors bit array {@code b} into bit array {@code a}.
      * {@code a.length} must be greater than or equal to
      * {@code b.length}.

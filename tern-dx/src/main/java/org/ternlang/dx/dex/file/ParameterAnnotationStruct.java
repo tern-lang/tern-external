@@ -25,21 +25,21 @@ import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 import org.ternlang.dx.util.ToHuman;
 
-/**
+/*
  * Association of a method and its parameter annotations.
  */
 public final class ParameterAnnotationStruct
         implements ToHuman, Comparable<ParameterAnnotationStruct> {
-    /** {@code non-null;} the method in question */
+    /* {@code non-null;} the method in question */
     private final CstMethodRef method;
 
-    /** {@code non-null;} the associated annotations list */
+    /* {@code non-null;} the associated annotations list */
     private final AnnotationsList annotationsList;
 
-    /** {@code non-null;} the associated annotations list, as an item */
+    /* {@code non-null;} the associated annotations list, as an item */
     private final UniformListItem<AnnotationSetRefItem> annotationsItem;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param method {@code non-null;} the method in question
@@ -78,12 +78,12 @@ public final class ParameterAnnotationStruct
                 ItemType.TYPE_ANNOTATION_SET_REF_LIST, arrayList);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int hashCode() {
         return method.hashCode();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public boolean equals(Object other) {
         if (! (other instanceof ParameterAnnotationStruct)) {
             return false;
@@ -92,12 +92,12 @@ public final class ParameterAnnotationStruct
         return method.equals(((ParameterAnnotationStruct) other).method);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int compareTo(ParameterAnnotationStruct other) {
         return method.compareTo(other.method);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void addContents(DexFile file) {
         MethodIdsSection methodIds = file.getMethodIds();
         MixedItemSection wordData = file.getWordData();
@@ -106,7 +106,7 @@ public final class ParameterAnnotationStruct
         wordData.add(annotationsItem);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void writeTo(DexFile file, AnnotatedOutput out) {
         int methodIdx = file.getMethodIds().indexOf(method);
         int annotationsOff = annotationsItem.getAbsoluteOffset();
@@ -122,7 +122,7 @@ public final class ParameterAnnotationStruct
         out.writeInt(annotationsOff);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         StringBuilder sb = new StringBuilder();
 
@@ -142,7 +142,7 @@ public final class ParameterAnnotationStruct
         return sb.toString();
     }
 
-    /**
+    /*
      * Gets the method this item is for.
      *
      * @return {@code non-null;} the method
@@ -151,7 +151,7 @@ public final class ParameterAnnotationStruct
         return method;
     }
 
-    /**
+    /*
      * Gets the associated annotations list.
      *
      * @return {@code non-null;} the annotations list

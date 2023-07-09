@@ -20,26 +20,26 @@ import org.ternlang.dx.util.Hex;
 import org.ternlang.dx.util.IntList;
 import org.ternlang.dx.util.LabeledItem;
 
-/**
+/*
  * Representation of a basic block in a bytecode array.
  */
 public final class ByteBlock implements LabeledItem {
-    /** {@code >= 0;} label for this block */
+    /* {@code >= 0;} label for this block */
     private final int label;
 
-    /** {@code >= 0;} bytecode offset (inclusive) of the start of the block */
+    /* {@code >= 0;} bytecode offset (inclusive) of the start of the block */
     private final int start;
 
-    /** {@code > start;} bytecode offset (exclusive) of the end of the block */
+    /* {@code > start;} bytecode offset (exclusive) of the end of the block */
     private final int end;
 
-    /** {@code non-null;} list of successors that this block may branch to */
+    /* {@code non-null;} list of successors that this block may branch to */
     private final IntList successors;
 
-    /** {@code non-null;} list of exceptions caught and their handler targets */
+    /* {@code non-null;} list of exceptions caught and their handler targets */
     private final ByteCatchList catches;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param label {@code >= 0;} target label for this block
@@ -90,14 +90,14 @@ public final class ByteBlock implements LabeledItem {
         this.catches = catches;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         return '{' + Hex.u2(label) + ": " + Hex.u2(start) + ".." +
             Hex.u2(end) + '}';
     }
 
-    /**
+    /*
      * Gets the label of this block.
      *
      * @return {@code >= 0;} the label
@@ -106,7 +106,7 @@ public final class ByteBlock implements LabeledItem {
         return label;
     }
 
-    /**
+    /*
      * Gets the bytecode offset (inclusive) of the start of this block.
      *
      * @return {@code >= 0;} the start offset
@@ -115,7 +115,7 @@ public final class ByteBlock implements LabeledItem {
         return start;
     }
 
-    /**
+    /*
      * Gets the bytecode offset (exclusive) of the end of this block.
      *
      * @return {@code > getStart();} the end offset
@@ -124,7 +124,7 @@ public final class ByteBlock implements LabeledItem {
         return end;
     }
 
-    /**
+    /*
      * Gets the list of successors that this block may branch to
      * non-exceptionally.
      *
@@ -134,7 +134,7 @@ public final class ByteBlock implements LabeledItem {
         return successors;
     }
 
-    /**
+    /*
      * Gets the list of exceptions caught and their handler targets.
      *
      * @return {@code non-null;} the catch list

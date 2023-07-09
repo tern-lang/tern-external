@@ -39,16 +39,16 @@ import org.ternlang.dx.rop.cst.TypedConstant;
 import org.ternlang.dx.rop.type.StdTypeList;
 import org.ternlang.dx.rop.type.TypeBearer;
 
-/**
+/*
  * Collects constants that are used more than once at the top of the
  * method block. This increases register usage by about 5% but decreases
  * insn size by about 3%.
  */
 public class ConstCollector {
-    /** Maximum constants to collect per method. Puts cap on reg use */
+    /* Maximum constants to collect per method. Puts cap on reg use */
     private static final int MAX_COLLECTED_CONSTANTS = 5;
 
-    /**
+    /*
      * Also collect string consts, although they can throw exceptions.
      * This is off now because it just doesn't seem to gain a whole lot.
      * TODO if you turn this on, you must change SsaInsn.hasSideEffect()
@@ -57,16 +57,16 @@ public class ConstCollector {
      */
     private static boolean COLLECT_STRINGS = false;
 
-    /**
+    /*
      * If true, allow one local var to be involved with a collected const.
      * Turned off because it mostly just inserts more moves.
      */
     private static boolean COLLECT_ONE_LOCAL = false;
 
-    /** method we're processing */
+    /* method we're processing */
     private final SsaMethod ssaMeth;
 
-    /**
+    /*
      * Processes a method.
      *
      * @param ssaMethod {@code non-null;} method to process
@@ -76,7 +76,7 @@ public class ConstCollector {
         cc.run();
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param ssaMethod {@code non-null;} method to process
@@ -85,7 +85,7 @@ public class ConstCollector {
         this.ssaMeth = ssaMethod;
     }
 
-    /**
+    /*
      * Applies the optimization.
      */
     private void run() {
@@ -148,7 +148,7 @@ public class ConstCollector {
         updateConstUses(newRegs, regSz);
     }
 
-    /**
+    /*
      * Gets all of the collectable constant values used in this method,
      * sorted by most used first. Skips non-collectable consts, such as
      * non-string object constants
@@ -265,7 +265,7 @@ public class ConstCollector {
         return constantList;
     }
 
-    /**
+    /*
      * Inserts mark-locals if necessary when changing a register. If
      * the definition of {@code origReg} is associated with a local
      * variable, then insert a mark-local for {@code newReg} just below
@@ -313,7 +313,7 @@ public class ConstCollector {
         }
     }
 
-    /**
+    /*
      * Updates all uses of various consts to use the values in the newly
      * assigned registers.
      *

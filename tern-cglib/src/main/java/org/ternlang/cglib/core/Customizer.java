@@ -17,7 +17,7 @@ package org.ternlang.cglib.core;
 
 import org.ternlang.asm.Type;
 
-/**
+/*
  * Customizes key types for {@link KeyFactory} when building equals, hashCode, and toString.
  * For customization of field types, use {@link FieldTypeCustomizer}
  *

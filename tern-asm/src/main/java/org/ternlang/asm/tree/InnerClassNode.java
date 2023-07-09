@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -31,39 +31,39 @@ package org.ternlang.asm.tree;
 
 import org.ternlang.asm.ClassVisitor;
 
-/**
+/*
  * A node that represents an inner class.
  * 
  * @author Eric Bruneton
  */
 public class InnerClassNode {
 
-    /**
+    /*
      * The internal name of an inner class (see
      * {@link org.ternlang.asm.Type#getInternalName() getInternalName}).
      */
     public String name;
 
-    /**
+    /*
      * The internal name of the class to which the inner class belongs (see
      * {@link org.ternlang.asm.Type#getInternalName() getInternalName}). May be
      * <tt>null</tt>.
      */
     public String outerName;
 
-    /**
+    /*
      * The (simple) name of the inner class inside its enclosing class. May be
      * <tt>null</tt> for anonymous inner classes.
      */
     public String innerName;
 
-    /**
+    /*
      * The access flags of the inner class as originally declared in the
      * enclosing class.
      */
     public int access;
 
-    /**
+    /*
      * Constructs a new {@link InnerClassNode}.
      * 
      * @param name
@@ -89,7 +89,7 @@ public class InnerClassNode {
         this.access = access;
     }
 
-    /**
+    /*
      * Makes the given class visitor visit this inner class.
      * 
      * @param cv

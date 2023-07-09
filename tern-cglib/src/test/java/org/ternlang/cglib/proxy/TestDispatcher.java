@@ -27,7 +27,7 @@ import org.ternlang.cglib.proxy.Enhancer;
 
 import junit.framework.*;
 
-/**
+/*
  * @author Chris Nokleberg
  * @version $Id: TestDispatcher.java,v 1.6 2004/06/24 21:15:17 herbyderby Exp $
  */

@@ -22,7 +22,7 @@ import org.ternlang.dx.rop.type.TypeBearer;
 import org.ternlang.dx.util.Hex;
 import org.ternlang.dx.util.MutabilityControl;
 
-/**
+/*
  * Representation of a Java method execution stack.
  *
  * <p><b>Note:</b> For the most part, the documentation for this class
@@ -30,21 +30,21 @@ import org.ternlang.dx.util.MutabilityControl;
  * TypeBearer}.</p>
  */
 public final class ExecutionStack extends MutabilityControl {
-    /** {@code non-null;} array of stack contents */
+    /* {@code non-null;} array of stack contents */
     private final TypeBearer[] stack;
 
-    /**
+    /*
      * {@code non-null;} array specifying whether stack contents have entries
      * in the local variable table
      */
     private final boolean[] local;
-    /**
+    /*
      * {@code >= 0;} stack pointer (points one past the end) / current stack
      * size
      */
     private int stackPtr;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param maxStack {@code >= 0;} the maximum size of the stack for this
@@ -57,7 +57,7 @@ public final class ExecutionStack extends MutabilityControl {
         stackPtr = 0;
     }
 
-    /**
+    /*
      * Makes and returns a mutable copy of this instance.
      *
      * @return {@code non-null;} the copy
@@ -72,7 +72,7 @@ public final class ExecutionStack extends MutabilityControl {
         return result;
     }
 
-    /**
+    /*
      * Annotates (adds context to) the given exception with information
      * about this instance.
      *
@@ -89,7 +89,7 @@ public final class ExecutionStack extends MutabilityControl {
         }
     }
 
-    /**
+    /*
      * Replaces all the occurrences of the given uninitialized type in
      * this stack with its initialized equivalent.
      *
@@ -112,7 +112,7 @@ public final class ExecutionStack extends MutabilityControl {
         }
     }
 
-    /**
+    /*
      * Gets the maximum stack size for this instance.
      *
      * @return {@code >= 0;} the max stack size
@@ -121,7 +121,7 @@ public final class ExecutionStack extends MutabilityControl {
         return stack.length;
     }
 
-    /**
+    /*
      * Gets the current stack size.
      *
      * @return {@code >= 0, < getMaxStack();} the current stack size
@@ -130,7 +130,7 @@ public final class ExecutionStack extends MutabilityControl {
         return stackPtr;
     }
 
-    /**
+    /*
      * Clears the stack. (That is, this method pops everything off.)
      */
     public void clear() {
@@ -144,7 +144,7 @@ public final class ExecutionStack extends MutabilityControl {
         stackPtr = 0;
     }
 
-    /**
+    /*
      * Pushes a value of the given type onto the stack.
      *
      * @param type {@code non-null;} type of the value
@@ -178,7 +178,7 @@ public final class ExecutionStack extends MutabilityControl {
         stackPtr++;
     }
 
-    /**
+    /*
      * Flags the next value pushed onto the stack as having local info.
      */
     public void setLocal() {
@@ -187,7 +187,7 @@ public final class ExecutionStack extends MutabilityControl {
         local[stackPtr] = true;
     }
 
-    /**
+    /*
      * Peeks at the {@code n}th element down from the top of the stack.
      * {@code n == 0} means to peek at the top of the stack. Note that
      * this will return {@code null} if the indicated element is the
@@ -209,7 +209,7 @@ public final class ExecutionStack extends MutabilityControl {
         return stack[stackPtr - n - 1];
     }
 
-    /**
+    /*
      * Peeks at the {@code n}th element down from the top of the
      * stack, returning whether or not it has local info.
      *
@@ -229,7 +229,7 @@ public final class ExecutionStack extends MutabilityControl {
         return local[stackPtr - n - 1];
     }
 
-    /**
+    /*
      * Peeks at the {@code n}th element down from the top of the
      * stack, returning the type per se, as opposed to the
      * <i>type-bearer</i>.  This method is just a convenient shorthand
@@ -241,7 +241,7 @@ public final class ExecutionStack extends MutabilityControl {
         return peek(n).getType();
     }
 
-    /**
+    /*
      * Pops the top element off of the stack.
      *
      * @return {@code non-null;} the type formerly on the top of the stack
@@ -259,7 +259,7 @@ public final class ExecutionStack extends MutabilityControl {
         return result;
     }
 
-    /**
+    /*
      * Changes an element already on a stack. This method is useful in limited
      * contexts, particularly when merging two instances. As such, it places
      * the following restriction on its behavior: You may only replace
@@ -294,7 +294,7 @@ public final class ExecutionStack extends MutabilityControl {
         stack[idx] = type;
     }
 
-    /**
+    /*
      * Merges this stack with another stack. A new instance is returned if
      * this merge results in a change. If no change results, this instance is
      * returned.  See {@link Merger#mergeStack(ExecutionStack,ExecutionStack)
@@ -315,7 +315,7 @@ public final class ExecutionStack extends MutabilityControl {
         }
     }
 
-    /**
+    /*
      * Gets the string form for a stack element. This is the same as
      * {@code toString()} except that {@code null} is converted
      * to {@code "<invalid>"}.
@@ -331,7 +331,7 @@ public final class ExecutionStack extends MutabilityControl {
         return type.toString();
     }
 
-    /**
+    /*
      * Throws a properly-formatted exception.
      *
      * @param msg {@code non-null;} useful message

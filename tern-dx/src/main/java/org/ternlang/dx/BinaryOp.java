@@ -20,7 +20,7 @@ import org.ternlang.dx.rop.code.Rop;
 import org.ternlang.dx.rop.code.Rops;
 import org.ternlang.dx.rop.type.TypeList;
 
-/**
+/*
  * An operation on two values of the same type.
  *
  * <p>Math operations ({@link #ADD}, {@link #SUBTRACT}, {@link #MULTIPLY},
@@ -37,7 +37,7 @@ import org.ternlang.dx.rop.type.TypeList;
  * the operations return {@code NaN}.
  */
 public enum BinaryOp {
-    /** {@code a + b} */
+    /* {@code a + b} */
     ADD() {
         @Override
         Rop rop(TypeList types) {
@@ -45,7 +45,7 @@ public enum BinaryOp {
         }
     },
 
-    /** {@code a - b} */
+    /* {@code a - b} */
     SUBTRACT() {
         @Override
         Rop rop(TypeList types) {
@@ -53,7 +53,7 @@ public enum BinaryOp {
         }
     },
 
-    /** {@code a * b} */
+    /* {@code a * b} */
     MULTIPLY() {
         @Override
         Rop rop(TypeList types) {
@@ -61,7 +61,7 @@ public enum BinaryOp {
         }
     },
 
-    /** {@code a / b} */
+    /* {@code a / b} */
     DIVIDE() {
         @Override
         Rop rop(TypeList types) {
@@ -69,7 +69,7 @@ public enum BinaryOp {
         }
     },
 
-    /** {@code a % b} */
+    /* {@code a % b} */
     REMAINDER() {
         @Override
         Rop rop(TypeList types) {
@@ -77,7 +77,7 @@ public enum BinaryOp {
         }
     },
 
-    /** {@code a & b} */
+    /* {@code a & b} */
     AND() {
         @Override
         Rop rop(TypeList types) {
@@ -85,7 +85,7 @@ public enum BinaryOp {
         }
     },
 
-    /** {@code a | b} */
+    /* {@code a | b} */
     OR() {
         @Override
         Rop rop(TypeList types) {
@@ -93,7 +93,7 @@ public enum BinaryOp {
         }
     },
 
-    /** {@code a ^ b} */
+    /* {@code a ^ b} */
     XOR() {
         @Override
         Rop rop(TypeList types) {
@@ -101,7 +101,7 @@ public enum BinaryOp {
         }
     },
 
-    /** {@code a << b} */
+    /* {@code a << b} */
     SHIFT_LEFT() {
         @Override
         Rop rop(TypeList types) {
@@ -109,7 +109,7 @@ public enum BinaryOp {
         }
     },
 
-    /** {@code a >> b} */
+    /* {@code a >> b} */
     SHIFT_RIGHT() {
         @Override
         Rop rop(TypeList types) {
@@ -117,7 +117,7 @@ public enum BinaryOp {
         }
     },
 
-    /** {@code a >>> b} */
+    /* {@code a >>> b} */
     UNSIGNED_SHIFT_RIGHT() {
         @Override
         Rop rop(TypeList types) {

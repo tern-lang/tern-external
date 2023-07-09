@@ -23,23 +23,23 @@ import org.ternlang.dx.rop.type.StdTypeList;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeList;
 
-/**
+/*
  * Instruction which fills a newly created array with a predefined list of
  * constant values.
  */
 public final class FillArrayDataInsn
         extends Insn {
 
-    /** non-null: initial values to fill the newly created array */
+    /* non-null: initial values to fill the newly created array */
     private final ArrayList<Constant> initValues;
 
-    /**
+    /*
      * non-null: type of the array. Will be used to determine the width of
      * elements in the array-data table.
      */
     private final Constant arrayType;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param opcode {@code non-null;} the opcode
@@ -63,13 +63,13 @@ public final class FillArrayDataInsn
     }
 
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public TypeList getCatches() {
         return StdTypeList.EMPTY;
     }
 
-    /**
+    /*
      * Return the list of init values
      * @return {@code non-null;} list of init values
      */
@@ -77,7 +77,7 @@ public final class FillArrayDataInsn
         return initValues;
     }
 
-    /**
+    /*
      * Return the type of the newly created array
      * @return {@code non-null;} array type
      */
@@ -85,19 +85,19 @@ public final class FillArrayDataInsn
         return arrayType;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void accept(Visitor visitor) {
         visitor.visitFillArrayDataInsn(this);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withAddedCatch(Type type) {
         throw new  UnsupportedOperationException("unsupported");
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withRegisterOffset(int delta) {
         return new FillArrayDataInsn(getOpcode(), getPosition(),
@@ -105,7 +105,7 @@ public final class FillArrayDataInsn
                                      initValues, arrayType);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withNewRegisters(RegisterSpec result,
             RegisterSpecList sources) {

@@ -29,29 +29,29 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeBearer;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * A Phi instruction (magical post-control-flow-merge) instruction
  * in SSA form. Will be converted to moves in predecessor blocks before
  * conversion back to ROP form.
  */
 public final class PhiInsn extends SsaInsn {
-    /**
+    /*
      * result register. The original result register of the phi insn
      * is needed during the renaming process after the new result
      * register has already been chosen.
      */
     private final int ropResultReg;
 
-    /**
+    /*
      * {@code non-null;} operands of the instruction; built up by
      * {@link #addPhiOperand}
      */
     private final ArrayList<Operand> operands = new ArrayList<Operand>();
 
-    /** {@code null-ok;} source registers; constructed lazily */
+    /* {@code null-ok;} source registers; constructed lazily */
     private RegisterSpecList sources;
 
-    /**
+    /*
      * Constructs a new phi insn with no operands.
      *
      * @param resultReg the result reg for this phi insn
@@ -62,7 +62,7 @@ public final class PhiInsn extends SsaInsn {
         ropResultReg = resultReg.getReg();
     }
 
-    /**
+    /*
      * Makes a phi insn with a void result type.
      *
      * @param resultReg the result register for this phi insn.
@@ -77,13 +77,13 @@ public final class PhiInsn extends SsaInsn {
         ropResultReg = resultReg;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public PhiInsn clone() {
         throw new UnsupportedOperationException("can't clone phi");
     }
 
-    /**
+    /*
      * Updates the TypeBearers of all the sources (phi operands) to be
      * the current TypeBearer of the register-defining instruction's result.
      * This is used during phi-type resolution.<p>
@@ -104,7 +104,7 @@ public final class PhiInsn extends SsaInsn {
         sources = null;
     }
 
-    /**
+    /*
      * Changes the result type. Used during phi type resolution
      *
      * @param type {@code non-null;} new TypeBearer
@@ -115,7 +115,7 @@ public final class PhiInsn extends SsaInsn {
                           getResult().getReg(), type, local));
     }
 
-    /**
+    /*
      * Gets the original rop-form result reg. This is useful during renaming.
      *
      * @return the original rop-form result reg
@@ -124,7 +124,7 @@ public final class PhiInsn extends SsaInsn {
         return ropResultReg;
     }
 
-    /**
+    /*
      * Adds an operand to this phi instruction.
      *
      * @param registerSpec register spec, including type and reg of operand
@@ -139,7 +139,7 @@ public final class PhiInsn extends SsaInsn {
         sources = null;
     }
 
-    /**
+    /*
      * Removes all operand uses of a register from this phi instruction.
      *
      * @param registerSpec register spec, including type and reg of operand
@@ -158,7 +158,7 @@ public final class PhiInsn extends SsaInsn {
         sources = null;
     }
 
-    /**
+    /*
      * Gets the index of the pred block associated with the RegisterSpec
      * at the particular getSources() index.
      *
@@ -169,7 +169,7 @@ public final class PhiInsn extends SsaInsn {
         return operands.get(sourcesIndex).blockIndex;
     }
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * Always returns null for {@code PhiInsn}s.
@@ -179,7 +179,7 @@ public final class PhiInsn extends SsaInsn {
         return null;
     }
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * Always returns null for {@code PhiInsn}s.
@@ -189,7 +189,7 @@ public final class PhiInsn extends SsaInsn {
         return null;
     }
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * Always returns false for {@code PhiInsn}s.
@@ -199,7 +199,7 @@ public final class PhiInsn extends SsaInsn {
         return false;
     }
 
-    /**
+    /*
      * Gets sources. Constructed lazily from phi operand data structures and
      * then cached.
      *
@@ -229,7 +229,7 @@ public final class PhiInsn extends SsaInsn {
         return sources;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean isRegASource(int reg) {
         /*
@@ -246,7 +246,7 @@ public final class PhiInsn extends SsaInsn {
         return false;
     }
 
-    /**
+    /*
      * @return true if all operands use the same register
      */
     public boolean areAllOperandsEqual() {
@@ -265,7 +265,7 @@ public final class PhiInsn extends SsaInsn {
         return true;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final void mapSourceRegisters(RegisterMapper mapper) {
         for (Operand o : operands) {
@@ -278,7 +278,7 @@ public final class PhiInsn extends SsaInsn {
         sources = null;
     }
 
-    /**
+    /*
      * Always throws an exeption, since a phi insn may not be
      * converted back to rop form.
      *
@@ -290,7 +290,7 @@ public final class PhiInsn extends SsaInsn {
                 "Cannot convert phi insns to rop form");
     }
 
-    /**
+    /*
      * Returns the list of predecessor blocks associated with all operands
      * that have {@code reg} as an operand register.
      *
@@ -310,30 +310,30 @@ public final class PhiInsn extends SsaInsn {
         return ret;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean isPhiOrMove() {
         return true;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean hasSideEffect() {
         return Optimizer.getPreserveLocals() && getLocalAssignment() != null;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void accept(SsaInsn.Visitor v) {
         v.visitPhiInsn(this);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return toHumanWithInline(null);
     }
 
-    /**
+    /*
      * Returns human-readable string for listing dumps. This method
      * allows sub-classes to specify extra text.
      *
@@ -378,7 +378,7 @@ public final class PhiInsn extends SsaInsn {
         return sb.toString();
     }
 
-    /**
+    /*
      * A single phi operand, consiting of source register and block index
      * for move.
      */
@@ -394,7 +394,7 @@ public final class PhiInsn extends SsaInsn {
         }
     }
 
-    /**
+    /*
      * Visitor interface for instances of this (outer) class.
      */
     public static interface Visitor {

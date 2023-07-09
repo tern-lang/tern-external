@@ -20,23 +20,23 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.ByteArray;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Constants of type {@code CONSTANT_Utf8_info} or {@code CONSTANT_String_info}.
  */
 public final class CstString extends TypedConstant {
-    /**
+    /*
      * {@code non-null;} instance representing {@code ""}, that is, the
      * empty string
      */
     public static final CstString EMPTY_STRING = new CstString("");
 
-    /** {@code non-null;} the UTF-8 value as a string */
+    /* {@code non-null;} the UTF-8 value as a string */
     private final String string;
 
-    /** {@code non-null;} the UTF-8 value as bytes */
+    /* {@code non-null;} the UTF-8 value as bytes */
     private final ByteArray bytes;
 
-    /**
+    /*
      * Converts a string into its MUTF-8 form. MUTF-8 differs from normal UTF-8
      * in the handling of character '\0' and surrogate pairs.
      *
@@ -70,7 +70,7 @@ public final class CstString extends TypedConstant {
         return result;
     }
 
-    /**
+    /*
      * Converts an array of UTF-8 bytes into a string.
      *
      * @param bytes {@code non-null;} the bytes to convert
@@ -158,7 +158,7 @@ public final class CstString extends TypedConstant {
         return new String(chars, 0, outAt);
     }
 
-    /**
+    /*
      * Helper for {@link #utf8BytesToString}, which throws the right
      * exception for a bogus utf-8 byte.
      *
@@ -172,7 +172,7 @@ public final class CstString extends TypedConstant {
                                            " at offset " + Hex.u4(offset));
     }
 
-    /**
+    /*
      * Constructs an instance from a {@code String}.
      *
      * @param string {@code non-null;} the UTF-8 value as a string
@@ -186,7 +186,7 @@ public final class CstString extends TypedConstant {
         this.bytes = new ByteArray(stringToUtf8Bytes(string));
     }
 
-    /**
+    /*
      * Constructs an instance from some UTF-8 bytes.
      *
      * @param bytes {@code non-null;} array of the UTF-8 bytes
@@ -200,7 +200,7 @@ public final class CstString extends TypedConstant {
         this.string = utf8BytesToString(bytes).intern();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof CstString)) {
@@ -210,37 +210,37 @@ public final class CstString extends TypedConstant {
         return string.equals(((CstString) other).string);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         return string.hashCode();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected int compareTo0(Constant other) {
         return string.compareTo(((CstString) other).string);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         return "string{\"" + toHuman() + "\"}";
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String typeName() {
         return "utf8";
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean isCategory2() {
         return false;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         int len = string.length();
         StringBuilder sb = new StringBuilder(len * 3 / 2);
@@ -295,7 +295,7 @@ public final class CstString extends TypedConstant {
         return sb.toString();
     }
 
-    /**
+    /*
      * Gets the value as a human-oriented string, surrounded by double
      * quotes.
      *
@@ -305,7 +305,7 @@ public final class CstString extends TypedConstant {
         return '\"' + toHuman() + '\"';
     }
 
-    /**
+    /*
      * Gets the value as a human-oriented string, surrounded by double
      * quotes, but ellipsizes the result if it is longer than the given
      * maximum length
@@ -328,7 +328,7 @@ public final class CstString extends TypedConstant {
         return '\"' + string + ellipses + '\"';
     }
 
-    /**
+    /*
      * Gets the UTF-8 value as a string.
      * The returned string is always already interned.
      *
@@ -338,7 +338,7 @@ public final class CstString extends TypedConstant {
         return string;
     }
 
-    /**
+    /*
      * Gets the UTF-8 value as UTF-8 encoded bytes.
      *
      * @return {@code non-null;} an array of the UTF-8 bytes
@@ -347,7 +347,7 @@ public final class CstString extends TypedConstant {
         return bytes;
     }
 
-    /**
+    /*
      * Gets the size of this instance as UTF-8 code points. That is,
      * get the number of bytes in the UTF-8 encoding of this instance.
      *
@@ -357,7 +357,7 @@ public final class CstString extends TypedConstant {
         return bytes.size();
     }
 
-    /**
+    /*
      * Gets the size of this instance as UTF-16 code points. That is,
      * get the number of 16-bit chars in the UTF-16 encoding of this
      * instance. This is the same as the {@code length} of the

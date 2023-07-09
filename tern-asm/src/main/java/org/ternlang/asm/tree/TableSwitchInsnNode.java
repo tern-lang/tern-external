@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -38,35 +38,35 @@ import org.ternlang.asm.Label;
 import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 
-/**
+/*
  * A node that represents a TABLESWITCH instruction.
  * 
  * @author Eric Bruneton
  */
 public class TableSwitchInsnNode extends AbstractInsnNode {
 
-    /**
+    /*
      * The minimum key value.
      */
     public int min;
 
-    /**
+    /*
      * The maximum key value.
      */
     public int max;
 
-    /**
+    /*
      * Beginning of the default handler block.
      */
     public LabelNode dflt;
 
-    /**
+    /*
      * Beginnings of the handler blocks. This list is a list of
      * {@link LabelNode} objects.
      */
     public List<LabelNode> labels;
 
-    /**
+    /*
      * Constructs a new {@link TableSwitchInsnNode}.
      * 
      * @param min

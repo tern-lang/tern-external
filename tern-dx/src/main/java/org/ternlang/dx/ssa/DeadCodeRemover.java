@@ -23,29 +23,29 @@ import java.util.HashSet;
 import org.ternlang.dx.rop.code.RegisterSpec;
 import org.ternlang.dx.rop.code.RegisterSpecList;
 
-/**
+/*
  * A variation on Appel Algorithm 19.12 "Dead code elimination in SSA form".
  *
  * TODO this algorithm is more efficient if run in reverse from exit
  * block to entry block.
  */
 public class DeadCodeRemover {
-    /** method we're processing */
+    /* method we're processing */
     private final SsaMethod ssaMeth;
 
-    /** ssaMeth.getRegCount() */
+    /* ssaMeth.getRegCount() */
     private final int regCount;
 
-    /**
+    /*
      * indexed by register: whether reg should be examined
      * (does it correspond to a no-side-effect insn?)
      */
     private final BitSet worklist;
 
-    /** use list indexed by register; modified during operation */
+    /* use list indexed by register; modified during operation */
     private final ArrayList<SsaInsn>[] useList;
 
-    /**
+    /*
      * Process a method with the dead-code remver
      *
      * @param ssaMethod method to process
@@ -55,7 +55,7 @@ public class DeadCodeRemover {
         dc.run();
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param ssaMethod method to process
@@ -68,7 +68,7 @@ public class DeadCodeRemover {
         useList = ssaMeth.getUseListCopy();
     }
 
-    /**
+    /*
      * Runs the dead code remover.
      */
     private void run() {
@@ -120,7 +120,7 @@ public class DeadCodeRemover {
         ssaMeth.deleteInsns(deletedInsns);
     }
 
-    /**
+    /*
      * Removes all instructions from every unreachable block.
      */
     private void pruneDeadInstructions() {
@@ -163,7 +163,7 @@ public class DeadCodeRemover {
         ssaMeth.deleteInsns(deletedInsns);
     }
 
-    /**
+    /*
      * Returns true if the only uses of this register form a circle of
      * operations with no side effects.
      *
@@ -203,7 +203,7 @@ public class DeadCodeRemover {
         return true;
     }
 
-    /**
+    /*
      * Returns true if this insn has a side-effect. Returns true
      * if the insn is null for reasons stated in the code block.
      *
@@ -221,14 +221,14 @@ public class DeadCodeRemover {
         return insn.hasSideEffect();
     }
 
-    /**
+    /*
      * A callback class used to build up the initial worklist of
      * registers defined by an instruction with no side effect.
      */
     static private class NoSideEffectVisitor implements SsaInsn.Visitor {
         BitSet noSideEffectRegs;
 
-        /**
+        /*
          * Passes in data structures that will be filled out after
          * ssaMeth.forEachInsn() is called with this instance.
          *
@@ -239,7 +239,7 @@ public class DeadCodeRemover {
             this.noSideEffectRegs = noSideEffectRegs;
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitMoveInsn (NormalSsaInsn insn) {
             // If we're tracking local vars, some moves have side effects.
             if (!hasSideEffect(insn)) {
@@ -247,7 +247,7 @@ public class DeadCodeRemover {
             }
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitPhiInsn (PhiInsn phi) {
             // If we're tracking local vars, then some phis have side effects.
             if (!hasSideEffect(phi)) {
@@ -255,7 +255,7 @@ public class DeadCodeRemover {
             }
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitNonMoveInsn (NormalSsaInsn insn) {
             RegisterSpec result = insn.getResult();
             if (!hasSideEffect(insn) && result != null) {

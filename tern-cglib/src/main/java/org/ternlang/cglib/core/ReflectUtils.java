@@ -26,7 +26,7 @@ import java.util.*;
 import org.ternlang.asm.Attribute;
 import org.ternlang.asm.Type;
 
-/**
+/*
  * @version $Id: ReflectUtils.java,v 1.30 2009/01/11 19:47:49 herbyderby Exp $
  */
 public class ReflectUtils {

@@ -19,17 +19,17 @@ package org.ternlang.dx.dex.code;
 import org.ternlang.dx.io.OpcodeInfo;
 import org.ternlang.dx.io.Opcodes;
 
-/**
+/*
  * Representation of an opcode.
  */
 public final class Dop {
-    /** {@code Opcodes.isValid();} the opcode value itself */
+    /* {@code Opcodes.isValid();} the opcode value itself */
     private final int opcode;
 
-    /** {@code Opcodes.isValid();} the opcode family */
+    /* {@code Opcodes.isValid();} the opcode family */
     private final int family;
 
-    /**
+    /*
      * {@code Opcodes.isValid();} what opcode (by number) to try next
      * when attempting to match an opcode to particular arguments;
      * {@code Opcodes.NO_NEXT} to indicate that this is the last
@@ -37,13 +37,13 @@ public final class Dop {
      */
     private final int nextOpcode;
 
-    /** {@code non-null;} the instruction format */
+    /* {@code non-null;} the instruction format */
     private final InsnFormat format;
 
-    /** whether this opcode uses a result register */
+    /* whether this opcode uses a result register */
     private final boolean hasResult;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param opcode {@code Opcodes.isValid();} the opcode value
@@ -82,13 +82,13 @@ public final class Dop {
         this.hasResult = hasResult;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         return getName();
     }
 
-    /**
+    /*
      * Gets the opcode value.
      *
      * @return {@code Opcodes.MIN_VALUE..Opcodes.MAX_VALUE;} the opcode value
@@ -97,7 +97,7 @@ public final class Dop {
         return opcode;
     }
 
-    /**
+    /*
      * Gets the opcode family. The opcode family is the unmarked (no
      * "/...") opcode that has equivalent semantics to this one.
      *
@@ -107,7 +107,7 @@ public final class Dop {
         return family;
     }
 
-    /**
+    /*
      * Gets the instruction format.
      *
      * @return {@code non-null;} the instruction format
@@ -116,7 +116,7 @@ public final class Dop {
         return format;
     }
 
-    /**
+    /*
      * Returns whether this opcode uses a result register.
      *
      * @return {@code true} iff this opcode uses a result register
@@ -125,7 +125,7 @@ public final class Dop {
         return hasResult;
     }
 
-    /**
+    /*
      * Gets the opcode name.
      *
      * @return {@code non-null;} the opcode name
@@ -134,7 +134,7 @@ public final class Dop {
         return OpcodeInfo.getName(opcode);
     }
 
-    /**
+    /*
      * Gets the opcode value to try next when attempting to match an
      * opcode to particular arguments. This returns {@code
      * Opcodes.NO_NEXT} to indicate that this is the last opcode to
@@ -146,7 +146,7 @@ public final class Dop {
         return nextOpcode;
     }
 
-    /**
+    /*
      * Gets the opcode for the opposite test of this instance. This is only
      * valid for opcodes which are in fact tests.
      *

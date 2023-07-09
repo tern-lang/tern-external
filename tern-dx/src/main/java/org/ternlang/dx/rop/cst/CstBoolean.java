@@ -18,18 +18,18 @@ package org.ternlang.dx.rop.cst;
 
 import org.ternlang.dx.rop.type.Type;
 
-/**
+/*
  * Constants of type {@code boolean}.
  */
 public final class CstBoolean
         extends CstLiteral32 {
-    /** {@code non-null;} instance representing {@code false} */
+    /* {@code non-null;} instance representing {@code false} */
     public static final CstBoolean VALUE_FALSE = new CstBoolean(false);
 
-    /** {@code non-null;} instance representing {@code true} */
+    /* {@code non-null;} instance representing {@code true} */
     public static final CstBoolean VALUE_TRUE = new CstBoolean(true);
 
-    /**
+    /*
      * Makes an instance for the given value. This will return an
      * already-allocated instance.
      *
@@ -40,7 +40,7 @@ public final class CstBoolean
         return value ? VALUE_TRUE : VALUE_FALSE;
     }
 
-    /**
+    /*
      * Makes an instance for the given {@code int} value. This
      * will return an already-allocated instance.
      *
@@ -57,7 +57,7 @@ public final class CstBoolean
         }
     }
 
-    /**
+    /*
      * Constructs an instance. This constructor is private; use {@link #make}.
      *
      * @param value the {@code boolean} value
@@ -66,29 +66,29 @@ public final class CstBoolean
         super(value ? 1 : 0);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         return getValue() ? "boolean{true}" : "boolean{false}";
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Type getType() {
         return Type.BOOLEAN;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String typeName() {
         return "boolean";
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return getValue() ? "true" : "false";
     }
 
-    /**
+    /*
      * Gets the {@code boolean} value.
      *
      * @return the value

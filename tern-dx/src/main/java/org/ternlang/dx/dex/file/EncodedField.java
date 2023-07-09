@@ -25,15 +25,15 @@ import org.ternlang.dx.rop.cst.CstString;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Representation of a field of a class, of any sort.
  */
 public final class EncodedField extends EncodedMember
         implements Comparable<EncodedField> {
-    /** {@code non-null;} constant for the field */
+    /* {@code non-null;} constant for the field */
     private final CstFieldRef field;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param field {@code non-null;} constant for the field
@@ -54,12 +54,12 @@ public final class EncodedField extends EncodedMember
         this.field = field;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int hashCode() {
         return field.hashCode();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public boolean equals(Object other) {
         if (! (other instanceof EncodedField)) {
             return false;
@@ -68,7 +68,7 @@ public final class EncodedField extends EncodedMember
         return compareTo((EncodedField) other) == 0;
     }
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * <p><b>Note:</b> This compares the method constants only,
@@ -80,7 +80,7 @@ public final class EncodedField extends EncodedMember
         return field.compareTo(other.field);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer(100);
@@ -94,32 +94,32 @@ public final class EncodedField extends EncodedMember
         return sb.toString();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void addContents(DexFile file) {
         FieldIdsSection fieldIds = file.getFieldIds();
         fieldIds.intern(field);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public CstString getName() {
         return field.getNat().getName();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return field.toHuman();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void debugPrint(PrintWriter out, boolean verbose) {
         // TODO: Maybe put something better here?
         out.println(toString());
     }
 
-    /**
+    /*
      * Gets the constant for the field.
      *
      * @return {@code non-null;} the constant
@@ -128,7 +128,7 @@ public final class EncodedField extends EncodedMember
         return field;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int encode(DexFile file, AnnotatedOutput out,
             int lastIndex, int dumpSeq) {

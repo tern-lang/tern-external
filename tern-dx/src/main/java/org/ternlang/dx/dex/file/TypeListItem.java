@@ -22,23 +22,23 @@ import org.ternlang.dx.rop.type.TypeList;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Representation of a list of class references.
  */
 public final class TypeListItem extends OffsettedItem {
-    /** alignment requirement */
+    /* alignment requirement */
     private static final int ALIGNMENT = 4;
 
-    /** element size in bytes */
+    /* element size in bytes */
     private static final int ELEMENT_SIZE = 2;
 
-    /** header size in bytes */
+    /* header size in bytes */
     private static final int HEADER_SIZE = 4;
 
-    /** {@code non-null;} the actual list */
+    /* {@code non-null;} the actual list */
     private final TypeList list;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param list {@code non-null;} the actual list
@@ -49,19 +49,19 @@ public final class TypeListItem extends OffsettedItem {
         this.list = list;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         return StdTypeList.hashContents(list);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public ItemType itemType() {
         return ItemType.TYPE_TYPE_LIST;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void addContents(DexFile file) {
         TypeIdsSection typeIds = file.getTypeIds();
         int sz = list.size();
@@ -71,13 +71,13 @@ public final class TypeListItem extends OffsettedItem {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toHuman() {
         throw new RuntimeException("unsupported");
     }
 
-    /**
+    /*
      * Gets the underlying list.
      *
      * @return {@code non-null;} the list
@@ -86,7 +86,7 @@ public final class TypeListItem extends OffsettedItem {
         return list;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void writeTo0(DexFile file, AnnotatedOutput out) {
         TypeIdsSection typeIds = file.getTypeIds();
@@ -110,7 +110,7 @@ public final class TypeListItem extends OffsettedItem {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected int compareTo0(OffsettedItem other) {
         TypeList thisList = this.list;

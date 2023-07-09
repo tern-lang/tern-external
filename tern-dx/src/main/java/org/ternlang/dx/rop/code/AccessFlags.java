@@ -18,7 +18,7 @@ package org.ternlang.dx.rop.code;
 
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Constants used as "access flags" in various places in classes, and
  * related utilities. Although, at the rop layer, flags are generally
  * ignored, this is the layer of communication, and as such, this
@@ -28,121 +28,121 @@ import org.ternlang.dx.util.Hex;
  * is only used in a very limited way.
  */
 public final class AccessFlags {
-    /** public member / class */
+    /* public member / class */
     public static final int ACC_PUBLIC = 0x0001;
 
-    /** private member */
+    /* private member */
     public static final int ACC_PRIVATE = 0x0002;
 
-    /** protected member */
+    /* protected member */
     public static final int ACC_PROTECTED = 0x0004;
 
-    /** static member */
+    /* static member */
     public static final int ACC_STATIC = 0x0008;
 
-    /** final member / class */
+    /* final member / class */
     public static final int ACC_FINAL = 0x0010;
 
-    /**
+    /*
      * synchronized method; only valid in dex files for {@code native}
      * methods
      */
     public static final int ACC_SYNCHRONIZED = 0x0020;
 
-    /**
+    /*
      * class with new-style {@code invokespecial} for superclass
      * method access
      */
     public static final int ACC_SUPER = 0x0020;
 
-    /** volatile field */
+    /* volatile field */
     public static final int ACC_VOLATILE = 0x0040;
 
-    /** bridge method (generated) */
+    /* bridge method (generated) */
     public static final int ACC_BRIDGE = 0x0040;
 
-    /** transient field */
+    /* transient field */
     public static final int ACC_TRANSIENT = 0x0080;
 
-    /** varargs method */
+    /* varargs method */
     public static final int ACC_VARARGS = 0x0080;
 
-    /** native method */
+    /* native method */
     public static final int ACC_NATIVE = 0x0100;
 
-    /** "class" is in fact an public static final interface */
+    /* "class" is in fact an public static final interface */
     public static final int ACC_INTERFACE = 0x0200;
 
-    /** abstract method / class */
+    /* abstract method / class */
     public static final int ACC_ABSTRACT = 0x0400;
 
-    /**
+    /*
      * method with strict floating point ({@code strictfp})
      * behavior
      */
     public static final int ACC_STRICT = 0x0800;
 
-    /** synthetic member */
+    /* synthetic member */
     public static final int ACC_SYNTHETIC = 0x1000;
 
-    /** class is an annotation type */
+    /* class is an annotation type */
     public static final int ACC_ANNOTATION = 0x2000;
 
-    /**
+    /*
      * class is an enumerated type; field is an element of an enumerated
      * type
      */
     public static final int ACC_ENUM = 0x4000;
 
-    /** method is a constructor */
+    /* method is a constructor */
     public static final int ACC_CONSTRUCTOR = 0x10000;
 
-    /**
+    /*
      * method was declared {@code synchronized}; has no effect on
      * execution (other than inspecting this flag, per se)
      */
     public static final int ACC_DECLARED_SYNCHRONIZED = 0x20000;
 
-    /** flags defined on classes */
+    /* flags defined on classes */
     public static final int CLASS_FLAGS =
         ACC_PUBLIC | ACC_FINAL | ACC_SUPER | ACC_INTERFACE | ACC_ABSTRACT |
         ACC_SYNTHETIC | ACC_ANNOTATION | ACC_ENUM;
 
-    /** flags defined on inner classes */
+    /* flags defined on inner classes */
     public static final int INNER_CLASS_FLAGS =
         ACC_PUBLIC | ACC_PRIVATE | ACC_PROTECTED | ACC_STATIC | ACC_FINAL |
         ACC_INTERFACE | ACC_ABSTRACT | ACC_SYNTHETIC | ACC_ANNOTATION |
         ACC_ENUM;
 
-    /** flags defined on fields */
+    /* flags defined on fields */
     public static final int FIELD_FLAGS =
         ACC_PUBLIC | ACC_PRIVATE | ACC_PROTECTED | ACC_STATIC | ACC_FINAL |
         ACC_VOLATILE | ACC_TRANSIENT | ACC_SYNTHETIC | ACC_ENUM;
 
-    /** flags defined on methods */
+    /* flags defined on methods */
     public static final int METHOD_FLAGS =
         ACC_PUBLIC | ACC_PRIVATE | ACC_PROTECTED | ACC_STATIC | ACC_FINAL |
         ACC_SYNCHRONIZED | ACC_BRIDGE | ACC_VARARGS | ACC_NATIVE |
         ACC_ABSTRACT | ACC_STRICT | ACC_SYNTHETIC | ACC_CONSTRUCTOR |
         ACC_DECLARED_SYNCHRONIZED;
 
-    /** indicates conversion of class flags */
+    /* indicates conversion of class flags */
     private static final int CONV_CLASS = 1;
 
-    /** indicates conversion of field flags */
+    /* indicates conversion of field flags */
     private static final int CONV_FIELD = 2;
 
-    /** indicates conversion of method flags */
+    /* indicates conversion of method flags */
     private static final int CONV_METHOD = 3;
 
-    /**
+    /*
      * This class is uninstantiable.
      */
     private AccessFlags() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Returns a human-oriented string representing the given access flags,
      * as defined on classes (not fields or methods).
      *
@@ -153,7 +153,7 @@ public final class AccessFlags {
         return humanHelper(flags, CLASS_FLAGS, CONV_CLASS);
     }
 
-    /**
+    /*
      * Returns a human-oriented string representing the given access flags,
      * as defined on inner classes.
      *
@@ -164,7 +164,7 @@ public final class AccessFlags {
         return humanHelper(flags, INNER_CLASS_FLAGS, CONV_CLASS);
     }
 
-    /**
+    /*
      * Returns a human-oriented string representing the given access flags,
      * as defined on fields (not classes or methods).
      *
@@ -175,7 +175,7 @@ public final class AccessFlags {
         return humanHelper(flags, FIELD_FLAGS, CONV_FIELD);
     }
 
-    /**
+    /*
      * Returns a human-oriented string representing the given access flags,
      * as defined on methods (not classes or fields).
      *
@@ -186,7 +186,7 @@ public final class AccessFlags {
         return humanHelper(flags, METHOD_FLAGS, CONV_METHOD);
     }
 
-    /**
+    /*
      * Returns whether the flag {@code ACC_PUBLIC} is on in the given
      * flags.
      *
@@ -197,7 +197,7 @@ public final class AccessFlags {
         return (flags & ACC_PUBLIC) != 0;
     }
 
-    /**
+    /*
      * Returns whether the flag {@code ACC_PROTECTED} is on in the given
      * flags.
      *
@@ -208,7 +208,7 @@ public final class AccessFlags {
         return (flags & ACC_PROTECTED) != 0;
     }
 
-    /**
+    /*
      * Returns whether the flag {@code ACC_PRIVATE} is on in the given
      * flags.
      *
@@ -219,7 +219,7 @@ public final class AccessFlags {
         return (flags & ACC_PRIVATE) != 0;
     }
 
-    /**
+    /*
      * Returns whether the flag {@code ACC_STATIC} is on in the given
      * flags.
      *
@@ -230,7 +230,7 @@ public final class AccessFlags {
         return (flags & ACC_STATIC) != 0;
     }
 
-    /**
+    /*
      * Returns whether the flag {@code ACC_CONSTRUCTOR} is on in
      * the given flags.
      *
@@ -241,7 +241,7 @@ public final class AccessFlags {
         return (flags & ACC_CONSTRUCTOR) != 0;
     }
 
-    /**
+    /*
      * Returns whether the flag {@code ACC_INTERFACE} is on in
      * the given flags.
      *
@@ -252,7 +252,7 @@ public final class AccessFlags {
         return (flags & ACC_INTERFACE) != 0;
     }
 
-    /**
+    /*
      * Returns whether the flag {@code ACC_SYNCHRONIZED} is on in
      * the given flags.
      *
@@ -263,7 +263,7 @@ public final class AccessFlags {
         return (flags & ACC_SYNCHRONIZED) != 0;
     }
 
-    /**
+    /*
      * Returns whether the flag {@code ACC_ABSTRACT} is on in the given
      * flags.
      *
@@ -274,7 +274,7 @@ public final class AccessFlags {
         return (flags & ACC_ABSTRACT) != 0;
     }
 
-    /**
+    /*
      * Returns whether the flag {@code ACC_NATIVE} is on in the given
      * flags.
      *
@@ -285,7 +285,7 @@ public final class AccessFlags {
         return (flags & ACC_NATIVE) != 0;
     }
 
-    /**
+    /*
      * Returns whether the flag {@code ACC_ANNOTATION} is on in the given
      * flags.
      *
@@ -296,7 +296,7 @@ public final class AccessFlags {
         return (flags & ACC_ANNOTATION) != 0;
     }
 
-    /**
+    /*
      * Returns whether the flag {@code ACC_DECLARED_SYNCHRONIZED} is
      * on in the given flags.
      *
@@ -307,7 +307,7 @@ public final class AccessFlags {
         return (flags & ACC_DECLARED_SYNCHRONIZED) != 0;
     }
 
-    /**
+    /*
      * Returns whether the flag {@code ACC_ENUM} is on in the given flags.
      *
      * @param flags the flags to check
@@ -317,7 +317,7 @@ public final class AccessFlags {
         return (flags & ACC_ENUM) != 0;
     }
 
-    /**
+    /*
      * Helper to return a human-oriented string representing the given
      * access flags.
      *

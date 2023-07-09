@@ -16,11 +16,11 @@
 
 package org.ternlang.dx.util;
 
-/**
+/*
  * Exception which is meant to indicate a non-fatal warning.
  */
 public class Warning extends RuntimeException {
-    /**
+    /*
      * Constructs an instance.
      *
      * @param message human-oriented message

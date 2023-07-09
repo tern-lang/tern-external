@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -29,7 +29,7 @@
  */
 package org.ternlang.asm;
 
-/**
+/*
  * An {@link AnnotationVisitor} that generates annotations in bytecode form.
  * 
  * @author Eric Bruneton
@@ -37,48 +37,48 @@ package org.ternlang.asm;
  */
 final class AnnotationWriter extends AnnotationVisitor {
 
-    /**
+    /*
      * The class writer to which this annotation must be added.
      */
     private final ClassWriter cw;
 
-    /**
+    /*
      * The number of values in this annotation.
      */
     private int size;
 
-    /**
+    /*
      * <tt>true<tt> if values are named, <tt>false</tt> otherwise. Annotation
      * writers used for annotation default and annotation arrays use unnamed
      * values.
      */
     private final boolean named;
 
-    /**
+    /*
      * The annotation values in bytecode form. This byte vector only contains
      * the values themselves, i.e. the number of values must be stored as a
      * unsigned short just before these bytes.
      */
     private final ByteVector bv;
 
-    /**
+    /*
      * The byte vector to be used to store the number of values of this
      * annotation. See {@link #bv}.
      */
     private final ByteVector parent;
 
-    /**
+    /*
      * Where the number of values of this annotation must be stored in
      * {@link #parent}.
      */
     private final int offset;
 
-    /**
+    /*
      * Next annotation writer. This field is used to store annotation lists.
      */
     AnnotationWriter next;
 
-    /**
+    /*
      * Previous annotation writer. This field is used to store annotation lists.
      */
     AnnotationWriter prev;
@@ -87,7 +87,7 @@ final class AnnotationWriter extends AnnotationVisitor {
     // Constructor
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Constructs a new {@link AnnotationWriter}.
      * 
      * @param cw
@@ -235,7 +235,7 @@ final class AnnotationWriter extends AnnotationVisitor {
     // Utility methods
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Returns the size of this annotation writer list.
      * 
      * @return the size of this annotation writer list.
@@ -250,7 +250,7 @@ final class AnnotationWriter extends AnnotationVisitor {
         return size;
     }
 
-    /**
+    /*
      * Puts the annotations of this annotation writer list into the given byte
      * vector.
      * 
@@ -279,7 +279,7 @@ final class AnnotationWriter extends AnnotationVisitor {
         }
     }
 
-    /**
+    /*
      * Puts the given annotation lists into the given byte vector.
      * 
      * @param panns
@@ -316,7 +316,7 @@ final class AnnotationWriter extends AnnotationVisitor {
         }
     }
 
-    /**
+    /*
      * Puts the given type reference and type path into the given bytevector.
      * LOCAL_VARIABLE and RESOURCE_VARIABLE target types are not supported.
      * 

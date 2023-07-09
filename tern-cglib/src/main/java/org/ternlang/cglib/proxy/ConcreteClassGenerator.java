@@ -46,7 +46,7 @@ import org.ternlang.cglib.core.Transformer;
 import org.ternlang.cglib.core.TypeUtils;
 import org.ternlang.cglib.core.VisibilityPredicate;
 
-/**
+/*
  * @author Juozas Baliuka, Chris Nokleberg
  */
 public class ConcreteClassGenerator extends AbstractClassGenerator
@@ -67,7 +67,7 @@ public class ConcreteClassGenerator extends AbstractClassGenerator
         super(SOURCE);
     }
 
-    /**
+    /*
      * Set the class which the generated class will extend. The class
      * must not be declared as final, and must have a non-private
      * no-argument constructor.
@@ -80,7 +80,7 @@ public class ConcreteClassGenerator extends AbstractClassGenerator
         this.superclass = superclass;
     }
     
-    /**
+    /*
      * Set the interfaces to implement. The <code>Factory</code> interface will
      * always be implemented regardless of what is specified here.
      * @param interfaces array of interfaces to implement, or null

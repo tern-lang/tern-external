@@ -18,29 +18,29 @@ package org.ternlang.dx.rop.type;
 
 import java.util.HashMap;
 
-/**
+/*
  * Representation of a method descriptor. Instances of this class are
  * generally interned and may be usefully compared with each other
  * using {@code ==}.
  */
 public final class Prototype implements Comparable<Prototype> {
-    /** {@code non-null;} intern table mapping string descriptors to instances */
+    /* {@code non-null;} intern table mapping string descriptors to instances */
     private static final HashMap<String, Prototype> internTable =
         new HashMap<String, Prototype>(500);
 
-    /** {@code non-null;} method descriptor */
+    /* {@code non-null;} method descriptor */
     private final String descriptor;
 
-    /** {@code non-null;} return type */
+    /* {@code non-null;} return type */
     private final Type returnType;
 
-    /** {@code non-null;} list of parameter types */
+    /* {@code non-null;} list of parameter types */
     private final StdTypeList parameterTypes;
 
-    /** {@code null-ok;} list of parameter frame types, if calculated */
+    /* {@code null-ok;} list of parameter frame types, if calculated */
     private StdTypeList parameterFrameTypes;
 
-    /**
+    /*
      * Returns the unique instance corresponding to the
      * given method descriptor. See vmspec-2 sec4.3.3 for details on the
      * field descriptor syntax.
@@ -108,7 +108,7 @@ public final class Prototype implements Comparable<Prototype> {
         return putIntern(result);
     }
 
-    /**
+    /*
      * Helper for {@link #intern} which returns an empty array to
      * populate with parsed parameter types, and which also ensures
      * that there is a '(' at the start of the descriptor and a
@@ -153,7 +153,7 @@ public final class Prototype implements Comparable<Prototype> {
         return new Type[maxParams];
     }
 
-    /**
+    /*
      * Interns an instance, adding to the descriptor as necessary based
      * on the given definer, name, and flags. For example, an init
      * method has an uninitialized object of type {@code definer}
@@ -180,7 +180,7 @@ public final class Prototype implements Comparable<Prototype> {
         return base.withFirstParameter(definer);
     }
 
-    /**
+    /*
      * Interns an instance which consists of the given number of
      * {@code int}s along with the given return type
      *
@@ -206,7 +206,7 @@ public final class Prototype implements Comparable<Prototype> {
         return intern(sb.toString());
     }
 
-    /**
+    /*
      * Constructs an instance. This is a private constructor; use one
      * of the public static methods to get instances.
      *
@@ -232,7 +232,7 @@ public final class Prototype implements Comparable<Prototype> {
         this.parameterFrameTypes = null;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean equals(Object other) {
         if (this == other) {
@@ -250,13 +250,13 @@ public final class Prototype implements Comparable<Prototype> {
         return descriptor.equals(((Prototype) other).descriptor);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         return descriptor.hashCode();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int compareTo(Prototype other) {
         if (this == other) {
             return 0;
@@ -298,13 +298,13 @@ public final class Prototype implements Comparable<Prototype> {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         return descriptor;
     }
 
-    /**
+    /*
      * Gets the descriptor string.
      *
      * @return {@code non-null;} the descriptor
@@ -313,7 +313,7 @@ public final class Prototype implements Comparable<Prototype> {
         return descriptor;
     }
 
-    /**
+    /*
      * Gets the return type.
      *
      * @return {@code non-null;} the return type
@@ -322,7 +322,7 @@ public final class Prototype implements Comparable<Prototype> {
         return returnType;
     }
 
-    /**
+    /*
      * Gets the list of parameter types.
      *
      * @return {@code non-null;} the list of parameter types
@@ -331,7 +331,7 @@ public final class Prototype implements Comparable<Prototype> {
         return parameterTypes;
     }
 
-    /**
+    /*
      * Gets the list of frame types corresponding to the list of parameter
      * types. The difference between the two lists (if any) is that all
      * "intlike" types (see {@link Type#isIntlike}) are replaced by
@@ -358,7 +358,7 @@ public final class Prototype implements Comparable<Prototype> {
         return parameterFrameTypes;
     }
 
-    /**
+    /*
      * Returns a new interned instance, which is the same as this instance,
      * except that it has an additional parameter prepended to the original's
      * argument list.
@@ -378,7 +378,7 @@ public final class Prototype implements Comparable<Prototype> {
         return putIntern(result);
     }
 
-    /**
+    /*
      * Puts the given instance in the intern table if it's not already
      * there. If a conflicting value is already in the table, then leave it.
      * Return the interned value.

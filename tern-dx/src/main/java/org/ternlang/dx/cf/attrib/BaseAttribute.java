@@ -18,15 +18,15 @@ package org.ternlang.dx.cf.attrib;
 
 import org.ternlang.dx.cf.iface.Attribute;
 
-/**
+/*
  * Base implementation of {@link Attribute}, which directly stores
  * the attribute name but leaves the rest up to subclasses.
  */
 public abstract class BaseAttribute implements Attribute {
-    /** {@code non-null;} attribute name */
+    /* {@code non-null;} attribute name */
     private final String name;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param name {@code non-null;} attribute name
@@ -39,7 +39,7 @@ public abstract class BaseAttribute implements Attribute {
         this.name = name;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String getName() {
         return name;
     }

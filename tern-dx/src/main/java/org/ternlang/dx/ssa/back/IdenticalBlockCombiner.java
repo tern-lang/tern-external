@@ -24,7 +24,7 @@ import org.ternlang.dx.rop.code.RegOps;
 import org.ternlang.dx.rop.code.RopMethod;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * Searches for basic blocks that all have the same successor and insns
  * but different predecessors. These blocks are then combined into a single
  * block and the now-unused blocks are deleted. These identical blocks
@@ -35,7 +35,7 @@ public class IdenticalBlockCombiner {
     private final BasicBlockList blocks;
     private final BasicBlockList newBlocks;
 
-    /**
+    /*
      * Constructs instance. Call {@code process()} to run.
      *
      * @param rm {@code non-null;} instance to process
@@ -46,7 +46,7 @@ public class IdenticalBlockCombiner {
         newBlocks = blocks.getMutableCopy();
     }
 
-    /**
+    /*
      * Runs algorithm. TODO: This is n^2, and could be made linear-ish with
      * a hash. In particular, hash the contents of each block and only
      * compare blocks with the same hash.
@@ -114,7 +114,7 @@ public class IdenticalBlockCombiner {
         return new RopMethod(newBlocks, ropMethod.getFirstLabel());
     }
 
-    /**
+    /*
      * Helper method to compare the contents of two blocks.
      *
      * @param a {@code non-null;} a block to compare
@@ -125,7 +125,7 @@ public class IdenticalBlockCombiner {
         return a.getInsns().contentEquals(b.getInsns());
     }
 
-    /**
+    /*
      * Combines blocks proven identical into one alpha block, re-writing
      * all of the successor links that point to the beta blocks to point
      * to the alpha block instead.
@@ -149,7 +149,7 @@ public class IdenticalBlockCombiner {
         }
     }
 
-    /**
+    /*
      * Replaces one of a block's successors with a different label. Constructs
      * an updated BasicBlock instance and places it in {@code newBlocks}.
      *

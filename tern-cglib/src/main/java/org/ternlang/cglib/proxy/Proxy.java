@@ -21,7 +21,7 @@ import java.lang.reflect.Member;
 
 import org.ternlang.cglib.core.CodeGenerationException;
 
-/**
+/*
  * This class is meant to be used as replacement for
  * <code>java.lang.reflect.Proxy</code> under JDK 1.2. There are some known
  * subtle differences:

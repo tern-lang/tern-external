@@ -26,7 +26,7 @@ import org.ternlang.dx.ssa.SsaBasicBlock;
 import org.ternlang.dx.ssa.SsaInsn;
 import org.ternlang.dx.ssa.SsaMethod;
 
-/**
+/*
  * From Appel "Modern Compiler Implementation in Java" algorithm 19.17
  * Calculate the live ranges for register {@code reg}.<p>
  *
@@ -35,40 +35,40 @@ import org.ternlang.dx.ssa.SsaMethod;
  * M = visitedBlocks <p>
  */
 public class LivenessAnalyzer {
-    /**
+    /*
      * {@code non-null;} index by basic block indexed set of basic blocks
      * that have already been visited. "M" as written in the original Appel
      * algorithm.
      */
     private final BitSet visitedBlocks;
 
-    /**
+    /*
      * {@code non-null;} set of blocks remaing to visit as "live out as block"
      */
     private final BitSet liveOutBlocks;
 
-    /**
+    /*
      * {@code >=0;} SSA register currently being analyzed.
      * "v" in the original Appel algorithm.
      */
     private final int regV;
 
-    /** method to process */
+    /* method to process */
     private final SsaMethod ssaMeth;
 
-    /** interference graph being updated */
+    /* interference graph being updated */
     private final InterferenceGraph interference;
 
-    /** block "n" in Appel 19.17 */
+    /* block "n" in Appel 19.17 */
     private SsaBasicBlock blockN;
 
-    /** index of statement {@code s} in {@code blockN} */
+    /* index of statement {@code s} in {@code blockN} */
     private int statementIndex;
 
-    /** the next function to call */
+    /* the next function to call */
     private NextFunction nextFunction;
 
-    /** constants for {@link #nextFunction} */
+    /* constants for {@link #nextFunction} */
     private static enum NextFunction {
         LIVE_IN_AT_STATEMENT,
             LIVE_OUT_AT_STATEMENT,
@@ -76,7 +76,7 @@ public class LivenessAnalyzer {
             DONE;
     }
 
-    /**
+    /*
      * Runs register liveness algorithm for a method, updating the
      * live in/out information in {@code SsaBasicBlock} instances and
      * returning an interference graph.
@@ -99,7 +99,7 @@ public class LivenessAnalyzer {
         return interference;
     }
 
-    /**
+    /*
      * Makes liveness analyzer instance for specific register.
      *
      * @param ssaMeth {@code non-null;} method to process
@@ -119,7 +119,7 @@ public class LivenessAnalyzer {
         this.interference = interference;
     }
 
-    /**
+    /*
      * The algorithm in Appel is presented in partial tail-recursion
      * form. Obviously, that's not efficient in java, so this function
      * serves as the dispatcher instead.
@@ -147,7 +147,7 @@ public class LivenessAnalyzer {
         }
     }
 
-    /**
+    /*
      * From Appel algorithm 19.17.
      */
     public void run() {
@@ -190,7 +190,7 @@ public class LivenessAnalyzer {
         }
     }
 
-    /**
+    /*
      * "v is live-out at n."
      */
     private void liveOutAtBlock() {
@@ -209,7 +209,7 @@ public class LivenessAnalyzer {
         }
     }
 
-    /**
+    /*
      * "v is live-in at s."
      */
     private void liveInAtStatement() {
@@ -228,7 +228,7 @@ public class LivenessAnalyzer {
         }
     }
 
-    /**
+    /*
      * "v is live-out at s."
      */
     private void liveOutAtStatement() {
@@ -243,7 +243,7 @@ public class LivenessAnalyzer {
         }
     }
 
-    /**
+    /*
      * Ensures that all the phi result registers for all the phis in the
      * same basic block interfere with each other. This is needed since
      * the dead code remover has allowed through "dead-end phis" whose

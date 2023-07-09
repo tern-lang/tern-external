@@ -18,11 +18,11 @@ package org.ternlang.dx.io.instructions;
 
 import org.ternlang.dx.io.IndexType;
 
-/**
+/*
  * A decoded Dalvik instruction which has no register arguments.
  */
 public final class ZeroRegisterDecodedInstruction extends DecodedInstruction {
-    /**
+    /*
      * Constructs an instance.
      */
     public ZeroRegisterDecodedInstruction(InstructionCodec format, int opcode,
@@ -30,12 +30,12 @@ public final class ZeroRegisterDecodedInstruction extends DecodedInstruction {
         super(format, opcode, index, indexType, target, literal);
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public int getRegisterCount() {
         return 0;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public DecodedInstruction withIndex(int newIndex) {
         return new ZeroRegisterDecodedInstruction(
                 getFormat(), getOpcode(), newIndex, getIndexType(),

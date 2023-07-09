@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -33,7 +33,7 @@ package org.ternlang.asm.commons;
 import java.util.Collections;
 import java.util.Map;
 
-/**
+/*
  * A {@link Remapper} using a {@link Map} to define its mapping.
  *
  * @author Eugene Kuleshov

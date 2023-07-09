@@ -19,26 +19,26 @@ package org.ternlang.dx.cf.code;
 import org.ternlang.dx.util.IntList;
 import org.ternlang.dx.util.MutabilityControl;
 
-/**
+/*
  * List of (value, target) mappings representing the choices of a
  * {@code tableswitch} or {@code lookupswitch} instruction. It
  * also holds the default target for the switch.
  */
 public final class SwitchList extends MutabilityControl {
-    /** {@code non-null;} list of test values */
+    /* {@code non-null;} list of test values */
     private final IntList values;
 
-    /**
+    /*
      * {@code non-null;} list of targets corresponding to the test values; there
      * is always one extra element in the target list, to hold the
      * default target
      */
     private final IntList targets;
 
-    /** ultimate size of the list */
+    /* ultimate size of the list */
     private int size;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param size {@code >= 0;} the number of elements to be in the table
@@ -50,7 +50,7 @@ public final class SwitchList extends MutabilityControl {
         this.size = size;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void setImmutable() {
         values.setImmutable();
@@ -58,7 +58,7 @@ public final class SwitchList extends MutabilityControl {
         super.setImmutable();
     }
 
-    /**
+    /*
      * Gets the size of the list.
      *
      * @return {@code >= 0;} the list size
@@ -67,7 +67,7 @@ public final class SwitchList extends MutabilityControl {
         return size;
     }
 
-    /**
+    /*
      * Gets the indicated test value.
      *
      * @param n {@code >= 0;}, &lt; size(); which index
@@ -77,7 +77,7 @@ public final class SwitchList extends MutabilityControl {
         return values.get(n);
     }
 
-    /**
+    /*
      * Gets the indicated target. Asking for the target at {@code size()}
      * returns the default target.
      *
@@ -88,7 +88,7 @@ public final class SwitchList extends MutabilityControl {
         return targets.get(n);
     }
 
-    /**
+    /*
      * Gets the default target. This is just a shorthand for
      * {@code getTarget(size())}.
      *
@@ -98,7 +98,7 @@ public final class SwitchList extends MutabilityControl {
         return targets.get(size);
     }
 
-    /**
+    /*
      * Gets the list of all targets. This includes one extra element at the
      * end of the list, which holds the default target.
      *
@@ -108,7 +108,7 @@ public final class SwitchList extends MutabilityControl {
         return targets;
     }
 
-    /**
+    /*
      * Gets the list of all case values.
      *
      * @return {@code non-null;} the case value list
@@ -117,7 +117,7 @@ public final class SwitchList extends MutabilityControl {
         return values;
     }
 
-    /**
+    /*
      * Sets the default target. It is only valid to call this method
      * when all the non-default elements have been set.
      *
@@ -138,7 +138,7 @@ public final class SwitchList extends MutabilityControl {
         targets.add(target);
     }
 
-    /**
+    /*
      * Adds the given item.
      *
      * @param value the test value
@@ -155,7 +155,7 @@ public final class SwitchList extends MutabilityControl {
         targets.add(target);
     }
 
-    /**
+    /*
      * Shrinks this instance if possible, removing test elements that
      * refer to the default target. This is only valid after the instance
      * is fully populated, including the default target (naturally).

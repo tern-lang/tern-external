@@ -24,7 +24,7 @@ import org.ternlang.cglib.core.*;
 import org.ternlang.cglib.transform.*;
 import org.ternlang.cglib.transform.impl.AddStaticInitTransformer;
 
-/**
+/*
  *
  * @author  baliuka
  */

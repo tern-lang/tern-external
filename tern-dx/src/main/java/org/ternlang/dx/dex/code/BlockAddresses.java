@@ -22,26 +22,26 @@ import org.ternlang.dx.rop.code.Insn;
 import org.ternlang.dx.rop.code.RopMethod;
 import org.ternlang.dx.rop.code.SourcePosition;
 
-/**
+/*
  * Container for the set of {@link CodeAddress} instances associated with
  * the blocks of a particular method. Each block has a corresponding
  * start address, end address, and last instruction address.
  */
 public final class BlockAddresses {
-    /** {@code non-null;} array containing addresses for the start of each basic
+    /* {@code non-null;} array containing addresses for the start of each basic
      * block (indexed by basic block label) */
     private final CodeAddress[] starts;
 
-    /** {@code non-null;} array containing addresses for the final instruction
+    /* {@code non-null;} array containing addresses for the final instruction
      * of each basic block (indexed by basic block label) */
     private final CodeAddress[] lasts;
 
-    /** {@code non-null;} array containing addresses for the end (just past the
+    /* {@code non-null;} array containing addresses for the end (just past the
      * final instruction) of each basic block (indexed by basic block
      * label) */
     private final CodeAddress[] ends;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param method {@code non-null;} the method to have block addresses for
@@ -57,7 +57,7 @@ public final class BlockAddresses {
         setupArrays(method);
     }
 
-    /**
+    /*
      * Gets the instance for the start of the given block.
      *
      * @param block {@code non-null;} the block in question
@@ -67,7 +67,7 @@ public final class BlockAddresses {
         return starts[block.getLabel()];
     }
 
-    /**
+    /*
      * Gets the instance for the start of the block with the given label.
      *
      * @param label {@code non-null;} the label of the block in question
@@ -77,7 +77,7 @@ public final class BlockAddresses {
         return starts[label];
     }
 
-    /**
+    /*
      * Gets the instance for the final instruction of the given block.
      *
      * @param block {@code non-null;} the block in question
@@ -87,7 +87,7 @@ public final class BlockAddresses {
         return lasts[block.getLabel()];
     }
 
-    /**
+    /*
      * Gets the instance for the final instruction of the block with
      * the given label.
      *
@@ -98,7 +98,7 @@ public final class BlockAddresses {
         return lasts[label];
     }
 
-    /**
+    /*
      * Gets the instance for the end (address after the final instruction)
      * of the given block.
      *
@@ -109,7 +109,7 @@ public final class BlockAddresses {
         return ends[block.getLabel()];
     }
 
-    /**
+    /*
      * Gets the instance for the end (address after the final instruction)
      * of the block with the given label.
      *
@@ -120,7 +120,7 @@ public final class BlockAddresses {
         return ends[label];
     }
 
-    /**
+    /*
      * Sets up the address arrays.
      */
     private void setupArrays(RopMethod method) {

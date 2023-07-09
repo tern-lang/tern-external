@@ -33,23 +33,23 @@ import org.ternlang.dx.util.Bits;
 import org.ternlang.dx.util.ByteArray;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Bytecode array, which is part of a standard {@code Code} attribute.
  */
 public final class BytecodeArray {
-    /** convenient no-op implementation of {@link Visitor} */
+    /* convenient no-op implementation of {@link Visitor} */
     public static final Visitor EMPTY_VISITOR = new BaseVisitor();
 
-    /** {@code non-null;} underlying bytes */
+    /* {@code non-null;} underlying bytes */
     private final ByteArray bytes;
 
-    /**
+    /*
      * {@code non-null;} constant pool to use when resolving constant
      * pool indices
      */
     private final ConstantPool pool;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param bytes {@code non-null;} underlying bytes
@@ -69,7 +69,7 @@ public final class BytecodeArray {
         this.pool = pool;
     }
 
-    /**
+    /*
      * Gets the underlying byte array.
      *
      * @return {@code non-null;} the byte array
@@ -78,7 +78,7 @@ public final class BytecodeArray {
         return bytes;
     }
 
-    /**
+    /*
      * Gets the size of the bytecode array, per se.
      *
      * @return {@code >= 0;} the length of the bytecode array
@@ -87,7 +87,7 @@ public final class BytecodeArray {
         return bytes.size();
     }
 
-    /**
+    /*
      * Gets the total length of this structure in bytes, when included in
      * a {@code Code} attribute. The returned value includes the
      * array size plus four bytes for {@code code_length}.
@@ -98,7 +98,7 @@ public final class BytecodeArray {
         return 4 + bytes.size();
     }
 
-    /**
+    /*
      * Parses each instruction in the array, in order.
      *
      * @param visitor {@code null-ok;} visitor to call back to for
@@ -117,7 +117,7 @@ public final class BytecodeArray {
         }
     }
 
-    /**
+    /*
      * Finds the offset to each instruction in the bytecode array. The
      * result is a bit set with the offset of each opcode-per-se flipped on.
      *
@@ -138,7 +138,7 @@ public final class BytecodeArray {
         return result;
     }
 
-    /**
+    /*
      * Processes the given "work set" by repeatedly finding the lowest bit
      * in the set, clearing it, and parsing and visiting the instruction at
      * the indicated offset (that is, the bit index), repeating until the
@@ -165,7 +165,7 @@ public final class BytecodeArray {
         }
     }
 
-    /**
+    /*
      * Parses the instruction at the indicated offset. Indicate the
      * result by calling the visitor if supplied and by returning the
      * number of bytes consumed by the instruction.
@@ -814,7 +814,7 @@ public final class BytecodeArray {
         }
     }
 
-    /**
+    /*
      * Helper to deal with {@code tableswitch}.
      *
      * @param offset the offset to the {@code tableswitch} opcode itself
@@ -857,7 +857,7 @@ public final class BytecodeArray {
         return length;
     }
 
-    /**
+    /*
      * Helper to deal with {@code lookupswitch}.
      *
      * @param offset the offset to the {@code lookupswitch} opcode itself
@@ -895,7 +895,7 @@ public final class BytecodeArray {
         return length;
     }
 
-    /**
+    /*
      * Helper to deal with {@code newarray}.
      *
      * @param offset the offset to the {@code newarray} opcode itself
@@ -1084,7 +1084,7 @@ public final class BytecodeArray {
      }
 
 
-    /**
+    /*
      * Helper to deal with {@code wide}.
      *
      * @param offset the offset to the {@code wide} opcode itself
@@ -1163,11 +1163,11 @@ public final class BytecodeArray {
         }
     }
 
-    /**
+    /*
      * Instruction visitor interface.
      */
     public interface Visitor {
-        /**
+        /*
          * Visits an invalid instruction.
          *
          * @param opcode the opcode
@@ -1176,7 +1176,7 @@ public final class BytecodeArray {
          */
         public void visitInvalid(int opcode, int offset, int length);
 
-        /**
+        /*
          * Visits an instruction which has no inline arguments
          * (implicit or explicit).
          *
@@ -1188,7 +1188,7 @@ public final class BytecodeArray {
         public void visitNoArgs(int opcode, int offset, int length,
                 Type type);
 
-        /**
+        /*
          * Visits an instruction which has a local variable index argument.
          *
          * @param opcode the opcode
@@ -1202,7 +1202,7 @@ public final class BytecodeArray {
         public void visitLocal(int opcode, int offset, int length,
                 int idx, Type type, int value);
 
-        /**
+        /*
          * Visits an instruction which has a (possibly synthetic)
          * constant argument, and possibly also an
          * additional literal integer argument. In the case of
@@ -1229,7 +1229,7 @@ public final class BytecodeArray {
         public void visitConstant(int opcode, int offset, int length,
                 Constant cst, int value);
 
-        /**
+        /*
          * Visits an instruction which has a branch target argument.
          *
          * @param opcode the opcode
@@ -1240,7 +1240,7 @@ public final class BytecodeArray {
         public void visitBranch(int opcode, int offset, int length,
                 int target);
 
-        /**
+        /*
          * Visits a switch instruction.
          *
          * @param opcode the opcode
@@ -1254,7 +1254,7 @@ public final class BytecodeArray {
         public void visitSwitch(int opcode, int offset, int length,
                 SwitchList cases, int padding);
 
-        /**
+        /*
          * Visits a newarray instruction.
          *
          * @param offset   offset to the instruction
@@ -1266,85 +1266,85 @@ public final class BytecodeArray {
         public void visitNewarray(int offset, int length, CstType type,
                 ArrayList<Constant> initVals);
 
-        /**
+        /*
          * Set previous bytecode offset
          * @param offset    offset of the previous fully parsed bytecode
          */
         public void setPreviousOffset(int offset);
 
-        /**
+        /*
          * Get previous bytecode offset
          * @return return the recored offset of the previous bytecode
          */
         public int getPreviousOffset();
     }
 
-    /**
+    /*
      * Base implementation of {@link Visitor}, which has empty method
      * bodies for all methods.
      */
     public static class BaseVisitor implements Visitor {
 
-        /** offset of the previously parsed bytecode */
+        /* offset of the previously parsed bytecode */
         private int previousOffset;
 
         BaseVisitor() {
             previousOffset = -1;
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitInvalid(int opcode, int offset, int length) {
             // This space intentionally left blank.
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitNoArgs(int opcode, int offset, int length,
                 Type type) {
             // This space intentionally left blank.
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitLocal(int opcode, int offset, int length,
                 int idx, Type type, int value) {
             // This space intentionally left blank.
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitConstant(int opcode, int offset, int length,
                 Constant cst, int value) {
             // This space intentionally left blank.
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitBranch(int opcode, int offset, int length,
                 int target) {
             // This space intentionally left blank.
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitSwitch(int opcode, int offset, int length,
                 SwitchList cases, int padding) {
             // This space intentionally left blank.
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitNewarray(int offset, int length, CstType type,
                 ArrayList<Constant> initValues) {
             // This space intentionally left blank.
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void setPreviousOffset(int offset) {
             previousOffset = offset;
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public int getPreviousOffset() {
             return previousOffset;
         }
     }
 
-    /**
+    /*
      * Implementation of {@link Visitor}, which just pays attention
      * to constant values.
      */
@@ -1353,7 +1353,7 @@ public final class BytecodeArray {
         int length;
         int value;
 
-        /** Empty constructor */
+        /* Empty constructor */
         ConstantParserVisitor() {
         }
 
@@ -1361,27 +1361,27 @@ public final class BytecodeArray {
             length = 0;
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         @Override
         public void visitInvalid(int opcode, int offset, int length) {
             clear();
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         @Override
         public void visitNoArgs(int opcode, int offset, int length,
                 Type type) {
             clear();
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         @Override
         public void visitLocal(int opcode, int offset, int length,
                 int idx, Type type, int value) {
             clear();
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         @Override
         public void visitConstant(int opcode, int offset, int length,
                 Constant cst, int value) {
@@ -1390,34 +1390,34 @@ public final class BytecodeArray {
             this.value = value;
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         @Override
         public void visitBranch(int opcode, int offset, int length,
                 int target) {
             clear();
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         @Override
         public void visitSwitch(int opcode, int offset, int length,
                 SwitchList cases, int padding) {
             clear();
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         @Override
         public void visitNewarray(int offset, int length, CstType type,
                 ArrayList<Constant> initVals) {
             clear();
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         @Override
         public void setPreviousOffset(int offset) {
             // Intentionally left empty
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         @Override
         public int getPreviousOffset() {
             // Intentionally left empty

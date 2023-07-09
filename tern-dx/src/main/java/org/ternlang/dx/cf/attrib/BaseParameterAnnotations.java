@@ -19,18 +19,18 @@ package org.ternlang.dx.cf.attrib;
 import org.ternlang.dx.rop.annotation.AnnotationsList;
 import org.ternlang.dx.util.MutabilityException;
 
-/**
+/*
  * Base class for parameter annotation list attributes.
  */
 public abstract class BaseParameterAnnotations extends BaseAttribute {
-    /** {@code non-null;} list of annotations */
+    /* {@code non-null;} list of annotations */
     private final AnnotationsList parameterAnnotations;
 
-    /** {@code >= 0;} attribute data length in the original classfile (not
+    /* {@code >= 0;} attribute data length in the original classfile (not
      * including the attribute header) */
     private final int byteLength;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param attributeName {@code non-null;} the name of the attribute
@@ -56,13 +56,13 @@ public abstract class BaseParameterAnnotations extends BaseAttribute {
         this.byteLength = byteLength;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final int byteLength() {
         // Add six for the standard attribute header.
         return byteLength + 6;
     }
 
-    /**
+    /*
      * Gets the list of annotation lists associated with this instance.
      *
      * @return {@code non-null;} the list

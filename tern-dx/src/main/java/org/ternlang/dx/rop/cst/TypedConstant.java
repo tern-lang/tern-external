@@ -18,12 +18,12 @@ package org.ternlang.dx.rop.cst;
 
 import org.ternlang.dx.rop.type.TypeBearer;
 
-/**
+/*
  * Base class for constants which implement {@link TypeBearer}.
  */
 public abstract class TypedConstant
         extends Constant implements TypeBearer {
-    /**
+    /*
      * {@inheritDoc}
      *
      * This implementation always returns {@code this}.
@@ -32,17 +32,17 @@ public abstract class TypedConstant
         return this;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final int getBasicType() {
         return getType().getBasicType();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final int getBasicFrameType() {
         return getType().getBasicFrameType();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final boolean isConstant() {
         return true;
     }

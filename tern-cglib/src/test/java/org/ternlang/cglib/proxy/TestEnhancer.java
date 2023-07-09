@@ -56,7 +56,7 @@ import org.ternlang.cglib.proxy.MethodProxy;
 import org.ternlang.cglib.proxy.NoOp;
 import org.ternlang.cglib.reflect.FastClass;
 
-/**
+/*
  *@author     Juozas Baliuka <a href="mailto:baliuka@mwm.lt">
  *      baliuka@mwm.lt</a>
  *@version    $Id: TestEnhancer.java,v 1.58 2012/07/27 16:02:49 baliuka Exp $
@@ -324,7 +324,7 @@ public class TestEnhancer extends CodeGenTestCase {
         }
     }
 
-    /**
+    /*
      * Verifies that the cache in {@link AbstractClassGenerator} SOURCE doesn't
      * leak class definitions of classloaders that are no longer used.
      */
@@ -718,7 +718,7 @@ public class TestEnhancer extends CodeGenTestCase {
       assertEquals(name + "45", proxied2.getCanonicalName());
     }
 
-    /**
+    /*
      * In theory, every sane implementation of {@link NamingPolicy} should check if the class name is occupied,
      * however, in practice there are implementations in the wild that just return whatever they feel is good.
      *

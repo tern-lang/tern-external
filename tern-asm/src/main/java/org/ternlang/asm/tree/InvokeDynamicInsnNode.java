@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -35,34 +35,34 @@ import org.ternlang.asm.Handle;
 import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 
-/**
+/*
  * A node that represents an invokedynamic instruction.
  * 
  * @author Remi Forax
  */
 public class InvokeDynamicInsnNode extends AbstractInsnNode {
 
-    /**
+    /*
      * Invokedynamic name.
      */
     public String name;
 
-    /**
+    /*
      * Invokedynamic descriptor.
      */
     public String desc;
 
-    /**
+    /*
      * Bootstrap method
      */
     public Handle bsm;
 
-    /**
+    /*
      * Bootstrap constant arguments
      */
     public Object[] bsmArgs;
 
-    /**
+    /*
      * Constructs a new {@link InvokeDynamicInsnNode}.
      * 
      * @param name

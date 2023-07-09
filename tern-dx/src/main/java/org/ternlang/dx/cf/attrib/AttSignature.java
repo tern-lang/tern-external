@@ -18,17 +18,17 @@ package org.ternlang.dx.cf.attrib;
 
 import org.ternlang.dx.rop.cst.CstString;
 
-/**
+/*
  * Attribute class for standards-track {@code Signature} attributes.
  */
 public final class AttSignature extends BaseAttribute {
-    /** {@code non-null;} attribute name for attributes of this type */
+    /* {@code non-null;} attribute name for attributes of this type */
     public static final String ATTRIBUTE_NAME = "Signature";
 
-    /** {@code non-null;} the signature string */
+    /* {@code non-null;} the signature string */
     private final CstString signature;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param signature {@code non-null;} the signature string
@@ -43,12 +43,12 @@ public final class AttSignature extends BaseAttribute {
         this.signature = signature;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int byteLength() {
         return 8;
     }
 
-    /**
+    /*
      * Gets the signature string.
      *
      * @return {@code non-null;} the signature string

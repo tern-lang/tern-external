@@ -26,7 +26,7 @@ import org.ternlang.dx.rop.type.StdTypeList;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeBearer;
 
-/**
+/*
  * Base implementation of {@link Machine}.
  *
  * <p><b>Note:</b> For the most part, the documentation for this class
@@ -37,49 +37,49 @@ public abstract class BaseMachine implements Machine {
     /* {@code non-null;} the prototype for the associated method */
     private final Prototype prototype;
 
-    /** {@code non-null;} primary arguments */
+    /* {@code non-null;} primary arguments */
     private TypeBearer[] args;
 
-    /** {@code >= 0;} number of primary arguments */
+    /* {@code >= 0;} number of primary arguments */
     private int argCount;
 
-    /** {@code null-ok;} type of the operation, if salient */
+    /* {@code null-ok;} type of the operation, if salient */
     private Type auxType;
 
-    /** auxiliary {@code int} argument */
+    /* auxiliary {@code int} argument */
     private int auxInt;
 
-    /** {@code null-ok;} auxiliary constant argument */
+    /* {@code null-ok;} auxiliary constant argument */
     private Constant auxCst;
 
-    /** auxiliary branch target argument */
+    /* auxiliary branch target argument */
     private int auxTarget;
 
-    /** {@code null-ok;} auxiliary switch cases argument */
+    /* {@code null-ok;} auxiliary switch cases argument */
     private SwitchList auxCases;
 
-    /** {@code null-ok;} auxiliary initial value list for newarray */
+    /* {@code null-ok;} auxiliary initial value list for newarray */
     private ArrayList<Constant> auxInitValues;
 
-    /** {@code >= -1;} last local accessed */
+    /* {@code >= -1;} last local accessed */
     private int localIndex;
 
-    /** specifies if local has info in the local variable table */
+    /* specifies if local has info in the local variable table */
     private boolean localInfo;
 
-    /** {@code null-ok;} local target spec, if salient and calculated */
+    /* {@code null-ok;} local target spec, if salient and calculated */
     private RegisterSpec localTarget;
 
-    /** {@code non-null;} results */
+    /* {@code non-null;} results */
     private TypeBearer[] results;
 
-    /**
+    /*
      * {@code >= -1;} count of the results, or {@code -1} if no results
      * have been set
      */
     private int resultCount;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param prototype {@code non-null;} the prototype for the
@@ -96,12 +96,12 @@ public abstract class BaseMachine implements Machine {
         clearArgs();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Prototype getPrototype() {
         return prototype;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final void clearArgs() {
         argCount = 0;
         auxType = null;
@@ -116,7 +116,7 @@ public abstract class BaseMachine implements Machine {
         resultCount = -1;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final void popArgs(Frame frame, int count) {
         ExecutionStack stack = frame.getStack();
 
@@ -134,7 +134,7 @@ public abstract class BaseMachine implements Machine {
         argCount = count;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void popArgs(Frame frame, Prototype prototype) {
         StdTypeList types = prototype.getParameterTypes();
         int size = types.size();
@@ -164,7 +164,7 @@ public abstract class BaseMachine implements Machine {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final void popArgs(Frame frame, Type type1, Type type2) {
         // Use the above method to do the actual popping...
         popArgs(frame, 2);
@@ -182,7 +182,7 @@ public abstract class BaseMachine implements Machine {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final void popArgs(Frame frame, Type type1, Type type2,
             Type type3) {
         // Use the above method to do the actual popping...
@@ -206,7 +206,7 @@ public abstract class BaseMachine implements Machine {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final void localArg(Frame frame, int idx) {
         clearArgs();
         args[0] = frame.getLocals().get(idx);
@@ -214,22 +214,22 @@ public abstract class BaseMachine implements Machine {
         localIndex = idx;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final void localInfo(boolean local) {
         localInfo = local;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final void auxType(Type type) {
         auxType = type;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final void auxIntArg(int value) {
         auxInt = value;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final void auxCstArg(Constant cst) {
         if (cst == null) {
             throw new NullPointerException("cst == null");
@@ -238,12 +238,12 @@ public abstract class BaseMachine implements Machine {
         auxCst = cst;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final void auxTargetArg(int target) {
         auxTarget = target;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final void auxSwitchArg(SwitchList cases) {
         if (cases == null) {
             throw new NullPointerException("cases == null");
@@ -252,17 +252,17 @@ public abstract class BaseMachine implements Machine {
         auxCases = cases;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final void auxInitValues(ArrayList<Constant> initValues) {
         auxInitValues = initValues;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final void localTarget(int idx, Type type, LocalItem local) {
         localTarget = RegisterSpec.makeLocalOptional(idx, type, local);
     }
 
-    /**
+    /*
      * Gets the number of primary arguments.
      *
      * @return {@code >= 0;} the number of primary arguments
@@ -271,7 +271,7 @@ public abstract class BaseMachine implements Machine {
         return argCount;
     }
 
-    /**
+    /*
      * Gets the width of the arguments (where a category-2 value counts as
      * two).
      *
@@ -287,7 +287,7 @@ public abstract class BaseMachine implements Machine {
         return result;
     }
 
-    /**
+    /*
      * Gets the {@code n}th primary argument.
      *
      * @param n {@code >= 0, < argCount();} which argument
@@ -306,7 +306,7 @@ public abstract class BaseMachine implements Machine {
         }
     }
 
-    /**
+    /*
      * Gets the type auxiliary argument.
      *
      * @return {@code null-ok;} the salient type
@@ -315,7 +315,7 @@ public abstract class BaseMachine implements Machine {
         return auxType;
     }
 
-    /**
+    /*
      * Gets the {@code int} auxiliary argument.
      *
      * @return the argument value
@@ -324,7 +324,7 @@ public abstract class BaseMachine implements Machine {
         return auxInt;
     }
 
-    /**
+    /*
      * Gets the constant auxiliary argument.
      *
      * @return {@code null-ok;} the argument value
@@ -333,7 +333,7 @@ public abstract class BaseMachine implements Machine {
         return auxCst;
     }
 
-    /**
+    /*
      * Gets the branch target auxiliary argument.
      *
      * @return the argument value
@@ -342,7 +342,7 @@ public abstract class BaseMachine implements Machine {
         return auxTarget;
     }
 
-    /**
+    /*
      * Gets the switch cases auxiliary argument.
      *
      * @return {@code null-ok;} the argument value
@@ -351,7 +351,7 @@ public abstract class BaseMachine implements Machine {
         return auxCases;
     }
 
-    /**
+    /*
      * Gets the init values auxiliary argument.
      *
      * @return {@code null-ok;} the argument value
@@ -359,7 +359,7 @@ public abstract class BaseMachine implements Machine {
     protected final ArrayList<Constant> getInitValues() {
         return auxInitValues;
     }
-    /**
+    /*
      * Gets the last local index accessed.
      *
      * @return {@code >= -1;} the salient local index or {@code -1} if none
@@ -369,7 +369,7 @@ public abstract class BaseMachine implements Machine {
         return localIndex;
     }
 
-    /**
+    /*
      * Gets whether the loaded local has info in the local variable table.
      *
      * @return {@code true} if local arg has info in the local variable table
@@ -378,7 +378,7 @@ public abstract class BaseMachine implements Machine {
         return localInfo;
     }
 
-    /**
+    /*
      * Gets the target local register spec of the current operation, if any.
      * The local target spec is the combination of the values indicated
      * by a previous call to {@link #localTarget} with the type of what
@@ -436,14 +436,14 @@ public abstract class BaseMachine implements Machine {
         return localTarget;
     }
 
-    /**
+    /*
      * Clears the results.
      */
     protected final void clearResult() {
         resultCount = 0;
     }
 
-    /**
+    /*
      * Sets the results list to be the given single value.
      *
      * <p><b>Note:</b> If there is more than one result value, the
@@ -460,7 +460,7 @@ public abstract class BaseMachine implements Machine {
         resultCount = 1;
     }
 
-    /**
+    /*
      * Adds an additional element to the list of results.
      *
      * @see #setResult
@@ -476,7 +476,7 @@ public abstract class BaseMachine implements Machine {
         resultCount++;
     }
 
-    /**
+    /*
      * Gets the count of results. This throws an exception if results were
      * never set. (Explicitly clearing the results counts as setting them.)
      *
@@ -490,7 +490,7 @@ public abstract class BaseMachine implements Machine {
         return resultCount;
     }
 
-    /**
+    /*
      * Gets the width of the results (where a category-2 value counts as
      * two).
      *
@@ -506,7 +506,7 @@ public abstract class BaseMachine implements Machine {
         return width;
     }
 
-    /**
+    /*
      * Gets the {@code n}th result value.
      *
      * @param n {@code >= 0, < resultCount();} which result
@@ -525,7 +525,7 @@ public abstract class BaseMachine implements Machine {
         }
     }
 
-    /**
+    /*
      * Stores the results of the latest operation into the given frame. If
      * there is a local target (see {@link #localTarget}), then the sole
      * result is stored to that target; otherwise any results are pushed
@@ -560,7 +560,7 @@ public abstract class BaseMachine implements Machine {
         }
     }
 
-    /**
+    /*
      * Throws an exception that indicates a mismatch in local variable
      * types.
      *

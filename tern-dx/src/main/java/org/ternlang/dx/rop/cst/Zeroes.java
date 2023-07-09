@@ -18,18 +18,18 @@ package org.ternlang.dx.rop.cst;
 
 import org.ternlang.dx.rop.type.Type;
 
-/**
+/*
  * Utility for turning types into zeroes.
  */
 public final class Zeroes {
-    /**
+    /*
      * This class is uninstantiable.
      */
     private Zeroes() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Gets the "zero" (or {@code null}) value for the given type.
      *
      * @param type {@code non-null;} the type in question

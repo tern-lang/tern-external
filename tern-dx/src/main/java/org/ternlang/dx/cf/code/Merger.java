@@ -20,18 +20,18 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeBearer;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Utility methods to merge various frame information.
  */
 public final class Merger {
-    /**
+    /*
      * This class is uninstantiable.
      */
     private Merger() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Merges two locals arrays. If the merged result is the same as the first
      * argument, then return the first argument (not a copy).
      *
@@ -83,7 +83,7 @@ public final class Merger {
         return result;
     }
 
-    /**
+    /*
      * Merges two stacks. If the merged result is the same as the first
      * argument, then return the first argument (not a copy).
      *
@@ -141,7 +141,7 @@ public final class Merger {
         return result;
     }
 
-    /**
+    /*
      * Merges two frame types.
      *
      * @param ft1 {@code non-null;} a frame type
@@ -204,7 +204,7 @@ public final class Merger {
         }
     }
 
-    /**
+    /*
      * Returns whether the given supertype is possibly assignable from
      * the given subtype. This takes into account primitiveness,
      * int-likeness, known-nullness, and array dimensions, but does

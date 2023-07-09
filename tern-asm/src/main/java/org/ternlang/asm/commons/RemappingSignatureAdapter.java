@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -33,7 +33,7 @@ package org.ternlang.asm.commons;
 import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.signature.SignatureVisitor;
 
-/**
+/*
  * A {@link SignatureVisitor} adapter for type mapping.
  * 
  * @deprecated use {@link SignatureRemapper} instead.

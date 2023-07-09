@@ -18,26 +18,26 @@ package org.ternlang.dx.dex.file;
 
 import org.ternlang.dx.util.AnnotatedOutput;
 
-/**
+/*
  * Base class for any structurally-significant and (potentially)
  * repeated piece of a Dalvik file.
  */
 public abstract class Item {
-    /**
+    /*
      * Constructs an instance.
      */
     public Item() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Returns the item type for this instance.
      *
      * @return {@code non-null;} the item type
      */
     public abstract ItemType itemType();
 
-    /**
+    /*
      * Returns the human name for the particular type of item this
      * instance is.
      *
@@ -47,14 +47,14 @@ public abstract class Item {
         return itemType().toHuman();
     }
 
-    /**
+    /*
      * Gets the size of this instance when written, in bytes.
      *
      * @return {@code >= 0;} the write size
      */
     public abstract int writeSize();
 
-    /**
+    /*
      * Populates a {@link DexFile} with items from within this instance.
      * This will <i>not</i> add an item to the file for this instance itself
      * (which should have been done by whatever refers to this instance).
@@ -66,7 +66,7 @@ public abstract class Item {
      */
     public abstract void addContents(DexFile file);
 
-    /**
+    /*
      * Writes the representation of this instance to the given data section,
      * using the given {@link DexFile} to look things up as needed.
      * If this instance keeps track of its offset, then this method will

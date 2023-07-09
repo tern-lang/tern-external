@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -34,7 +34,7 @@ import java.util.Map;
 import org.ternlang.asm.Label;
 import org.ternlang.asm.MethodVisitor;
 
-/**
+/*
  * An {@link AbstractInsnNode} that encapsulates a {@link Label}.
  */
 public class LabelNode extends AbstractInsnNode {

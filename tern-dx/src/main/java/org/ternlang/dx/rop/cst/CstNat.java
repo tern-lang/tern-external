@@ -18,11 +18,11 @@ package org.ternlang.dx.rop.cst;
 
 import org.ternlang.dx.rop.type.Type;
 
-/**
+/*
  * Constants of type {@code CONSTANT_NameAndType_info}.
  */
 public final class CstNat extends Constant {
-    /**
+    /*
      * {@code non-null;} the instance for name {@code TYPE} and descriptor
      * {@code java.lang.Class}, which is useful when dealing with
      * wrapped primitives
@@ -31,13 +31,13 @@ public final class CstNat extends Constant {
         new CstNat(new CstString("TYPE"),
                    new CstString("Ljava/lang/Class;"));
 
-    /** {@code non-null;} the name */
+    /* {@code non-null;} the name */
     private final CstString name;
 
-    /** {@code non-null;} the descriptor (type) */
+    /* {@code non-null;} the descriptor (type) */
     private final CstString descriptor;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param name {@code non-null;} the name
@@ -56,7 +56,7 @@ public final class CstNat extends Constant {
         this.descriptor = descriptor;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof CstNat)) {
@@ -68,13 +68,13 @@ public final class CstNat extends Constant {
             descriptor.equals(otherNat.descriptor);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         return (name.hashCode() * 31) ^ descriptor.hashCode();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected int compareTo0(Constant other) {
         CstNat otherNat = (CstNat) other;
@@ -87,25 +87,25 @@ public final class CstNat extends Constant {
         return descriptor.compareTo(otherNat.descriptor);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         return "nat{" + toHuman() + '}';
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String typeName() {
         return "nat";
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean isCategory2() {
         return false;
     }
 
-    /**
+    /*
      * Gets the name.
      *
      * @return {@code non-null;} the name
@@ -114,7 +114,7 @@ public final class CstNat extends Constant {
         return name;
     }
 
-    /**
+    /*
      * Gets the descriptor.
      *
      * @return {@code non-null;} the descriptor
@@ -123,7 +123,7 @@ public final class CstNat extends Constant {
         return descriptor;
     }
 
-    /**
+    /*
      * Returns an unadorned but human-readable version of the name-and-type
      * value.
      *
@@ -133,7 +133,7 @@ public final class CstNat extends Constant {
         return name.toHuman() + ':' + descriptor.toHuman();
     }
 
-    /**
+    /*
      * Gets the field type corresponding to this instance's descriptor.
      * This method is only valid to call if the descriptor in fact describes
      * a field (and not a method).
@@ -144,7 +144,7 @@ public final class CstNat extends Constant {
         return Type.intern(descriptor.getString());
     }
 
-    /**
+    /*
      * Gets whether this instance has the name of a standard instance
      * initialization method. This is just a convenient shorthand for
      * {@code getName().getString().equals("<init>")}.
@@ -156,7 +156,7 @@ public final class CstNat extends Constant {
         return name.getString().equals("<init>");
     }
 
-    /**
+    /*
      * Gets whether this instance has the name of a standard class
      * initialization method. This is just a convenient shorthand for
      * {@code getName().getString().equals("<clinit>")}.

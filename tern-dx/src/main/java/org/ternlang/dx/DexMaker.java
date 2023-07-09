@@ -49,7 +49,7 @@ import static java.lang.reflect.Modifier.PRIVATE;
 import static java.lang.reflect.Modifier.STATIC;
 import static org.ternlang.dx.rop.code.AccessFlags.ACC_CONSTRUCTOR;
 
-/**
+/*
  * Generates a <strong>D</strong>alvik <strong>EX</strong>ecutable (dex)
  * file for execution on Android. Dex files define classes and interfaces,
  * including their member methods and fields, executable code, and debugging
@@ -198,7 +198,7 @@ import static org.ternlang.dx.rop.code.AccessFlags.ACC_CONSTRUCTOR;
 public final class DexMaker {
     private final Map<TypeId<?>, TypeDeclaration> types = new LinkedHashMap<TypeId<?>, TypeDeclaration>();
 
-    /**
+    /*
      * Creates a new {@code DexMaker} instance, which can be used to create a
      * single dex file.
      */
@@ -214,7 +214,7 @@ public final class DexMaker {
         return result;
     }
 
-    /**
+    /*
      * Declares {@code type}.
      *
      * @param flags a bitwise combination of {@link Modifier#PUBLIC}, {@link
@@ -238,7 +238,7 @@ public final class DexMaker {
         declaration.interfaces = new TypeList(interfaces);
     }
 
-    /**
+    /*
      * Declares a method or constructor.
      *
      * @param flags a bitwise combination of {@link Modifier#PUBLIC}, {@link
@@ -276,7 +276,7 @@ public final class DexMaker {
         return methodDeclaration.code;
     }
 
-    /**
+    /*
      * Declares a field.
      *
      * @param flags a bitwise combination of {@link Modifier#PUBLIC}, {@link
@@ -308,7 +308,7 @@ public final class DexMaker {
         typeDeclaration.fields.put(fieldId, fieldDeclaration);
     }
 
-    /**
+    /*
      * Generates a dex file and returns its bytes.
      */
     public byte[] generate() {
@@ -373,7 +373,7 @@ public final class DexMaker {
         }
     }
 
-    /**
+    /*
      * Generates a dex file and loads its types into the current process.
      *
      * <h3>Picking a dex cache directory</h3>
@@ -442,7 +442,7 @@ public final class DexMaker {
     private static class TypeDeclaration {
         private final TypeId<?> type;
 
-        /** declared state */
+        /* declared state */
         private boolean declared;
         private int flags;
         private TypeId<?> supertype;

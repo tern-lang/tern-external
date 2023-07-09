@@ -24,7 +24,7 @@ import org.ternlang.dx.ssa.back.InterferenceGraph;
 import org.ternlang.dx.util.BitIntSet;
 import org.ternlang.dx.util.IntSet;
 
-/**
+/*
  * A register mapper that keeps track of the accumulated interference
  * information for the registers in the new namespace.
  *
@@ -32,7 +32,7 @@ import org.ternlang.dx.util.IntSet;
  * have variable register widths/categories, and the new namespace does.
  */
 public class InterferenceRegisterMapper extends BasicRegisterMapper {
-    /**
+    /*
      * Array of interference sets. ArrayList is indexed by new namespace
      * and BitIntSet's are indexed by old namespace.  The list expands
      * as needed and missing items are assumed to interfere with nothing.
@@ -43,10 +43,10 @@ public class InterferenceRegisterMapper extends BasicRegisterMapper {
      */
     private final ArrayList<BitIntSet> newRegInterference;
 
-    /** the interference graph for the old namespace */
+    /* the interference graph for the old namespace */
     private final InterferenceGraph oldRegInterference;
 
-    /**
+    /*
      * Constructs an instance
      *
      * @param countOldRegisters number of registers in old namespace
@@ -59,7 +59,7 @@ public class InterferenceRegisterMapper extends BasicRegisterMapper {
         this.oldRegInterference = oldRegInterference;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void addMapping(int oldReg, int newReg, int category) {
         super.addMapping(oldReg, newReg, category);
@@ -71,7 +71,7 @@ public class InterferenceRegisterMapper extends BasicRegisterMapper {
         }
     }
 
-    /**
+    /*
      * Checks to see if old namespace reg {@code oldReg} interferes
      * with what currently maps to {@code newReg}.
      *
@@ -97,7 +97,7 @@ public class InterferenceRegisterMapper extends BasicRegisterMapper {
         }
     }
 
-    /**
+    /*
      * Checks to see if old namespace reg {@code oldReg} interferes
      * with what currently maps to {@code newReg}.
      *
@@ -109,7 +109,7 @@ public class InterferenceRegisterMapper extends BasicRegisterMapper {
         return interferes(oldSpec.getReg(), newReg, oldSpec.getCategory());
     }
 
-    /**
+    /*
      * Adds a register's interference set to the interference list,
      * growing it if necessary.
      *
@@ -127,7 +127,7 @@ public class InterferenceRegisterMapper extends BasicRegisterMapper {
                 oldReg, newRegInterference.get(newReg));
     }
 
-    /**
+    /*
      * Checks to see if any of a set of old-namespace registers are
      * pinned to the specified new-namespace reg + category. Takes into
      * account the category of the old-namespace registers.

@@ -19,20 +19,20 @@ package org.ternlang.dx.cf.attrib;
 import org.ternlang.dx.rop.cst.ConstantPool;
 import org.ternlang.dx.util.ByteArray;
 
-/**
+/*
  * Raw attribute, for holding onto attributes that are unrecognized.
  */
 public final class RawAttribute extends BaseAttribute {
-    /** {@code non-null;} attribute data */
+    /* {@code non-null;} attribute data */
     private final ByteArray data;
 
-    /**
+    /*
      * {@code null-ok;} constant pool to use for resolution of cpis in {@link
      * #data}
      */
     private final ConstantPool pool;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param name {@code non-null;} attribute name
@@ -50,7 +50,7 @@ public final class RawAttribute extends BaseAttribute {
         this.pool = pool;
     }
 
-    /**
+    /*
      * Constructs an instance from a sub-array of a {@link ByteArray}.
      *
      * @param name {@code non-null;} attribute name
@@ -64,7 +64,7 @@ public final class RawAttribute extends BaseAttribute {
         this(name, data.slice(offset, offset + length), pool);
     }
 
-    /**
+    /*
      * Get the raw data of the attribute.
      *
      * @return {@code non-null;} the data
@@ -73,12 +73,12 @@ public final class RawAttribute extends BaseAttribute {
         return data;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int byteLength() {
         return data.size() + 6;
     }
 
-    /**
+    /*
      * Gets the constant pool to use for cpi resolution, if any. It
      * presumably came from the class file that this attribute came
      * from.

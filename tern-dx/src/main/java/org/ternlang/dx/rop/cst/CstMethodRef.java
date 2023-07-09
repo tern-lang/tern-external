@@ -16,12 +16,12 @@
 
 package org.ternlang.dx.rop.cst;
 
-/**
+/*
  * Constants of type {@code CONSTANT_Methodref_info}.
  */
 public final class CstMethodRef
         extends CstBaseMethodRef {
-    /**
+    /*
      * Constructs an instance.
      *
      * @param definingClass {@code non-null;} the type of the defining class
@@ -31,7 +31,7 @@ public final class CstMethodRef
         super(definingClass, nat);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String typeName() {
         return "method";

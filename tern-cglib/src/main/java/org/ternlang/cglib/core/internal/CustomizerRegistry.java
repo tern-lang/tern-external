@@ -35,7 +35,7 @@ public class CustomizerRegistry {
         return (List<T>) list;
     }
     
-    /**
+    /*
      * @deprecated Only to keep backward compatibility.
      */
     @Deprecated

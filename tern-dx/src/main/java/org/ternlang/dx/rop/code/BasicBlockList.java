@@ -22,17 +22,17 @@ import org.ternlang.dx.util.Hex;
 import org.ternlang.dx.util.IntList;
 import org.ternlang.dx.util.LabeledList;
 
-/**
+/*
  * List of {@link BasicBlock} instances.
  */
 public final class BasicBlockList extends LabeledList {
-    /**
+    /*
      * {@code >= -1;} the count of registers required by this method or
      * {@code -1} if not yet calculated
      */
     private int regCount;
 
-    /**
+    /*
      * Constructs an instance. All indices initially contain {@code null},
      * and the first-block label is initially {@code -1}.
      *
@@ -44,7 +44,7 @@ public final class BasicBlockList extends LabeledList {
         regCount = -1;
     }
 
-    /**
+    /*
      * Constructs a mutable copy for {@code getMutableCopy()}.
      *
      * @param old block to copy
@@ -55,7 +55,7 @@ public final class BasicBlockList extends LabeledList {
     }
 
 
-    /**
+    /*
      * Gets the element at the given index. It is an error to call
      * this with the index for an element which was never set; if you
      * do that, this will throw {@code NullPointerException}.
@@ -67,7 +67,7 @@ public final class BasicBlockList extends LabeledList {
         return (BasicBlock) get0(n);
     }
 
-    /**
+    /*
      * Sets the basic block at the given index.
      *
      * @param n {@code >= 0, < size();} which index
@@ -80,7 +80,7 @@ public final class BasicBlockList extends LabeledList {
         regCount = -1;
     }
 
-    /**
+    /*
      * Returns how many registers this method requires. This is simply
      * the maximum of register-number-plus-category referred to by this
      * instance's instructions (indirectly through {@link BasicBlock}
@@ -98,7 +98,7 @@ public final class BasicBlockList extends LabeledList {
         return regCount;
     }
 
-    /**
+    /*
      * Gets the total instruction count for this instance. This is the
      * sum of the instruction counts of each block.
      *
@@ -118,7 +118,7 @@ public final class BasicBlockList extends LabeledList {
         return result;
     }
 
-    /**
+    /*
      * Gets the total instruction count for this instance, ignoring
      * mark-local instructions which are not actually emitted.
      *
@@ -147,7 +147,7 @@ public final class BasicBlockList extends LabeledList {
         return result;
     }
 
-    /**
+    /*
      * Gets the first block in the list with the given label, if any.
      *
      * @param label {@code >= 0;} the label to look for
@@ -165,7 +165,7 @@ public final class BasicBlockList extends LabeledList {
         return get(idx);
     }
 
-    /**
+    /*
      * Visits each instruction of each block in the list, in order.
      *
      * @param visitor {@code non-null;} visitor to use
@@ -180,7 +180,7 @@ public final class BasicBlockList extends LabeledList {
         }
     }
 
-    /**
+    /*
      * Returns an instance that is identical to this one, except that
      * the registers in each instruction are offset by the given
      * amount. Mutability of the result is inherited from the
@@ -207,7 +207,7 @@ public final class BasicBlockList extends LabeledList {
         return result;
     }
 
-    /**
+    /*
      * Returns a mutable copy of this list.
      *
      * @return {@code non-null;} an appropriately-constructed instance
@@ -216,7 +216,7 @@ public final class BasicBlockList extends LabeledList {
         return new BasicBlockList(this);
     }
 
-    /**
+    /*
      * Gets the preferred successor for the given block. If the block
      * only has one successor, then that is the preferred successor.
      * Otherwise, if the block has a primay successor, then that is
@@ -247,7 +247,7 @@ public final class BasicBlockList extends LabeledList {
         }
     }
 
-    /**
+    /*
      * Compares the catches of two blocks for equality. This includes
      * both the catch types and target labels.
      *
@@ -306,22 +306,22 @@ public final class BasicBlockList extends LabeledList {
         return true;
     }
 
-    /**
+    /*
      * Instruction visitor class for counting registers used.
      */
     private static class RegCountVisitor
             implements Insn.Visitor {
-        /** {@code >= 0;} register count in-progress */
+        /* {@code >= 0;} register count in-progress */
         private int regCount;
 
-        /**
+        /*
          * Constructs an instance.
          */
         public RegCountVisitor() {
             regCount = 0;
         }
 
-        /**
+        /*
          * Gets the register count.
          *
          * @return {@code >= 0;} the count
@@ -330,37 +330,37 @@ public final class BasicBlockList extends LabeledList {
             return regCount;
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitPlainInsn(PlainInsn insn) {
             visit(insn);
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitPlainCstInsn(PlainCstInsn insn) {
             visit(insn);
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitSwitchInsn(SwitchInsn insn) {
             visit(insn);
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitThrowingCstInsn(ThrowingCstInsn insn) {
             visit(insn);
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitThrowingInsn(ThrowingInsn insn) {
             visit(insn);
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitFillArrayDataInsn(FillArrayDataInsn insn) {
             visit(insn);
         }
 
-        /**
+        /*
          * Helper for all the {@code visit*} methods.
          *
          * @param insn {@code non-null;} instruction being visited
@@ -380,7 +380,7 @@ public final class BasicBlockList extends LabeledList {
             }
         }
 
-        /**
+        /*
          * Processes the given register spec.
          *
          * @param spec {@code non-null;} the register spec

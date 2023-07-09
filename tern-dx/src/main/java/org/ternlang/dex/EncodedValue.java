@@ -19,7 +19,7 @@ package org.ternlang.dex;
 import org.ternlang.dex.util.ByteArrayByteInput;
 import org.ternlang.dex.util.ByteInput;
 
-/**
+/*
  * An encoded value or array.
  */
 public final class EncodedValue implements Comparable<EncodedValue> {

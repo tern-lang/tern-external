@@ -31,41 +31,41 @@ import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.ByteArrayAnnotatedOutput;
 import org.ternlang.dx.util.Writers;
 
-/**
+/*
  * Representation of all the parts of a Dalvik class that are generally
  * "inflated" into an in-memory representation at runtime. Instances of
  * this class are represented in a compact streamable form in a
  * {@code dex} file, as opposed to a random-access form.
  */
 public final class ClassDataItem extends OffsettedItem {
-    /** {@code non-null;} what class this data is for, just for listing generation */
+    /* {@code non-null;} what class this data is for, just for listing generation */
     private final CstType thisClass;
 
-    /** {@code non-null;} list of static fields */
+    /* {@code non-null;} list of static fields */
     private final ArrayList<EncodedField> staticFields;
 
-    /** {@code non-null;} list of initial values for static fields */
+    /* {@code non-null;} list of initial values for static fields */
     private final HashMap<EncodedField, Constant> staticValues;
 
-    /** {@code non-null;} list of instance fields */
+    /* {@code non-null;} list of instance fields */
     private final ArrayList<EncodedField> instanceFields;
 
-    /** {@code non-null;} list of direct methods */
+    /* {@code non-null;} list of direct methods */
     private final ArrayList<EncodedMethod> directMethods;
 
-    /** {@code non-null;} list of virtual methods */
+    /* {@code non-null;} list of virtual methods */
     private final ArrayList<EncodedMethod> virtualMethods;
 
-    /** {@code null-ok;} static initializer list; set in {@link #addContents} */
+    /* {@code null-ok;} static initializer list; set in {@link #addContents} */
     private CstArray staticValuesConstant;
 
-    /**
+    /*
      * {@code null-ok;} encoded form, ready for writing to a file; set during
      * {@link #place0}
      */
     private byte[] encodedForm;
 
-    /**
+    /*
      * Constructs an instance. Its sets of members are initially
      * empty.
      *
@@ -88,19 +88,19 @@ public final class ClassDataItem extends OffsettedItem {
         this.staticValuesConstant = null;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public ItemType itemType() {
         return ItemType.TYPE_CLASS_DATA_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toHuman() {
         return toString();
     }
 
-    /**
+    /*
      * Returns whether this instance is empty.
      *
      * @return {@code true} if this instance is empty or
@@ -111,7 +111,7 @@ public final class ClassDataItem extends OffsettedItem {
             && directMethods.isEmpty() && virtualMethods.isEmpty();
     }
 
-    /**
+    /*
      * Adds a static field.
      *
      * @param field {@code non-null;} the field to add
@@ -131,7 +131,7 @@ public final class ClassDataItem extends OffsettedItem {
         staticValues.put(field, value);
     }
 
-    /**
+    /*
      * Adds an instance field.
      *
      * @param field {@code non-null;} the field to add
@@ -144,7 +144,7 @@ public final class ClassDataItem extends OffsettedItem {
         instanceFields.add(field);
     }
 
-    /**
+    /*
      * Adds a direct ({@code static} and/or {@code private}) method.
      *
      * @param method {@code non-null;} the method to add
@@ -157,7 +157,7 @@ public final class ClassDataItem extends OffsettedItem {
         directMethods.add(method);
     }
 
-    /**
+    /*
      * Adds a virtual method.
      *
      * @param method {@code non-null;} the method to add
@@ -170,7 +170,7 @@ public final class ClassDataItem extends OffsettedItem {
         virtualMethods.add(method);
     }
 
-    /**
+    /*
      * Gets all the methods in this class. The returned list is not linked
      * in any way to the underlying lists contained in this instance, but
      * the objects contained in the list are shared.
@@ -188,7 +188,7 @@ public final class ClassDataItem extends OffsettedItem {
     }
 
 
-    /**
+    /*
      * Prints out the contents of this instance, in a debugging-friendly
      * way.
      *
@@ -221,7 +221,7 @@ public final class ClassDataItem extends OffsettedItem {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void addContents(DexFile file) {
         if (!staticFields.isEmpty()) {
@@ -253,7 +253,7 @@ public final class ClassDataItem extends OffsettedItem {
         }
     }
 
-    /**
+    /*
      * Gets a {@link CstArray} corresponding to {@link #staticValues} if
      * it contains any non-zero non-{@code null} values.
      *
@@ -268,7 +268,7 @@ public final class ClassDataItem extends OffsettedItem {
         return staticValuesConstant;
     }
 
-    /**
+    /*
      * Gets a {@link CstArray} corresponding to {@link #staticValues} if
      * it contains any non-zero non-{@code null} values.
      *
@@ -319,7 +319,7 @@ public final class ClassDataItem extends OffsettedItem {
         return new CstArray(list);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void place0(Section addedTo, int offset) {
         // Encode the data and note the size.
@@ -331,7 +331,7 @@ public final class ClassDataItem extends OffsettedItem {
         setWriteSize(encodedForm.length);
     }
 
-    /**
+    /*
      * Writes out the encoded form of this instance.
      *
      * @param file {@code non-null;} file this instance is part of
@@ -360,7 +360,7 @@ public final class ClassDataItem extends OffsettedItem {
         }
     }
 
-    /**
+    /*
      * Helper for {@link #encodeOutput}, which writes out the given
      * size value, annotating it as well (if annotations are enabled).
      *
@@ -379,7 +379,7 @@ public final class ClassDataItem extends OffsettedItem {
         out.writeUleb128(size);
     }
 
-    /**
+    /*
      * Helper for {@link #encodeOutput}, which writes out the given
      * list. It also annotates the items (if any and if annotations
      * are enabled).
@@ -407,7 +407,7 @@ public final class ClassDataItem extends OffsettedItem {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void writeTo0(DexFile file, AnnotatedOutput out) {
         boolean annotates = out.annotates();

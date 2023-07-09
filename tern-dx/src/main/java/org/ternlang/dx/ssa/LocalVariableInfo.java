@@ -23,33 +23,33 @@ import org.ternlang.dx.rop.code.RegisterSpec;
 import org.ternlang.dx.rop.code.RegisterSpecSet;
 import org.ternlang.dx.util.MutabilityControl;
 
-/**
+/*
  * Container for local variable information for a particular {@link
  * org.ternlang.dx.ssa.SsaMethod}.
  * Stolen from {@link org.ternlang.dx.rop.code.LocalVariableInfo}.
  */
 public class LocalVariableInfo         extends MutabilityControl {
-    /** {@code >= 0;} the register count for the method */
+    /* {@code >= 0;} the register count for the method */
     private final int regCount;
 
-    /**
+    /*
      * {@code non-null;} {@link org.ternlang.dx.rop.code.RegisterSpecSet} to use when indicating a block
      * that has no locals; it is empty and immutable but has an appropriate
      * max size for the method
      */
     private final RegisterSpecSet emptySet;
 
-    /**
+    /*
      * {@code non-null;} array consisting of register sets representing the
      * sets of variables already assigned upon entry to each block,
      * where array indices correspond to block indices
      */
     private final RegisterSpecSet[] blockStarts;
 
-    /** {@code non-null;} map from instructions to the variable each assigns */
+    /* {@code non-null;} map from instructions to the variable each assigns */
     private final HashMap<SsaInsn, RegisterSpec> insnAssignments;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param method {@code non-null;} the method being represented by this instance
@@ -70,7 +70,7 @@ public class LocalVariableInfo         extends MutabilityControl {
         emptySet.setImmutable();
     }
 
-    /**
+    /*
      * Sets the register set associated with the start of the block with
      * the given index.
      *
@@ -92,7 +92,7 @@ public class LocalVariableInfo         extends MutabilityControl {
         }
     }
 
-    /**
+    /*
      * Merges the given register set into the set for the block with the
      * given index. If there was not already an associated set, then this
      * is the same as calling {@link #setStarts}. Otherwise, this will
@@ -128,7 +128,7 @@ public class LocalVariableInfo         extends MutabilityControl {
         return true;
     }
 
-    /**
+    /*
      * Gets the register set associated with the start of the block
      * with the given index. This returns an empty set with the appropriate
      * max size if no set was associated with the block in question.
@@ -142,7 +142,7 @@ public class LocalVariableInfo         extends MutabilityControl {
         return (result != null) ? result : emptySet;
     }
 
-    /**
+    /*
      * Gets the register set associated with the start of the given
      * block. This is just convenient shorthand for
      * {@code getStarts(block.getLabel())}.
@@ -154,7 +154,7 @@ public class LocalVariableInfo         extends MutabilityControl {
         return getStarts(block.getIndex());
     }
 
-    /**
+    /*
      * Gets a mutable copy of the register set associated with the
      * start of the block with the given index. This returns a
      * newly-allocated empty {@link RegisterSpecSet} of appropriate
@@ -170,7 +170,7 @@ public class LocalVariableInfo         extends MutabilityControl {
             result.mutableCopy() : new RegisterSpecSet(regCount);
     }
 
-    /**
+    /*
      * Adds an assignment association for the given instruction and
      * register spec. This throws an exception if the instruction
      * doesn't actually perform a named variable assignment.
@@ -198,7 +198,7 @@ public class LocalVariableInfo         extends MutabilityControl {
         insnAssignments.put(insn, spec);
     }
 
-    /**
+    /*
      * Gets the named register being assigned by the given instruction, if
      * previously stored in this instance.
      *
@@ -209,7 +209,7 @@ public class LocalVariableInfo         extends MutabilityControl {
         return insnAssignments.get(insn);
     }
 
-    /**
+    /*
      * Gets the number of assignments recorded by this instance.
      *
      * @return {@code >= 0;} the number of assignments
@@ -232,7 +232,7 @@ public class LocalVariableInfo         extends MutabilityControl {
         }
     }
 
-    /**
+    /*
      * Helper method, to get the starts for a index, throwing the
      * right exception for range problems.
      *

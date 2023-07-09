@@ -26,26 +26,26 @@ import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 import org.ternlang.dx.util.TwoColumnOutput;
 
-/**
+/*
  * Base class for Dalvik instructions.
  */
 public abstract class DalvInsn {
-    /**
+    /*
      * the actual output address of this instance, if known, or
      * {@code -1} if not
      */
     private int address;
 
-    /** the opcode; one of the constants from {@link Dops} */
+    /* the opcode; one of the constants from {@link Dops} */
     private final Dop opcode;
 
-    /** {@code non-null;} source position */
+    /* {@code non-null;} source position */
     private final SourcePosition position;
 
-    /** {@code non-null;} list of register arguments */
+    /* {@code non-null;} list of register arguments */
     private final RegisterSpecList registers;
 
-    /**
+    /*
      * Makes a move instruction, appropriate and ideal for the given arguments.
      *
      * @param position {@code non-null;} source position information
@@ -76,7 +76,7 @@ public abstract class DalvInsn {
                               RegisterSpecList.make(dest, src));
     }
 
-    /**
+    /*
      * Constructs an instance. The output address of this instance is initially
      * unknown ({@code -1}).
      *
@@ -112,7 +112,7 @@ public abstract class DalvInsn {
         this.registers = registers;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final String toString() {
         StringBuffer sb = new StringBuffer(100);
@@ -142,7 +142,7 @@ public abstract class DalvInsn {
         return sb.toString();
     }
 
-    /**
+    /*
      * Gets whether the address of this instruction is known.
      *
      * @see #getAddress
@@ -152,7 +152,7 @@ public abstract class DalvInsn {
         return (address >= 0);
     }
 
-    /**
+    /*
      * Gets the output address of this instruction, if it is known. This throws
      * a {@code RuntimeException} if it has not yet been set.
      *
@@ -168,7 +168,7 @@ public abstract class DalvInsn {
         return address;
     }
 
-    /**
+    /*
      * Gets the opcode.
      *
      * @return {@code non-null;} the opcode
@@ -177,7 +177,7 @@ public abstract class DalvInsn {
         return opcode;
     }
 
-    /**
+    /*
      * Gets the source position.
      *
      * @return {@code non-null;} the source position
@@ -186,7 +186,7 @@ public abstract class DalvInsn {
         return position;
     }
 
-    /**
+    /*
      * Gets the register list for this instruction.
      *
      * @return {@code non-null;} the registers
@@ -195,7 +195,7 @@ public abstract class DalvInsn {
         return registers;
     }
 
-    /**
+    /*
      * Returns whether this instance's opcode uses a result register.
      * This method is a convenient shorthand for
      * {@code getOpcode().hasResult()}.
@@ -206,7 +206,7 @@ public abstract class DalvInsn {
         return opcode.hasResult();
     }
 
-    /**
+    /*
      * Gets the minimum distinct registers required for this instruction.
      * Uses the given BitSet to determine which registers require
      * replacement, and ignores registers that are already compatible.
@@ -237,7 +237,7 @@ public abstract class DalvInsn {
         return Math.max(sourceRequirement, resultRequirement);
     }
 
-    /**
+    /*
      * Gets the instruction that is equivalent to this one, except that
      * it uses sequential registers starting at {@code 0} (storing
      * the result, if any, in register {@code 0} as well).
@@ -250,7 +250,7 @@ public abstract class DalvInsn {
         return withRegisters(regs);
     }
 
-    /**
+    /*
      * Gets the instruction prefix required, if any, to use in an expanded
      * version of this instance. Will not generate moves for registers
      * marked compatible to the format by the given BitSet.
@@ -275,7 +275,7 @@ public abstract class DalvInsn {
         return new HighRegisterPrefix(position, regs);
     }
 
-    /**
+    /*
      * Gets the instruction suffix required, if any, to use in an expanded
      * version of this instance. Will not generate a move for a register
      * marked compatible to the format by the given BitSet.
@@ -294,7 +294,7 @@ public abstract class DalvInsn {
         }
     }
 
-    /**
+    /*
      * Gets the instruction that is equivalent to this one, except that
      * it replaces incompatible registers with sequential registers
      * starting at {@code 0} (storing the result, if any, in register
@@ -314,7 +314,7 @@ public abstract class DalvInsn {
         return withRegisters(regs);
     }
 
-    /**
+    /*
      * Gets the short identifier for this instruction. This is its
      * address, if assigned, or its identity hashcode if not.
      *
@@ -328,7 +328,7 @@ public abstract class DalvInsn {
         return Hex.u4(System.identityHashCode(this));
     }
 
-    /**
+    /*
      * Returns the string form of this instance suitable for inclusion in
      * a human-oriented listing dump. This method will return {@code null}
      * if this instance should not appear in a listing.
@@ -357,7 +357,7 @@ public abstract class DalvInsn {
         return TwoColumnOutput.toString(addr, w1, "", insnPerSe, w2);
     }
 
-    /**
+    /*
      * Sets the output address.
      *
      * @param address {@code >= 0;} the output address
@@ -370,7 +370,7 @@ public abstract class DalvInsn {
         this.address = address;
     }
 
-    /**
+    /*
      * Gets the address immediately after this instance. This is only
      * calculable if this instance's address is known, and it is equal
      * to the address plus the length of the instruction format of this
@@ -382,7 +382,7 @@ public abstract class DalvInsn {
         return getAddress() + codeSize();
     }
 
-    /**
+    /*
      * Returns an instance that is just like this one, except that the
      * register list is mapped by using {@code mapper}.
      *
@@ -393,14 +393,14 @@ public abstract class DalvInsn {
       return withRegisters(mapper.map(getRegisters()));
     }
 
-    /**
+    /*
      * Gets the size of this instruction, in 16-bit code units.
      *
      * @return {@code >= 0;} the code size of this instruction
      */
     public abstract int codeSize();
 
-    /**
+    /*
      * Writes this instance to the given output. This method should
      * never annotate the output.
      *
@@ -408,7 +408,7 @@ public abstract class DalvInsn {
      */
     public abstract void writeTo(AnnotatedOutput out);
 
-    /**
+    /*
      * Returns an instance that is just like this one, except that its
      * opcode is replaced by the one given, and its address is reset.
      *
@@ -417,7 +417,7 @@ public abstract class DalvInsn {
      */
     public abstract DalvInsn withOpcode(Dop opcode);
 
-    /**
+    /*
      * Returns an instance that is just like this one, except that all
      * register references have been offset by the given delta, and its
      * address is reset.
@@ -427,7 +427,7 @@ public abstract class DalvInsn {
      */
     public abstract DalvInsn withRegisterOffset(int delta);
 
-    /**
+    /*
      * Returns an instance that is just like this one, except that the
      * register list is replaced by the given one, and its address is
      * reset.
@@ -437,7 +437,7 @@ public abstract class DalvInsn {
      */
     public abstract DalvInsn withRegisters(RegisterSpecList registers);
 
-    /**
+    /*
      * Gets the string form for any arguments to this instance. Subclasses
      * must override this.
      *
@@ -446,7 +446,7 @@ public abstract class DalvInsn {
      */
     protected abstract String argString();
 
-    /**
+    /*
      * Helper for {@link #listingString}, which returns the string
      * form of this instance suitable for inclusion in a
      * human-oriented listing dump, not including the instruction

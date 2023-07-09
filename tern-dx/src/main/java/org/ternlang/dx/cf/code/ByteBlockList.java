@@ -19,12 +19,12 @@ package org.ternlang.dx.cf.code;
 import org.ternlang.dx.util.Hex;
 import org.ternlang.dx.util.LabeledList;
 
-/**
+/*
  * List of {@link ByteBlock} instances.
  */
 public final class ByteBlockList extends LabeledList {
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param size {@code >= 0;} the number of elements to be in the list
@@ -33,7 +33,7 @@ public final class ByteBlockList extends LabeledList {
         super(size);
     }
 
-    /**
+    /*
      * Gets the indicated element. It is an error to call this with the
      * index for an element which was never set; if you do that, this
      * will throw {@code NullPointerException}.
@@ -45,7 +45,7 @@ public final class ByteBlockList extends LabeledList {
         return (ByteBlock) get0(n);
     }
 
-    /**
+    /*
      * Gets the block with the given label.
      *
      * @param label the label to look for
@@ -62,7 +62,7 @@ public final class ByteBlockList extends LabeledList {
         return get(idx);
     }
 
-    /**
+    /*
      * Sets the element at the given index.
      *
      * @param n {@code >= 0, < size();} which element

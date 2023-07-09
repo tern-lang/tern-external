@@ -16,28 +16,28 @@
 
 package org.ternlang.dx.io;
 
-/**
+/*
  * All the Dalvik opcode value constants. See the related spec
  * document for the meaning and instruction format of each opcode.
  */
 public final class Opcodes {
-    /**
+    /*
      * pseudo-opcode used for nonstandard format payload "instructions". TODO:
      * Retire this concept, and start treating the payload instructions
      * more like the rest.
      */
     public static final int SPECIAL_FORMAT = -1;
 
-    /**
+    /*
      * pseudo-opcode used to indicate there is no next opcode; used
      * in opcode chaining lists
      */
     public static final int NO_NEXT = -1;
 
-    /** minimum valid opcode value */
+    /* minimum valid opcode value */
     public static final int MIN_VALUE = -1;
 
-    /** maximum valid opcode value */
+    /* maximum valid opcode value */
     public static final int MAX_VALUE = 0xffff;
 
     // BEGIN(opcodes); GENERATED AUTOMATICALLY BY opcode-gen
@@ -263,30 +263,30 @@ public final class Opcodes {
 
     // TODO: Generate these payload opcodes with opcode-gen.
 
-    /**
+    /*
      * special pseudo-opcode value for packed-switch data payload
      * instructions
      */
     public static final int PACKED_SWITCH_PAYLOAD = 0x100;
 
-    /** special pseudo-opcode value for packed-switch data payload
+    /* special pseudo-opcode value for packed-switch data payload
      * instructions
      */
     public static final int SPARSE_SWITCH_PAYLOAD = 0x200;
 
-    /** special pseudo-opcode value for fill-array-data data payload
+    /* special pseudo-opcode value for fill-array-data data payload
      * instructions
      */
     public static final int FILL_ARRAY_DATA_PAYLOAD = 0x300;
 
-    /**
+    /*
      * This class is uninstantiable.
      */
     private Opcodes() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Determines if the given opcode has the right "shape" to be
      * valid. This includes the range {@code 0x01..0xfe}, the range
      * {@code 0x00ff..0xffff} where the low-order byte is either
@@ -326,7 +326,7 @@ public final class Opcodes {
         return (opcode & 0xff00) == 0;
     }
 
-    /**
+    /*
      * Gets the opcode out of an opcode unit, the latter of which may also
      * include one or more argument values.
      *

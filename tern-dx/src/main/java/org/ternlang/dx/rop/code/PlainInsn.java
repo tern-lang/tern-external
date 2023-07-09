@@ -23,13 +23,13 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeBearer;
 import org.ternlang.dx.rop.type.TypeList;
 
-/**
+/*
  * Plain instruction, which has no embedded data and which cannot possibly
  * throw an exception.
  */
 public final class PlainInsn
         extends Insn {
-    /**
+    /*
      * Constructs an instance.
      *
      * @param opcode {@code non-null;} the opcode
@@ -55,7 +55,7 @@ public final class PlainInsn
         }
     }
 
-    /**
+    /*
      * Constructs a single-source instance.
      *
      * @param opcode {@code non-null;} the opcode
@@ -68,25 +68,25 @@ public final class PlainInsn
         this(opcode, position, result, RegisterSpecList.make(source));
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public TypeList getCatches() {
         return StdTypeList.EMPTY;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void accept(Visitor visitor) {
         visitor.visitPlainInsn(this);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withAddedCatch(Type type) {
         throw new UnsupportedOperationException("unsupported");
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withRegisterOffset(int delta) {
         return new PlainInsn(getOpcode(), getPosition(),
@@ -94,7 +94,7 @@ public final class PlainInsn
                              getSources().withOffset(delta));
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withSourceLiteral() {
         RegisterSpecList sources = getSources();
@@ -144,7 +144,7 @@ public final class PlainInsn
     }
 
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withNewRegisters(RegisterSpec result,
             RegisterSpecList sources) {

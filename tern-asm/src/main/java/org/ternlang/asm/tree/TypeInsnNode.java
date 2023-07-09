@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -33,7 +33,7 @@ import java.util.Map;
 
 import org.ternlang.asm.MethodVisitor;
 
-/**
+/*
  * A node that represents a type instruction. A type instruction is an
  * instruction that takes a type descriptor as parameter.
  * 
@@ -41,13 +41,13 @@ import org.ternlang.asm.MethodVisitor;
  */
 public class TypeInsnNode extends AbstractInsnNode {
 
-    /**
+    /*
      * The operand of this instruction. This operand is an internal name (see
      * {@link org.ternlang.asm.Type}).
      */
     public String desc;
 
-    /**
+    /*
      * Constructs a new {@link TypeInsnNode}.
      * 
      * @param opcode
@@ -62,7 +62,7 @@ public class TypeInsnNode extends AbstractInsnNode {
         this.desc = desc;
     }
 
-    /**
+    /*
      * Sets the opcode of this instruction.
      * 
      * @param opcode

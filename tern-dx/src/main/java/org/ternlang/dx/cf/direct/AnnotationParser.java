@@ -45,32 +45,32 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.ByteArray;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Parser for annotations.
  */
 public final class AnnotationParser {
-    /** {@code non-null;} class file being parsed */
+    /* {@code non-null;} class file being parsed */
     private final DirectClassFile cf;
 
-    /** {@code non-null;} constant pool to use */
+    /* {@code non-null;} constant pool to use */
     private final ConstantPool pool;
 
-    /** {@code non-null;} bytes of the attribute data */
+    /* {@code non-null;} bytes of the attribute data */
     private final ByteArray bytes;
 
-    /** {@code null-ok;} parse observer, if any */
+    /* {@code null-ok;} parse observer, if any */
     private final ParseObserver observer;
 
-    /** {@code non-null;} input stream to parse from */
+    /* {@code non-null;} input stream to parse from */
     private final ByteArray.MyDataInputStream input;
 
-    /**
+    /*
      * {@code non-null;} cursor for use when informing the observer of what
      * was parsed
      */
     private int parseCursor;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param cf {@code non-null;} class file to parse from
@@ -92,7 +92,7 @@ public final class AnnotationParser {
         this.parseCursor = 0;
     }
 
-    /**
+    /*
      * Parses an annotation value ({@code element_value}) attribute.
      *
      * @return {@code non-null;} the parsed constant value
@@ -114,7 +114,7 @@ public final class AnnotationParser {
         return result;
     }
 
-    /**
+    /*
      * Parses a parameter annotation attribute.
      *
      * @param visibility {@code non-null;} visibility of the parsed annotations
@@ -138,7 +138,7 @@ public final class AnnotationParser {
         return result;
     }
 
-    /**
+    /*
      * Parses an annotation attribute, per se.
      *
      * @param visibility {@code non-null;} visibility of the parsed annotations
@@ -163,7 +163,7 @@ public final class AnnotationParser {
         return result;
     }
 
-    /**
+    /*
      * Parses a list of annotation lists.
      *
      * @param visibility {@code non-null;} visibility of the parsed annotations
@@ -198,7 +198,7 @@ public final class AnnotationParser {
         return outerList;
     }
 
-    /**
+    /*
      * Parses an annotation list.
      *
      * @param visibility {@code non-null;} visibility of the parsed annotations
@@ -233,7 +233,7 @@ public final class AnnotationParser {
         return annotations;
     }
 
-    /**
+    /*
      * Parses a single annotation.
      *
      * @param visibility {@code non-null;} visibility of the parsed annotation
@@ -273,7 +273,7 @@ public final class AnnotationParser {
         return annotation;
     }
 
-    /**
+    /*
      * Parses a {@link NameValuePair}.
      *
      * @return {@code non-null;} the parsed element
@@ -299,7 +299,7 @@ public final class AnnotationParser {
         return new NameValuePair(elementName, value);
     }
 
-    /**
+    /*
      * Parses an annotation value.
      *
      * @return {@code non-null;} the parsed value
@@ -414,7 +414,7 @@ public final class AnnotationParser {
         }
     }
 
-    /**
+    /*
      * Helper for {@link #parseValue}, which parses a constant reference
      * and returns the referred-to constant value.
      *
@@ -434,7 +434,7 @@ public final class AnnotationParser {
         return value;
     }
 
-    /**
+    /*
      * Helper which will throw an exception if the given number of bytes
      * is not available to be read.
      *
@@ -446,7 +446,7 @@ public final class AnnotationParser {
         }
     }
 
-    /**
+    /*
      * Helper which indicates that some bytes were just parsed. This should
      * only be used (for efficiency sake) if the parse is known to be
      * observed.
@@ -459,7 +459,7 @@ public final class AnnotationParser {
         parseCursor += length;
     }
 
-    /**
+    /*
      * Convenience wrapper that simply calls through to
      * {@code observer.changeIndent()}.
      *

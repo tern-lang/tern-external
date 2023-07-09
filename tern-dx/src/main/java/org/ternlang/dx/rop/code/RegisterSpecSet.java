@@ -18,26 +18,26 @@ package org.ternlang.dx.rop.code;
 
 import org.ternlang.dx.util.MutabilityControl;
 
-/**
+/*
  * Set of {@link RegisterSpec} instances, where a given register number
  * may appear only once in the set.
  */
 public final class RegisterSpecSet
         extends MutabilityControl {
-    /** {@code non-null;} no-element instance */
+    /* {@code non-null;} no-element instance */
     public static final RegisterSpecSet EMPTY = new RegisterSpecSet(0);
 
-    /**
+    /*
      * {@code non-null;} array of register specs, where each element is
      * {@code null} or is an instance whose {@code reg}
      * matches the array index
      */
     private final RegisterSpec[] specs;
 
-    /** {@code >= -1;} size of the set or {@code -1} if not yet calculated */
+    /* {@code >= -1;} size of the set or {@code -1} if not yet calculated */
     private int size;
 
-    /**
+    /*
      * Constructs an instance. The instance is initially empty.
      *
      * @param maxSize {@code >= 0;} the maximum register number (exclusive) that
@@ -50,7 +50,7 @@ public final class RegisterSpecSet
         this.size = 0;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof RegisterSpecSet)) {
@@ -81,7 +81,7 @@ public final class RegisterSpecSet
         return true;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         int len = specs.length;
@@ -96,7 +96,7 @@ public final class RegisterSpecSet
         return hash;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         int len = specs.length;
@@ -121,7 +121,7 @@ public final class RegisterSpecSet
         return sb.toString();
     }
 
-    /**
+    /*
      * Gets the maximum number of registers that may be in this instance, which
      * is also the maximum-plus-one of register numbers that may be
      * represented.
@@ -132,7 +132,7 @@ public final class RegisterSpecSet
         return specs.length;
     }
 
-    /**
+    /*
      * Gets the current size of this instance.
      *
      * @return {@code >= 0;} the size
@@ -156,7 +156,7 @@ public final class RegisterSpecSet
         return result;
     }
 
-    /**
+    /*
      * Gets the element with the given register number, if any.
      *
      * @param reg {@code >= 0;} the desired register number
@@ -172,7 +172,7 @@ public final class RegisterSpecSet
         }
     }
 
-    /**
+    /*
      * Gets the element with the same register number as the given
      * spec, if any. This is just a convenient shorthand for
      * {@code get(spec.getReg())}.
@@ -185,7 +185,7 @@ public final class RegisterSpecSet
         return get(spec.getReg());
     }
 
-    /**
+    /*
      * Returns the spec in this set that's currently associated with a
      * given local (type, name, and signature), or {@code null} if there is
      * none. This ignores the register number of the given spec but
@@ -212,7 +212,7 @@ public final class RegisterSpecSet
         return null;
     }
 
-    /**
+    /*
      * Returns the spec in this set that's currently associated with a given
      * local (name and signature), or {@code null} if there is none.
      *
@@ -233,7 +233,7 @@ public final class RegisterSpecSet
         return null;
     }
 
-    /**
+    /*
      * Removes a spec from the set. Only the register number
      * of the parameter is significant.
      *
@@ -249,7 +249,7 @@ public final class RegisterSpecSet
         }
     }
 
-    /**
+    /*
      * Puts the given spec into the set. If there is already an element in
      * the set with the same register number, it is replaced. Additionally,
      * if the previous element is for a category-2 register, then that
@@ -289,7 +289,7 @@ public final class RegisterSpecSet
         }
     }
 
-    /**
+    /*
      * Put the entire contents of the given set into this one.
      *
      * @param set {@code non-null;} the set to put into this instance
@@ -305,7 +305,7 @@ public final class RegisterSpecSet
         }
     }
 
-    /**
+    /*
      * Intersects this instance with the given one, modifying this
      * instance. The intersection consists of the pairwise
      * {@link RegisterSpec#intersect} of corresponding elements from
@@ -345,7 +345,7 @@ public final class RegisterSpecSet
         }
     }
 
-    /**
+    /*
      * Returns an instance that is identical to this one, except that
      * all register numbers are offset by the given amount. Mutability
      * of the result is inherited from the original.
@@ -373,7 +373,7 @@ public final class RegisterSpecSet
         return result;
     }
 
-    /**
+    /*
      * Makes and return a mutable copy of this instance.
      *
      * @return {@code non-null;} the mutable copy

@@ -20,24 +20,24 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
+/*
  * Wrapper for a {@code byte[]}, which provides read-only access and
  * can "reveal" a partial slice of the underlying array.
  *
  * <b>Note:</b> Multibyte accessors all use big-endian order.
  */
 public final class ByteArray {
-    /** {@code non-null;} underlying array */
+    /* {@code non-null;} underlying array */
     private final byte[] bytes;
 
-    /** {@code >= 0}; start index of the slice (inclusive) */
+    /* {@code >= 0}; start index of the slice (inclusive) */
     private final int start;
 
-    /** {@code >= 0, <= bytes.length}; size computed as
+    /* {@code >= 0, <= bytes.length}; size computed as
      * {@code end - start} (in the constructor) */
     private final int size;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param bytes {@code non-null;} the underlying array
@@ -67,7 +67,7 @@ public final class ByteArray {
         this.size = end - start;
     }
 
-    /**
+    /*
      * Constructs an instance from an entire {@code byte[]}.
      *
      * @param bytes {@code non-null;} the underlying array
@@ -76,7 +76,7 @@ public final class ByteArray {
         this(bytes, 0, bytes.length);
     }
 
-    /**
+    /*
      * Gets the size of the array, in bytes.
      *
      * @return {@code >= 0;} the size
@@ -85,7 +85,7 @@ public final class ByteArray {
         return size;
     }
 
-    /**
+    /*
      * Returns a slice (that is, a sub-array) of this instance.
      *
      * @param start {@code >= 0;} start index of the slice (inclusive)
@@ -98,7 +98,7 @@ public final class ByteArray {
         return new ByteArray(bytes, start + this.start, end + this.start);
     }
 
-    /**
+    /*
      * Returns the offset into the given array represented by the given
      * offset into this instance.
      *
@@ -116,7 +116,7 @@ public final class ByteArray {
         return start + offset;
     }
 
-    /**
+    /*
      * Gets the {@code signed byte} value at a particular offset.
      *
      * @param off {@code >= 0, < size();} offset to fetch
@@ -127,7 +127,7 @@ public final class ByteArray {
         return getByte0(off);
     }
 
-    /**
+    /*
      * Gets the {@code signed short} value at a particular offset.
      *
      * @param off {@code >= 0, < (size() - 1);} offset to fetch
@@ -138,7 +138,7 @@ public final class ByteArray {
         return (getByte0(off) << 8) | getUnsignedByte0(off + 1);
     }
 
-    /**
+    /*
      * Gets the {@code signed int} value at a particular offset.
      *
      * @param off {@code >= 0, < (size() - 3);} offset to fetch
@@ -152,7 +152,7 @@ public final class ByteArray {
             getUnsignedByte0(off + 3);
     }
 
-    /**
+    /*
      * Gets the {@code signed long} value at a particular offset.
      *
      * @param off {@code >= 0, < (size() - 7);} offset to fetch
@@ -172,7 +172,7 @@ public final class ByteArray {
         return (part2 & 0xffffffffL) | ((long) part1) << 32;
     }
 
-    /**
+    /*
      * Gets the {@code unsigned byte} value at a particular offset.
      *
      * @param off {@code >= 0, < size();} offset to fetch
@@ -183,7 +183,7 @@ public final class ByteArray {
         return getUnsignedByte0(off);
     }
 
-    /**
+    /*
      * Gets the {@code unsigned short} value at a particular offset.
      *
      * @param off {@code >= 0, < (size() - 1);} offset to fetch
@@ -194,7 +194,7 @@ public final class ByteArray {
         return (getUnsignedByte0(off) << 8) | getUnsignedByte0(off + 1);
     }
 
-    /**
+    /*
      * Copies the contents of this instance into the given raw
      * {@code byte[]} at the given offset. The given array must be
      * large enough.
@@ -212,7 +212,7 @@ public final class ByteArray {
         System.arraycopy(bytes, start, out, offset, size);
     }
 
-    /**
+    /*
      * Checks a range of offsets for validity, throwing if invalid.
      *
      * @param s start offset (inclusive)
@@ -225,7 +225,7 @@ public final class ByteArray {
         }
     }
 
-    /**
+    /*
      * Gets the {@code signed byte} value at the given offset,
      * without doing any argument checking.
      *
@@ -236,7 +236,7 @@ public final class ByteArray {
         return bytes[start + off];
     }
 
-    /**
+    /*
      * Gets the {@code unsigned byte} value at the given offset,
      * without doing any argument checking.
      *
@@ -247,7 +247,7 @@ public final class ByteArray {
         return bytes[start + off] & 0xff;
     }
 
-    /**
+    /*
      * Gets a {@code DataInputStream} that reads from this instance,
      * with the cursor starting at the beginning of this instance's data.
      * <b>Note:</b> The returned instance may be cast to {@link #GetCursor}
@@ -260,7 +260,7 @@ public final class ByteArray {
         return new MyDataInputStream(makeInputStream());
     }
 
-    /**
+    /*
      * Gets a {@code InputStream} that reads from this instance,
      * with the cursor starting at the beginning of this instance's data.
      * <b>Note:</b> The returned instance may be cast to {@link #GetCursor}
@@ -273,11 +273,11 @@ public final class ByteArray {
         return new MyInputStream();
     }
 
-    /**
+    /*
      * Helper interface that allows one to get the cursor (of a stream).
      */
     public interface GetCursor {
-        /**
+        /*
          * Gets the current cursor.
          *
          * @return {@code 0..size();} the cursor
@@ -285,15 +285,15 @@ public final class ByteArray {
         public int getCursor();
     }
 
-    /**
+    /*
      * Helper class for {@link #makeInputStream}, which implements the
      * stream functionality.
      */
     public class MyInputStream extends InputStream {
-        /** 0..size; the cursor */
+        /* 0..size; the cursor */
         private int cursor;
 
-        /** 0..size; the mark */
+        /* 0..size; the mark */
         private int mark;
 
         public MyInputStream() {
@@ -343,13 +343,13 @@ public final class ByteArray {
         }
     }
 
-    /**
+    /*
      * Helper class for {@link #makeDataInputStream}. This is used
      * simply so that the cursor of a wrapped {@link #MyInputStream}
      * instance may be easily determined.
      */
     public static class MyDataInputStream extends DataInputStream {
-        /** {@code non-null;} the underlying {@link #MyInputStream} */
+        /* {@code non-null;} the underlying {@link #MyInputStream} */
         private final MyInputStream wrapped;
 
         public MyDataInputStream(MyInputStream wrapped) {

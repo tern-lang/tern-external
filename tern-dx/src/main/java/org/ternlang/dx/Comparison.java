@@ -20,12 +20,12 @@ import org.ternlang.dx.rop.code.Rop;
 import org.ternlang.dx.rop.code.Rops;
 import org.ternlang.dx.rop.type.TypeList;
 
-/**
+/*
  * A comparison between two values of the same type.
  */
 public enum Comparison {
 
-    /** {@code a < b}. Supports int only. */
+    /* {@code a < b}. Supports int only. */
     LT() {
         @Override
         Rop rop(TypeList types) {
@@ -33,7 +33,7 @@ public enum Comparison {
         }
     },
 
-    /** {@code a <= b}. Supports int only. */
+    /* {@code a <= b}. Supports int only. */
     LE() {
         @Override
         Rop rop(TypeList types) {
@@ -41,7 +41,7 @@ public enum Comparison {
         }
     },
 
-    /** {@code a == b}. Supports int and reference types. */
+    /* {@code a == b}. Supports int and reference types. */
     EQ() {
         @Override
         Rop rop(TypeList types) {
@@ -49,7 +49,7 @@ public enum Comparison {
         }
     },
 
-    /** {@code a >= b}. Supports int only. */
+    /* {@code a >= b}. Supports int only. */
     GE() {
         @Override
         Rop rop(TypeList types) {
@@ -57,7 +57,7 @@ public enum Comparison {
         }
     },
 
-    /** {@code a > b}. Supports int only. */
+    /* {@code a > b}. Supports int only. */
     GT() {
         @Override
         Rop rop(TypeList types) {
@@ -65,7 +65,7 @@ public enum Comparison {
         }
     },
 
-    /** {@code a != b}. Supports int and reference types. */
+    /* {@code a != b}. Supports int and reference types. */
     NE() {
         @Override
         Rop rop(TypeList types) {

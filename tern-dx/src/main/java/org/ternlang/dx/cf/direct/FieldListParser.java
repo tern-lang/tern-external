@@ -24,14 +24,14 @@ import org.ternlang.dx.rop.code.AccessFlags;
 import org.ternlang.dx.rop.cst.CstNat;
 import org.ternlang.dx.rop.cst.CstType;
 
-/**
+/*
  * Parser for lists of fields in a class file.
  */
 final /*package*/ class FieldListParser extends MemberListParser {
-    /** {@code non-null;} list in progress */
+    /* {@code non-null;} list in progress */
     private final StdFieldList fields;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param cf {@code non-null;} the class file to parse from
@@ -45,7 +45,7 @@ final /*package*/ class FieldListParser extends MemberListParser {
         fields = new StdFieldList(getCount());
     }
 
-    /**
+    /*
      * Gets the parsed list.
      *
      * @return {@code non-null;} the parsed list
@@ -55,25 +55,25 @@ final /*package*/ class FieldListParser extends MemberListParser {
         return fields;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected String humanName() {
         return "field";
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected String humanAccessFlags(int accessFlags) {
         return AccessFlags.fieldString(accessFlags);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected int getAttributeContext() {
         return AttributeFactory.CTX_FIELD;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected Member set(int n, int accessFlags, CstNat nat,
                          AttributeList attributes) {

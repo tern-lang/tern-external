@@ -18,7 +18,7 @@ package org.ternlang.dx.dex.file;
 
 import org.ternlang.dx.util.ToHuman;
 
-/**
+/*
  * Enumeration of all the top-level item types.
  */
 public enum ItemType implements ToHuman {
@@ -45,16 +45,16 @@ public enum ItemType implements ToHuman {
     TYPE_EXCEPTION_HANDLER_ITEM(    -1,     "exception_handler_item"),
     TYPE_ANNOTATION_SET_REF_ITEM(   -1,     "annotation_set_ref_item");
 
-    /** value when represented in a {@link MapItem} */
+    /* value when represented in a {@link MapItem} */
     private final int mapValue;
 
-    /** {@code non-null;} name of the type */
+    /* {@code non-null;} name of the type */
     private final String typeName;
 
-    /** {@code non-null;} the short human name */
+    /* {@code non-null;} the short human name */
     private final String humanName;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param mapValue value when represented in a {@link MapItem}
@@ -72,7 +72,7 @@ public enum ItemType implements ToHuman {
         this.humanName = human.replace('_', ' ');
     }
 
-    /**
+    /*
      * Gets the map value.
      *
      * @return the map value
@@ -81,7 +81,7 @@ public enum ItemType implements ToHuman {
         return mapValue;
     }
 
-    /**
+    /*
      * Gets the type name.
      *
      * @return {@code non-null;} the type name
@@ -90,7 +90,7 @@ public enum ItemType implements ToHuman {
         return typeName;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return humanName;
     }

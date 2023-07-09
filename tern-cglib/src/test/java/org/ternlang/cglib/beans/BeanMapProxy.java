@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Map;
 
-/**
+/*
  * @author Chris Nokleberg <a href="mailto:chris@nokleberg.com">chris@nokleberg.com</a>
  * @version $Id: BeanMapProxy.java,v 1.2 2004/06/24 21:15:17 herbyderby Exp $
  */

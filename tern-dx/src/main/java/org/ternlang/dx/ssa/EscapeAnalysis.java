@@ -45,27 +45,27 @@ import org.ternlang.dx.rop.type.StdTypeList;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeBearer;
 
-/**
+/*
  * Simple intraprocedural escape analysis. Finds new arrays that don't escape
  * the method they are created in and replaces the array values with registers.
  */
 public class EscapeAnalysis {
-    /**
+    /*
      * Struct used to generate and maintain escape analysis results.
      */
     static class EscapeSet {
-        /** set containing all registers related to an object */
+        /* set containing all registers related to an object */
         BitSet regSet;
-        /** escape state of the object */
+        /* escape state of the object */
         EscapeState escape;
-        /** list of objects that are put into this object */
+        /* list of objects that are put into this object */
         ArrayList<EscapeSet> childSets;
-        /** list of objects that this object is put into */
+        /* list of objects that this object is put into */
         ArrayList<EscapeSet> parentSets;
-        /** flag to indicate this object is a scalar replaceable array */
+        /* flag to indicate this object is a scalar replaceable array */
         boolean replaceableArray;
 
-        /**
+        /*
          * Constructs an instance of an EscapeSet
          *
          * @param reg the SSA register that defines the object
@@ -82,7 +82,7 @@ public class EscapeAnalysis {
         }
     }
 
-    /**
+    /*
      * Lattice values used to indicate escape state for an object. Analysis can
      * only raise escape state values, not lower them.
      *
@@ -97,14 +97,14 @@ public class EscapeAnalysis {
         TOP, NONE, METHOD, INTER, GLOBAL
     }
 
-    /** method we're processing */
+    /* method we're processing */
     private SsaMethod ssaMeth;
-    /** ssaMeth.getRegCount() */
+    /* ssaMeth.getRegCount() */
     private int regCount;
-    /** Lattice values for each object register group */
+    /* Lattice values for each object register group */
     private ArrayList<EscapeSet> latticeValues;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param ssaMeth method to process
@@ -115,7 +115,7 @@ public class EscapeAnalysis {
         this.latticeValues = new ArrayList<EscapeSet>();
     }
 
-    /**
+    /*
      * Finds the index in the lattice for a particular register.
      * Returns the size of the lattice if the register wasn't found.
      *
@@ -133,7 +133,7 @@ public class EscapeAnalysis {
         return i;
     }
 
-    /**
+    /*
      * Finds the corresponding instruction for a given move result
      *
      * @param moveInsn {@code non-null;} a move result instruction
@@ -146,7 +146,7 @@ public class EscapeAnalysis {
         return predInsns.get(predInsns.size()-1);
     }
 
-    /**
+    /*
      * Finds the corresponding move result for a given instruction
      *
      * @param insn {@code non-null;} an instruction that must always be
@@ -159,7 +159,7 @@ public class EscapeAnalysis {
         return succInsns.get(0);
     }
 
-    /**
+    /*
      * Creates a link in the lattice between two EscapeSets due to a put
      * instruction. The object being put is the child and the object being put
      * into is the parent. A child set must always have an escape state at
@@ -178,7 +178,7 @@ public class EscapeAnalysis {
         }
     }
 
-    /**
+    /*
      * Merges all links in the lattice among two EscapeSets. On return, the
      * newNode will have its old links as well as all links from the oldNode.
      * The oldNode has all its links removed.
@@ -199,7 +199,7 @@ public class EscapeAnalysis {
         }
     }
 
-    /**
+    /*
      * Performs escape analysis on a method. Finds scalar replaceable arrays and
      * replaces them with equivalent registers.
      *
@@ -209,7 +209,7 @@ public class EscapeAnalysis {
         new EscapeAnalysis(ssaMethod).run();
     }
 
-    /**
+    /*
      * Process a single instruction, looking for new objects resulting from
      * move result or move param.
      *
@@ -241,7 +241,7 @@ public class EscapeAnalysis {
         }
     }
 
-    /**
+    /*
      * Determine the origin of a move result pseudo instruction that generates
      * an object. Creates a new EscapeSet for the new object accordingly.
      *
@@ -315,7 +315,7 @@ public class EscapeAnalysis {
         return escSet;
     }
 
-    /**
+    /*
      * Iterate through all the uses of a new object.
      *
      * @param result {@code non-null;} register where new object is stored
@@ -346,7 +346,7 @@ public class EscapeAnalysis {
         }
     }
 
-    /**
+    /*
      * Handles phi uses of new objects. Will merge together the sources of a phi
      * into a single EscapeSet. Adds the result of the phi to the worklist so
      * its uses can be followed.
@@ -379,7 +379,7 @@ public class EscapeAnalysis {
         }
     }
 
-    /**
+    /*
      * Handles non-phi uses of new objects. Checks to see how instruction is
      * used and updates the escape state accordingly.
      *
@@ -471,7 +471,7 @@ public class EscapeAnalysis {
         }
     }
 
-    /**
+    /*
      * Performs scalar replacement on all eligible arrays.
      */
     private void scalarReplacement() {
@@ -520,7 +520,7 @@ public class EscapeAnalysis {
         }
     }
 
-    /**
+    /*
      * Replaces the instructions that define an array with equivalent registers.
      * For each entry in the array, a register is created, initialized to zero.
      * A mapping between this register and the corresponding array index is
@@ -548,7 +548,7 @@ public class EscapeAnalysis {
         }
     }
 
-    /**
+    /*
      * Replaces the use for a scalar replaceable array. Gets and puts become
      * move instructions, and array lengths and fills are handled. Can also
      * identify ArrayIndexOutOfBounds exceptions and throw them if detected.
@@ -638,7 +638,7 @@ public class EscapeAnalysis {
         }
     }
 
-    /**
+    /*
      * Identifies extra moves added by scalar replacement and propagates the
      * source of the move to any users of the result.
      */
@@ -685,7 +685,7 @@ public class EscapeAnalysis {
         }
     }
 
-    /**
+    /*
      * Runs escape analysis and scalar replacement of arrays.
      */
     private void run() {
@@ -723,7 +723,7 @@ public class EscapeAnalysis {
         scalarReplacement();
     }
 
-    /**
+    /*
      * Replaces instructions that trigger an ArrayIndexOutofBounds exception
      * with an actual throw of the exception.
      *
@@ -771,7 +771,7 @@ public class EscapeAnalysis {
         deletedInsns.add(newInsn3);
     }
 
-    /**
+    /*
      * Inserts a new PlainInsn before the given instruction.
      * TODO: move this somewhere more appropriate
      *
@@ -809,7 +809,7 @@ public class EscapeAnalysis {
         ssaMeth.onInsnAdded(newInsn);
     }
 
-    /**
+    /*
      * Inserts a new ThrowingInsn before the given instruction.
      * TODO: move this somewhere more appropriate
      *

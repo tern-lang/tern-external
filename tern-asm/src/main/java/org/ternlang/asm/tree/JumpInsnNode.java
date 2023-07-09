@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -33,7 +33,7 @@ import java.util.Map;
 
 import org.ternlang.asm.MethodVisitor;
 
-/**
+/*
  * A node that represents a jump instruction. A jump instruction is an
  * instruction that may jump to another instruction.
  * 
@@ -41,13 +41,13 @@ import org.ternlang.asm.MethodVisitor;
  */
 public class JumpInsnNode extends AbstractInsnNode {
 
-    /**
+    /*
      * The operand of this instruction. This operand is a label that designates
      * the instruction to which this instruction may jump.
      */
     public LabelNode label;
 
-    /**
+    /*
      * Constructs a new {@link JumpInsnNode}.
      * 
      * @param opcode
@@ -65,7 +65,7 @@ public class JumpInsnNode extends AbstractInsnNode {
         this.label = label;
     }
 
-    /**
+    /*
      * Sets the opcode of this instruction.
      * 
      * @param opcode

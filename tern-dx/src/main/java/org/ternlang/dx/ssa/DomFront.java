@@ -21,37 +21,37 @@ import java.util.BitSet;
 
 import org.ternlang.dx.util.IntSet;
 
-/**
+/*
  * Calculates the dominance-frontiers of a methot's basic blocks.
  * Algorithm from "A Simple, Fast Dominance Algorithm" by Cooper,
  * Harvey, and Kennedy; transliterated to Java.
  */
 public class DomFront {
-    /** local debug flag */
+    /* local debug flag */
     private static boolean DEBUG = false;
 
-    /** {@code non-null;} method being processed */
+    /* {@code non-null;} method being processed */
     private final SsaMethod meth;
 
     private final ArrayList<SsaBasicBlock> nodes;
 
     private final DomInfo[] domInfos;
 
-    /**
+    /*
      * Dominance-frontier information for a single basic block.
      */
     public static class DomInfo {
-        /**
+        /*
          * {@code null-ok;} the dominance frontier set indexed by
          * block index
          */
         public IntSet dominanceFrontiers;
 
-        /** {@code >= 0 after run();} the index of the immediate dominator */
+        /* {@code >= 0 after run();} the index of the immediate dominator */
         public int idom = -1;
     }
 
-    /**
+    /*
      * Constructs instance. Call {@link DomFront#run} to process.
      *
      * @param meth {@code non-null;} method to process
@@ -68,7 +68,7 @@ public class DomFront {
         }
     }
 
-    /**
+    /*
      * Calculates the dominance frontier information for the method.
      *
      * @return {@code non-null;} an array of DomInfo structures
@@ -140,7 +140,7 @@ public class DomFront {
         }
     }
 
-    /**
+    /*
      * The dominators algorithm leaves us knowing who the immediate dominator
      * is for each node. This sweeps the node list and builds the proper
      * dominance tree.
@@ -158,7 +158,7 @@ public class DomFront {
         }
     }
 
-    /**
+    /*
      * Calculates the dominance-frontier set.
      * from "A Simple, Fast Dominance Algorithm" by Cooper,
      * Harvey, and Kennedy; transliterated to Java.

@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -39,7 +39,7 @@ import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.TypePath;
 
-/**
+/*
  * A {@link ClassVisitor} that prints the classes it visits with a
  * {@link Printer}. This class visitor can be used in the middle of a class
  * visitor chain to trace the class that is visited at a given point in this
@@ -83,17 +83,17 @@ import org.ternlang.asm.TypePath;
  */
 public final class TraceClassVisitor extends ClassVisitor {
 
-    /**
+    /*
      * The print writer to be used to print the class. May be null.
      */
     private final PrintWriter pw;
 
-    /**
+    /*
      * The object that actually converts visit events into text.
      */
     public final Printer p;
 
-    /**
+    /*
      * Constructs a new {@link TraceClassVisitor}.
      * 
      * @param pw
@@ -103,7 +103,7 @@ public final class TraceClassVisitor extends ClassVisitor {
         this(null, pw);
     }
 
-    /**
+    /*
      * Constructs a new {@link TraceClassVisitor}.
      * 
      * @param cv
@@ -116,7 +116,7 @@ public final class TraceClassVisitor extends ClassVisitor {
         this(cv, new Textifier(), pw);
     }
 
-    /**
+    /*
      * Constructs a new {@link TraceClassVisitor}.
      * 
      * @param cv

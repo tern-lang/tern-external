@@ -18,7 +18,7 @@ package org.ternlang.dx;
 
 import org.ternlang.dx.rop.code.RegisterSpec;
 
-/**
+/*
  * A temporary variable that holds a single value of a known type.
  */
 public final class Local<T> {
@@ -36,7 +36,7 @@ public final class Local<T> {
         return new Local<T>(code, type);
     }
 
-    /**
+    /*
      * Assigns registers to this local.
      *
      * @return the number of registers required.
@@ -47,7 +47,7 @@ public final class Local<T> {
         return size();
     }
 
-    /**
+    /*
      * Returns the number of registered required to hold this local.
      */
     int size() {

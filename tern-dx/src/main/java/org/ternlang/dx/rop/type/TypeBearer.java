@@ -18,19 +18,19 @@ package org.ternlang.dx.rop.type;
 
 import org.ternlang.dx.util.ToHuman;
 
-/**
+/*
  * Object which has an associated type, possibly itself.
  */
 public interface TypeBearer
         extends ToHuman {
-    /**
+    /*
      * Gets the type associated with this instance.
      *
      * @return {@code non-null;} the type
      */
     public Type getType();
 
-    /**
+    /*
      * Gets the frame type corresponding to this type. This method returns
      * {@code this}, except if {@link Type#isIntlike} on the underlying
      * type returns {@code true} but the underlying type is not in
@@ -41,7 +41,7 @@ public interface TypeBearer
      */
     public TypeBearer getFrameType();
 
-    /**
+    /*
      * Gets the basic type corresponding to this instance.
      *
      * @return the basic type; one of the {@code BT_*} constants
@@ -49,7 +49,7 @@ public interface TypeBearer
      */
     public int getBasicType();
 
-    /**
+    /*
      * Gets the basic type corresponding to this instance's frame type. This
      * is equivalent to {@code getFrameType().getBasicType()}, and
      * is the same as calling {@code getFrameType()} unless this
@@ -64,7 +64,7 @@ public interface TypeBearer
      */
     public int getBasicFrameType();
 
-    /**
+    /*
      * Returns whether this instance represents a constant value.
      *
      * @return {@code true} if this instance represents a constant value

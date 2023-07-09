@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -42,45 +42,45 @@ import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.Type;
 import org.ternlang.asm.TypePath;
 
-/**
+/*
  * A {@link Printer} that prints the ASM code to generate the classes if visits.
  * 
  * @author Eric Bruneton
  */
 public class ASMifier extends Printer {
 
-    /**
+    /*
      * The name of the visitor variable in the produced code.
      */
     protected final String name;
 
-    /**
+    /*
      * Identifier of the annotation visitor variable in the produced code.
      */
     protected final int id;
 
-    /**
+    /*
      * The label names. This map associates String values to Label keys. It is
      * used only in ASMifierMethodVisitor.
      */
     protected Map<Label, String> labelNames;
 
-    /**
+    /*
      * Pseudo access flag used to distinguish class access flags.
      */
     private static final int ACCESS_CLASS = 262144;
 
-    /**
+    /*
      * Pseudo access flag used to distinguish field access flags.
      */
     private static final int ACCESS_FIELD = 524288;
 
-    /**
+    /*
      * Pseudo access flag used to distinguish inner class flags.
      */
     private static final int ACCESS_INNER = 1048576;
 
-    /**
+    /*
      * Constructs a new {@link ASMifier}. <i>Subclasses must not use this
      * constructor</i>. Instead, they must use the
      * {@link #ASMifier(int, String, int)} version.
@@ -95,7 +95,7 @@ public class ASMifier extends Printer {
         }
     }
 
-    /**
+    /*
      * Constructs a new {@link ASMifier}.
      * 
      * @param api
@@ -113,7 +113,7 @@ public class ASMifier extends Printer {
         this.id = id;
     }
 
-    /**
+    /*
      * Prints the ASM source code to generate the given class to the standard
      * output.
      * <p>
@@ -946,7 +946,7 @@ public class ASMifier extends Printer {
         return new ASMifier(Opcodes.ASM5, name, id);
     }
 
-    /**
+    /*
      * Appends a string representation of the given access modifiers to
      * {@link #buf buf}.
      * 
@@ -1096,7 +1096,7 @@ public class ASMifier extends Printer {
         }
     }
 
-    /**
+    /*
      * Appends a string representation of the given constant to the given
      * buffer.
      * 
@@ -1108,7 +1108,7 @@ public class ASMifier extends Printer {
         appendConstant(buf, cst);
     }
 
-    /**
+    /*
      * Appends a string representation of the given constant to the given
      * buffer.
      * 
@@ -1258,7 +1258,7 @@ public class ASMifier extends Printer {
         }
     }
 
-    /**
+    /*
      * Appends a declaration of the given label to {@link #buf buf}. This
      * declaration is of the form "Label lXXX = new Label();". Does nothing if
      * the given label has already been declared.
@@ -1278,7 +1278,7 @@ public class ASMifier extends Printer {
         }
     }
 
-    /**
+    /*
      * Appends the name of the given label to {@link #buf buf}. The given label
      * <i>must</i> already have a name. One way to ensure this is to always call
      * {@link #declareLabel declared} before calling this method.

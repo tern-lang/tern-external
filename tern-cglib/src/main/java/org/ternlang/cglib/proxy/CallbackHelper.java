@@ -20,7 +20,7 @@ import java.util.*;
 
 import org.ternlang.cglib.core.ReflectUtils;
 
-/**
+/*
  * @version $Id: CallbackHelper.java,v 1.2 2004/06/24 21:15:20 herbyderby Exp $
  */
 abstract public class CallbackHelper

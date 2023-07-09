@@ -23,33 +23,33 @@ import org.ternlang.dx.cf.iface.StdAttributeList;
 import org.ternlang.dx.util.ByteArray;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Parser for lists of attributes.
  */
 final /*package*/ class AttributeListParser {
-    /** {@code non-null;} the class file to parse from */
+    /* {@code non-null;} the class file to parse from */
     private final DirectClassFile cf;
 
-    /** attribute parsing context */
+    /* attribute parsing context */
     private final int context;
 
-    /** offset in the byte array of the classfile to the start of the list */
+    /* offset in the byte array of the classfile to the start of the list */
     private final int offset;
 
-    /** {@code non-null;} attribute factory to use */
+    /* {@code non-null;} attribute factory to use */
     private final AttributeFactory attributeFactory;
 
-    /** {@code non-null;} list of parsed attributes */
+    /* {@code non-null;} list of parsed attributes */
     private final StdAttributeList list;
 
-    /** {@code >= -1;} the end offset of this list in the byte array of the
+    /* {@code >= -1;} the end offset of this list in the byte array of the
      * classfile, or {@code -1} if not yet parsed */
     private int endOffset;
 
-    /** {@code null-ok;} parse observer, if any */
+    /* {@code null-ok;} parse observer, if any */
     private ParseObserver observer;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param cf {@code non-null;} class file to parse from
@@ -77,7 +77,7 @@ final /*package*/ class AttributeListParser {
         this.endOffset = -1;
     }
 
-    /**
+    /*
      * Sets the parse observer for this instance.
      *
      * @param observer {@code null-ok;} the observer
@@ -86,7 +86,7 @@ final /*package*/ class AttributeListParser {
         this.observer = observer;
     }
 
-    /**
+    /*
      * Gets the end offset of this constant pool in the {@code byte[]}
      * which it came from.
      *
@@ -97,7 +97,7 @@ final /*package*/ class AttributeListParser {
         return endOffset;
     }
 
-    /**
+    /*
      * Gets the parsed list.
      *
      * @return {@code non-null;} the list
@@ -107,7 +107,7 @@ final /*package*/ class AttributeListParser {
         return list;
     }
 
-    /**
+    /*
      * Runs {@link #parse} if it has not yet been run successfully.
      */
     private void parseIfNecessary() {
@@ -116,7 +116,7 @@ final /*package*/ class AttributeListParser {
         }
     }
 
-    /**
+    /*
      * Does the actual parsing.
      */
     private void parse() {

@@ -21,13 +21,13 @@ import java.util.Collection;
 import org.ternlang.dx.rop.cst.Constant;
 import org.ternlang.dx.util.AnnotatedOutput;
 
-/**
+/*
  * A section of a {@code .dex} file which consists of a sequence of
  * {@link Item} objects. Each of the items must have the same size in
  * the output.
  */
 public abstract class UniformItemSection extends Section {
-    /**
+    /*
      * Constructs an instance. The file offset is initially unknown.
      *
      * @param name {@code null-ok;} the name of this instance, for annotation
@@ -40,7 +40,7 @@ public abstract class UniformItemSection extends Section {
         super(name, file, alignment);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final int writeSize() {
         Collection<? extends Item> items = items();
@@ -54,7 +54,7 @@ public abstract class UniformItemSection extends Section {
         return sz * items.iterator().next().writeSize();
     }
 
-    /**
+    /*
      * Gets the item corresponding to the given {@link Constant}. This
      * will throw an exception if the constant is not found, including
      * if this instance isn't the sort that maps constants to {@link
@@ -65,7 +65,7 @@ public abstract class UniformItemSection extends Section {
      */
     public abstract IndexedItem get(Constant cst);
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected final void prepare0() {
         DexFile file = getFile();
@@ -77,7 +77,7 @@ public abstract class UniformItemSection extends Section {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected final void writeTo0(AnnotatedOutput out) {
         DexFile file = getFile();
@@ -89,7 +89,7 @@ public abstract class UniformItemSection extends Section {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final int getAbsoluteItemOffset(Item item) {
         /*
@@ -102,7 +102,7 @@ public abstract class UniformItemSection extends Section {
         return getAbsoluteOffset(relativeOffset);
     }
 
-    /**
+    /*
      * Alters or picks the order for items in this instance if desired,
      * so that subsequent calls to {@link #items} will yield a
      * so-ordered collection. If the items in this instance are indexed,

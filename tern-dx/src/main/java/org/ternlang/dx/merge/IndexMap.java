@@ -51,7 +51,7 @@ import org.ternlang.dex.TypeList;
 import org.ternlang.dex.util.ByteOutput;
 import org.ternlang.dx.util.ByteArrayAnnotatedOutput;
 
-/**
+/*
  * Maps the index offsets from one dex file to those in another. For example, if
  * you have string #5 in the old dex file, its position in the new dex file is
  * {@code strings[5]}.
@@ -247,7 +247,7 @@ public final class IndexMap {
                 new EncodedValue(out.toByteArray()));
     }
 
-    /**
+    /*
      * Adjust an encoded value or array.
      */
     private final class EncodedValueTransformer {

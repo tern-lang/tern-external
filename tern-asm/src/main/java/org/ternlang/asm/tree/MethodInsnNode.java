@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -34,7 +34,7 @@ import java.util.Map;
 import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 
-/**
+/*
  * A node that represents a method instruction. A method instruction is an
  * instruction that invokes a method.
  * 
@@ -42,28 +42,28 @@ import org.ternlang.asm.Opcodes;
  */
 public class MethodInsnNode extends AbstractInsnNode {
 
-    /**
+    /*
      * The internal name of the method's owner class (see
      * {@link org.ternlang.asm.Type#getInternalName() getInternalName}).
      */
     public String owner;
 
-    /**
+    /*
      * The method's name.
      */
     public String name;
 
-    /**
+    /*
      * The method's descriptor (see {@link org.ternlang.asm.Type}).
      */
     public String desc;
 
-    /**
+    /*
      * If the method's owner class if an interface.
      */
     public boolean itf;
 
-    /**
+    /*
      * Constructs a new {@link MethodInsnNode}.
      * 
      * @param opcode
@@ -85,7 +85,7 @@ public class MethodInsnNode extends AbstractInsnNode {
         this(opcode, owner, name, desc, opcode == Opcodes.INVOKEINTERFACE);
     }
 
-    /**
+    /*
      * Constructs a new {@link MethodInsnNode}.
      * 
      * @param opcode
@@ -112,7 +112,7 @@ public class MethodInsnNode extends AbstractInsnNode {
         this.itf = itf;
     }
 
-    /**
+    /*
      * Sets the opcode of this instruction.
      * 
      * @param opcode

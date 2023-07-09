@@ -26,23 +26,23 @@ import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.util.MutabilityControl;
 import org.ternlang.dx.util.ToHuman;
 
-/**
+/*
  * An annotation on an element of a class. Annotations have an
  * associated type and additionally consist of a set of (name, value)
  * pairs, where the names are unique.
  */
 public final class Annotation extends MutabilityControl
         implements Comparable<Annotation>, ToHuman {
-    /** {@code non-null;} type of the annotation */
+    /* {@code non-null;} type of the annotation */
     private final CstType type;
 
-    /** {@code non-null;} the visibility of the annotation */
+    /* {@code non-null;} the visibility of the annotation */
     private final AnnotationVisibility visibility;
 
-    /** {@code non-null;} map from names to {@link NameValuePair} instances */
+    /* {@code non-null;} map from names to {@link NameValuePair} instances */
     private final TreeMap<CstString, NameValuePair> elements;
 
-    /**
+    /*
      * Construct an instance. It initially contains no elements.
      *
      * @param type {@code non-null;} type of the annotation
@@ -62,7 +62,7 @@ public final class Annotation extends MutabilityControl
         this.elements = new TreeMap<CstString, NameValuePair>();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean equals(Object other) {
         if (! (other instanceof Annotation)) {
@@ -79,7 +79,7 @@ public final class Annotation extends MutabilityControl
         return elements.equals(otherAnnotation.elements);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int hashCode() {
         int hash = type.hashCode();
         hash = (hash * 31) + elements.hashCode();
@@ -87,7 +87,7 @@ public final class Annotation extends MutabilityControl
         return hash;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int compareTo(Annotation other) {
         int result = type.compareTo(other.type);
 
@@ -123,13 +123,13 @@ public final class Annotation extends MutabilityControl
         return 0;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         return toHuman();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         StringBuilder sb = new StringBuilder();
 
@@ -154,7 +154,7 @@ public final class Annotation extends MutabilityControl
         return sb.toString();
     }
 
-    /**
+    /*
      * Gets the type of this instance.
      *
      * @return {@code non-null;} the type
@@ -163,7 +163,7 @@ public final class Annotation extends MutabilityControl
         return type;
     }
 
-    /**
+    /*
      * Gets the visibility of this instance.
      *
      * @return {@code non-null;} the visibility
@@ -172,7 +172,7 @@ public final class Annotation extends MutabilityControl
         return visibility;
     }
 
-    /**
+    /*
      * Put an element into the set of (name, value) pairs for this instance.
      * If there is a preexisting element with the same name, it will be
      * replaced by this method.
@@ -189,7 +189,7 @@ public final class Annotation extends MutabilityControl
         elements.put(pair.getName(), pair);
     }
 
-    /**
+    /*
      * Add an element to the set of (name, value) pairs for this instance.
      * It is an error to call this method if there is a preexisting element
      * with the same name.
@@ -212,7 +212,7 @@ public final class Annotation extends MutabilityControl
         elements.put(name, pair);
     }
 
-    /**
+    /*
      * Gets the set of name-value pairs contained in this instance. The
      * result is always unmodifiable.
      *

@@ -27,16 +27,16 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Type identifiers list section of a {@code .dex} file.
  */
 public final class TypeIdsSection extends UniformItemSection {
-    /**
+    /*
      * {@code non-null;} map from types to {@link TypeIdItem} instances
      */
     private final TreeMap<Type, TypeIdItem> typeIds;
 
-    /**
+    /*
      * Constructs an instance. The file offset is initially unknown.
      *
      * @param file {@code non-null;} file that this instance is part of
@@ -47,13 +47,13 @@ public final class TypeIdsSection extends UniformItemSection {
         typeIds = new TreeMap<Type, TypeIdItem>();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Collection<? extends Item> items() {
         return typeIds.values();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public IndexedItem get(Constant cst) {
         if (cst == null) {
@@ -72,7 +72,7 @@ public final class TypeIdsSection extends UniformItemSection {
         return result;
     }
 
-    /**
+    /*
      * Writes the portion of the file header that refers to this instance.
      *
      * @param out {@code non-null;} where to write
@@ -98,7 +98,7 @@ public final class TypeIdsSection extends UniformItemSection {
         out.writeInt(offset);
     }
 
-    /**
+    /*
      * Interns an element into this instance.
      *
      * @param type {@code non-null;} the type to intern
@@ -121,7 +121,7 @@ public final class TypeIdsSection extends UniformItemSection {
         return result;
     }
 
-    /**
+    /*
      * Interns an element into this instance.
      *
      * @param type {@code non-null;} the type to intern
@@ -145,7 +145,7 @@ public final class TypeIdsSection extends UniformItemSection {
         return result;
     }
 
-    /**
+    /*
      * Gets the index of the given type, which must have
      * been added to this instance.
      *
@@ -168,7 +168,7 @@ public final class TypeIdsSection extends UniformItemSection {
         return item.getIndex();
     }
 
-    /**
+    /*
      * Gets the index of the given type, which must have
      * been added to this instance.
      *
@@ -183,7 +183,7 @@ public final class TypeIdsSection extends UniformItemSection {
         return indexOf(type.getClassType());
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void orderItems() {
         int idx = 0;

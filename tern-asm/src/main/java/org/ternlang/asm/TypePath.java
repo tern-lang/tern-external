@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2013 INRIA, France Telecom
  * All rights reserved.
@@ -30,7 +30,7 @@
 
 package org.ternlang.asm;
 
-/**
+/*
  * The path to a type argument, wildcard bound, array element type, or static
  * inner type within an enclosing type.
  * 
@@ -38,41 +38,41 @@ package org.ternlang.asm;
  */
 public class TypePath {
 
-    /**
+    /*
      * A type path step that steps into the element type of an array type. See
      * {@link #getStep getStep}.
      */
     public final static int ARRAY_ELEMENT = 0;
 
-    /**
+    /*
      * A type path step that steps into the nested type of a class type. See
      * {@link #getStep getStep}.
      */
     public final static int INNER_TYPE = 1;
 
-    /**
+    /*
      * A type path step that steps into the bound of a wildcard type. See
      * {@link #getStep getStep}.
      */
     public final static int WILDCARD_BOUND = 2;
 
-    /**
+    /*
      * A type path step that steps into a type argument of a generic type. See
      * {@link #getStep getStep}.
      */
     public final static int TYPE_ARGUMENT = 3;
 
-    /**
+    /*
      * The byte array where the path is stored, in Java class file format.
      */
     byte[] b;
 
-    /**
+    /*
      * The offset of the first byte of the type path in 'b'.
      */
     int offset;
 
-    /**
+    /*
      * Creates a new type path.
      * 
      * @param b
@@ -86,7 +86,7 @@ public class TypePath {
         this.offset = offset;
     }
 
-    /**
+    /*
      * Returns the length of this path.
      * 
      * @return the length of this path.
@@ -95,7 +95,7 @@ public class TypePath {
         return b[offset];
     }
 
-    /**
+    /*
      * Returns the value of the given step of this path.
      * 
      * @param index
@@ -108,7 +108,7 @@ public class TypePath {
         return b[offset + 2 * index + 1];
     }
 
-    /**
+    /*
      * Returns the index of the type argument that the given step is stepping
      * into. This method should only be used for steps whose value is
      * {@link #TYPE_ARGUMENT TYPE_ARGUMENT}.
@@ -122,7 +122,7 @@ public class TypePath {
         return b[offset + 2 * index + 2];
     }
 
-    /**
+    /*
      * Converts a type path in string form, in the format used by
      * {@link #toString()}, into a TypePath object.
      * 
@@ -162,7 +162,7 @@ public class TypePath {
         return new TypePath(out.data, 0);
     }
 
-    /**
+    /*
      * Returns a string representation of this type path. {@link #ARRAY_ELEMENT
      * ARRAY_ELEMENT} steps are represented with '[', {@link #INNER_TYPE
      * INNER_TYPE} steps with '.', {@link #WILDCARD_BOUND WILDCARD_BOUND} steps

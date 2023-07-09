@@ -19,12 +19,12 @@ package org.ternlang.dx;
 import org.ternlang.dx.rop.code.Rop;
 import org.ternlang.dx.rop.code.Rops;
 
-/**
+/*
  * An operation on one value.
  */
 public enum UnaryOp {
 
-    /** {@code ~a}. Supports int and long. */
+    /* {@code ~a}. Supports int and long. */
     NOT() {
         @Override
         Rop rop(TypeId<?> type) {
@@ -32,7 +32,7 @@ public enum UnaryOp {
         }
     },
 
-    /** {@code -a}. Supports int, long, float and double. */
+    /* {@code -a}. Supports int, long, float and double. */
     NEGATE() {
         @Override
         Rop rop(TypeId<?> type) {

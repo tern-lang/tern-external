@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -34,24 +34,24 @@ import java.util.Map;
 import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 
-/**
+/*
  * A node that represents a MULTIANEWARRAY instruction.
  * 
  * @author Eric Bruneton
  */
 public class MultiANewArrayInsnNode extends AbstractInsnNode {
 
-    /**
+    /*
      * An array type descriptor (see {@link org.ternlang.asm.Type}).
      */
     public String desc;
 
-    /**
+    /*
      * Number of dimensions of the array to allocate.
      */
     public int dims;
 
-    /**
+    /*
      * Constructs a new {@link MultiANewArrayInsnNode}.
      * 
      * @param desc

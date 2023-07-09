@@ -19,15 +19,15 @@ package org.ternlang.dx.rop.cst;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Constants of type {@code char}.
  */
 public final class CstChar
         extends CstLiteral32 {
-    /** {@code non-null;} the value {@code 0} as an instance of this class */
+    /* {@code non-null;} the value {@code 0} as an instance of this class */
     public static final CstChar VALUE_0 = make((char) 0);
 
-    /**
+    /*
      * Makes an instance for the given value. This may (but does not
      * necessarily) return an already-allocated instance.
      *
@@ -37,7 +37,7 @@ public final class CstChar
         return new CstChar(value);
     }
 
-    /**
+    /*
      * Makes an instance for the given {@code int} value. This
      * may (but does not necessarily) return an already-allocated
      * instance.
@@ -56,7 +56,7 @@ public final class CstChar
         return make(cast);
     }
 
-    /**
+    /*
      * Constructs an instance. This constructor is private; use {@link #make}.
      *
      * @param value the {@code char} value
@@ -65,30 +65,30 @@ public final class CstChar
         super(value);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         int value = getIntBits();
         return "char{0x" + Hex.u2(value) + " / " + value + '}';
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Type getType() {
         return Type.CHAR;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String typeName() {
         return "char";
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return Integer.toString(getIntBits());
     }
 
-    /**
+    /*
      * Gets the {@code char} value.
      *
      * @return the value

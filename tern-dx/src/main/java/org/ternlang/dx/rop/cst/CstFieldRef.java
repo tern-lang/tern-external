@@ -18,11 +18,11 @@ package org.ternlang.dx.rop.cst;
 
 import org.ternlang.dx.rop.type.Type;
 
-/**
+/*
  * Constants of type {@code CONSTANT_Fieldref_info}.
  */
 public final class CstFieldRef extends CstMemberRef {
-    /**
+    /*
      * Returns an instance of this class that represents the static
      * field which should hold the class corresponding to a given
      * primitive type. For example, if given {@link Type#INT}, this
@@ -37,7 +37,7 @@ public final class CstFieldRef extends CstMemberRef {
                 CstNat.PRIMITIVE_TYPE_NAT);
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param definingClass {@code non-null;} the type of the defining class
@@ -47,13 +47,13 @@ public final class CstFieldRef extends CstMemberRef {
         super(definingClass, nat);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String typeName() {
         return "field";
     }
 
-    /**
+    /*
      * Returns the type of this field.
      *
      * @return {@code non-null;} the field's type
@@ -62,7 +62,7 @@ public final class CstFieldRef extends CstMemberRef {
         return getNat().getFieldType();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected int compareTo0(Constant other) {
         int cmp = super.compareTo0(other);

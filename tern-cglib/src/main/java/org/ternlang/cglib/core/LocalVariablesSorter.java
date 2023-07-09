@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2005 INRIA, France Telecom
  * All rights reserved.
@@ -34,7 +34,7 @@ import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.Type;
 
-/**
+/*
  * A {@link MethodVisitor} that renumbers local variables in their order of
  * appearance. This adapter allows one to easily add new local variables to a
  * method.
@@ -44,7 +44,7 @@ import org.ternlang.asm.Type;
  */
 public class LocalVariablesSorter extends MethodVisitor {
 
-    /**
+    /*
      * Mapping from old to new local variable indexes. A local variable at index
      * i of size 1 is remapped to 'mapping[2*i]', while a local variable at
      * index i of size 2 is remapped to 'mapping[2*i+1]'.

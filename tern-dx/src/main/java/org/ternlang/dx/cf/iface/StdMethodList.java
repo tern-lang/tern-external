@@ -18,12 +18,12 @@ package org.ternlang.dx.cf.iface;
 
 import org.ternlang.dx.util.FixedSizeList;
 
-/**
+/*
  * Standard implementation of {@link MethodList}, which directly stores
  * an array of {@link Method} objects and can be made immutable.
  */
 public final class StdMethodList extends FixedSizeList implements MethodList {
-    /**
+    /*
      * Constructs an instance. All indices initially contain {@code null}.
      *
      * @param size the size of the list
@@ -32,12 +32,12 @@ public final class StdMethodList extends FixedSizeList implements MethodList {
         super(size);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Method get(int n) {
         return (Method) get0(n);
     }
 
-    /**
+    /*
      * Sets the method at the given index.
      *
      * @param n {@code >= 0, < size();} which method

@@ -27,32 +27,32 @@ import org.ternlang.dx.rop.cst.CstMethodRef;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Per-class directory of annotations.
  */
 public final class AnnotationsDirectoryItem extends OffsettedItem {
-    /** the required alignment for instances of this class */
+    /* the required alignment for instances of this class */
     private static final int ALIGNMENT = 4;
 
-    /** write size of this class's header, in bytes */
+    /* write size of this class's header, in bytes */
     private static final int HEADER_SIZE = 16;
 
-    /** write size of a list element, in bytes */
+    /* write size of a list element, in bytes */
     private static final int ELEMENT_SIZE = 8;
 
-    /** {@code null-ok;} the class-level annotations, if any */
+    /* {@code null-ok;} the class-level annotations, if any */
     private AnnotationSetItem classAnnotations;
 
-    /** {@code null-ok;} the annotated fields, if any */
+    /* {@code null-ok;} the annotated fields, if any */
     private ArrayList<FieldAnnotationStruct> fieldAnnotations;
 
-    /** {@code null-ok;} the annotated methods, if any */
+    /* {@code null-ok;} the annotated methods, if any */
     private ArrayList<MethodAnnotationStruct> methodAnnotations;
 
-    /** {@code null-ok;} the annotated parameters, if any */
+    /* {@code null-ok;} the annotated parameters, if any */
     private ArrayList<ParameterAnnotationStruct> parameterAnnotations;
 
-    /**
+    /*
      * Constructs an empty instance.
      */
     public AnnotationsDirectoryItem() {
@@ -64,13 +64,13 @@ public final class AnnotationsDirectoryItem extends OffsettedItem {
         parameterAnnotations = null;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public ItemType itemType() {
         return ItemType.TYPE_ANNOTATIONS_DIRECTORY_ITEM;
     }
 
-    /**
+    /*
      * Returns whether this item is empty (has no contents).
      *
      * @return {@code true} if this item is empty, or {@code false}
@@ -83,7 +83,7 @@ public final class AnnotationsDirectoryItem extends OffsettedItem {
             (parameterAnnotations == null);
     }
 
-    /**
+    /*
      * Returns whether this item is a candidate for interning. The only
      * interning candidates are ones that <i>only</i> have a non-null
      * set of class annotations, with no other lists.
@@ -98,7 +98,7 @@ public final class AnnotationsDirectoryItem extends OffsettedItem {
             (parameterAnnotations == null);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         if (classAnnotations == null) {
@@ -108,7 +108,7 @@ public final class AnnotationsDirectoryItem extends OffsettedItem {
         return classAnnotations.hashCode();
     }
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * <p><b>Note:</b>: This throws an exception if this item is not
@@ -127,7 +127,7 @@ public final class AnnotationsDirectoryItem extends OffsettedItem {
         return classAnnotations.compareTo(otherDirectory.classAnnotations);
     }
 
-    /**
+    /*
      * Sets the direct annotations on this instance. These are annotations
      * made on the class, per se, as opposed to on one of its members.
      * It is only valid to call this method at most once per instance.
@@ -148,7 +148,7 @@ public final class AnnotationsDirectoryItem extends OffsettedItem {
         classAnnotations = new AnnotationSetItem(annotations, dexFile);
     }
 
-    /**
+    /*
      * Adds a field annotations item to this instance.
      *
      * @param field {@code non-null;} field in question
@@ -165,7 +165,7 @@ public final class AnnotationsDirectoryItem extends OffsettedItem {
                         new AnnotationSetItem(annotations, dexFile)));
     }
 
-    /**
+    /*
      * Adds a method annotations item to this instance.
      *
      * @param method {@code non-null;} method in question
@@ -182,7 +182,7 @@ public final class AnnotationsDirectoryItem extends OffsettedItem {
                         new AnnotationSetItem(annotations, dexFile)));
     }
 
-    /**
+    /*
      * Adds a parameter annotations item to this instance.
      *
      * @param method {@code non-null;} method in question
@@ -198,7 +198,7 @@ public final class AnnotationsDirectoryItem extends OffsettedItem {
         parameterAnnotations.add(new ParameterAnnotationStruct(method, list, dexFile));
     }
 
-    /**
+    /*
      * Gets the method annotations for a given method, if any. This is
      * meant for use by debugging / dumping code.
      *
@@ -219,7 +219,7 @@ public final class AnnotationsDirectoryItem extends OffsettedItem {
         return null;
     }
 
-    /**
+    /*
      * Gets the parameter annotations for a given method, if any. This is
      * meant for use by debugging / dumping code.
      *
@@ -240,7 +240,7 @@ public final class AnnotationsDirectoryItem extends OffsettedItem {
         return null;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void addContents(DexFile file) {
         MixedItemSection wordData = file.getWordData();
 
@@ -267,13 +267,13 @@ public final class AnnotationsDirectoryItem extends OffsettedItem {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toHuman() {
         throw new RuntimeException("unsupported");
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void place0(Section addedTo, int offset) {
         // We just need to set the write size here.
@@ -283,7 +283,7 @@ public final class AnnotationsDirectoryItem extends OffsettedItem {
         setWriteSize(HEADER_SIZE + (elementCount * ELEMENT_SIZE));
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void writeTo0(DexFile file, AnnotatedOutput out) {
         boolean annotates = out.annotates();
@@ -339,7 +339,7 @@ public final class AnnotationsDirectoryItem extends OffsettedItem {
         }
     }
 
-    /**
+    /*
      * Gets the list size of the given list, or {@code 0} if given
      * {@code null}.
      *
@@ -354,7 +354,7 @@ public final class AnnotationsDirectoryItem extends OffsettedItem {
         return list.size();
     }
 
-    /**
+    /*
      * Prints out the contents of this instance, in a debugging-friendly
      * way. This is meant to be called from {@link ClassDefItem#debugPrint}.
      *

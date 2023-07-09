@@ -23,7 +23,7 @@ import org.ternlang.dx.rop.code.TranslationAdvice;
 import org.ternlang.dx.ssa.back.LivenessAnalyzer;
 import org.ternlang.dx.ssa.back.SsaToRop;
 
-/**
+/*
  * Runs a method through the SSA form conversion, any optimization algorithms,
  * and returns it to rop form.
  */
@@ -32,13 +32,13 @@ public class Optimizer {
 
     private static TranslationAdvice advice;
 
-    /** optional optimizer steps */
+    /* optional optimizer steps */
     public enum OptionalStep {
         MOVE_PARAM_COMBINER, SCCP, LITERAL_UPGRADE, CONST_COLLECTOR,
             ESCAPE_ANALYSIS
     }
 
-    /**
+    /*
      * @return true if local variable information should be preserved, even
      * at code size/register size cost
      */
@@ -46,14 +46,14 @@ public class Optimizer {
         return preserveLocals;
     }
 
-    /**
+    /*
      * @return {@code non-null;} translation advice
      */
     public static TranslationAdvice getAdvice() {
         return advice;
     }
 
-    /**
+    /*
      * Runs optimization algorthims over this method, and returns a new
      * instance of RopMethod with the changes.
      *
@@ -74,7 +74,7 @@ public class Optimizer {
                 EnumSet.allOf(OptionalStep.class));
     }
 
-    /**
+    /*
      * Runs optimization algorthims over this method, and returns a new
      * instance of RopMethod with the changes.
      *
@@ -110,7 +110,7 @@ public class Optimizer {
         return resultMeth;
     }
 
-    /**
+    /*
      * Runs the optimizer with a strategy to minimize the number of rop-form
      * registers used by the end result. Dex bytecode does not have instruction
      * forms that take register numbers larger than 15 for all instructions.

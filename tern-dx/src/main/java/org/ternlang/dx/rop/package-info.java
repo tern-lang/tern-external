@@ -16,7 +16,7 @@
 
 package org.ternlang.dx.rop;
 
-/**
+/*
  * <h1>An Introduction to Rop Form</h1>
  *
  * This package contains classes associated with dx's {@code Rop}

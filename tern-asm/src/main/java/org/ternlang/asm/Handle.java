@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -30,7 +30,7 @@
 
 package org.ternlang.asm;
 
-/**
+/*
  * A reference to a field or a method.
  * 
  * @author Remi Forax
@@ -38,7 +38,7 @@ package org.ternlang.asm;
  */
 public final class Handle {
 
-    /**
+    /*
      * The kind of field or method designated by this Handle. Should be
      * {@link Opcodes#H_GETFIELD}, {@link Opcodes#H_GETSTATIC},
      * {@link Opcodes#H_PUTFIELD}, {@link Opcodes#H_PUTSTATIC},
@@ -48,29 +48,29 @@ public final class Handle {
      */
     final int tag;
 
-    /**
+    /*
      * The internal name of the class that owns the field or method designated
      * by this handle.
      */
     final String owner;
 
-    /**
+    /*
      * The name of the field or method designated by this handle.
      */
     final String name;
 
-    /**
+    /*
      * The descriptor of the field or method designated by this handle.
      */
     final String desc;
     
     
-    /**
+    /*
      * Indicate if the owner is an interface or not.
      */
     final boolean itf;
 
-    /**
+    /*
      * Constructs a new field or method handle.
      * 
      * @param tag
@@ -99,7 +99,7 @@ public final class Handle {
         this(tag, owner, name, desc, tag == Opcodes.H_INVOKEINTERFACE);
     }
 
-    /**
+    /*
      * Constructs a new field or method handle.
      * 
      * @param tag
@@ -130,7 +130,7 @@ public final class Handle {
         this.itf = itf;
     }
     
-    /**
+    /*
      * Returns the kind of field or method designated by this handle.
      * 
      * @return {@link Opcodes#H_GETFIELD}, {@link Opcodes#H_GETSTATIC},
@@ -144,7 +144,7 @@ public final class Handle {
         return tag;
     }
 
-    /**
+    /*
      * Returns the internal name of the class that owns the field or method
      * designated by this handle.
      * 
@@ -155,7 +155,7 @@ public final class Handle {
         return owner;
     }
 
-    /**
+    /*
      * Returns the name of the field or method designated by this handle.
      * 
      * @return the name of the field or method designated by this handle.
@@ -164,7 +164,7 @@ public final class Handle {
         return name;
     }
 
-    /**
+    /*
      * Returns the descriptor of the field or method designated by this handle.
      * 
      * @return the descriptor of the field or method designated by this handle.
@@ -173,7 +173,7 @@ public final class Handle {
         return desc;
     }
     
-    /**
+    /*
      * Returns true if the owner of the field or method designated
      * by this handle is an interface.
      * 
@@ -202,7 +202,7 @@ public final class Handle {
         return tag + (itf? 64: 0) + owner.hashCode() * name.hashCode() * desc.hashCode();
     }
 
-    /**
+    /*
      * Returns the textual representation of this handle. The textual
      * representation is:
      * 

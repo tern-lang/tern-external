@@ -29,7 +29,7 @@ import org.ternlang.dx.rop.type.Prototype;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Class which knows how to simulate the effects of executing bytecode.
  *
  * <p><b>Note:</b> This class is not thread-safe. If multiple threads
@@ -37,7 +37,7 @@ import org.ternlang.dx.util.Hex;
  * between themselves.</p>
  */
 public class Simulator {
-    /**
+    /*
      * {@code non-null;} canned error message for local variable
      * table mismatches
      */
@@ -45,19 +45,19 @@ public class Simulator {
         "This is symptomatic of .class transformation tools that ignore " +
         "local variable information.";
 
-    /** {@code non-null;} machine to use when simulating */
+    /* {@code non-null;} machine to use when simulating */
     private final Machine machine;
 
-    /** {@code non-null;} array of bytecode */
+    /* {@code non-null;} array of bytecode */
     private final BytecodeArray code;
 
-    /** {@code non-null;} local variable information */
+    /* {@code non-null;} local variable information */
     private final LocalVariableList localVariables;
 
-    /** {@code non-null;} visitor instance to use */
+    /* {@code non-null;} visitor instance to use */
     private final SimVisitor visitor;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param machine {@code non-null;} machine to use when simulating
@@ -78,7 +78,7 @@ public class Simulator {
         this.visitor = new SimVisitor();
     }
 
-    /**
+    /*
      * Simulates the effect of executing the given basic block. This modifies
      * the passed-in frame to represent the end result.
      *
@@ -102,7 +102,7 @@ public class Simulator {
         }
     }
 
-    /**
+    /*
      * Simulates the effect of the instruction at the given offset, by
      * making appropriate calls on the given frame.
      *
@@ -115,7 +115,7 @@ public class Simulator {
         return code.parseInstruction(offset, visitor);
     }
 
-    /**
+    /*
      * Constructs an "illegal top-of-stack" exception, for the stack
      * manipulation opcodes.
      */
@@ -124,7 +124,7 @@ public class Simulator {
                 "top-of-stack for opcode");
     }
 
-    /**
+    /*
      * Returns the required array type for an array load or store
      * instruction, based on a given implied type and an observed
      * actual array type.
@@ -189,26 +189,26 @@ public class Simulator {
         return impliedType.getArrayType();
     }
 
-    /**
+    /*
      * Bytecode visitor used during simulation.
      */
     private class SimVisitor implements BytecodeArray.Visitor {
-        /**
+        /*
          * {@code non-null;} machine instance to use (just to avoid excessive
          * cross-object field access)
          */
         private final Machine machine;
 
-        /**
+        /*
          * {@code null-ok;} frame to use; set with each call to
          * {@link Simulator#simulate}
          */
         private Frame frame;
 
-        /** offset of the previous bytecode */
+        /* offset of the previous bytecode */
         private int previousOffset;
 
-        /**
+        /*
          * Constructs an instance.
          */
         public SimVisitor() {
@@ -216,7 +216,7 @@ public class Simulator {
             this.frame = null;
         }
 
-        /**
+        /*
          * Sets the frame to act on.
          *
          * @param frame {@code non-null;} the frame
@@ -229,12 +229,12 @@ public class Simulator {
             this.frame = frame;
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitInvalid(int opcode, int offset, int length) {
             throw new SimException("invalid opcode " + Hex.u1(opcode));
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitNoArgs(int opcode, int offset, int length,
                 Type type) {
             switch (opcode) {
@@ -533,7 +533,7 @@ public class Simulator {
             machine.run(frame, offset, opcode);
         }
 
-        /**
+        /*
          * Checks whether the prototype is compatible with returning the
          * given type, and throws if not.
          *
@@ -555,7 +555,7 @@ public class Simulator {
             }
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitLocal(int opcode, int offset, int length,
                 int idx, Type type, int value) {
             /*
@@ -624,7 +624,7 @@ public class Simulator {
             machine.run(frame, offset, opcode);
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitConstant(int opcode, int offset, int length,
                 Constant cst, int value) {
             switch (opcode) {
@@ -703,7 +703,7 @@ public class Simulator {
             machine.run(frame, offset, opcode);
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitBranch(int opcode, int offset, int length,
                 int target) {
             switch (opcode) {
@@ -752,7 +752,7 @@ public class Simulator {
             machine.run(frame, offset, opcode);
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitSwitch(int opcode, int offset, int length,
                 SwitchList cases, int padding) {
             machine.popArgs(frame, Type.INT);
@@ -761,7 +761,7 @@ public class Simulator {
             machine.run(frame, offset, opcode);
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void visitNewarray(int offset, int length, CstType type,
                 ArrayList<Constant> initValues) {
             machine.popArgs(frame, Type.INT);
@@ -770,12 +770,12 @@ public class Simulator {
             machine.run(frame, offset, ByteOps.NEWARRAY);
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public void setPreviousOffset(int offset) {
             previousOffset = offset;
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public int getPreviousOffset() {
             return previousOffset;
         }

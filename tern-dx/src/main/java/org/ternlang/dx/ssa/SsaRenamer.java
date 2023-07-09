@@ -30,7 +30,7 @@ import org.ternlang.dx.rop.code.SourcePosition;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * Complete transformation to SSA form by renaming all registers accessed.<p>
  *
  * See Appel algorithm 19.7<p>
@@ -60,22 +60,22 @@ import org.ternlang.dx.util.IntList;
  * and used as the initial state for child blocks.<p>
  */
 public class SsaRenamer implements Runnable {
-    /** debug flag */
+    /* debug flag */
     private static final boolean DEBUG = false;
 
-    /** method we're processing */
+    /* method we're processing */
     private final SsaMethod ssaMeth;
 
-    /** next available SSA register */
+    /* next available SSA register */
     private int nextSsaReg;
 
-    /** the number of original rop registers */
+    /* the number of original rop registers */
     private final int ropRegCount;
 
-    /** work only on registers above this value */
+    /* work only on registers above this value */
     private int threshold;
 
-    /**
+    /*
      * indexed by block index; register version state for each block start.
      * This list is updated by each dom parent for its children. The only
      * sub-arrays that exist at any one time are the start states for blocks
@@ -83,16 +83,16 @@ public class SsaRenamer implements Runnable {
      */
     private final RegisterSpec[][] startsForBlocks;
 
-    /** map of SSA register number to debug (local var names) or null of n/a */
+    /* map of SSA register number to debug (local var names) or null of n/a */
     private final ArrayList<LocalItem> ssaRegToLocalItems;
 
-    /**
+    /*
      * maps SSA registers back to the original rop number. Used for
      * debug only.
      */
     private IntList ssaRegToRopReg;
 
-    /**
+    /*
      * Constructs an instance of the renamer
      *
      * @param ssaMeth {@code non-null;} un-renamed SSA method that will
@@ -143,7 +143,7 @@ public class SsaRenamer implements Runnable {
         startsForBlocks[ssaMeth.getEntryBlockIndex()] = initialRegMapping;
     }
 
-    /**
+    /*
     * Constructs an instance of the renamer with threshold set
     *
     * @param ssaMeth {@code non-null;} un-renamed SSA method that will
@@ -155,7 +155,7 @@ public class SsaRenamer implements Runnable {
        threshold = thresh;
    }
 
-    /**
+    /*
      * Performs renaming transformation, modifying the method's instructions
      * in-place.
      */
@@ -190,7 +190,7 @@ public class SsaRenamer implements Runnable {
         }
     }
 
-    /**
+    /*
      * Duplicates a RegisterSpec array.
      *
      * @param orig {@code non-null;} array to duplicate
@@ -204,7 +204,7 @@ public class SsaRenamer implements Runnable {
         return copy;
     }
 
-    /**
+    /*
      * Gets a local variable item for a specified register.
      *
      * @param ssaReg register in SSA name space
@@ -218,7 +218,7 @@ public class SsaRenamer implements Runnable {
         }
     }
 
-    /**
+    /*
      * Records a debug (local variable) name for a specified register.
      *
      * @param ssaReg non-null named register spec in SSA name space
@@ -235,7 +235,7 @@ public class SsaRenamer implements Runnable {
         ssaRegToLocalItems.set(reg, local);
     }
 
-    /**
+    /*
      * Returns true if this SSA register is below the specified threshold.
      * Used when most code is already in SSA form, and renaming is needed only
      * for registers above a certain threshold.
@@ -247,7 +247,7 @@ public class SsaRenamer implements Runnable {
         return ssaReg < threshold;
     }
 
-    /**
+    /*
      * Returns true if this SSA register is a "version 0"
      * register. All version 0 registers are assigned the first N register
      * numbers, where N is the count of original rop registers.
@@ -259,7 +259,7 @@ public class SsaRenamer implements Runnable {
         return ssaReg < ropRegCount;
     }
 
-    /**
+    /*
      * Returns true if a and b are equal or are both null.
      *
      * @param a null-ok
@@ -270,15 +270,15 @@ public class SsaRenamer implements Runnable {
         return a == b ||  (a != null && a.equals(b));
     }
 
-    /**
+    /*
      * Processes all insns in a block and renames their registers
      * as appropriate.
      */
     private class BlockRenamer implements SsaInsn.Visitor{
-        /** {@code non-null;} block we're processing. */
+        /* {@code non-null;} block we're processing. */
         private final SsaBasicBlock block;
 
-        /**
+        /*
          * {@code non-null;} indexed by old register name. The current
          * top of the version stack as seen by this block. It's
          * initialized from the ending state of its dom parent,
@@ -287,13 +287,13 @@ public class SsaRenamer implements Runnable {
          */
         private final RegisterSpec[] currentMapping;
 
-        /**
+        /*
          * contains the set of moves we need to keep to preserve local
          * var info. All other moves will be deleted.
          */
         private final HashSet<SsaInsn> movesToKeep;
 
-        /**
+        /*
          * maps the set of insns to replace after renaming is finished
          * on the block.
          */
@@ -301,7 +301,7 @@ public class SsaRenamer implements Runnable {
 
         private final RenamingMapper mapper;
 
-        /**
+        /*
          * Constructs a block renamer instance. Call {@code process}
          * to process.
          *
@@ -318,7 +318,7 @@ public class SsaRenamer implements Runnable {
             startsForBlocks[block.getIndex()] = null;
         }
 
-        /**
+        /*
          * Provides a register mapping between the old register space
          * and the current renaming mapping. The mapping is updated
          * as the current block's instructions are processed.
@@ -328,13 +328,13 @@ public class SsaRenamer implements Runnable {
                 // This space intentionally left blank.
             }
 
-            /** {@inheritDoc} */
+            /* {@inheritDoc} */
             @Override
             public int getNewRegisterCount() {
                 return nextSsaReg;
             }
 
-            /** {@inheritDoc} */
+            /* {@inheritDoc} */
             @Override
             public RegisterSpec map(RegisterSpec registerSpec) {
                 if (registerSpec == null) return null;
@@ -359,7 +359,7 @@ public class SsaRenamer implements Runnable {
             }
         }
 
-        /**
+        /*
          * Renames all the variables in this block and inserts appriopriate
          * phis in successor blocks.
          */
@@ -409,7 +409,7 @@ public class SsaRenamer implements Runnable {
             // currentMapping is owned by a child now.
         }
 
-        /**
+        /*
          * Enforces a few contraints when a register mapping is added.
          *
          * <ol>
@@ -467,7 +467,7 @@ public class SsaRenamer implements Runnable {
             }
         }
 
-        /**
+        /*
          * {@inheritDoc}
          *
          * Phi insns have their result registers renamed.
@@ -477,7 +477,7 @@ public class SsaRenamer implements Runnable {
             processResultReg(phi);
         }
 
-        /**
+        /*
          * {@inheritDoc}
          *
          * Move insns are treated as a simple mapping operation, and
@@ -577,7 +577,7 @@ public class SsaRenamer implements Runnable {
             }
         }
 
-        /**
+        /*
          * {@inheritDoc}
          *
          * All insns that are not move or phi insns have their source registers
@@ -592,7 +592,7 @@ public class SsaRenamer implements Runnable {
             processResultReg(insn);
         }
 
-        /**
+        /*
          * Renames the result register of this insn and updates the
          * current register mapping. Does nothing if this insn has no result.
          * Applied to all non-move insns.
@@ -621,7 +621,7 @@ public class SsaRenamer implements Runnable {
             nextSsaReg++;
         }
 
-        /**
+        /*
          * Updates the phi insns in successor blocks with operands based
          * on the current mapping of the rop register the phis represent.
          */

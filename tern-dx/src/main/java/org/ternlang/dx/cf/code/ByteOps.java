@@ -18,7 +18,7 @@ package org.ternlang.dx.cf.code;
 
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Constants and utility methods for dealing with bytecode arrays at an
  * opcode level.
  */
@@ -240,117 +240,117 @@ public class ByteOps {
 
     // a constant for each possible instruction format
 
-    /** invalid */
+    /* invalid */
     public static final int FMT_INVALID = 0;
 
-    /** "-": {@code op} */
+    /* "-": {@code op} */
     public static final int FMT_NO_ARGS = 1;
 
-    /** "0": {@code op}; implies {@code max_locals >= 1} */
+    /* "0": {@code op}; implies {@code max_locals >= 1} */
     public static final int FMT_NO_ARGS_LOCALS_1 = 2;
 
-    /** "1": {@code op}; implies {@code max_locals >= 2} */
+    /* "1": {@code op}; implies {@code max_locals >= 2} */
     public static final int FMT_NO_ARGS_LOCALS_2 = 3;
 
-    /** "2": {@code op}; implies {@code max_locals >= 3} */
+    /* "2": {@code op}; implies {@code max_locals >= 3} */
     public static final int FMT_NO_ARGS_LOCALS_3 = 4;
 
-    /** "3": {@code op}; implies {@code max_locals >= 4} */
+    /* "3": {@code op}; implies {@code max_locals >= 4} */
     public static final int FMT_NO_ARGS_LOCALS_4 = 5;
 
-    /** "4": {@code op}; implies {@code max_locals >= 5} */
+    /* "4": {@code op}; implies {@code max_locals >= 5} */
     public static final int FMT_NO_ARGS_LOCALS_5 = 6;
 
-    /** "b": {@code op target target} */
+    /* "b": {@code op target target} */
     public static final int FMT_BRANCH = 7;
 
-    /** "c": {@code op target target target target} */
+    /* "c": {@code op target target target target} */
     public static final int FMT_WIDE_BRANCH = 8;
 
-    /** "p": {@code op #cpi #cpi}; constant restricted as specified */
+    /* "p": {@code op #cpi #cpi}; constant restricted as specified */
     public static final int FMT_CPI = 9;
 
-    /**
+    /*
      * "l": {@code op local}; category-1 local; implies
      * {@code max_locals} is at least two more than the given
      * local number
      */
     public static final int FMT_LOCAL_1 = 10;
 
-    /**
+    /*
      * "m": {@code op local}; category-2 local; implies
      * {@code max_locals} is at least two more than the given
      * local number
      */
     public static final int FMT_LOCAL_2 = 11;
 
-    /**
+    /*
      * "y": {@code op #byte} ({@code bipush} and
      * {@code newarray})
      */
     public static final int FMT_LITERAL_BYTE = 12;
 
-    /** "I": {@code invokeinterface cpi cpi count 0} */
+    /* "I": {@code invokeinterface cpi cpi count 0} */
     public static final int FMT_INVOKEINTERFACE = 13;
 
-    /** "L": {@code ldc #cpi}; constant restricted as specified */
+    /* "L": {@code ldc #cpi}; constant restricted as specified */
     public static final int FMT_LDC = 14;
 
-    /** "S": {@code sipush #byte #byte} */
+    /* "S": {@code sipush #byte #byte} */
     public static final int FMT_SIPUSH = 15;
 
-    /** "T": {@code tableswitch ...} */
+    /* "T": {@code tableswitch ...} */
     public static final int FMT_TABLESWITCH = 16;
 
-    /** "U": {@code lookupswitch ...} */
+    /* "U": {@code lookupswitch ...} */
     public static final int FMT_LOOKUPSWITCH = 17;
 
-    /** "M": {@code multianewarray cpi cpi dims} */
+    /* "M": {@code multianewarray cpi cpi dims} */
     public static final int FMT_MULTIANEWARRAY = 18;
 
-    /** "W": {@code wide ...} */
+    /* "W": {@code wide ...} */
     public static final int FMT_WIDE = 19;
 
-    /** mask for the bits representing the opcode format */
+    /* mask for the bits representing the opcode format */
     public static final int FMT_MASK = 0x1f;
 
-    /** "I": flag bit for valid cp type for {@code Integer} */
+    /* "I": flag bit for valid cp type for {@code Integer} */
     public static final int CPOK_Integer = 0x20;
 
-    /** "F": flag bit for valid cp type for {@code Float} */
+    /* "F": flag bit for valid cp type for {@code Float} */
     public static final int CPOK_Float = 0x40;
 
-    /** "J": flag bit for valid cp type for {@code Long} */
+    /* "J": flag bit for valid cp type for {@code Long} */
     public static final int CPOK_Long = 0x80;
 
-    /** "D": flag bit for valid cp type for {@code Double} */
+    /* "D": flag bit for valid cp type for {@code Double} */
     public static final int CPOK_Double = 0x100;
 
-    /** "c": flag bit for valid cp type for {@code Class} */
+    /* "c": flag bit for valid cp type for {@code Class} */
     public static final int CPOK_Class = 0x200;
 
-    /** "s": flag bit for valid cp type for {@code String} */
+    /* "s": flag bit for valid cp type for {@code String} */
     public static final int CPOK_String = 0x400;
 
-    /** "f": flag bit for valid cp type for {@code Fieldref} */
+    /* "f": flag bit for valid cp type for {@code Fieldref} */
     public static final int CPOK_Fieldref = 0x800;
 
-    /** "m": flag bit for valid cp type for {@code Methodref} */
+    /* "m": flag bit for valid cp type for {@code Methodref} */
     public static final int CPOK_Methodref = 0x1000;
 
-    /** "i": flag bit for valid cp type for {@code InterfaceMethodref} */
+    /* "i": flag bit for valid cp type for {@code InterfaceMethodref} */
     public static final int CPOK_InterfaceMethodref = 0x2000;
 
-    /**
+    /*
      * {@code non-null;} map from opcodes to format or'ed with allowed constant
      * pool types
      */
     private static final int[] OPCODE_INFO = new int[256];
 
-    /** {@code non-null;} map from opcodes to their names */
+    /* {@code non-null;} map from opcodes to their names */
     private static final String[] OPCODE_NAMES = new String[256];
 
-    /** {@code non-null;} bigass string describing all the opcodes */
+    /* {@code non-null;} bigass string describing all the opcodes */
     private static final String OPCODE_DETAILS =
         "00 - nop;" +
         "01 - aconst_null;" +
@@ -614,14 +614,14 @@ public class ByteOps {
         }
     }
 
-    /**
+    /*
      * This class is uninstantiable.
      */
     private ByteOps() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Gets the name of the given opcode.
      *
      * @param opcode {@code >= 0, <= 255;} the opcode
@@ -638,7 +638,7 @@ public class ByteOps {
         return result;
     }
 
-    /**
+    /*
      * Gets the format and allowed cp types of the given opcode.
      *
      * @param opcode {@code >= 0, <= 255;} the opcode

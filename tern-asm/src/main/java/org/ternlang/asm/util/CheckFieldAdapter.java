@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -36,14 +36,14 @@ import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.TypePath;
 import org.ternlang.asm.TypeReference;
 
-/**
+/*
  * A {@link FieldVisitor} that checks that its methods are properly used.
  */
 public class CheckFieldAdapter extends FieldVisitor {
 
     private boolean end;
 
-    /**
+    /*
      * Constructs a new {@link CheckFieldAdapter}. <i>Subclasses must not use
      * this constructor</i>. Instead, they must use the
      * {@link #CheckFieldAdapter(int, FieldVisitor)} version.
@@ -60,7 +60,7 @@ public class CheckFieldAdapter extends FieldVisitor {
         }
     }
 
-    /**
+    /*
      * Constructs a new {@link CheckFieldAdapter}.
      * 
      * @param api

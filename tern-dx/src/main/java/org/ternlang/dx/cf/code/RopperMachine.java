@@ -47,15 +47,15 @@ import org.ternlang.dx.rop.type.TypeBearer;
 import org.ternlang.dx.rop.type.TypeList;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * Machine implementation for use by {@link Ropper}.
  */
 /*package*/ final class RopperMachine extends ValueAwareMachine {
-    /** {@code non-null;} array reflection class */
+    /* {@code non-null;} array reflection class */
     private static final CstType ARRAY_REFLECT_TYPE =
         new CstType(Type.internClassName("java/lang/reflect/Array"));
 
-    /**
+    /*
      * {@code non-null;} method constant for use in converting
      * {@code multianewarray} instructions
      */
@@ -65,65 +65,65 @@ import org.ternlang.dx.util.IntList;
                                     new CstString("(Ljava/lang/Class;[I)" +
                                                 "Ljava/lang/Object;")));
 
-    /** {@code non-null;} {@link Ropper} controlling this instance */
+    /* {@code non-null;} {@link Ropper} controlling this instance */
     private final Ropper ropper;
 
-    /** {@code non-null;} method being converted */
+    /* {@code non-null;} method being converted */
     private final ConcreteMethod method;
 
-    /** {@code non-null:} list of methods from the class whose method is being converted */
+    /* {@code non-null:} list of methods from the class whose method is being converted */
     private final MethodList methods;
 
-    /** {@code non-null;} translation advice */
+    /* {@code non-null;} translation advice */
     private final TranslationAdvice advice;
 
-    /** max locals of the method */
+    /* max locals of the method */
     private final int maxLocals;
 
-    /** {@code non-null;} instructions for the rop basic block in-progress */
+    /* {@code non-null;} instructions for the rop basic block in-progress */
     private final ArrayList<Insn> insns;
 
-    /** {@code non-null;} catches for the block currently being processed */
+    /* {@code non-null;} catches for the block currently being processed */
     private TypeList catches;
 
-    /** whether the catches have been used in an instruction */
+    /* whether the catches have been used in an instruction */
     private boolean catchesUsed;
 
-    /** whether the block contains a {@code return} */
+    /* whether the block contains a {@code return} */
     private boolean returns;
 
-    /** primary successor index */
+    /* primary successor index */
     private int primarySuccessorIndex;
 
-    /** {@code >= 0;} number of extra basic blocks required */
+    /* {@code >= 0;} number of extra basic blocks required */
     private int extraBlockCount;
 
-    /** true if last processed block ends with a jsr or jsr_W*/
+    /* true if last processed block ends with a jsr or jsr_W*/
     private boolean hasJsr;
 
-    /** true if an exception can be thrown by the last block processed */
+    /* true if an exception can be thrown by the last block processed */
     private boolean blockCanThrow;
 
-    /**
+    /*
      * If non-null, the ReturnAddress that was used by the terminating ret
      * instruction. If null, there was no ret instruction encountered.
      */
 
     private ReturnAddress returnAddress;
 
-    /**
+    /*
      * {@code null-ok;} the appropriate {@code return} op or {@code null}
      * if it is not yet known
      */
     private Rop returnOp;
 
-    /**
+    /*
      * {@code null-ok;} the source position for the return block or {@code null}
      * if it is not yet known
      */
     private SourcePosition returnPosition;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param ropper {@code non-null;} ropper controlling this instance
@@ -164,7 +164,7 @@ import org.ternlang.dx.util.IntList;
         this.returnPosition = null;
     }
 
-    /**
+    /*
      * Gets the instructions array. It is shared and gets modified by
      * subsequent calls to this instance.
      *
@@ -174,7 +174,7 @@ import org.ternlang.dx.util.IntList;
         return insns;
     }
 
-    /**
+    /*
      * Gets the return opcode encountered, if any.
      *
      * @return {@code null-ok;} the return opcode
@@ -183,7 +183,7 @@ import org.ternlang.dx.util.IntList;
         return returnOp;
     }
 
-    /**
+    /*
      * Gets the return position, if known.
      *
      * @return {@code null-ok;} the return position
@@ -192,7 +192,7 @@ import org.ternlang.dx.util.IntList;
         return returnPosition;
     }
 
-    /**
+    /*
      * Gets ready to start working on a new block. This will clear the
      * {@link #insns} list, set {@link #catches}, reset whether it has
      * been used, reset whether the block contains a
@@ -211,7 +211,7 @@ import org.ternlang.dx.util.IntList;
         returnAddress = null;
     }
 
-    /**
+    /*
      * Gets whether {@link #catches} was used. This indicates that the
      * last instruction in the block is one of the ones that can throw.
      *
@@ -221,7 +221,7 @@ import org.ternlang.dx.util.IntList;
         return catchesUsed;
     }
 
-    /**
+    /*
      * Gets whether the block just processed ended with a
      * {@code return}.
      *
@@ -231,7 +231,7 @@ import org.ternlang.dx.util.IntList;
         return returns;
     }
 
-    /**
+    /*
      * Gets the primary successor index. This is the index into the
      * successors list where the primary may be found or
      * {@code -1} if there are successors but no primary
@@ -245,7 +245,7 @@ import org.ternlang.dx.util.IntList;
         return primarySuccessorIndex;
     }
 
-    /**
+    /*
      * Gets how many extra blocks will be needed to represent the
      * block currently being translated. Each extra block should consist
      * of one instruction from the end of the original block.
@@ -256,7 +256,7 @@ import org.ternlang.dx.util.IntList;
         return extraBlockCount;
     }
 
-    /**
+    /*
      * @return true if at least one of the insn processed since the last
      * call to startBlock() can throw.
      */
@@ -264,7 +264,7 @@ import org.ternlang.dx.util.IntList;
         return blockCanThrow;
     }
 
-    /**
+    /*
      * @return true if a JSR has ben encountered since the last call to
      * startBlock()
      */
@@ -272,7 +272,7 @@ import org.ternlang.dx.util.IntList;
         return hasJsr;
     }
 
-    /**
+    /*
      * @return {@code true} if a {@code ret} has ben encountered since
      * the last call to {@code startBlock()}
      */
@@ -280,7 +280,7 @@ import org.ternlang.dx.util.IntList;
         return returnAddress != null;
     }
 
-    /**
+    /*
      * @return {@code null-ok;} return address of a {@code ret}
      * instruction if encountered since last call to startBlock().
      * {@code null} if no ret instruction encountered.
@@ -289,7 +289,7 @@ import org.ternlang.dx.util.IntList;
         return returnAddress;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void run(Frame frame, int offset, int opcode) {
         /*
@@ -654,7 +654,7 @@ import org.ternlang.dx.util.IntList;
         }
     }
 
-    /**
+    /*
      * Helper for {@link #run}, which gets the list of sources for the.
      * instruction.
      *
@@ -729,7 +729,7 @@ import org.ternlang.dx.util.IntList;
         return sources;
     }
 
-    /**
+    /*
      * Sets or updates the information about the return block.
      *
      * @param op {@code non-null;} the opcode to use
@@ -760,7 +760,7 @@ import org.ternlang.dx.util.IntList;
         }
     }
 
-    /**
+    /*
      * Gets the register opcode for the given Java opcode.
      *
      * @param jop {@code >= 0;} the Java opcode

@@ -23,7 +23,7 @@ import org.ternlang.cglib.reflect.MulticastDelegate;
 
 import junit.framework.*;
 
-/**
+/*
  * @version $Id: TestDelegates.java,v 1.4 2004/06/24 21:15:16 herbyderby Exp $
  */
 public class TestDelegates extends org.ternlang.cglib.CodeGenTestCase {

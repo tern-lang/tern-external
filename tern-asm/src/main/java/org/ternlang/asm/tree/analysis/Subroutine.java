@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -35,7 +35,7 @@ import java.util.List;
 import org.ternlang.asm.tree.JumpInsnNode;
 import org.ternlang.asm.tree.LabelNode;
 
-/**
+/*
  * A method subroutine (corresponds to a JSR instruction).
  * 
  * @author Eric Bruneton

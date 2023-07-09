@@ -3,13 +3,13 @@ package org.ternlang.cglib.transform.impl;
 
 import junit.framework.*;
 
-/**
+/*
  *
  * @author  baliuka
  */
 public class TestDemo extends TestCase{
     
-     /** Creates a new instance of AbstractTransformTest */
+     /* Creates a new instance of AbstractTransformTest */
     public TestDemo(String s) {
        super(s);
     }

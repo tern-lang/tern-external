@@ -21,13 +21,13 @@ import org.ternlang.dx.rop.type.StdTypeList;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeList;
 
-/**
+/*
  * Instruction which contains an explicit reference to a constant
  * but which cannot throw an exception.
  */
 public final class PlainCstInsn
         extends CstInsn {
-    /**
+    /*
      * Constructs an instance.
      *
      * @param opcode {@code non-null;} the opcode
@@ -46,25 +46,25 @@ public final class PlainCstInsn
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public TypeList getCatches() {
         return StdTypeList.EMPTY;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void accept(Visitor visitor) {
         visitor.visitPlainCstInsn(this);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withAddedCatch(Type type) {
         throw new UnsupportedOperationException("unsupported");
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withRegisterOffset(int delta) {
         return new PlainCstInsn(getOpcode(), getPosition(),
@@ -73,7 +73,7 @@ public final class PlainCstInsn
                                 getConstant());
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withNewRegisters(RegisterSpec result,
             RegisterSpecList sources) {

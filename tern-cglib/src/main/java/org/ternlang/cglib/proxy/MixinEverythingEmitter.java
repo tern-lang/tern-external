@@ -24,7 +24,7 @@ import org.ternlang.cglib.core.CollectionUtils;
 import org.ternlang.cglib.core.ReflectUtils;
 import org.ternlang.cglib.core.RejectModifierPredicate;
 
-/**
+/*
  * @author Chris Nokleberg
  * @version $Id: MixinEverythingEmitter.java,v 1.3 2004/06/24 21:15:19 herbyderby Exp $
  */

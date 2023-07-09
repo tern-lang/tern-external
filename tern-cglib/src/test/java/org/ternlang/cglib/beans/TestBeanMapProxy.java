@@ -18,7 +18,7 @@ package org.ternlang.cglib.beans;
 import junit.framework.*;
 import java.util.*;
 
-/**
+/*
  * @author Chris Nokleberg <a href="mailto:chris@nokleberg.com">chris@nokleberg.com</a>
  * @version $Id: TestBeanMapProxy.java,v 1.3 2004/06/24 21:15:17 herbyderby Exp $
  */

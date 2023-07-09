@@ -26,7 +26,7 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.WeakHashMap;
 
-/**
+/*
  * Abstract class for all code-generating CGLIB utilities.
  * In addition to caching generated classes for performance, it provides hooks for
  * customizing the <code>ClassLoader</code>, name of the generated class, and transformations
@@ -52,7 +52,7 @@ implements ClassGenerator
     protected static class ClassLoaderData {
         private final Set<String> reservedClassNames = new HashSet<String>();
 
-        /**
+        /*
          * {@link AbstractClassGenerator} here holds "cache key" (e.g. {@link org.ternlang.cglib.proxy.Enhancer}
          * configuration), and the value is the generated class plus some additional values
          * (see {@link #unwrapCachedValue(Object)}.
@@ -62,7 +62,7 @@ implements ClassGenerator
          */
         private final LoadingCache<AbstractClassGenerator, Object, Object> generatedClasses;
 
-        /**
+        /*
          * Note: ClassLoaderData object is stored as a value of {@code WeakHashMap<ClassLoader, ...>} thus
          * this classLoader reference should be weak otherwise it would make classLoader strongly reachable
          * and alive forever.
@@ -154,7 +154,7 @@ implements ClassGenerator
         return namingPolicy.getClassName(namePrefix, source.name, key, nameTestPredicate);
     }
 
-    /**
+    /*
      * Set the <code>ClassLoader</code> in which the class will be generated.
      * Concrete subclasses of <code>AbstractClassGenerator</code> (such as <code>Enhancer</code>)
      * will try to choose an appropriate default if this is unset.
@@ -167,7 +167,7 @@ implements ClassGenerator
         this.classLoader = classLoader;
     }
 
-    /**
+    /*
      * Override the default naming policy.
      * @see DefaultNamingPolicy
      * @param namingPolicy the custom policy, or null to use the default
@@ -178,14 +178,14 @@ implements ClassGenerator
         this.namingPolicy = namingPolicy;
     }
 
-    /**
+    /*
      * @see #setNamingPolicy
      */
     public NamingPolicy getNamingPolicy() {
         return namingPolicy;
     }
 
-    /**
+    /*
      * Whether use and update the static cache of generated classes
      * for a class with the same properties. Default is <code>true</code>.
      */
@@ -193,14 +193,14 @@ implements ClassGenerator
         this.useCache = useCache;
     }
 
-    /**
+    /*
      * @see #setUseCache
      */
     public boolean getUseCache() {
         return useCache;
     }
 
-    /**
+    /*
      * If set, CGLIB will attempt to load classes from the specified
      * <code>ClassLoader</code> before generating them. Because generated
      * class names are not guaranteed to be unique, the default is <code>false</code>.
@@ -213,7 +213,7 @@ implements ClassGenerator
         return attemptLoad;
     }
     
-    /**
+    /*
      * Set the strategy to use to create the bytecode from this generator.
      * By default an instance of {@see DefaultGeneratorStrategy} is used.
      */
@@ -223,14 +223,14 @@ implements ClassGenerator
         this.strategy = strategy;
     }
 
-    /**
+    /*
      * @see #setStrategy
      */
     public GeneratorStrategy getStrategy() {
         return strategy;
     }
 
-    /**
+    /*
      * Used internally by CGLIB. Returns the <code>AbstractClassGenerator</code>
      * that is being used to generate a class in the current thread.
      */
@@ -257,7 +257,7 @@ implements ClassGenerator
 
     abstract protected ClassLoader getDefaultClassLoader();
 
-    /**
+    /*
      * Returns the protection domain to use when defining the class.
      * <p>
      * Default implementation returns <code>null</code> for using a default protection domain. Sub-classes may

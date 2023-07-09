@@ -44,7 +44,7 @@ import org.ternlang.dex.util.ByteInput;
 import org.ternlang.dex.util.ByteOutput;
 import org.ternlang.dex.util.FileUtils;
 
-/**
+/*
  * The bytes of a dex file in memory for reading and writing. All int offsets
  * are unsigned.
  */
@@ -67,7 +67,7 @@ public final class Dex {
     private final FieldIdTable fieldIds = new FieldIdTable();
     private final MethodIdTable methodIds = new MethodIdTable();
 
-    /**
+    /*
      * Creates a new dex that reads from {@code data}. It is an error to modify
      * {@code data} after using it to create a dex buffer.
      */
@@ -81,7 +81,7 @@ public final class Dex {
         this.tableOfContents.readFrom(this);
     }
 
-    /**
+    /*
      * Creates a new empty dex of the specified size.
      */
     public Dex(int byteCount) throws IOException {
@@ -89,14 +89,14 @@ public final class Dex {
         this.data.order(ByteOrder.LITTLE_ENDIAN);
     }
 
-    /**
+    /*
      * Creates a new dex buffer of the dex in {@code in}, and closes {@code in}.
      */
     public Dex(InputStream in) throws IOException {
         loadFrom(in);
     }
 
-    /**
+    /*
      * Creates a new dex buffer from the dex file {@code file}.
      */
     public Dex(File file) throws IOException {
@@ -116,7 +116,7 @@ public final class Dex {
         }
     }
 
-    /**
+    /*
      * Creates a new dex from the contents of {@code bytes}. This API supports
      * both {@code .dex} and {@code .odex} input. Calling this constructor
      * transfers ownership of {@code bytes} to the returned Dex: it is an error
@@ -217,7 +217,7 @@ public final class Dex {
         return nextSectionStart;
     }
 
-    /**
+    /*
      * Returns a copy of the the bytes of this dex.
      */
     public byte[] getBytes() {
@@ -279,7 +279,7 @@ public final class Dex {
         return open(offset).readCode();
     }
 
-    /**
+    /*
      * Returns the signature of all but the first 32 bytes of this dex. The
      * first 32 bytes of dex files are not specified to be included in the
      * signature.
@@ -303,7 +303,7 @@ public final class Dex {
         return digest.digest();
     }
 
-    /**
+    /*
      * Returns the checksum of all but the first 12 bytes of {@code dex}.
      */
     public int computeChecksum() throws IOException {
@@ -320,7 +320,7 @@ public final class Dex {
         return (int) adler32.getValue();
     }
 
-    /**
+    /*
      * Generates the signature and checksum of the dex file {@code out} and
      * writes them to the file.
      */
@@ -329,7 +329,7 @@ public final class Dex {
         open(CHECKSUM_OFFSET).writeInt(computeChecksum());
     }
 
-    /**
+    /*
      * Look up a field id name index from a field index. Cheaper than:
      * {@code fieldIds().get(fieldDexIndex).getNameIndex();}
      */
@@ -370,7 +370,7 @@ public final class Dex {
         return -1;
     }
 
-    /**
+    /*
      * Look up a field id type index from a field index. Cheaper than:
      * {@code fieldIds().get(fieldDexIndex).getTypeIndex();}
      */
@@ -381,7 +381,7 @@ public final class Dex {
         return data.getShort(position) & 0xFFFF;  // typeIndex
     }
 
-    /**
+    /*
      * Look up a method id declaring class index from a method index. Cheaper than:
      * {@code methodIds().get(methodIndex).getDeclaringClassIndex();}
      */
@@ -391,7 +391,7 @@ public final class Dex {
         return data.getShort(position) & 0xFFFF;  // declaringClassIndex
     }
 
-    /**
+    /*
      * Look up a method id name index from a method index. Cheaper than:
      * {@code methodIds().get(methodIndex).getNameIndex();}
      */
@@ -403,7 +403,7 @@ public final class Dex {
         return data.getInt(position);  // nameIndex
     }
 
-    /**
+    /*
      * Look up a parameter type ids from a method index. Cheaper than:
      * {@code readTypeList(protoIds.get(methodIds().get(methodDexIndex).getProtoIndex()).getParametersOffset()).getTypes();}
      */
@@ -434,7 +434,7 @@ public final class Dex {
         return types;
     }
 
-    /**
+    /*
      * Look up a method id return type index from a method index. Cheaper than:
      * {@code protoIds().get(methodIds().get(methodDexIndex).getProtoIndex()).getReturnTypeIndex();}
      */
@@ -449,7 +449,7 @@ public final class Dex {
         return data.getInt(position);  // returnTypeIndex
     }
 
-    /**
+    /*
      * Look up a descriptor index from a type index. Cheaper than:
      * {@code open(tableOfContents.typeIds.off + (index * SizeOf.TYPE_ID_ITEM)).readInt();}
      */
@@ -459,7 +459,7 @@ public final class Dex {
        return data.getInt(position);
     }
 
-    /**
+    /*
      * Look up a type index index from a class def index.
      */
     public int typeIndexFromClassDefIndex(int classDefIndex) {
@@ -468,7 +468,7 @@ public final class Dex {
         return data.getInt(position);
     }
 
-    /**
+    /*
      * Look up an annotation directory offset from a class def index.
      */
     public int annotationDirectoryOffsetFromClassDefIndex(int classDefIndex) {
@@ -482,7 +482,7 @@ public final class Dex {
         return data.getInt(position);
     }
 
-    /**
+    /*
      * Look up interface types indices from a  return type index from a method index. Cheaper than:
      * {@code ...getClassDef(classDefIndex).getInterfaces();}
      */
@@ -752,7 +752,7 @@ public final class Dex {
             return result;
         }
 
-        /**
+        /*
          * Returns a byte array containing the bytes from {@code start} to this
          * section's current position.
          */
@@ -784,14 +784,14 @@ public final class Dex {
             data.position(data.position() + count);
         }
 
-        /**
+        /*
          * Skips bytes until the position is aligned to a multiple of 4.
          */
         public void alignToFourBytes() {
             data.position((data.position() + 3) & ~3);
         }
 
-        /**
+        /*
          * Writes 0x00 until the position is aligned to a multiple of 4.
          */
         public void alignToFourBytesWithZeroFill() {
@@ -872,14 +872,14 @@ public final class Dex {
             alignToFourBytesWithZeroFill();
         }
 
-        /**
+        /*
          * Returns the number of bytes remaining in this section.
          */
         public int remaining() {
             return data.remaining();
         }
 
-        /**
+        /*
          * Returns the number of bytes used by this section.
          */
         public int used() {

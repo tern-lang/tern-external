@@ -18,14 +18,14 @@ package org.ternlang.dx.rop.cst;
 
 import org.ternlang.dx.util.FixedSizeList;
 
-/**
+/*
  * Constant type to represent a fixed array of other constants.
  */
 public final class CstArray extends Constant {
-    /** {@code non-null;} the actual list of contents */
+    /* {@code non-null;} the actual list of contents */
     private final List list;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param list {@code non-null;} the actual list of contents
@@ -40,7 +40,7 @@ public final class CstArray extends Constant {
         this.list = list;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean equals(Object other) {
         if (! (other instanceof CstArray)) {
@@ -50,42 +50,42 @@ public final class CstArray extends Constant {
         return list.equals(((CstArray) other).list);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         return list.hashCode();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected int compareTo0(Constant other) {
         return list.compareTo(((CstArray) other).list);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         return list.toString("array{", ", ", "}");
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String typeName() {
         return "array";
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean isCategory2() {
         return false;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return list.toHuman("{", ", ", "}");
     }
 
-    /**
+    /*
      * Get the underlying list.
      *
      * @return {@code non-null;} the list
@@ -94,12 +94,12 @@ public final class CstArray extends Constant {
         return list;
     }
 
-    /**
+    /*
      * List of {@link Constant} instances.
      */
     public static final class List
             extends FixedSizeList implements Comparable<List> {
-        /**
+        /*
          * Constructs an instance. All indices initially contain
          * {@code null}.
          *
@@ -109,7 +109,7 @@ public final class CstArray extends Constant {
             super(size);
         }
 
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public int compareTo(List other) {
             int thisSize = size();
             int otherSize = other.size();
@@ -133,7 +133,7 @@ public final class CstArray extends Constant {
             return 0;
         }
 
-        /**
+        /*
          * Gets the element at the given index. It is an error to call
          * this with the index for an element which was never set; if you
          * do that, this will throw {@code NullPointerException}.
@@ -145,7 +145,7 @@ public final class CstArray extends Constant {
             return (Constant) get0(n);
         }
 
-        /**
+        /*
          * Sets the element at the given index.
          *
          * @param n {@code >= 0, < size();} which index

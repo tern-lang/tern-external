@@ -27,7 +27,7 @@ import org.ternlang.cglib.reflect.FastClass;
 
 import junit.framework.*;
 
-/**
+/*
  * @author Chris Nokleberg <a href="mailto:chris@nokleberg.com">chris@nokleberg.com</a>
  * @version $Id: CodeGenTestCase.java,v 1.10 2012/07/27 16:02:49 baliuka Exp $
  */

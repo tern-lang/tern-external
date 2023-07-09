@@ -22,7 +22,7 @@ import java.util.List;
 
 import org.ternlang.dx.rop.type.StdTypeList;
 
-/**
+/*
  * An immutable of types.
  */
 final class TypeList {
@@ -37,7 +37,7 @@ final class TypeList {
         }
     }
 
-    /**
+    /*
      * Returns an immutable list.
      */
     public List<TypeId<?>> asList() {

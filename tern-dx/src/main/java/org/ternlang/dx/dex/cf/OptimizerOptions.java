@@ -26,35 +26,35 @@ import org.ternlang.dx.rop.code.RopMethod;
 import org.ternlang.dx.rop.code.TranslationAdvice;
 import org.ternlang.dx.ssa.Optimizer;
 
-/**
+/*
  * Settings for optimization of code.
  */
 public class OptimizerOptions {
-    /**
+    /*
      * {@code null-ok;} hash set of class name + method names that
      * should be optimized. {@code null} if this constraint was not
      * specified on the command line
      */
     private static HashSet<String> optimizeList;
 
-    /**
+    /*
      * {@code null-ok;} hash set of class name + method names that should NOT
      * be optimized.  null if this constraint was not specified on the
      * command line
      */
     private static HashSet<String> dontOptimizeList;
 
-    /** true if the above lists have been loaded */
+    /* true if the above lists have been loaded */
     private static boolean optimizeListsLoaded;
 
-    /**
+    /*
      * This class is uninstantiable.
      */
     private OptimizerOptions() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Loads the optimize/don't optimize lists from files.
      *
      * @param optimizeListFile Pathname
@@ -86,7 +86,7 @@ public class OptimizerOptions {
         optimizeListsLoaded = true;
     }
 
-    /**
+    /*
      * Loads a list of newline-separated strings into a new HashSet and returns
      * the HashSet.
      *
@@ -116,7 +116,7 @@ public class OptimizerOptions {
         return result;
     }
 
-    /**
+    /*
      * Compares the output of the optimizer run normally with a run skipping
      * some optional steps. Results are printed to stderr.
      *
@@ -158,7 +158,7 @@ public class OptimizerOptions {
                 100.0 * ((skipInsns - normalInsns) / (float) skipInsns));
     }
 
-    /**
+    /*
      * Checks whether the specified method should be optimized
      *
      * @param canonicalMethodName name of method being considered

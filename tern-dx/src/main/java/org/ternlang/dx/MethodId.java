@@ -23,7 +23,7 @@ import org.ternlang.dx.rop.cst.CstNat;
 import org.ternlang.dx.rop.cst.CstString;
 import org.ternlang.dx.rop.type.Prototype;
 
-/**
+/*
  * Identifies a method or constructor.
  *
  * @param <D> the type declaring this field
@@ -35,7 +35,7 @@ public final class MethodId<D, R> {
     final String name;
     final TypeList parameters;
 
-    /** cached converted state */
+    /* cached converted state */
     final CstNat nat;
     final CstMethodRef constant;
 
@@ -59,21 +59,21 @@ public final class MethodId<D, R> {
         return returnType;
     }
 
-    /**
+    /*
      * Returns true if this method is a constructor for its declaring class.
      */
     public boolean isConstructor() {
         return name.equals("<init>");
     }
 
-    /**
+    /*
      * Returns true if this method is the static initializer for its declaring class.
      */
     public boolean isStaticInitializer() {
         return name.equals("<clinit>");
     }
 
-    /**
+    /*
      * Returns the method's name. This is "&lt;init&gt;" if this is a constructor
      * or "&lt;clinit&gt;" if a static initializer
      */
@@ -85,7 +85,7 @@ public final class MethodId<D, R> {
         return parameters.asList();
     }
 
-    /**
+    /*
      * Returns a descriptor like "(Ljava/lang/Class;[I)Ljava/lang/Object;".
      */
     String descriptor(boolean includeThis) {

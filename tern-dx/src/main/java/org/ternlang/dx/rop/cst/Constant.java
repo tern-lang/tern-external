@@ -18,12 +18,12 @@ package org.ternlang.dx.rop.cst;
 
 import org.ternlang.dx.util.ToHuman;
 
-/**
+/*
  * Base class for constants of all sorts.
  */
 public abstract class Constant
         implements ToHuman, Comparable<Constant> {
-    /**
+    /*
      * Returns {@code true} if this instance is a category-2 constant,
      * meaning it takes up two slots in the constant pool, or
      * {@code false} if this instance is category-1.
@@ -32,7 +32,7 @@ public abstract class Constant
      */
     public abstract boolean isCategory2();
 
-    /**
+    /*
      * Returns the human name for the particular type of constant
      * this instance is.
      *
@@ -40,7 +40,7 @@ public abstract class Constant
      */
     public abstract String typeName();
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * This compares in class-major and value-minor order.
@@ -56,7 +56,7 @@ public abstract class Constant
         return compareTo0(other);
     }
 
-    /**
+    /*
      * Compare the values of this and another instance, which are guaranteed
      * to be of the same class. Subclasses must implement this.
      *

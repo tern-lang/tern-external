@@ -49,109 +49,109 @@ import org.ternlang.dx.util.Bits;
 import org.ternlang.dx.util.Hex;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * Utility that converts a basic block list into a list of register-oriented
  * blocks.
  */
 public final class Ropper {
-    /** label offset for the parameter assignment block */
+    /* label offset for the parameter assignment block */
     private static final int PARAM_ASSIGNMENT = -1;
 
-    /** label offset for the return block */
+    /* label offset for the return block */
     private static final int RETURN = -2;
 
-    /** label offset for the synchronized method final return block */
+    /* label offset for the synchronized method final return block */
     private static final int SYNCH_RETURN = -3;
 
-    /** label offset for the first synchronized method setup block */
+    /* label offset for the first synchronized method setup block */
     private static final int SYNCH_SETUP_1 = -4;
 
-    /** label offset for the second synchronized method setup block */
+    /* label offset for the second synchronized method setup block */
     private static final int SYNCH_SETUP_2 = -5;
 
-    /**
+    /*
      * label offset for the first synchronized method exception
      * handler block
      */
     private static final int SYNCH_CATCH_1 = -6;
 
-    /**
+    /*
      * label offset for the second synchronized method exception
      * handler block
      */
     private static final int SYNCH_CATCH_2 = -7;
 
-    /** number of special label offsets */
+    /* number of special label offsets */
     private static final int SPECIAL_LABEL_COUNT = 7;
 
-    /** {@code non-null;} method being converted */
+    /* {@code non-null;} method being converted */
     private final ConcreteMethod method;
 
-    /** {@code non-null;} original block list */
+    /* {@code non-null;} original block list */
     private final ByteBlockList blocks;
 
-    /** max locals of the method */
+    /* max locals of the method */
     private final int maxLocals;
 
-    /** max label (exclusive) of any original bytecode block */
+    /* max label (exclusive) of any original bytecode block */
     private final int maxLabel;
 
-    /** {@code non-null;} simulation machine to use */
+    /* {@code non-null;} simulation machine to use */
     private final RopperMachine machine;
 
-    /** {@code non-null;} simulator to use */
+    /* {@code non-null;} simulator to use */
     private final Simulator sim;
 
-    /**
+    /*
      * {@code non-null;} sparse array mapping block labels to initial frame
      * contents, if known
      */
     private final Frame[] startFrames;
 
-    /** {@code non-null;} output block list in-progress */
+    /* {@code non-null;} output block list in-progress */
     private final ArrayList<BasicBlock> result;
 
-    /**
+    /*
      * {@code non-null;} list of subroutine-nest labels
      * (See {@link Frame#getSubroutines} associated with each result block.
      * Parallel to {@link Ropper#result}.
      */
     private final ArrayList<IntList> resultSubroutines;
 
-    /**
+    /*
      * {@code non-null;} for each block (by label) that is used as an exception
      * handler in the input, the exception handling info in Rop.
      */
     private final CatchInfo[] catchInfos;
 
-    /**
+    /*
      * whether an exception-handler block for a synchronized method was
      * ever required
      */
     private boolean synchNeedsExceptionHandler;
 
-    /**
+    /*
      * {@code non-null;} list of subroutines indexed by label of start
      * address */
     private final Subroutine[] subroutines;
 
-    /** true if {@code subroutines} is non-empty */
+    /* true if {@code subroutines} is non-empty */
     private boolean hasSubroutines;
 
-    /** Allocates labels of exception handler setup blocks. */
+    /* Allocates labels of exception handler setup blocks. */
     private final ExceptionSetupLabelAllocator exceptionSetupLabelAllocator;
 
-    /**
+    /*
      * Keeps mapping of an input exception handler target code and how it is generated/targeted in
      * Rop.
      */
     private class CatchInfo {
-        /**
+        /*
          * {@code non-null;} map of ExceptionHandlerSetup by the type they handle */
         private final Map<Type, ExceptionHandlerSetup> setups =
                 new HashMap<Type, ExceptionHandlerSetup>();
 
-        /**
+        /*
          * Get the {@link ExceptionHandlerSetup} corresponding to the given type. The
          * ExceptionHandlerSetup is created if this the first request for the given type.
          *
@@ -168,7 +168,7 @@ public final class Ropper {
             return handler;
         }
 
-        /**
+        /*
          * Get all {@link ExceptionHandlerSetup} of this handler.
          *
          * @return {@code non-null;}
@@ -178,18 +178,18 @@ public final class Ropper {
         }
     }
 
-    /**
+    /*
      * Keeps track of an exception handler setup.
      */
     private static class ExceptionHandlerSetup {
-        /**
+        /*
          * {@code non-null;} The caught type. */
         private Type caughtType;
-        /**
+        /*
          * {@code >= 0;} The label of the exception setup block. */
         private int label;
 
-        /**
+        /*
          * Constructs instance.
          *
          * @param caughtType {@code non-null;} the caught type
@@ -200,14 +200,14 @@ public final class Ropper {
             this.label = label;
         }
 
-        /**
+        /*
          * @return {@code non-null;} the caught type
          */
         Type getCaughtType() {
             return caughtType;
         }
 
-        /**
+        /*
          * @return {@code >= 0;} the label
          */
         public int getLabel() {
@@ -215,19 +215,19 @@ public final class Ropper {
         }
     }
 
-    /**
+    /*
      * Keeps track of subroutines that exist in java form and are inlined in
      * Rop form.
      */
     private class Subroutine {
-        /** list of all blocks that jsr to this subroutine */
+        /* list of all blocks that jsr to this subroutine */
         private BitSet callerBlocks;
-        /** List of all blocks that return from this subroutine */
+        /* List of all blocks that return from this subroutine */
         private BitSet retBlocks;
-        /** first block in this subroutine */
+        /* first block in this subroutine */
         private int startBlock;
 
-        /**
+        /*
          * Constructs instance.
          *
          * @param startBlock First block of the subroutine.
@@ -239,7 +239,7 @@ public final class Ropper {
             hasSubroutines = true;
         }
 
-        /**
+        /*
          * Constructs instance.
          *
          * @param startBlock First block of the subroutine.
@@ -251,14 +251,14 @@ public final class Ropper {
             addRetBlock(retBlock);
         }
 
-        /**
+        /*
          * @return {@code >= 0;} the label of the subroutine's start block.
          */
         int getStartBlock() {
             return startBlock;
         }
 
-        /**
+        /*
          * Adds a label to the list of ret blocks (final blocks) for this
          * subroutine.
          *
@@ -268,7 +268,7 @@ public final class Ropper {
             retBlocks.set(retBlock);
         }
 
-        /**
+        /*
          * Adds a label to the list of caller blocks for this subroutine.
          *
          * @param label a block that invokes this subroutine.
@@ -277,7 +277,7 @@ public final class Ropper {
             callerBlocks.set(label);
         }
 
-        /**
+        /*
          * Generates a list of subroutine successors. Note: successor blocks
          * could be listed more than once. This is ok, because this successor
          * list (and the block it's associated with) will be copied and inlined
@@ -307,7 +307,7 @@ public final class Ropper {
             return successors;
         }
 
-        /**
+        /*
          * Merges the specified frame into this subroutine's successors,
          * setting {@code workSet} as appropriate. To be called with
          * the frame of a subroutine ret block.
@@ -333,7 +333,7 @@ public final class Ropper {
         }
     }
 
-    /**
+    /*
      * Converts a {@link ConcreteMethod} to a {@link RopMethod}.
      *
      * @param method {@code non-null;} method to convert
@@ -355,7 +355,7 @@ public final class Ropper {
         }
     }
 
-    /**
+    /*
      * Constructs an instance. This class is not publicly instantiable; use
      * {@link #convert}.
      *
@@ -403,7 +403,7 @@ public final class Ropper {
         exceptionSetupLabelAllocator = new ExceptionSetupLabelAllocator();
     }
 
-    /**
+    /*
      * Gets the first (lowest) register number to use as the temporary
      * area when unwinding stack manipulation ops.
      *
@@ -422,7 +422,7 @@ public final class Ropper {
         return isSynchronized() ? regCount + 1 : regCount;
     }
 
-    /**
+    /*
      * Gets the label for the given special-purpose block. The given label
      * should be one of the static constants defined by this class.
      *
@@ -441,7 +441,7 @@ public final class Ropper {
         return maxLabel + method.getCatches().size() + ~label;
     }
 
-    /**
+    /*
      * Gets the minimum label for unreserved use.
      *
      * @return {@code >= 0;} the minimum label
@@ -455,7 +455,7 @@ public final class Ropper {
         return maxLabel + method.getCatches().size() + SPECIAL_LABEL_COUNT;
     }
 
-    /**
+    /*
      * Gets an unreserved and available label.
      * Labels are distributed this way:
      * <ul>
@@ -488,7 +488,7 @@ public final class Ropper {
         return candidate;
     }
 
-    /**
+    /*
      * Gets whether the method being translated is synchronized.
      *
      * @return whether the method being translated is synchronized
@@ -498,7 +498,7 @@ public final class Ropper {
         return (accessFlags & AccessFlags.ACC_SYNCHRONIZED) != 0;
     }
 
-    /**
+    /*
      * Gets whether the method being translated is static.
      *
      * @return whether the method being translated is static
@@ -508,7 +508,7 @@ public final class Ropper {
         return (accessFlags & AccessFlags.ACC_STATIC) != 0;
     }
 
-    /**
+    /*
      * Gets the total number of registers used for "normal" purposes (i.e.,
      * for the straightforward translation from the original Java).
      *
@@ -518,7 +518,7 @@ public final class Ropper {
         return maxLocals + method.getMaxStack();
     }
 
-    /**
+    /*
      * Gets the register spec to use to hold the object to synchronize on,
      * for a synchronized method.
      *
@@ -537,7 +537,7 @@ public final class Ropper {
         return RegisterSpec.make((reg < 1) ? 1 : reg, Type.OBJECT);
     }
 
-    /**
+    /*
      * Searches {@link #result} for a block with the given label. Returns its
      * index if found, or returns {@code -1} if there is no such block.
      *
@@ -557,7 +557,7 @@ public final class Ropper {
         return -1;
     }
 
-    /**
+    /*
      * Searches {@link #result} for a block with the given label. Returns it if
      * found, or throws an exception if there is no such block.
      *
@@ -575,7 +575,7 @@ public final class Ropper {
         return result.get(idx);
     }
 
-    /**
+    /*
      * Adds a block to the output result.
      *
      * @param block {@code non-null;} the block to add
@@ -592,7 +592,7 @@ public final class Ropper {
         resultSubroutines.add(subroutines);
     }
 
-    /**
+    /*
      * Adds or replace a block in the output result. If this is a
      * replacement, then any extra blocks that got added with the
      * original get removed as a result of calling this method.
@@ -631,7 +631,7 @@ public final class Ropper {
         return ret;
     }
 
-    /**
+    /*
      * Adds or replaces a block in the output result. Do not delete
      * any successors.
      *
@@ -664,7 +664,7 @@ public final class Ropper {
         return ret;
     }
 
-    /**
+    /*
      * Helper for {@link #addOrReplaceBlock} which recursively removes
      * the given block and all blocks that are (direct and indirect)
      * successors of it whose labels indicate that they are not in the
@@ -694,7 +694,7 @@ public final class Ropper {
         }
     }
 
-    /**
+    /*
      * Extracts the resulting {@link RopMethod} from the instance.
      *
      * @return {@code non-null;} the method object
@@ -720,7 +720,7 @@ public final class Ropper {
         return new RopMethod(bbl, getSpecialLabel(PARAM_ASSIGNMENT));
     }
 
-    /**
+    /*
      * Does the conversion.
      */
     private void doit() {
@@ -756,7 +756,7 @@ public final class Ropper {
         }
     }
 
-    /**
+    /*
      * Sets up the first frame to contain all the incoming parameters in
      * locals.
      */
@@ -766,7 +766,7 @@ public final class Ropper {
         startFrames[0].setImmutable();
     }
 
-    /**
+    /*
      * Processes the given block.
      *
      * @param block {@code non-null;} block to process
@@ -1050,7 +1050,7 @@ public final class Ropper {
         addOrReplaceBlock(bb, frame.getSubroutines());
     }
 
-    /**
+    /*
      * Helper for {@link #processBlock}, which merges frames and
      * adds to the work set, as necessary.
      *
@@ -1097,7 +1097,7 @@ public final class Ropper {
         }
     }
 
-    /**
+    /*
      * Constructs and adds the blocks that perform setup for the rest of
      * the method. This includes a first block which merely contains
      * assignments from parameters to the same-numbered registers and
@@ -1181,7 +1181,7 @@ public final class Ropper {
         }
     }
 
-    /**
+    /*
      * Constructs and adds the return block, if necessary. The return
      * block merely contains an appropriate {@code return}
      * instruction.
@@ -1236,7 +1236,7 @@ public final class Ropper {
         addBlock(bb, IntList.EMPTY);
     }
 
-    /**
+    /*
      * Constructs and adds, if necessary, the catch-all exception handler
      * block to deal with unwinding the lock taken on entry to a synchronized
      * method.
@@ -1283,7 +1283,7 @@ public final class Ropper {
         addBlock(bb, IntList.EMPTY);
     }
 
-    /**
+    /*
      * Creates the exception handler setup blocks. "maxLocals"
      * below is because that's the register number corresponding
      * to the sole element on a one-deep stack (which is the
@@ -1321,7 +1321,7 @@ public final class Ropper {
         }
     }
 
-    /**
+    /*
      * Checks to see if the basic block is a subroutine caller block.
      *
      * @param bb {@code non-null;} the basic block in question
@@ -1337,7 +1337,7 @@ public final class Ropper {
                 && (subroutines[subLabel] != null);
     }
 
-    /**
+    /*
      * Inlines any subroutine calls.
      */
     private void inlineSubroutines() {
@@ -1395,7 +1395,7 @@ public final class Ropper {
         deleteUnreachableBlocks();
     }
 
-    /**
+    /*
      * Deletes all blocks that cannot be reached. This is run to delete
      * original subroutine blocks after subroutine inlining.
      */
@@ -1424,21 +1424,21 @@ public final class Ropper {
         }
     }
 
-    /**
+    /*
      * Allocates labels, without requiring previously allocated labels
      * to have been added to the blocks list.
      */
     private static class LabelAllocator {
         int nextAvailableLabel;
 
-        /**
+        /*
          * @param startLabel available label to start allocating from
          */
         LabelAllocator(int startLabel) {
             nextAvailableLabel = startLabel;
         }
 
-        /**
+        /*
          * @return next available label
          */
         int getNextLabel() {
@@ -1446,7 +1446,7 @@ public final class Ropper {
         }
     }
 
-    /**
+    /*
      * Allocates labels for exception setup blocks.
      */
     private class ExceptionSetupLabelAllocator extends LabelAllocator {
@@ -1466,30 +1466,30 @@ public final class Ropper {
         }
     }
 
-    /**
+    /*
      * Inlines a subroutine. Start by calling
      * {@link #inlineSubroutineCalledFrom}.
      */
     private class SubroutineInliner {
-        /**
+        /*
          * maps original label to the label that will be used by the
          * inlined version
          */
         private final HashMap<Integer, Integer> origLabelToCopiedLabel;
 
-        /** set of original labels that need to be copied */
+        /* set of original labels that need to be copied */
         private final BitSet workList;
 
-        /** the label of the original start block for this subroutine */
+        /* the label of the original start block for this subroutine */
         private int subroutineStart;
 
-        /** the label of the ultimate return block */
+        /* the label of the ultimate return block */
         private int subroutineSuccessor;
 
-        /** used for generating new labels for copied blocks */
+        /* used for generating new labels for copied blocks */
         private final LabelAllocator labelAllocator;
 
-        /**
+        /*
          * A mapping, indexed by label, to subroutine nesting list.
          * The subroutine nest list is as returned by
          * {@link Frame#getSubroutines}.
@@ -1506,7 +1506,7 @@ public final class Ropper {
             this.labelToSubroutines = labelToSubroutines;
         }
 
-        /**
+        /*
          * Inlines a subroutine.
          *
          * @param b block where {@code jsr} occurred in the original bytecode
@@ -1551,7 +1551,7 @@ public final class Ropper {
                 labelToSubroutines.get(b.getLabel()));
         }
 
-        /**
+        /*
          * Copies a basic block, mapping its successors along the way.
          *
          * @param origLabel original block label
@@ -1626,7 +1626,7 @@ public final class Ropper {
                     labelToSubroutines.get(newLabel));
         }
 
-        /**
+        /*
          * Checks to see if a specified label is involved in a specified
          * subroutine.
          *
@@ -1641,7 +1641,7 @@ public final class Ropper {
                     && subroutinesList.top() == subroutineStart);
         }
 
-        /**
+        /*
          * Maps the label of a pre-copied block to the label of the inlined
          * block, allocating a new label and adding it to the worklist
          * if necessary.  If the origLabel is a "special" label, it
@@ -1681,7 +1681,7 @@ public final class Ropper {
         }
     }
 
-    /**
+    /*
      * Finds a {@code Subroutine} that is returned from by a {@code ret} in
      * a given block.
      *
@@ -1704,7 +1704,7 @@ public final class Ropper {
     }
 
 
-    /**
+    /*
      * Removes all {@code move-return-address} instructions, returning a new
      * {@code InsnList} if necessary. The {@code move-return-address}
      * insns are dead code after subroutines have been inlined.
@@ -1744,7 +1744,7 @@ public final class Ropper {
         return newInsns;
     }
 
-    /**
+    /*
      * Visits each non-subroutine block once in depth-first successor order.
      *
      * @param firstLabel label of start block
@@ -1756,7 +1756,7 @@ public final class Ropper {
                 v, new BitSet(maxLabel));
     }
 
-    /**
+    /*
      * Visits each block once in depth-first successor order, ignoring
      * {@code jsr} targets. Worker for {@link #forEachNonSubBlockDepthFirst}.
      *

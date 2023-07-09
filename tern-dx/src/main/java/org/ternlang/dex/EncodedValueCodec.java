@@ -19,14 +19,14 @@ package org.ternlang.dex;
 import org.ternlang.dex.util.ByteInput;
 import org.ternlang.dex.util.ByteOutput;
 
-/**
+/*
  * Read and write {@code encoded_value} primitives.
  */
 public final class EncodedValueCodec {
     private EncodedValueCodec() {
     }
 
-    /**
+    /*
      * Writes a signed integral to {@code out}.
      */
     public static void writeSignedIntegralValue(ByteOutput out, int type, long value) {
@@ -58,7 +58,7 @@ public final class EncodedValueCodec {
         }
     }
 
-    /**
+    /*
      * Writes an unsigned integral to {@code out}.
      */
     public static void writeUnsignedIntegralValue(ByteOutput out, int type, long value) {
@@ -85,7 +85,7 @@ public final class EncodedValueCodec {
         }
     }
 
-    /**
+    /*
      * Writes a right-zero-extended value to {@code out}.
      */
     public static void writeRightZeroExtendedValue(ByteOutput out, int type, long value) {
@@ -115,7 +115,7 @@ public final class EncodedValueCodec {
         }
     }
 
-    /**
+    /*
      * Read a signed integer.
      *
      * @param zwidth byte count minus one
@@ -129,7 +129,7 @@ public final class EncodedValueCodec {
         return result;
     }
 
-    /**
+    /*
      * Read an unsigned integer.
      *
      * @param zwidth byte count minus one
@@ -150,7 +150,7 @@ public final class EncodedValueCodec {
         return result;
     }
 
-    /**
+    /*
      * Read a signed long.
      *
      * @param zwidth byte count minus one
@@ -164,7 +164,7 @@ public final class EncodedValueCodec {
         return result;
     }
 
-    /**
+    /*
      * Read an unsigned long.
      *
      * @param zwidth byte count minus one

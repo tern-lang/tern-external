@@ -23,17 +23,17 @@ import org.ternlang.dx.rop.cst.CstLong;
 import org.ternlang.dx.rop.cst.CstString;
 import org.ternlang.dx.rop.cst.TypedConstant;
 
-/**
+/*
  * Attribute class for standard {@code ConstantValue} attributes.
  */
 public final class AttConstantValue extends BaseAttribute {
-    /** {@code non-null;} attribute name for attributes of this type */
+    /* {@code non-null;} attribute name for attributes of this type */
     public static final String ATTRIBUTE_NAME = "ConstantValue";
 
-    /** {@code non-null;} the constant value */
+    /* {@code non-null;} the constant value */
     private final TypedConstant constantValue;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param constantValue {@code non-null;} the constant value, which must
@@ -58,12 +58,12 @@ public final class AttConstantValue extends BaseAttribute {
         this.constantValue = constantValue;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int byteLength() {
         return 8;
     }
 
-    /**
+    /*
      * Gets the constant value of this instance. The returned value
      * is an instance of one of: {@code CstString},
      * {@code CstInteger}, {@code CstLong},

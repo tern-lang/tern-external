@@ -21,41 +21,41 @@ import java.util.ArrayList;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Class that represents a map item.
  */
 public final class MapItem extends OffsettedItem {
-    /** file alignment of this class, in bytes */
+    /* file alignment of this class, in bytes */
     private static final int ALIGNMENT = 4;
 
-    /** write size of this class, in bytes: three {@code uint}s */
+    /* write size of this class, in bytes: three {@code uint}s */
     private static final int WRITE_SIZE = (4 * 3);
 
-    /** {@code non-null;} item type this instance covers */
+    /* {@code non-null;} item type this instance covers */
     private final ItemType type;
 
-    /** {@code non-null;} section this instance covers */
+    /* {@code non-null;} section this instance covers */
     private final Section section;
 
-    /**
+    /*
      * {@code null-ok;} first item covered or {@code null} if this is
      * a self-reference
      */
     private final Item firstItem;
 
-    /**
+    /*
      * {@code null-ok;} last item covered or {@code null} if this is
      * a self-reference
      */
     private final Item lastItem;
 
-    /**
+    /*
      * {@code > 0;} count of items covered; {@code 1} if this
      * is a self-reference
      */
     private final int itemCount;
 
-    /**
+    /*
      * Constructs a list item with instances of this class representing
      * the contents of the given array of sections, adding it to the
      * given map section.
@@ -112,7 +112,7 @@ public final class MapItem extends OffsettedItem {
                 new UniformListItem<MapItem>(ItemType.TYPE_MAP_LIST, items));
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param type {@code non-null;} item type this instance covers
@@ -152,7 +152,7 @@ public final class MapItem extends OffsettedItem {
         this.itemCount = itemCount;
     }
 
-    /**
+    /*
      * Constructs a self-referential instance. This instance is meant to
      * represent the section containing the {@code map_list}.
      *
@@ -172,13 +172,13 @@ public final class MapItem extends OffsettedItem {
         this.itemCount = 1;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public ItemType itemType() {
         return ItemType.TYPE_MAP_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer(100);
@@ -193,19 +193,19 @@ public final class MapItem extends OffsettedItem {
         return sb.toString();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void addContents(DexFile file) {
         // We have nothing to add.
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final String toHuman() {
         return toString();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void writeTo0(DexFile file, AnnotatedOutput out) {
         int value = type.getMapValue();

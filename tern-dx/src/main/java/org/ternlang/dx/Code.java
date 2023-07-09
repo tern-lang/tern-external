@@ -42,7 +42,7 @@ import static org.ternlang.dx.rop.type.Type.BT_CHAR;
 import static org.ternlang.dx.rop.type.Type.BT_INT;
 import static org.ternlang.dx.rop.type.Type.BT_SHORT;
 
-/**
+/*
  * Builds a sequence of instructions.
  *
  * <h3>Locals</h3>
@@ -179,24 +179,24 @@ import static org.ternlang.dx.rop.type.Type.BT_SHORT;
  */
 public final class Code {
     private final MethodId<?, ?> method;
-    /**
+    /*
      * All allocated labels. Although the order of the labels in this list
      * shouldn't impact behavior, it is used to determine basic block indices.
      */
     private final List<Label> labels = new ArrayList<Label>();
 
-    /**
+    /*
      * The label currently receiving instructions. This is null if the most
      * recent instruction was a return or goto.
      */
     private Label currentLabel;
 
-    /** true once we've fixed the positions of the parameter registers */
+    /* true once we've fixed the positions of the parameter registers */
     private boolean localsInitialized;
 
     private final Local<?> thisLocal;
 
-    /**
+    /*
      * The parameters on this method. If this is non-static, the first parameter
      * is 'thisLocal' and we have to offset the user's indices by one.
      */
@@ -223,7 +223,7 @@ public final class Code {
         this.currentLabel.marked = true;
     }
 
-    /**
+    /*
      * Allocates a new local variable of type {@code type}. It is an error to
      * allocate a local after instructions have been emitted.
      */
@@ -236,7 +236,7 @@ public final class Code {
         return result;
     }
 
-    /**
+    /*
      * Returns the local for the parameter at index {@code index} and of type
      * {@code type}.
      */
@@ -247,7 +247,7 @@ public final class Code {
         return coerce(parameters.get(index), type);
     }
 
-    /**
+    /*
      * Returns the local for {@code this} of type {@code type}. It is an error
      * to call {@code getThis()} if this is a static method.
      */
@@ -267,7 +267,7 @@ public final class Code {
         return (Local<T>) local;
     }
 
-    /**
+    /*
      * Assigns registers to locals. From the spec:
      *  "the N arguments to a method land in the last N registers of the
      *   method's invocation frame, in order. Wide arguments consume two
@@ -299,7 +299,7 @@ public final class Code {
         labels.get(0).instructions.addAll(0, moveParameterInstructions);
     }
 
-    /**
+    /*
      * Returns the number of registers to hold the parameters. This includes the
      * 'this' parameter if it exists.
      */
@@ -313,7 +313,7 @@ public final class Code {
 
     // labels
 
-    /**
+    /*
      * Assigns {@code target} to this code.
      */
     private void adopt(Label target) {
@@ -327,7 +327,7 @@ public final class Code {
         labels.add(target);
     }
 
-    /**
+    /*
      * Start defining instructions for the named label.
      */
     public void mark(Label label) {
@@ -342,7 +342,7 @@ public final class Code {
         currentLabel = label;
     }
 
-    /**
+    /*
      * Transfers flow control to the instructions at {@code target}. It is an
      * error to jump to a label not marked on this {@code Code}.
      */
@@ -352,7 +352,7 @@ public final class Code {
                 target);
     }
 
-    /**
+    /*
      * Registers {@code catchClause} as a branch target for all instructions
      * in this frame that throw a class assignable to {@code toCatch}. This
      * includes methods invoked from this frame. Deregister the clause using
@@ -370,7 +370,7 @@ public final class Code {
         catchLabels.add(catchClause);
     }
 
-    /**
+    /*
      * Deregisters the catch clause label for {@code toCatch} and returns it.
      */
     public Label removeCatchClause(TypeId<? extends Throwable> toCatch) {
@@ -383,7 +383,7 @@ public final class Code {
         return catchLabels.remove(index);
     }
 
-    /**
+    /*
      * Throws the throwable in {@code toThrow}.
      */
     public void throwValue(Local<? extends Throwable> toThrow) {
@@ -403,7 +403,7 @@ public final class Code {
         addInstruction(insn, null);
     }
 
-    /**
+    /*
      * @param branch the branches to follow; interpretation depends on the
      *     instruction's branchingness.
      */
@@ -454,7 +454,7 @@ public final class Code {
         }
     }
 
-    /**
+    /*
      * Closes the current label and starts a new one.
      *
      * @param catchLabels an immutable list of catch labels
@@ -471,7 +471,7 @@ public final class Code {
 
     // instructions: locals
 
-    /**
+    /*
      * Copies the constant value {@code value} to {@code target}. The constant
      * must be a primitive, String, Class, TypeId, or null.
      */
@@ -489,7 +489,7 @@ public final class Code {
         }
     }
 
-    /**
+    /*
      * Copies the value in {@code source} to {@code target}.
      */
     public <T> void move(Local<T> target, Local<T> source) {
@@ -499,7 +499,7 @@ public final class Code {
 
     // instructions: unary and binary
 
-    /**
+    /*
      * Executes {@code op} and sets {@code target} to the result.
      */
     public <T> void op(UnaryOp op, Local<T> target, Local<T> source) {
@@ -507,7 +507,7 @@ public final class Code {
                 target.spec(), source.spec()));
     }
 
-    /**
+    /*
      * Executes {@code op} and sets {@code target} to the result. For most
      * binary operations, the types of {@code a} and {@code b} must be the same.
      * Shift operations (like {@link BinaryOp#SHIFT_LEFT}) require {@code b} to
@@ -527,7 +527,7 @@ public final class Code {
 
     // instructions: branches
 
-    /**
+    /*
      * Compare ints or references. If the comparison is true, execution jumps to
      * {@code trueLabel}. If it is false, execution continues to the next
      * instruction.
@@ -539,7 +539,7 @@ public final class Code {
                 RegisterSpecList.make(a.spec(), b.spec())), trueLabel);
     }
 
-    /**
+    /*
      * Check if an int or reference equals to zero. If the comparison is true,
      * execution jumps to {@code trueLabel}. If it is false, execution continues to
      * the next instruction.
@@ -551,7 +551,7 @@ public final class Code {
                 RegisterSpecList.make(a.spec())), trueLabel);
     }
 
-    /**
+    /*
      * Compare floats or doubles. This stores -1 in {@code target} if {@code
      * a < b}, 0 in {@code target} if {@code a == b} and 1 in target if {@code
      * a > b}. This stores {@code nanValue} in {@code target} if either value
@@ -571,7 +571,7 @@ public final class Code {
                 RegisterSpecList.make(a.spec(), b.spec())));
     }
 
-    /**
+    /*
      * Compare longs. This stores -1 in {@code target} if {@code
      * a < b}, 0 in {@code target} if {@code a == b} and 1 in target if {@code
      * a > b}.
@@ -583,7 +583,7 @@ public final class Code {
 
     // instructions: fields
 
-    /**
+    /*
      * Copies the value in instance field {@code fieldId} of {@code instance} to
      * {@code target}.
      */
@@ -593,7 +593,7 @@ public final class Code {
         moveResult(target, true);
     }
 
-    /**
+    /*
      * Copies the value in {@code source} to the instance field {@code fieldId}
      * of {@code instance}.
      */
@@ -602,7 +602,7 @@ public final class Code {
                 RegisterSpecList.make(source.spec(), instance.spec()), catches, fieldId.constant));
     }
 
-    /**
+    /*
      * Copies the value in the static field {@code fieldId} to {@code target}.
      */
     public <V> void sget(FieldId<?, ? extends V> fieldId, Local<V> target) {
@@ -611,7 +611,7 @@ public final class Code {
         moveResult(target, true);
     }
 
-    /**
+    /*
      * Copies the value in {@code source} to the static field {@code fieldId}.
      */
     public <V> void sput(FieldId<?, V> fieldId, Local<? extends V> source) {
@@ -621,7 +621,7 @@ public final class Code {
 
     // instructions: invoke
 
-    /**
+    /*
      * Calls the constructor {@code constructor} using {@code args} and assigns
      * the new instance to {@code target}.
      */
@@ -635,7 +635,7 @@ public final class Code {
         invokeDirect(constructor, null, target, args);
     }
 
-    /**
+    /*
      * Calls the static method {@code method} using {@code args} and assigns the
      * result to {@code target}.
      *
@@ -646,7 +646,7 @@ public final class Code {
         invoke(Rops.opInvokeStatic(method.prototype(true)), method, target, null, args);
     }
 
-    /**
+    /*
      * Calls the non-private instance method {@code method} of {@code instance}
      * using {@code args} and assigns the result to {@code target}.
      *
@@ -660,7 +660,7 @@ public final class Code {
         invoke(Rops.opInvokeVirtual(method.prototype(true)), method, target, instance, args);
     }
 
-    /**
+    /*
      * Calls {@code method} of {@code instance} using {@code args} and assigns
      * the result to {@code target}.
      *
@@ -674,7 +674,7 @@ public final class Code {
         invoke(Rops.opInvokeDirect(method.prototype(true)), method, target, instance, args);
     }
 
-    /**
+    /*
      * Calls the closest superclass's virtual method {@code method} of {@code
      * instance} using {@code args} and assigns the result to {@code target}.
      *
@@ -686,7 +686,7 @@ public final class Code {
         invoke(Rops.opInvokeSuper(method.prototype(true)), method, target, instance, args);
     }
 
-    /**
+    /*
      * Calls the interface method {@code method} of {@code instance} using
      * {@code args} and assigns the result to {@code target}.
      *
@@ -710,7 +710,7 @@ public final class Code {
 
     // instructions: types
 
-    /**
+    /*
      * Tests if the value in {@code source} is assignable to {@code type}. If it
      * is, {@code target} is assigned to 1; otherwise {@code target} is assigned
      * to 0.
@@ -721,7 +721,7 @@ public final class Code {
         moveResult(target, true);
     }
 
-    /**
+    /*
      * Performs either a numeric cast or a type cast.
      *
      * <h3>Numeric Casts</h3>
@@ -778,7 +778,7 @@ public final class Code {
 
     // instructions: arrays
 
-    /**
+    /*
      * Sets {@code target} to the length of the array in {@code array}.
      */
     public <T> void arrayLength(Local<Integer> target, Local<T> array) {
@@ -787,7 +787,7 @@ public final class Code {
         moveResult(target, true);
     }
 
-    /**
+    /*
      * Assigns {@code target} to a newly allocated array of length {@code
      * length}. The array's type is the same as {@code target}'s type.
      */
@@ -797,7 +797,7 @@ public final class Code {
         moveResult(target, true);
     }
 
-    /**
+    /*
      * Assigns the element at {@code index} in {@code array} to {@code target}.
      */
     public void aget(Local<?> target, Local<?> array, Local<Integer> index) {
@@ -806,7 +806,7 @@ public final class Code {
         moveResult(target, true);
     }
 
-    /**
+    /*
      * Assigns {@code source} to the element at {@code index} in {@code array}.
      */
     public void aput(Local<?> array, Local<Integer> index, Local<?> source) {
@@ -816,7 +816,7 @@ public final class Code {
 
     // instructions: return
 
-    /**
+    /*
      * Returns from a {@code void} method. After a return it is an error to
      * define further instructions after a return without first {@link #mark
      * marking} an existing unmarked label.
@@ -830,7 +830,7 @@ public final class Code {
                 RegisterSpecList.EMPTY));
     }
 
-    /**
+    /*
      * Returns the value in {@code result} to the calling method. After a return
      * it is an error to define further instructions after a return without
      * first {@link #mark marking} an existing unmarked label.
@@ -854,7 +854,7 @@ public final class Code {
 
     // instructions; synchronized
 
-    /**
+    /*
      * Awaits the lock on {@code monitor}, and acquires it.
      */
     public void monitorEnter(Local<?> monitor) {
@@ -862,7 +862,7 @@ public final class Code {
                 RegisterSpecList.make(monitor.spec()), catches));
     }
 
-    /**
+    /*
      * Releases the held lock on {@code monitor}.
      */
     public void monitorExit(Local<?> monitor) {
@@ -886,7 +886,7 @@ public final class Code {
         return result;
     }
 
-    /**
+    /*
      * Removes empty labels and assigns IDs to non-empty labels.
      */
     private void cleanUpLabels() {

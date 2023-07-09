@@ -18,15 +18,15 @@ package org.ternlang.dx.util;
 
 import java.util.Arrays;
 
-/**
+/*
  * Simple (mostly) fixed-size list of objects, which may be made immutable.
  */
 public class FixedSizeList
         extends MutabilityControl implements ToHuman {
-    /** {@code non-null;} array of elements */
+    /* {@code non-null;} array of elements */
     private Object[] arr;
 
-    /**
+    /*
      * Constructs an instance. All indices initially contain {@code null}.
      *
      * @param size the size of the list
@@ -42,7 +42,7 @@ public class FixedSizeList
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean equals(Object other) {
         if (this == other) {
@@ -59,13 +59,13 @@ public class FixedSizeList
         return Arrays.equals(arr, list.arr);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         return Arrays.hashCode(arr);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         String name = getClass().getName();
@@ -76,7 +76,7 @@ public class FixedSizeList
                          false);
     }
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * This method will only work if every element of the list
@@ -91,7 +91,7 @@ public class FixedSizeList
                          true);
     }
 
-    /**
+    /*
      * Gets a customized string form for this instance.
      *
      * @param prefix {@code null-ok;} prefix for the start of the result
@@ -103,7 +103,7 @@ public class FixedSizeList
         return toString0(prefix, separator, suffix, false);
     }
 
-    /**
+    /*
      * Gets a customized human string for this instance. This method will
      * only work if every element of the list implements {@link
      * ToHuman}.
@@ -117,14 +117,14 @@ public class FixedSizeList
         return toString0(prefix, separator, suffix, true);
     }
 
-    /**
+    /*
      * Gets the number of elements in this list.
      */
     public final int size() {
         return arr.length;
     }
 
-    /**
+    /*
      * Shrinks this instance to fit, by removing any unset
      * ({@code null}) elements, leaving the remaining elements in
      * their original order.
@@ -162,7 +162,7 @@ public class FixedSizeList
         }
     }
 
-    /**
+    /*
      * Gets the indicated element. It is an error to call this with the
      * index for an element which was never set; if you do that, this
      * will throw {@code NullPointerException}. This method is
@@ -187,7 +187,7 @@ public class FixedSizeList
         }
     }
 
-    /**
+    /*
      * Gets the indicated element, allowing {@code null}s to be
      * returned. This method is protected so that subclasses may
      * (optionally) offer a safe type-checked public interface to
@@ -200,7 +200,7 @@ public class FixedSizeList
         return arr[n];
     }
 
-    /**
+    /*
      * Sets the element at the given index, but without doing any type
      * checks on the element. This method is protected so that
      * subclasses may offer a safe type-checked public interface to
@@ -220,7 +220,7 @@ public class FixedSizeList
         }
     }
 
-    /**
+    /*
      * Throws the appropriate exception for the given index value.
      *
      * @param n the index value
@@ -235,7 +235,7 @@ public class FixedSizeList
         throw new IndexOutOfBoundsException("n >= size()");
     }
 
-    /**
+    /*
      * Helper for {@link #toString} and {@link #toHuman}, which both of
      * those call to pretty much do everything.
      *

@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -33,35 +33,35 @@ import java.util.List;
 
 import org.ternlang.asm.MethodVisitor;
 
-/**
+/*
  * A node that represents a try catch block.
  * 
  * @author Eric Bruneton
  */
 public class TryCatchBlockNode {
 
-    /**
+    /*
      * Beginning of the exception handler's scope (inclusive).
      */
     public LabelNode start;
 
-    /**
+    /*
      * End of the exception handler's scope (exclusive).
      */
     public LabelNode end;
 
-    /**
+    /*
      * Beginning of the exception handler's code.
      */
     public LabelNode handler;
 
-    /**
+    /*
      * Internal name of the type of exceptions handled by the handler. May be
      * <tt>null</tt> to catch any exceptions (for "finally" blocks).
      */
     public String type;
 
-    /**
+    /*
      * The runtime visible type annotations on the exception handler type. This
      * list is a list of {@link TypeAnnotationNode} objects. May be
      * <tt>null</tt>.
@@ -71,7 +71,7 @@ public class TryCatchBlockNode {
      */
     public List<TypeAnnotationNode> visibleTypeAnnotations;
 
-    /**
+    /*
      * The runtime invisible type annotations on the exception handler type.
      * This list is a list of {@link TypeAnnotationNode} objects. May be
      * <tt>null</tt>.
@@ -81,7 +81,7 @@ public class TryCatchBlockNode {
      */
     public List<TypeAnnotationNode> invisibleTypeAnnotations;
 
-    /**
+    /*
      * Constructs a new {@link TryCatchBlockNode}.
      * 
      * @param start
@@ -103,7 +103,7 @@ public class TryCatchBlockNode {
         this.type = type;
     }
 
-    /**
+    /*
      * Updates the index of this try catch block in the method's list of try
      * catch block nodes. This index maybe stored in the 'target' field of the
      * type annotations of this block.
@@ -126,7 +126,7 @@ public class TryCatchBlockNode {
         }
     }
 
-    /**
+    /*
      * Makes the given visitor visit this try catch block.
      * 
      * @param mv

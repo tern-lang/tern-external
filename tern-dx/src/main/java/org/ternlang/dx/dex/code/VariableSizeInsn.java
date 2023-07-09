@@ -19,11 +19,11 @@ package org.ternlang.dx.dex.code;
 import org.ternlang.dx.rop.code.RegisterSpecList;
 import org.ternlang.dx.rop.code.SourcePosition;
 
-/**
+/*
  * Pseudo-instruction base class for variable-sized instructions.
  */
 public abstract class VariableSizeInsn extends DalvInsn {
-    /**
+    /*
      * Constructs an instance. The output address of this instance is initially
      * unknown ({@code -1}).
      *
@@ -35,13 +35,13 @@ public abstract class VariableSizeInsn extends DalvInsn {
         super(Dops.SPECIAL_FORMAT, position, registers);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final DalvInsn withOpcode(Dop opcode) {
         throw new RuntimeException("unsupported");
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final DalvInsn withRegisterOffset(int delta) {
         return withRegisters(getRegisters().withOffset(delta));

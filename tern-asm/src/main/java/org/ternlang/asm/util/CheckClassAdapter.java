@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -55,7 +55,7 @@ import org.ternlang.asm.tree.analysis.BasicValue;
 import org.ternlang.asm.tree.analysis.Frame;
 import org.ternlang.asm.tree.analysis.SimpleVerifier;
 
-/**
+/*
  * A {@link ClassVisitor} that checks that its methods are properly used. More
  * precisely this class adapter checks each method call individually, based
  * <i>only</i> on its arguments, but does <i>not</i> check the <i>sequence</i>
@@ -126,43 +126,43 @@ import org.ternlang.asm.tree.analysis.SimpleVerifier;
  */
 public class CheckClassAdapter extends ClassVisitor {
 
-    /**
+    /*
      * The class version number.
      */
     private int version;
 
-    /**
+    /*
      * <tt>true</tt> if the visit method has been called.
      */
     private boolean start;
 
-    /**
+    /*
      * <tt>true</tt> if the visitSource method has been called.
      */
     private boolean source;
 
-    /**
+    /*
      * <tt>true</tt> if the visitOuterClass method has been called.
      */
     private boolean outer;
 
-    /**
+    /*
      * <tt>true</tt> if the visitEnd method has been called.
      */
     private boolean end;
 
-    /**
+    /*
      * The already visited labels. This map associate Integer values to Label
      * keys.
      */
     private Map<Label, Integer> labels;
 
-    /**
+    /*
      * <tt>true</tt> if the method code must be checked with a BasicVerifier.
      */
     private boolean checkDataFlow;
 
-    /**
+    /*
      * Checks a given class.
      * <p>
      * Usage: CheckClassAdapter &lt;binary class name or class file name&gt;
@@ -190,7 +190,7 @@ public class CheckClassAdapter extends ClassVisitor {
         verify(cr, false, new PrintWriter(System.err));
     }
 
-    /**
+    /*
      * Checks a given class.
      * 
      * @param cr
@@ -242,7 +242,7 @@ public class CheckClassAdapter extends ClassVisitor {
         pw.flush();
     }
 
-    /**
+    /*
      * Checks a given class
      * 
      * @param cr
@@ -306,7 +306,7 @@ public class CheckClassAdapter extends ClassVisitor {
         return n == -1 ? name : name.substring(n + 1, k);
     }
 
-    /**
+    /*
      * Constructs a new {@link CheckClassAdapter}. <i>Subclasses must not use
      * this constructor</i>. Instead, they must use the
      * {@link #CheckClassAdapter(int, ClassVisitor, boolean)} version.
@@ -318,7 +318,7 @@ public class CheckClassAdapter extends ClassVisitor {
         this(cv, true);
     }
 
-    /**
+    /*
      * Constructs a new {@link CheckClassAdapter}. <i>Subclasses must not use
      * this constructor</i>. Instead, they must use the
      * {@link #CheckClassAdapter(int, ClassVisitor, boolean)} version.
@@ -340,7 +340,7 @@ public class CheckClassAdapter extends ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Constructs a new {@link CheckClassAdapter}.
      * 
      * @param api
@@ -569,7 +569,7 @@ public class CheckClassAdapter extends ClassVisitor {
     // Utility methods
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Checks that the visit method has been called and that visitEnd has not
      * been called.
      */
@@ -584,7 +584,7 @@ public class CheckClassAdapter extends ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Checks that the given access flags do not contain invalid flags. This
      * method also checks that mutually incompatible flags are not set
      * simultaneously.
@@ -615,7 +615,7 @@ public class CheckClassAdapter extends ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Checks a class signature.
      * 
      * @param signature
@@ -639,7 +639,7 @@ public class CheckClassAdapter extends ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Checks a method signature.
      * 
      * @param signature
@@ -678,7 +678,7 @@ public class CheckClassAdapter extends ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Checks a field signature.
      * 
      * @param signature
@@ -692,7 +692,7 @@ public class CheckClassAdapter extends ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Checks the reference to a type in a type annotation.
      * 
      * @param typeRef
@@ -763,7 +763,7 @@ public class CheckClassAdapter extends ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Checks the formal type parameters of a class or method signature.
      * 
      * @param signature
@@ -784,7 +784,7 @@ public class CheckClassAdapter extends ClassVisitor {
         return pos + 1;
     }
 
-    /**
+    /*
      * Checks a formal type parameter of a class or method signature.
      * 
      * @param signature
@@ -808,7 +808,7 @@ public class CheckClassAdapter extends ClassVisitor {
         return pos;
     }
 
-    /**
+    /*
      * Checks a field type signature.
      * 
      * @param signature
@@ -834,7 +834,7 @@ public class CheckClassAdapter extends ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Checks a class type signature.
      * 
      * @param signature
@@ -865,7 +865,7 @@ public class CheckClassAdapter extends ClassVisitor {
         return checkChar(';', signature, pos);
     }
 
-    /**
+    /*
      * Checks the type arguments in a class type signature.
      * 
      * @param signature
@@ -886,7 +886,7 @@ public class CheckClassAdapter extends ClassVisitor {
         return pos + 1;
     }
 
-    /**
+    /*
      * Checks a type argument in a class type signature.
      * 
      * @param signature
@@ -908,7 +908,7 @@ public class CheckClassAdapter extends ClassVisitor {
         return checkFieldTypeSignature(signature, pos);
     }
 
-    /**
+    /*
      * Checks a type variable signature.
      * 
      * @param signature
@@ -927,7 +927,7 @@ public class CheckClassAdapter extends ClassVisitor {
         return checkChar(';', signature, pos);
     }
 
-    /**
+    /*
      * Checks a type signature.
      * 
      * @param signature
@@ -955,7 +955,7 @@ public class CheckClassAdapter extends ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Checks an identifier.
      * 
      * @param signature
@@ -976,7 +976,7 @@ public class CheckClassAdapter extends ClassVisitor {
         return pos;
     }
 
-    /**
+    /*
      * Checks a single character.
      * 
      * @param signature
@@ -993,7 +993,7 @@ public class CheckClassAdapter extends ClassVisitor {
                 + "' expected at index " + pos);
     }
 
-    /**
+    /*
      * Returns the signature car at the given index.
      * 
      * @param signature

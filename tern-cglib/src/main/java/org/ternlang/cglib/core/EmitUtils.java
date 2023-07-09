@@ -93,7 +93,7 @@ public class EmitUtils {
         e.end_method();
     }
     
-    /**
+    /*
      * Process an array on the stack. Assumes the top item on the stack
      * is an array of the specified type. For each element in the array,
      * puts the element on the stack and triggers the callback.
@@ -125,7 +125,7 @@ public class EmitUtils {
         e.if_icmp(e.LT, loopbody);
     }
     
-    /**
+    /*
      * Process two arrays on the stack in parallel. Assumes the top two items on the stack
      * are arrays of the specified class. The arrays must be the same length. For each pair
      * of elements in the arrays, puts the pair on the stack and triggers the callback.
@@ -388,7 +388,7 @@ public class EmitUtils {
         }
     }
 
-    /**
+    /*
      * @deprecated use {@link #hash_code(CodeEmitter, Type, int, CustomizerRegistry)} instead
      */
     @Deprecated
@@ -488,7 +488,7 @@ public class EmitUtils {
 //         not_equals(e, type, notEquals, null);
 //     }
     
-    /**
+    /*
      * @deprecated use {@link #not_equals(CodeEmitter, Type, Label, CustomizerRegistry)} instead
      */
     @Deprecated
@@ -496,7 +496,7 @@ public class EmitUtils {
     	not_equals(e, type, notEquals, CustomizerRegistry.singleton(customizer));
     }
     
-    /**
+    /*
      * Branches to the specified label if the top two items on the stack
      * are not equal. The items must both be of the specified
      * class. Equality is determined by comparing primitive values
@@ -550,7 +550,7 @@ public class EmitUtils {
         }
     }
 
-    /**
+    /*
      * If both objects on the top of the stack are non-null, does nothing.
      * If one is null, or both are null, both are popped off and execution
      * branches to the respective label.
@@ -592,7 +592,7 @@ public class EmitUtils {
     }
     */
 
-    /**
+    /*
       * @deprecated use {@link #append_string(CodeEmitter, Type, ArrayDelimiters, CustomizerRegistry)} instead
       */
     @Deprecated

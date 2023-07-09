@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -31,7 +31,7 @@ package org.ternlang.asm.tree.analysis;
 
 import org.ternlang.asm.tree.AbstractInsnNode;
 
-/**
+/*
  * Thrown if a problem occurs during the analysis of a method.
  * 
  * @author Bing Ran

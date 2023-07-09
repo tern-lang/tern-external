@@ -24,7 +24,7 @@ import org.ternlang.dex.Leb128;
 import org.ternlang.dex.util.ByteOutput;
 import org.ternlang.dex.util.ExceptionWithContext;
 
-/**
+/*
  * Implementation of {@link AnnotatedOutput} which stores the written data
  * into a {@code byte[]}.
  *
@@ -33,40 +33,40 @@ import org.ternlang.dex.util.ExceptionWithContext;
  */
 public final class ByteArrayAnnotatedOutput
         implements AnnotatedOutput, ByteOutput {
-    /** default size for stretchy instances */
+    /* default size for stretchy instances */
     private static final int DEFAULT_SIZE = 1000;
 
-    /**
+    /*
      * whether the instance is stretchy, that is, whether its array
      * may be resized to increase capacity
      */
     private final boolean stretchy;
 
-    /** {@code non-null;} the data itself */
+    /* {@code non-null;} the data itself */
     private byte[] data;
 
-    /** {@code >= 0;} current output cursor */
+    /* {@code >= 0;} current output cursor */
     private int cursor;
 
-    /** whether annotations are to be verbose */
+    /* whether annotations are to be verbose */
     private boolean verbose;
 
-    /**
+    /*
      * {@code null-ok;} list of annotations, or {@code null} if this instance
      * isn't keeping them
      */
     private ArrayList<Annotation> annotations;
 
-    /** {@code >= 40 (if used);} the desired maximum annotation width */
+    /* {@code >= 40 (if used);} the desired maximum annotation width */
     private int annotationWidth;
 
-    /**
+    /*
      * {@code >= 8 (if used);} the number of bytes of hex output to use
      * in annotations
      */
     private int hexCols;
 
-    /**
+    /*
      * Constructs an instance with a fixed maximum size. Note that the
      * given array is the only one that will be used to store data. In
      * particular, no reallocation will occur in order to expand the
@@ -79,7 +79,7 @@ public final class ByteArrayAnnotatedOutput
         this(data, false);
     }
 
-    /**
+    /*
      * Constructs a "stretchy" instance. The underlying array may be
      * reallocated. The constructed instance does not keep annotations
      * by default.
@@ -88,7 +88,7 @@ public final class ByteArrayAnnotatedOutput
         this(DEFAULT_SIZE);
     }
 
-    /**
+    /*
      * Constructs a "stretchy" instance with initial size {@code size}. The
      * underlying array may be reallocated. The constructed instance does not
      * keep annotations by default.
@@ -97,7 +97,7 @@ public final class ByteArrayAnnotatedOutput
         this(new byte[size], true);
     }
 
-    /**
+    /*
      * Internal constructor.
      *
      * @param data {@code non-null;} data array to use for output
@@ -117,7 +117,7 @@ public final class ByteArrayAnnotatedOutput
         this.hexCols = 0;
     }
 
-    /**
+    /*
      * Gets the underlying {@code byte[]} of this instance, which
      * may be larger than the number of bytes written
      *
@@ -129,7 +129,7 @@ public final class ByteArrayAnnotatedOutput
         return data;
     }
 
-    /**
+    /*
      * Constructs and returns a new {@code byte[]} that contains
      * the written contents exactly (that is, with no extra unwritten
      * bytes at the end).
@@ -144,12 +144,12 @@ public final class ByteArrayAnnotatedOutput
         return result;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int getCursor() {
         return cursor;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void assertCursor(int expectedCursor) {
         if (cursor != expectedCursor) {
             throw new ExceptionWithContext("expected cursor " +
@@ -157,7 +157,7 @@ public final class ByteArrayAnnotatedOutput
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void writeByte(int value) {
         int writeAt = cursor;
         int end = writeAt + 1;
@@ -173,7 +173,7 @@ public final class ByteArrayAnnotatedOutput
         cursor = end;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void writeShort(int value) {
         int writeAt = cursor;
         int end = writeAt + 2;
@@ -190,7 +190,7 @@ public final class ByteArrayAnnotatedOutput
         cursor = end;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void writeInt(int value) {
         int writeAt = cursor;
         int end = writeAt + 4;
@@ -209,7 +209,7 @@ public final class ByteArrayAnnotatedOutput
         cursor = end;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void writeLong(long value) {
         int writeAt = cursor;
         int end = writeAt + 8;
@@ -236,7 +236,7 @@ public final class ByteArrayAnnotatedOutput
         cursor = end;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int writeUleb128(int value) {
         if (stretchy) {
             ensureCapacity(cursor + 5); // pessimistic
@@ -246,7 +246,7 @@ public final class ByteArrayAnnotatedOutput
         return (cursor - cursorBefore);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int writeSleb128(int value) {
         if (stretchy) {
             ensureCapacity(cursor + 5); // pessimistic
@@ -256,7 +256,7 @@ public final class ByteArrayAnnotatedOutput
         return (cursor - cursorBefore);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void write(ByteArray bytes) {
         int blen = bytes.size();
         int writeAt = cursor;
@@ -273,7 +273,7 @@ public final class ByteArrayAnnotatedOutput
         cursor = end;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void write(byte[] bytes, int offset, int length) {
         int writeAt = cursor;
         int end = writeAt + length;
@@ -297,12 +297,12 @@ public final class ByteArrayAnnotatedOutput
         cursor = end;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void write(byte[] bytes) {
         write(bytes, 0, bytes.length);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void writeZeroes(int count) {
         if (count < 0) {
             throw new IllegalArgumentException("count < 0");
@@ -325,7 +325,7 @@ public final class ByteArrayAnnotatedOutput
         cursor = end;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void alignTo(int alignment) {
         int mask = alignment - 1;
 
@@ -350,17 +350,17 @@ public final class ByteArrayAnnotatedOutput
         cursor = end;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public boolean annotates() {
         return (annotations != null);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public boolean isVerbose() {
         return verbose;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void annotate(String msg) {
         if (annotations == null) {
             return;
@@ -370,7 +370,7 @@ public final class ByteArrayAnnotatedOutput
         annotations.add(new Annotation(cursor, msg));
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void annotate(int amt, String msg) {
         if (annotations == null) {
             return;
@@ -391,7 +391,7 @@ public final class ByteArrayAnnotatedOutput
         annotations.add(new Annotation(startAt, startAt + amt, msg));
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void endAnnotation() {
         if (annotations == null) {
             return;
@@ -404,14 +404,14 @@ public final class ByteArrayAnnotatedOutput
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int getAnnotationWidth() {
         int leftWidth = 8 + (hexCols * 2) + (hexCols / 2);
 
         return annotationWidth - leftWidth;
     }
 
-    /**
+    /*
      * Indicates that this instance should keep annotations. This method may
      * be called only once per instance, and only before any data has been
      * written to the it.
@@ -441,7 +441,7 @@ public final class ByteArrayAnnotatedOutput
         this.verbose = verbose;
     }
 
-    /**
+    /*
      * Finishes up annotation processing. This closes off any open
      * annotations and removes annotations that don't refer to written
      * data.
@@ -468,7 +468,7 @@ public final class ByteArrayAnnotatedOutput
         }
     }
 
-    /**
+    /*
      * Writes the annotated content of this instance to the given writer.
      *
      * @param out {@code non-null;} where to write to
@@ -523,7 +523,7 @@ public final class ByteArrayAnnotatedOutput
         twoc.flush();
     }
 
-    /**
+    /*
      * Throws the excpetion for when an attempt is made to write past the
      * end of the instance.
      */
@@ -531,7 +531,7 @@ public final class ByteArrayAnnotatedOutput
         throw new IndexOutOfBoundsException("attempt to write past the end");
     }
 
-    /**
+    /*
      * Reallocates the underlying array if necessary. Calls to this method
      * should be guarded by a test of {@link #stretchy}.
      *
@@ -545,23 +545,23 @@ public final class ByteArrayAnnotatedOutput
         }
     }
 
-    /**
+    /*
      * Annotation on output.
      */
     private static class Annotation {
-        /** {@code >= 0;} start of annotated range (inclusive) */
+        /* {@code >= 0;} start of annotated range (inclusive) */
         private final int start;
 
-        /**
+        /*
          * {@code >= 0;} end of annotated range (exclusive);
          * {@code Integer.MAX_VALUE} if unclosed
          */
         private int end;
 
-        /** {@code non-null;} annotation text */
+        /* {@code non-null;} annotation text */
         private final String text;
 
-        /**
+        /*
          * Constructs an instance.
          *
          * @param start {@code >= 0;} start of annotated range
@@ -575,7 +575,7 @@ public final class ByteArrayAnnotatedOutput
             this.text = text;
         }
 
-        /**
+        /*
          * Constructs an instance. It is initally unclosed.
          *
          * @param start {@code >= 0;} start of annotated range
@@ -585,7 +585,7 @@ public final class ByteArrayAnnotatedOutput
             this(start, Integer.MAX_VALUE, text);
         }
 
-        /**
+        /*
          * Sets the end as given, but only if the instance is unclosed;
          * otherwise, do nothing.
          *
@@ -597,7 +597,7 @@ public final class ByteArrayAnnotatedOutput
             }
         }
 
-        /**
+        /*
          * Sets the end as given.
          *
          * @param end {@code >= start;} the end
@@ -606,7 +606,7 @@ public final class ByteArrayAnnotatedOutput
             this.end = end;
         }
 
-        /**
+        /*
          * Gets the start.
          *
          * @return the start
@@ -615,7 +615,7 @@ public final class ByteArrayAnnotatedOutput
             return start;
         }
 
-        /**
+        /*
          * Gets the end.
          *
          * @return the end
@@ -624,7 +624,7 @@ public final class ByteArrayAnnotatedOutput
             return end;
         }
 
-        /**
+        /*
          * Gets the text.
          *
          * @return {@code non-null;} the text

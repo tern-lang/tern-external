@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -29,7 +29,7 @@
  */
 package org.ternlang.asm;
 
-/**
+/*
  * A non standard class, field, method or code attribute.
  * 
  * @author Eric Bruneton
@@ -37,22 +37,22 @@ package org.ternlang.asm;
  */
 public class Attribute {
 
-    /**
+    /*
      * The type of this attribute.
      */
     public final String type;
 
-    /**
+    /*
      * The raw value of this attribute, used only for unknown attributes.
      */
     byte[] value;
 
-    /**
+    /*
      * The next attribute in this attribute list. May be <tt>null</tt>.
      */
     Attribute next;
 
-    /**
+    /*
      * Constructs a new empty attribute.
      * 
      * @param type
@@ -62,7 +62,7 @@ public class Attribute {
         this.type = type;
     }
 
-    /**
+    /*
      * Returns <tt>true</tt> if this type of attribute is unknown. The default
      * implementation of this method always returns <tt>true</tt>.
      * 
@@ -72,7 +72,7 @@ public class Attribute {
         return true;
     }
 
-    /**
+    /*
      * Returns <tt>true</tt> if this type of attribute is a code attribute.
      * 
      * @return <tt>true</tt> if this type of attribute is a code attribute.
@@ -81,7 +81,7 @@ public class Attribute {
         return false;
     }
 
-    /**
+    /*
      * Returns the labels corresponding to this attribute.
      * 
      * @return the labels corresponding to this attribute, or <tt>null</tt> if
@@ -91,7 +91,7 @@ public class Attribute {
         return null;
     }
 
-    /**
+    /*
      * Reads a {@link #type type} attribute. This method must return a
      * <i>new</i> {@link Attribute} object, of type {@link #type type},
      * corresponding to the <tt>len</tt> bytes starting at the given offset, in
@@ -131,7 +131,7 @@ public class Attribute {
         return attr;
     }
 
-    /**
+    /*
      * Returns the byte array form of this attribute.
      * 
      * @param cw
@@ -164,7 +164,7 @@ public class Attribute {
         return v;
     }
 
-    /**
+    /*
      * Returns the length of the attribute list that begins with this attribute.
      * 
      * @return the length of the attribute list that begins with this attribute.
@@ -179,7 +179,7 @@ public class Attribute {
         return count;
     }
 
-    /**
+    /*
      * Returns the size of all the attributes in this attribute list.
      * 
      * @param cw
@@ -216,7 +216,7 @@ public class Attribute {
         return size;
     }
 
-    /**
+    /*
      * Writes all the attributes of this attribute list in the given byte
      * vector.
      * 

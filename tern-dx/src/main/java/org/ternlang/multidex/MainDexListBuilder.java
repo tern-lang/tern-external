@@ -29,7 +29,7 @@ import org.ternlang.dx.cf.iface.FieldList;
 import org.ternlang.dx.cf.iface.HasAttribute;
 import org.ternlang.dx.cf.iface.MethodList;
 
-/**
+/*
  * This is a command line tool used by mainDexClasses script to build a main dex classes list. First
  * argument of the command line is an archive, each class file contained in this archive is used to
  * identify a class that can be used during secondary dex installation, those class files
@@ -53,7 +53,7 @@ public class MainDexListBuilder {
             "Slightly longer version: This tool is used by mainDexClasses script to build" + EOL +
             "the main dex list." + EOL;
 
-    /**
+    /*
      * By default we force all classes annotated with runtime annotation to be kept in the
      * main dex list. This option disable the workaround, limiting the index pressure in the main
      * dex but exposing to the Dalvik resolution bug. The resolution bug occurs when accessing
@@ -138,7 +138,7 @@ public class MainDexListBuilder {
         }
     }
 
-    /**
+    /*
      * Returns a list of classes to keep. This can be passed to dx as a file with --main-dex-list.
      */
     public Set<String> getMainDexList() {
@@ -155,7 +155,7 @@ public class MainDexListBuilder {
         }
     }
 
-    /**
+    /*
      * Keep classes annotated with runtime annotations.
      */
     private void keepAnnotated(Path path) throws FileNotFoundException {

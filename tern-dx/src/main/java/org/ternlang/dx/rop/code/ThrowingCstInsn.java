@@ -21,16 +21,16 @@ import org.ternlang.dx.rop.cst.CstString;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeList;
 
-/**
+/*
  * Instruction which contains an explicit reference to a constant
  * and which might throw an exception.
  */
 public final class ThrowingCstInsn
         extends CstInsn {
-    /** {@code non-null;} list of exceptions caught */
+    /* {@code non-null;} list of exceptions caught */
     private final TypeList catches;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param opcode {@code non-null;} the opcode
@@ -55,7 +55,7 @@ public final class ThrowingCstInsn
         this.catches = catches;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String getInlineString() {
         Constant cst = getConstant();
@@ -66,19 +66,19 @@ public final class ThrowingCstInsn
         return constantString + " " + ThrowingInsn.toCatchString(catches);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public TypeList getCatches() {
         return catches;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void accept(Visitor visitor) {
         visitor.visitThrowingCstInsn(this);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withAddedCatch(Type type) {
         return new ThrowingCstInsn(getOpcode(), getPosition(),
@@ -86,7 +86,7 @@ public final class ThrowingCstInsn
                                    getConstant());
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withRegisterOffset(int delta) {
         return new ThrowingCstInsn(getOpcode(), getPosition(),
@@ -95,7 +95,7 @@ public final class ThrowingCstInsn
                                    getConstant());
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withNewRegisters(RegisterSpec result,
             RegisterSpecList sources) {

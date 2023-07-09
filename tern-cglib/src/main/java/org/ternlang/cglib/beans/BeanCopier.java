@@ -25,7 +25,7 @@ import org.ternlang.cglib.core.*;
 
 import java.util.*;
 
-/**
+/*
  * @author Chris Nokleberg
  */
 abstract public class BeanCopier

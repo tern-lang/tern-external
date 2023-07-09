@@ -18,18 +18,18 @@ package org.ternlang.dx.io.instructions;
 
 import org.ternlang.dx.io.IndexType;
 
-/**
+/*
  * A decoded Dalvik instruction which has register range arguments (an
  * "A" start register and a register count).
  */
 public final class RegisterRangeDecodedInstruction extends DecodedInstruction {
-    /** register argument "A" */
+    /* register argument "A" */
     private final int a;
 
-    /** register count */
+    /* register count */
     private final int registerCount;
 
-    /**
+    /*
      * Constructs an instance.
      */
     public RegisterRangeDecodedInstruction(InstructionCodec format, int opcode,
@@ -41,17 +41,17 @@ public final class RegisterRangeDecodedInstruction extends DecodedInstruction {
         this.registerCount = registerCount;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public int getRegisterCount() {
         return registerCount;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public int getA() {
         return a;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public DecodedInstruction withIndex(int newIndex) {
         return new RegisterRangeDecodedInstruction(
                 getFormat(), getOpcode(), newIndex, getIndexType(),

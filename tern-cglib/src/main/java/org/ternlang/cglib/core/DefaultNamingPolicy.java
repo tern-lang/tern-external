@@ -17,7 +17,7 @@ package org.ternlang.cglib.core;
 
 import java.util.Set;
 
-/**
+/*
  * The default policy used by {@link AbstractClassGenerator}.
  * Generates names such as
  * <p><code>net.sf.cglib.Foo$$EnhancerByCGLIB$$38272841</code><p>
@@ -30,7 +30,7 @@ import java.util.Set;
 public class DefaultNamingPolicy implements NamingPolicy {
     public static final DefaultNamingPolicy INSTANCE = new DefaultNamingPolicy();
 
-    /**
+    /*
      * This allows to test collisions of {@code key.hashCode()}.
      */
     private final static boolean STRESS_HASH_CODE = Boolean.getBoolean("org.ternlang.cglib.test.stressHashCodes");
@@ -53,7 +53,7 @@ public class DefaultNamingPolicy implements NamingPolicy {
         return attempt;
     }
 
-    /**
+    /*
      * Returns a string which is incorporated into every generated class name.
      * By default returns "ByCGLIB"
      */

@@ -20,7 +20,7 @@ import org.ternlang.dx.rop.cst.CstFieldRef;
 import org.ternlang.dx.rop.cst.CstNat;
 import org.ternlang.dx.rop.cst.CstString;
 
-/**
+/*
  * Identifies a field.
  *
  * @param <D> the type declaring this field
@@ -31,7 +31,7 @@ public final class FieldId<D, V> {
     final TypeId<V> type;
     final String name;
 
-    /** cached converted state */
+    /* cached converted state */
     final CstNat nat;
     final CstFieldRef constant;
 

@@ -25,7 +25,7 @@ import org.ternlang.cglib.transform.impl.InterceptFieldEnabled;
 import org.ternlang.cglib.transform.impl.InterceptFieldFilter;
 import org.ternlang.cglib.transform.impl.InterceptFieldTransformer;
 
-/**
+/*
  *
  * @author  baliuka
  */
@@ -35,11 +35,11 @@ public class TestInterceptFields extends AbstractTransformTest implements  Inter
     
     String field;
     
-    /** Creates a new instance of TestInterceptFields */
+    /* Creates a new instance of TestInterceptFields */
     public TestInterceptFields() {
     }
     
-    /** Creates a new instance of TestInterceptFields */
+    /* Creates a new instance of TestInterceptFields */
     public TestInterceptFields(String name) {
         super(name);
     }

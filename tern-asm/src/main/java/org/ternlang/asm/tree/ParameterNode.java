@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -31,25 +31,25 @@ package org.ternlang.asm.tree;
 
 import org.ternlang.asm.MethodVisitor;
 
-/**
+/*
  * A node that represents a parameter access and name.
  * 
  * @author Remi Forax
  */
 public class ParameterNode {
-    /**
+    /*
      * The parameter's name.
      */
     public String name;
 
-    /**
+    /*
      * The parameter's access flags (see {@link org.ternlang.asm.Opcodes}).
      * Valid values are <tt>ACC_FINAL</tt>, <tt>ACC_SYNTHETIC</tt> and
      * <tt>ACC_MANDATED</tt>.
      */
     public int access;
 
-    /**
+    /*
      * Constructs a new {@link ParameterNode}.
      * 
      * @param access
@@ -64,7 +64,7 @@ public class ParameterNode {
         this.access = access;
     }
 
-    /**
+    /*
      * Makes the given visitor visit this parameter declaration.
      * 
      * @param mv

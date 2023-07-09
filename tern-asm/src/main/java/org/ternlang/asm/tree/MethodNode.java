@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -43,47 +43,47 @@ import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.Type;
 import org.ternlang.asm.TypePath;
 
-/**
+/*
  * A node that represents a method.
  * 
  * @author Eric Bruneton
  */
 public class MethodNode extends MethodVisitor {
 
-    /**
+    /*
      * The method's access flags (see {@link Opcodes}). This field also
      * indicates if the method is synthetic and/or deprecated.
      */
     public int access;
 
-    /**
+    /*
      * The method's name.
      */
     public String name;
 
-    /**
+    /*
      * The method's descriptor (see {@link Type}).
      */
     public String desc;
 
-    /**
+    /*
      * The method's signature. May be <tt>null</tt>.
      */
     public String signature;
 
-    /**
+    /*
      * The internal names of the method's exception classes (see
      * {@link Type#getInternalName() getInternalName}). This list is a list of
      * {@link String} objects.
      */
     public List<String> exceptions;
 
-    /**
+    /*
      * The method parameter info (access flags and name)
      */
     public List<ParameterNode> parameters;
 
-    /**
+    /*
      * The runtime visible annotations of this method. This list is a list of
      * {@link AnnotationNode} objects. May be <tt>null</tt>.
      * 
@@ -92,7 +92,7 @@ public class MethodNode extends MethodVisitor {
      */
     public List<AnnotationNode> visibleAnnotations;
 
-    /**
+    /*
      * The runtime invisible annotations of this method. This list is a list of
      * {@link AnnotationNode} objects. May be <tt>null</tt>.
      * 
@@ -101,7 +101,7 @@ public class MethodNode extends MethodVisitor {
      */
     public List<AnnotationNode> invisibleAnnotations;
 
-    /**
+    /*
      * The runtime visible type annotations of this method. This list is a list
      * of {@link TypeAnnotationNode} objects. May be <tt>null</tt>.
      * 
@@ -110,7 +110,7 @@ public class MethodNode extends MethodVisitor {
      */
     public List<TypeAnnotationNode> visibleTypeAnnotations;
 
-    /**
+    /*
      * The runtime invisible type annotations of this method. This list is a
      * list of {@link TypeAnnotationNode} objects. May be <tt>null</tt>.
      * 
@@ -119,7 +119,7 @@ public class MethodNode extends MethodVisitor {
      */
     public List<TypeAnnotationNode> invisibleTypeAnnotations;
 
-    /**
+    /*
      * The non standard attributes of this method. This list is a list of
      * {@link Attribute} objects. May be <tt>null</tt>.
      * 
@@ -127,7 +127,7 @@ public class MethodNode extends MethodVisitor {
      */
     public List<Attribute> attrs;
 
-    /**
+    /*
      * The default value of this annotation interface method. This field must be
      * a {@link Byte}, {@link Boolean}, {@link Character}, {@link Short},
      * {@link Integer}, {@link Long}, {@link Float}, {@link Double},
@@ -137,7 +137,7 @@ public class MethodNode extends MethodVisitor {
      */
     public Object annotationDefault;
 
-    /**
+    /*
      * The runtime visible parameter annotations of this method. These lists are
      * lists of {@link AnnotationNode} objects. May be <tt>null</tt>.
      * 
@@ -146,7 +146,7 @@ public class MethodNode extends MethodVisitor {
      */
     public List<AnnotationNode>[] visibleParameterAnnotations;
 
-    /**
+    /*
      * The runtime invisible parameter annotations of this method. These lists
      * are lists of {@link AnnotationNode} objects. May be <tt>null</tt>.
      * 
@@ -155,7 +155,7 @@ public class MethodNode extends MethodVisitor {
      */
     public List<AnnotationNode>[] invisibleParameterAnnotations;
 
-    /**
+    /*
      * The instructions of this method. This list is a list of
      * {@link AbstractInsnNode} objects.
      * 
@@ -164,7 +164,7 @@ public class MethodNode extends MethodVisitor {
      */
     public InsnList instructions;
 
-    /**
+    /*
      * The try catch blocks of this method. This list is a list of
      * {@link TryCatchBlockNode} objects.
      * 
@@ -172,17 +172,17 @@ public class MethodNode extends MethodVisitor {
      */
     public List<TryCatchBlockNode> tryCatchBlocks;
 
-    /**
+    /*
      * The maximum stack size of this method.
      */
     public int maxStack;
 
-    /**
+    /*
      * The maximum number of local variables of this method.
      */
     public int maxLocals;
 
-    /**
+    /*
      * The local variables of this method. This list is a list of
      * {@link LocalVariableNode} objects. May be <tt>null</tt>
      * 
@@ -190,7 +190,7 @@ public class MethodNode extends MethodVisitor {
      */
     public List<LocalVariableNode> localVariables;
 
-    /**
+    /*
      * The visible local variable annotations of this method. This list is a
      * list of {@link LocalVariableAnnotationNode} objects. May be <tt>null</tt>
      * 
@@ -198,7 +198,7 @@ public class MethodNode extends MethodVisitor {
      */
     public List<LocalVariableAnnotationNode> visibleLocalVariableAnnotations;
 
-    /**
+    /*
      * The invisible local variable annotations of this method. This list is a
      * list of {@link LocalVariableAnnotationNode} objects. May be <tt>null</tt>
      * 
@@ -206,12 +206,12 @@ public class MethodNode extends MethodVisitor {
      */
     public List<LocalVariableAnnotationNode> invisibleLocalVariableAnnotations;
 
-    /**
+    /*
      * If the accept method has been called on this object.
      */
     private boolean visited;
 
-    /**
+    /*
      * Constructs an uninitialized {@link MethodNode}. <i>Subclasses must not
      * use this constructor</i>. Instead, they must use the
      * {@link #MethodNode(int)} version.
@@ -226,7 +226,7 @@ public class MethodNode extends MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Constructs an uninitialized {@link MethodNode}.
      * 
      * @param api
@@ -238,7 +238,7 @@ public class MethodNode extends MethodVisitor {
         this.instructions = new InsnList();
     }
 
-    /**
+    /*
      * Constructs a new {@link MethodNode}. <i>Subclasses must not use this
      * constructor</i>. Instead, they must use the
      * {@link #MethodNode(int, int, String, String, String, String[])} version.
@@ -268,7 +268,7 @@ public class MethodNode extends MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Constructs a new {@link MethodNode}.
      * 
      * @param api
@@ -611,7 +611,7 @@ public class MethodNode extends MethodVisitor {
     public void visitEnd() {
     }
 
-    /**
+    /*
      * Returns the LabelNode corresponding to the given Label. Creates a new
      * LabelNode if necessary. The default implementation of this method uses
      * the {@link Label#info} field to store associations between labels and
@@ -652,7 +652,7 @@ public class MethodNode extends MethodVisitor {
     // Accept method
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Checks that this method node is compatible with the given ASM API
      * version. This methods checks that this node, and all its nodes
      * recursively, do not contain elements that were introduced in more recent
@@ -712,7 +712,7 @@ public class MethodNode extends MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Makes the given class visitor visit this method.
      * 
      * @param cv
@@ -728,7 +728,7 @@ public class MethodNode extends MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Makes the given method visitor visit this method.
      * 
      * @param mv

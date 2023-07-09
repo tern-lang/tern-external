@@ -26,7 +26,7 @@ import org.ternlang.dex.MethodId;
 import org.ternlang.dex.ProtoId;
 import org.ternlang.dex.TableOfContents;
 
-/**
+/*
  * Executable that prints all indices of a dex file.
  */
 public final class DexIndexPrinter {

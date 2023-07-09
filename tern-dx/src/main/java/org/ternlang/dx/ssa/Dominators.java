@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.HashSet;
 
-/**
+/*
  * This class computes dominator and post-dominator information using the
  * Lengauer-Tarjan method.
  *
@@ -50,15 +50,15 @@ public final class Dominators {
     /* Method's basic blocks. */
     private final ArrayList<SsaBasicBlock> blocks;
 
-    /** indexed by basic block index */
+    /* indexed by basic block index */
     private final DFSInfo[] info;
 
     private final ArrayList<SsaBasicBlock> vertex;
 
-    /** {@code non-null;} the raw dominator info */
+    /* {@code non-null;} the raw dominator info */
     private final DomFront.DomInfo domInfos[];
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param meth {@code non-null;} method to process
@@ -75,7 +75,7 @@ public final class Dominators {
         this.vertex = new ArrayList<SsaBasicBlock>();
     }
 
-    /**
+    /*
      * Constructs a fully-initialized instance. (This method exists so as
      * to avoid calling a large amount of code in the constructor.)
      *
@@ -107,7 +107,7 @@ public final class Dominators {
         }
     }
 
-    /**
+    /*
      * Performs path compress on the DFS info.
      *
      * @param in Basic block whose DFS info we are path compressing.
@@ -161,7 +161,7 @@ public final class Dominators {
         return bbInfo.rep;
     }
 
-    /**
+    /*
      * Performs dominator/post-dominator calculation for the control
      * flow graph.
      *
@@ -247,7 +247,7 @@ public final class Dominators {
         }
     }
 
-    /**
+    /*
      * Callback for depth-first walk through control flow graph (either
      * from the entry block or the exit block). Records the traversal order
      * in the {@code info}list.
@@ -269,7 +269,7 @@ public final class Dominators {
         public int semidom;
         public SsaBasicBlock parent;
 
-        /**
+        /*
          * rep(resentative) is known as "label" in the paper. It is the node
          * that our block's DFS info has been unioned to.
          */

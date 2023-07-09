@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -35,19 +35,19 @@ import java.util.List;
 import org.ternlang.asm.AnnotationVisitor;
 import org.ternlang.asm.Opcodes;
 
-/**
+/*
  * A node that represents an annotation.
  * 
  * @author Eric Bruneton
  */
 public class AnnotationNode extends AnnotationVisitor {
 
-    /**
+    /*
      * The class descriptor of the annotation class.
      */
     public String desc;
 
-    /**
+    /*
      * The name value pairs of this annotation. Each name value pair is stored
      * as two consecutive elements in the list. The name is a {@link String},
      * and the value may be a {@link Byte}, {@link Boolean}, {@link Character},
@@ -60,7 +60,7 @@ public class AnnotationNode extends AnnotationVisitor {
      */
     public List<Object> values;
 
-    /**
+    /*
      * Constructs a new {@link AnnotationNode}. <i>Subclasses must not use this
      * constructor</i>. Instead, they must use the
      * {@link #AnnotationNode(int, String)} version.
@@ -77,7 +77,7 @@ public class AnnotationNode extends AnnotationVisitor {
         }
     }
 
-    /**
+    /*
      * Constructs a new {@link AnnotationNode}.
      * 
      * @param api
@@ -91,7 +91,7 @@ public class AnnotationNode extends AnnotationVisitor {
         this.desc = desc;
     }
 
-    /**
+    /*
      * Constructs a new {@link AnnotationNode} to visit an array value.
      * 
      * @param values
@@ -222,7 +222,7 @@ public class AnnotationNode extends AnnotationVisitor {
     // Accept methods
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Checks that this annotation node is compatible with the given ASM API
      * version. This methods checks that this node, and all its nodes
      * recursively, do not contain elements that were introduced in more recent
@@ -236,7 +236,7 @@ public class AnnotationNode extends AnnotationVisitor {
         // nothing to do
     }
 
-    /**
+    /*
      * Makes the given visitor visit this annotation.
      * 
      * @param av
@@ -255,7 +255,7 @@ public class AnnotationNode extends AnnotationVisitor {
         }
     }
 
-    /**
+    /*
      * Makes the given visitor visit a given annotation value.
      * 
      * @param av

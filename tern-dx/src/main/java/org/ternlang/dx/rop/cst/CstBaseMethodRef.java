@@ -20,7 +20,7 @@ import org.ternlang.dx.rop.type.Prototype;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeBearer;
 
-/**
+/*
  * Base class for constants of "methodish" type.
  *
  * <p><b>Note:</b> As a {@link TypeBearer}, this class bears the return type
@@ -28,16 +28,16 @@ import org.ternlang.dx.rop.type.TypeBearer;
  */
 public abstract class CstBaseMethodRef
         extends CstMemberRef {
-    /** {@code non-null;} the raw prototype for this method */
+    /* {@code non-null;} the raw prototype for this method */
     private final Prototype prototype;
 
-    /**
+    /*
      * {@code null-ok;} the prototype for this method taken to be an instance
      * method, or {@code null} if not yet calculated
      */
     private Prototype instancePrototype;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param definingClass {@code non-null;} the type of the defining class
@@ -51,7 +51,7 @@ public abstract class CstBaseMethodRef
         this.instancePrototype = null;
     }
 
-    /**
+    /*
      * Gets the raw prototype of this method. This doesn't include a
      * {@code this} argument.
      *
@@ -61,7 +61,7 @@ public abstract class CstBaseMethodRef
         return prototype;
     }
 
-    /**
+    /*
      * Gets the prototype of this method as either a
      * {@code static} or instance method. In the case of a
      * {@code static} method, this is the same as the raw
@@ -84,7 +84,7 @@ public abstract class CstBaseMethodRef
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected final int compareTo0(Constant other) {
         int cmp = super.compareTo0(other);
@@ -97,7 +97,7 @@ public abstract class CstBaseMethodRef
         return prototype.compareTo(otherMethod.prototype);
     }
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * In this case, this method returns the <i>return type</i> of this method.
@@ -108,7 +108,7 @@ public abstract class CstBaseMethodRef
         return prototype.getReturnType();
     }
 
-    /**
+    /*
      * Gets the number of words of parameters required by this
      * method's descriptor. Since instances of this class have no way
      * to know if they will be used in a {@code static} or
@@ -125,7 +125,7 @@ public abstract class CstBaseMethodRef
         return getPrototype(isStatic).getParameterTypes().getWordCount();
     }
 
-    /**
+    /*
      * Gets whether this is a reference to an instance initialization
      * method. This is just a convenient shorthand for
      * {@code getNat().isInstanceInit()}.
@@ -137,7 +137,7 @@ public abstract class CstBaseMethodRef
         return getNat().isInstanceInit();
     }
 
-    /**
+    /*
      * Gets whether this is a reference to a class initialization
      * method. This is just a convenient shorthand for
      * {@code getNat().isClassInit()}.

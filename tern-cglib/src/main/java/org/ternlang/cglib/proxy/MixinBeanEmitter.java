@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
 import org.ternlang.asm.ClassVisitor;
 import org.ternlang.cglib.core.ReflectUtils;
 
-/**
+/*
  * @author Chris Nokleberg
  * @version $Id: MixinBeanEmitter.java,v 1.2 2004/06/24 21:15:20 herbyderby Exp $
  */

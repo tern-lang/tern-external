@@ -15,7 +15,7 @@
  */
 package org.ternlang.cglib.transform.impl;
 
-/**
+/*
  * @author Chris Nokleberg
  */
 public class AbstractInterceptFieldCallback implements InterceptFieldCallback {

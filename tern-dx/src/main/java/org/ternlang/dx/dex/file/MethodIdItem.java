@@ -18,11 +18,11 @@ package org.ternlang.dx.dex.file;
 
 import org.ternlang.dx.rop.cst.CstBaseMethodRef;
 
-/**
+/*
  * Representation of a method reference inside a Dalvik file.
  */
 public final class MethodIdItem extends MemberIdItem {
-    /**
+    /*
      * Constructs an instance.
      *
      * @param method {@code non-null;} the constant for the method
@@ -31,13 +31,13 @@ public final class MethodIdItem extends MemberIdItem {
         super(method);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public ItemType itemType() {
         return ItemType.TYPE_METHOD_ID_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void addContents(DexFile file) {
         super.addContents(file);
@@ -46,7 +46,7 @@ public final class MethodIdItem extends MemberIdItem {
         protoIds.intern(getMethodRef().getPrototype());
     }
 
-    /**
+    /*
      * Gets the method constant.
      *
      * @return {@code non-null;} the constant
@@ -55,14 +55,14 @@ public final class MethodIdItem extends MemberIdItem {
         return (CstBaseMethodRef) getRef();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected int getTypoidIdx(DexFile file) {
         ProtoIdsSection protoIds = file.getProtoIds();
         return protoIds.indexOf(getMethodRef().getPrototype());
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected String getTypoidName() {
         return "proto_idx";

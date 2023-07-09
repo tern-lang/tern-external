@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -29,7 +29,7 @@
  */
 package org.ternlang.asm;
 
-/**
+/*
  * A visitor to visit a Java annotation. The methods of this class must be
  * called in the following order: ( <tt>visit</tt> | <tt>visitEnum</tt> |
  * <tt>visitAnnotation</tt> | <tt>visitArray</tt> )* <tt>visitEnd</tt>.
@@ -39,19 +39,19 @@ package org.ternlang.asm;
  */
 public abstract class AnnotationVisitor {
 
-    /**
+    /*
      * The ASM API version implemented by this visitor. The value of this field
      * must be one of {@link Opcodes#ASM4} or {@link Opcodes#ASM5}.
      */
     protected final int api;
 
-    /**
+    /*
      * The annotation visitor to which this visitor must delegate method calls.
      * May be null.
      */
     protected AnnotationVisitor av;
 
-    /**
+    /*
      * Constructs a new {@link AnnotationVisitor}.
      * 
      * @param api
@@ -62,7 +62,7 @@ public abstract class AnnotationVisitor {
         this(api, null);
     }
 
-    /**
+    /*
      * Constructs a new {@link AnnotationVisitor}.
      * 
      * @param api
@@ -80,7 +80,7 @@ public abstract class AnnotationVisitor {
         this.av = av;
     }
 
-    /**
+    /*
      * Visits a primitive value of the annotation.
      * 
      * @param name
@@ -101,7 +101,7 @@ public abstract class AnnotationVisitor {
         }
     }
 
-    /**
+    /*
      * Visits an enumeration value of the annotation.
      * 
      * @param name
@@ -117,7 +117,7 @@ public abstract class AnnotationVisitor {
         }
     }
 
-    /**
+    /*
      * Visits a nested annotation value of the annotation.
      * 
      * @param name
@@ -137,7 +137,7 @@ public abstract class AnnotationVisitor {
         return null;
     }
 
-    /**
+    /*
      * Visits an array value of the annotation. Note that arrays of primitive
      * types (such as byte, boolean, short, char, int, long, float or double)
      * can be passed as value to {@link #visit visit}. This is what
@@ -158,7 +158,7 @@ public abstract class AnnotationVisitor {
         return null;
     }
 
-    /**
+    /*
      * Visits the end of the annotation.
      */
     public void visitEnd() {

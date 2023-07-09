@@ -21,54 +21,54 @@ import java.util.HashSet;
 import org.ternlang.dx.rop.cst.Constant;
 import org.ternlang.dx.rop.type.Type;
 
-/**
+/*
  * Container for all the pieces of a concrete method. Each instance
  * corresponds to a {@code code} structure in a {@code .dex} file.
  */
 public final class DalvCode {
-    /**
+    /*
      * how much position info to preserve; one of the static
      * constants in {@link PositionList}
      */
     private final int positionInfo;
 
-    /**
+    /*
      * {@code null-ok;} the instruction list, ready for final processing;
      * nulled out in {@link #finishProcessingIfNecessary}
      */
     private OutputFinisher unprocessedInsns;
 
-    /**
+    /*
      * {@code non-null;} unprocessed catch table;
      * nulled out in {@link #finishProcessingIfNecessary}
      */
     private CatchBuilder unprocessedCatches;
 
-    /**
+    /*
      * {@code null-ok;} catch table; set in
      * {@link #finishProcessingIfNecessary}
      */
     private CatchTable catches;
 
-    /**
+    /*
      * {@code null-ok;} source positions list; set in
      * {@link #finishProcessingIfNecessary}
      */
     private PositionList positions;
 
-    /**
+    /*
      * {@code null-ok;} local variable list; set in
      * {@link #finishProcessingIfNecessary}
      */
     private LocalList locals;
 
-    /**
+    /*
      * {@code null-ok;} the processed instruction list; set in
      * {@link #finishProcessingIfNecessary}
      */
     private DalvInsnList insns;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param positionInfo how much position info to preserve; one of the
@@ -97,7 +97,7 @@ public final class DalvCode {
         this.insns = null;
     }
 
-    /**
+    /*
      * Finish up processing of the method.
      */
     private void finishProcessingIfNecessary() {
@@ -115,7 +115,7 @@ public final class DalvCode {
         unprocessedCatches = null;
     }
 
-    /**
+    /*
      * Assign indices in all instructions that need them, using the
      * given callback to perform lookups. This must be called before
      * {@link #getInsns}.
@@ -126,7 +126,7 @@ public final class DalvCode {
         unprocessedInsns.assignIndices(callback);
     }
 
-    /**
+    /*
      * Gets whether this instance has any position data to represent.
      *
      * @return {@code true} iff this instance has any position
@@ -137,7 +137,7 @@ public final class DalvCode {
             && unprocessedInsns.hasAnyPositionInfo();
     }
 
-    /**
+    /*
      * Gets whether this instance has any local variable data to represent.
      *
      * @return {@code true} iff this instance has any local variable
@@ -147,7 +147,7 @@ public final class DalvCode {
         return unprocessedInsns.hasAnyLocalInfo();
     }
 
-    /**
+    /*
      * Gets whether this instance has any catches at all (either typed
      * or catch-all).
      *
@@ -157,7 +157,7 @@ public final class DalvCode {
         return unprocessedCatches.hasAnyCatches();
     }
 
-    /**
+    /*
      * Gets the set of catch types handled anywhere in the code.
      *
      * @return {@code non-null;} the set of catch types
@@ -166,7 +166,7 @@ public final class DalvCode {
         return unprocessedCatches.getCatchTypes();
     }
 
-    /**
+    /*
      * Gets the set of all constants referred to by instructions in
      * the code.
      *
@@ -176,7 +176,7 @@ public final class DalvCode {
         return unprocessedInsns.getAllConstants();
     }
 
-    /**
+    /*
      * Gets the list of instructions.
      *
      * @return {@code non-null;} the instruction list
@@ -186,7 +186,7 @@ public final class DalvCode {
         return insns;
     }
 
-    /**
+    /*
      * Gets the catch (exception handler) table.
      *
      * @return {@code non-null;} the catch table
@@ -196,7 +196,7 @@ public final class DalvCode {
         return catches;
     }
 
-    /**
+    /*
      * Gets the source positions list.
      *
      * @return {@code non-null;} the source positions list
@@ -206,7 +206,7 @@ public final class DalvCode {
         return positions;
     }
 
-    /**
+    /*
      * Gets the source positions list.
      *
      * @return {@code non-null;} the source positions list
@@ -216,11 +216,11 @@ public final class DalvCode {
         return locals;
     }
 
-    /**
+    /*
      * Class used as a callback for {@link #assignIndices}.
      */
     public static interface AssignIndicesCallback {
-        /**
+        /*
          * Gets the index for the given constant.
          *
          * @param cst {@code non-null;} the constant

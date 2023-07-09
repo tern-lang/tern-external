@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -43,7 +43,7 @@ import org.ternlang.asm.FieldVisitor;
 import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 
-/**
+/*
  * A {@link ClassVisitor} that adds a serial version unique identifier to a
  * class if missing. Here is typical usage of this class:
  * 
@@ -112,53 +112,53 @@ import org.ternlang.asm.Opcodes;
  */
 public class SerialVersionUIDAdder extends ClassVisitor {
 
-    /**
+    /*
      * Flag that indicates if we need to compute SVUID.
      */
     private boolean computeSVUID;
 
-    /**
+    /*
      * Set to true if the class already has SVUID.
      */
     private boolean hasSVUID;
 
-    /**
+    /*
      * Classes access flags.
      */
     private int access;
 
-    /**
+    /*
      * Internal name of the class
      */
     private String name;
 
-    /**
+    /*
      * Interfaces implemented by the class.
      */
     private String[] interfaces;
 
-    /**
+    /*
      * Collection of fields. (except private static and private transient
      * fields)
      */
     private Collection<Item> svuidFields;
 
-    /**
+    /*
      * Set to true if the class has static initializer.
      */
     private boolean hasStaticInitializer;
 
-    /**
+    /*
      * Collection of non-private constructors.
      */
     private Collection<Item> svuidConstructors;
 
-    /**
+    /*
      * Collection of non-private methods.
      */
     private Collection<Item> svuidMethods;
 
-    /**
+    /*
      * Creates a new {@link SerialVersionUIDAdder}. <i>Subclasses must not use
      * this constructor</i>. Instead, they must use the
      * {@link #SerialVersionUIDAdder(int, ClassVisitor)} version.
@@ -176,7 +176,7 @@ public class SerialVersionUIDAdder extends ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Creates a new {@link SerialVersionUIDAdder}.
      * 
      * @param api
@@ -287,7 +287,7 @@ public class SerialVersionUIDAdder extends ClassVisitor {
         return super.visitField(access, name, desc, signature, value);
     }
 
-    /**
+    /*
      * Handle a bizarre special case. Nested classes (static classes declared
      * inside another class) that are protected have their access bit set to
      * public in their class files to deal with some odd reflection situation.
@@ -325,7 +325,7 @@ public class SerialVersionUIDAdder extends ClassVisitor {
     // Utility methods
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Returns true if the class already has a SVUID field. The result of this
      * method is only valid when visitEnd is or has been called.
      * 
@@ -343,7 +343,7 @@ public class SerialVersionUIDAdder extends ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Computes and returns the value of SVUID.
      * 
      * @return Returns the serial version UID
@@ -462,7 +462,7 @@ public class SerialVersionUIDAdder extends ClassVisitor {
         return svuid;
     }
 
-    /**
+    /*
      * Returns the SHA-1 message digest of the given value.
      * 
      * @param value
@@ -477,7 +477,7 @@ public class SerialVersionUIDAdder extends ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Sorts the items in the collection and writes it to the data output stream
      * 
      * @param itemCollection

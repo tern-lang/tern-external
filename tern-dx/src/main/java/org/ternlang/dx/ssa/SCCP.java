@@ -33,38 +33,38 @@ import org.ternlang.dx.rop.cst.TypedConstant;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeBearer;
 
-/**
+/*
  * A small variant of Wegman and Zadeck's Sparse Conditional Constant
  * Propagation algorithm.
  */
 public class SCCP {
-    /** Lattice values  */
+    /* Lattice values  */
     private static final int TOP = 0;
     private static final int CONSTANT = 1;
     private static final int VARYING = 2;
-    /** method we're processing */
+    /* method we're processing */
     private SsaMethod ssaMeth;
-    /** ssaMeth.getRegCount() */
+    /* ssaMeth.getRegCount() */
     private int regCount;
-    /** Lattice values for each SSA register */
+    /* Lattice values for each SSA register */
     private int[] latticeValues;
-    /** For those registers that are constant, this is the constant value */
+    /* For those registers that are constant, this is the constant value */
     private Constant[] latticeConstants;
-    /** Worklist of basic blocks to be processed */
+    /* Worklist of basic blocks to be processed */
     private ArrayList<SsaBasicBlock> cfgWorklist;
-    /** Worklist of executed basic blocks with phis to be processed */
+    /* Worklist of executed basic blocks with phis to be processed */
     private ArrayList<SsaBasicBlock> cfgPhiWorklist;
-    /** Bitset containing bits for each block that has been found executable */
+    /* Bitset containing bits for each block that has been found executable */
     private BitSet executableBlocks;
-    /** Worklist for SSA edges.  This is a list of registers to process */
+    /* Worklist for SSA edges.  This is a list of registers to process */
     private ArrayList<SsaInsn> ssaWorklist;
-    /**
+    /*
      * Worklist for SSA edges that represent varying values.  It makes the
      * algorithm much faster if you move all values to VARYING as fast as
      * possible.
      */
     private ArrayList<SsaInsn> varyingWorklist;
-    /** Worklist of potential branches to convert to gotos */
+    /* Worklist of potential branches to convert to gotos */
     private ArrayList<SsaInsn> branchWorklist;
 
     private SCCP(SsaMethod ssaMeth) {
@@ -84,7 +84,7 @@ public class SCCP {
         }
     }
 
-    /**
+    /*
      * Performs sparse conditional constant propagation on a method.
      * @param ssaMethod Method to process
      */
@@ -92,7 +92,7 @@ public class SCCP {
         new SCCP(ssaMethod).run();
     }
 
-    /**
+    /*
      * Adds a SSA basic block to the CFG worklist if it's unexecuted, or
      * to the CFG phi worklist if it's already executed.
      * @param ssaBlock Block to add
@@ -106,7 +106,7 @@ public class SCCP {
         }
     }
 
-    /**
+    /*
      * Adds an SSA register's uses to the SSA worklist.
      * @param reg SSA register
      * @param latticeValue new lattice value for @param reg.
@@ -123,7 +123,7 @@ public class SCCP {
         }
     }
 
-    /**
+    /*
      * Sets a lattice value for a register to value.
      * @param reg SSA register
      * @param value Lattice value
@@ -148,7 +148,7 @@ public class SCCP {
         }
     }
 
-    /**
+    /*
      * Simulates a PHI node and set the lattice for the result
      * to the appropriate value.
      * Meet values:
@@ -196,7 +196,7 @@ public class SCCP {
         }
     }
 
-    /**
+    /*
      * Simulate a block and note the results in the lattice.
      * @param block Block to visit
      */
@@ -210,7 +210,7 @@ public class SCCP {
         }
     }
 
-    /**
+    /*
      * Simulate the phis in a block and note the results in the lattice.
      * @param block Block to visit
      */
@@ -233,7 +233,7 @@ public class SCCP {
         }
     }
 
-    /**
+    /*
      * Simulates branch insns, if possible. Adds reachable successor blocks
      * to the CFG worklists.
      * @param insn branch to simulate
@@ -356,7 +356,7 @@ public class SCCP {
         }
     }
 
-    /**
+    /*
      * Simulates math insns, if possible.
      *
      * @param insn non-null insn to simulate
@@ -463,7 +463,7 @@ public class SCCP {
         }
     }
 
-    /**
+    /*
      * Simulates a statement and set the result lattice value.
      * @param insn instruction to simulate
      */
@@ -594,7 +594,7 @@ public class SCCP {
         replaceBranches();
     }
 
-    /**
+    /*
      * Replaces TypeBearers in source register specs with constant type
      * bearers if possible. These are then referenced in later optimization
      * steps.
@@ -649,7 +649,7 @@ public class SCCP {
         }
     }
 
-    /**
+    /*
      * Replaces branches that have constant conditions with gotos
      */
     private void replaceBranches() {

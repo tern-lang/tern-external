@@ -15,7 +15,7 @@
  */
 package org.ternlang.cglib.proxy;
 
-/**
+/*
  * General-purpose {@link Enhancer} callback which provides for "around advice".
  * @author Juozas Baliuka <a href="mailto:baliuka@mwm.lt">baliuka@mwm.lt</a>
  * @version $Id: MethodInterceptor.java,v 1.8 2004/06/24 21:15:20 herbyderby Exp $
@@ -23,7 +23,7 @@ package org.ternlang.cglib.proxy;
 public interface MethodInterceptor
 extends Callback
 {
-    /**
+    /*
      * All generated proxied methods call this method instead of the original method.
      * The original method may either be invoked by normal reflection using the Method object,
      * or by using the MethodProxy (faster).

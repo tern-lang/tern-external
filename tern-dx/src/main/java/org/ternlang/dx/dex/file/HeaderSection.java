@@ -22,14 +22,14 @@ import java.util.List;
 
 import org.ternlang.dx.rop.cst.Constant;
 
-/**
+/*
  * File header section of a {@code .dex} file.
  */
 public final class HeaderSection extends UniformItemSection {
-    /** {@code non-null;} the list of the one item in the section */
+    /* {@code non-null;} the list of the one item in the section */
     private final List<HeaderItem> list;
 
-    /**
+    /*
      * Constructs an instance. The file offset is initially unknown.
      *
      * @param file {@code non-null;} file that this instance is part of
@@ -43,19 +43,19 @@ public final class HeaderSection extends UniformItemSection {
         this.list = Collections.singletonList(item);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public IndexedItem get(Constant cst) {
         return null;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Collection<? extends Item> items() {
         return list;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void orderItems() {
         // Nothing to do here.

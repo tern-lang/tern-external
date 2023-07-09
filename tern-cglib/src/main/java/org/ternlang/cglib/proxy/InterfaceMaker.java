@@ -22,7 +22,7 @@ import org.ternlang.asm.ClassVisitor;
 import org.ternlang.asm.Type;
 import org.ternlang.cglib.core.*;
 
-/**
+/*
  * Generates new interfaces at runtime.
  * By passing a generated interface to the Enhancer's list of interfaces to
  * implement, you can make your enhanced classes handle an arbitrary set
@@ -35,7 +35,7 @@ public class InterfaceMaker extends AbstractClassGenerator
     private static final Source SOURCE = new Source(InterfaceMaker.class.getName());
     private Map signatures = new HashMap();
 
-    /**
+    /*
      * Create a new <code>InterfaceMaker</code>. A new <code>InterfaceMaker</code>
      * object should be used for each generated interface, and should not
      * be shared across threads.
@@ -44,7 +44,7 @@ public class InterfaceMaker extends AbstractClassGenerator
         super(SOURCE);
     }
 
-    /**
+    /*
      * Add a method signature to the interface.
      * @param sig the method signature to add to the interface
      * @param exceptions an array of exception types to declare for the method
@@ -53,7 +53,7 @@ public class InterfaceMaker extends AbstractClassGenerator
         signatures.put(sig, exceptions);
     }
 
-    /**
+    /*
      * Add a method signature to the interface. The method modifiers are ignored,
      * since interface methods are by definition abstract and public.
      * @param method the method to add to the interface
@@ -63,7 +63,7 @@ public class InterfaceMaker extends AbstractClassGenerator
             ReflectUtils.getExceptionTypes(method));
     }
 
-    /**
+    /*
      * Add all the public methods in the specified class.
      * Methods from superclasses are included, except for methods declared in the base
      * Object class (e.g. <code>getClass</code>, <code>equals</code>, <code>hashCode</code>).
@@ -79,7 +79,7 @@ public class InterfaceMaker extends AbstractClassGenerator
         }
     }
 
-    /**
+    /*
      * Create an interface using the current set of method signatures.
      */
     public Class create() {

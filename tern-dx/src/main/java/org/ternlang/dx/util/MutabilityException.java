@@ -18,7 +18,7 @@ package org.ternlang.dx.util;
 
 import org.ternlang.dex.util.ExceptionWithContext;
 
-/**
+/*
  * Exception due to a mutability problem.
  */
 public class MutabilityException

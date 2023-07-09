@@ -31,7 +31,7 @@ import org.ternlang.cglib.transform.impl.FieldProviderTransformer;
 import org.ternlang.cglib.transform.impl.InterceptFieldFilter;
 import org.ternlang.cglib.transform.impl.InterceptFieldTransformer;
 
-/**
+/*
  * @version $Id: TestTransformingLoader.java,v 1.6 2006/03/05 02:43:17 herbyderby Exp $
  */
 public class TestTransformingLoader extends org.ternlang.cglib.CodeGenTestCase {

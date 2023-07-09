@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -33,7 +33,7 @@ import java.util.Map;
 
 import org.ternlang.asm.MethodVisitor;
 
-/**
+/*
  * A node that represents a line number declaration. These nodes are pseudo
  * instruction nodes in order to be inserted in an instruction list.
  * 
@@ -41,18 +41,18 @@ import org.ternlang.asm.MethodVisitor;
  */
 public class LineNumberNode extends AbstractInsnNode {
 
-    /**
+    /*
      * A line number. This number refers to the source file from which the class
      * was compiled.
      */
     public int line;
 
-    /**
+    /*
      * The first instruction corresponding to this line number.
      */
     public LabelNode start;
 
-    /**
+    /*
      * Constructs a new {@link LineNumberNode}.
      * 
      * @param line

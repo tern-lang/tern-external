@@ -27,46 +27,46 @@ import org.ternlang.dx.rop.cst.CstString;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.ByteArrayAnnotatedOutput;
 
-/**
+/*
  * Single annotation, which consists of a type and a set of name-value
  * element pairs.
  */
 public final class AnnotationItem extends OffsettedItem {
-    /** annotation visibility constant: visible at build time only */
+    /* annotation visibility constant: visible at build time only */
     private static final int VISIBILITY_BUILD = 0;
 
-    /** annotation visibility constant: visible at runtime */
+    /* annotation visibility constant: visible at runtime */
     private static final int VISIBILITY_RUNTIME = 1;
 
-    /** annotation visibility constant: visible at runtime only to system */
+    /* annotation visibility constant: visible at runtime only to system */
     private static final int VISIBILITY_SYSTEM = 2;
 
-    /** the required alignment for instances of this class */
+    /* the required alignment for instances of this class */
     private static final int ALIGNMENT = 1;
 
-    /** {@code non-null;} unique instance of {@link #TypeIdSorter} */
+    /* {@code non-null;} unique instance of {@link #TypeIdSorter} */
     private static final TypeIdSorter TYPE_ID_SORTER = new TypeIdSorter();
 
-    /** {@code non-null;} the annotation to represent */
+    /* {@code non-null;} the annotation to represent */
     private final Annotation annotation;
 
-    /**
+    /*
      * {@code null-ok;} type reference for the annotation type; set during
      * {@link #addContents}
      */
     private TypeIdItem type;
 
-    /**
+    /*
      * {@code null-ok;} encoded form, ready for writing to a file; set during
      * {@link #place0}
      */
     private byte[] encodedForm;
 
-    /**
+    /*
      * Comparator that sorts (outer) instances by type id index.
      */
     private static class TypeIdSorter implements Comparator<AnnotationItem> {
-        /** {@inheritDoc} */
+        /* {@inheritDoc} */
         public int compare(AnnotationItem item1, AnnotationItem item2) {
             int index1 = item1.type.getIndex();
             int index2 = item2.type.getIndex();
@@ -81,7 +81,7 @@ public final class AnnotationItem extends OffsettedItem {
         }
     }
 
-    /**
+    /*
      * Sorts an array of instances, in place, by type id index,
      * ignoring all other aspects of the elements. This is only valid
      * to use after type id indices are known.
@@ -92,7 +92,7 @@ public final class AnnotationItem extends OffsettedItem {
         Arrays.sort(array, TYPE_ID_SORTER);
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param annotation {@code non-null;} annotation to represent
@@ -115,19 +115,19 @@ public final class AnnotationItem extends OffsettedItem {
         addContents(dexFile);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public ItemType itemType() {
         return ItemType.TYPE_ANNOTATION_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         return annotation.hashCode();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected int compareTo0(OffsettedItem other) {
         AnnotationItem otherAnnotation = (AnnotationItem) other;
@@ -135,19 +135,19 @@ public final class AnnotationItem extends OffsettedItem {
         return annotation.compareTo(otherAnnotation.annotation);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toHuman() {
         return annotation.toHuman();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void addContents(DexFile file) {
         type = file.getTypeIds().intern(annotation.getType());
         ValueEncoder.addContents(file, annotation);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void place0(Section addedTo, int offset) {
         // Encode the data and note the size.
@@ -162,7 +162,7 @@ public final class AnnotationItem extends OffsettedItem {
         setWriteSize(encodedForm.length + 1);
     }
 
-    /**
+    /*
      * Write a (listing file) annotation for this instance to the given
      * output, that consumes no bytes of output. This is for annotating
      * a reference to this instance at the point of the reference.
@@ -184,7 +184,7 @@ public final class AnnotationItem extends OffsettedItem {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void writeTo0(DexFile file, AnnotatedOutput out) {
         boolean annotates = out.annotates();

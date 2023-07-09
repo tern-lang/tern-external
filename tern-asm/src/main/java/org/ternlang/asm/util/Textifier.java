@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -44,107 +44,107 @@ import org.ternlang.asm.TypePath;
 import org.ternlang.asm.TypeReference;
 import org.ternlang.asm.signature.SignatureReader;
 
-/**
+/*
  * A {@link Printer} that prints a disassembled view of the classes it visits.
  *
  * @author Eric Bruneton
  */
 public class Textifier extends Printer {
 
-    /**
+    /*
      * Constant used in {@link #appendDescriptor appendDescriptor} for internal
      * type names in bytecode notation.
      */
     public static final int INTERNAL_NAME = 0;
 
-    /**
+    /*
      * Constant used in {@link #appendDescriptor appendDescriptor} for field
      * descriptors, formatted in bytecode notation
      */
     public static final int FIELD_DESCRIPTOR = 1;
 
-    /**
+    /*
      * Constant used in {@link #appendDescriptor appendDescriptor} for field
      * signatures, formatted in bytecode notation
      */
     public static final int FIELD_SIGNATURE = 2;
 
-    /**
+    /*
      * Constant used in {@link #appendDescriptor appendDescriptor} for method
      * descriptors, formatted in bytecode notation
      */
     public static final int METHOD_DESCRIPTOR = 3;
 
-    /**
+    /*
      * Constant used in {@link #appendDescriptor appendDescriptor} for method
      * signatures, formatted in bytecode notation
      */
     public static final int METHOD_SIGNATURE = 4;
 
-    /**
+    /*
      * Constant used in {@link #appendDescriptor appendDescriptor} for class
      * signatures, formatted in bytecode notation
      */
     public static final int CLASS_SIGNATURE = 5;
 
-    /**
+    /*
      * Constant used in {@link #appendDescriptor appendDescriptor} for field or
      * method return value signatures, formatted in default Java notation
      * (non-bytecode)
      */
     public static final int TYPE_DECLARATION = 6;
 
-    /**
+    /*
      * Constant used in {@link #appendDescriptor appendDescriptor} for class
      * signatures, formatted in default Java notation (non-bytecode)
      */
     public static final int CLASS_DECLARATION = 7;
 
-    /**
+    /*
      * Constant used in {@link #appendDescriptor appendDescriptor} for method
      * parameter signatures, formatted in default Java notation (non-bytecode)
      */
     public static final int PARAMETERS_DECLARATION = 8;
 
-    /**
+    /*
      * Constant used in {@link #appendDescriptor appendDescriptor} for handle
      * descriptors, formatted in bytecode notation
      */
     public static final int HANDLE_DESCRIPTOR = 9;
 
-    /**
+    /*
      * Tab for class members.
      */
     protected String tab = "  ";
 
-    /**
+    /*
      * Tab for bytecode instructions.
      */
     protected String tab2 = "    ";
 
-    /**
+    /*
      * Tab for table and lookup switch instructions.
      */
     protected String tab3 = "      ";
 
-    /**
+    /*
      * Tab for labels.
      */
     protected String ltab = "   ";
 
-    /**
+    /*
      * The label names. This map associate String values to Label keys.
      */
     protected Map<Label, String> labelNames;
 
-    /**
+    /*
      * Class access flags
      */
     private int access;
 
     private int valueNumber = 0;
 
-    /**
+    /*
      * Constructs a new {@link Textifier}. <i>Subclasses must not use this
      * constructor</i>. Instead, they must use the {@link #Textifier(int)}
      * version.
@@ -159,7 +159,7 @@ public class Textifier extends Printer {
         }
     }
 
-    /**
+    /*
      * Constructs a new {@link Textifier}.
      *
      * @param api
@@ -170,7 +170,7 @@ public class Textifier extends Printer {
         super(api);
     }
 
-    /**
+    /*
      * Prints a disassembled view of the given class to the standard output.
      * <p>
      * Usage: Textifier [-debug] &lt;binary class name or class file name &gt;
@@ -1089,7 +1089,7 @@ public class Textifier extends Printer {
     // Common methods
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Prints a disassembled view of the given annotation.
      *
      * @param desc
@@ -1110,7 +1110,7 @@ public class Textifier extends Printer {
         return t;
     }
 
-    /**
+    /*
      * Prints a disassembled view of the given type annotation.
      *
      * @param typeRef
@@ -1143,7 +1143,7 @@ public class Textifier extends Printer {
         return t;
     }
 
-    /**
+    /*
      * Prints a disassembled view of the given attribute.
      *
      * @param attr
@@ -1167,7 +1167,7 @@ public class Textifier extends Printer {
     // Utility methods
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Creates a new TraceVisitor instance.
      *
      * @return a new TraceVisitor.
@@ -1176,7 +1176,7 @@ public class Textifier extends Printer {
         return new Textifier();
     }
 
-    /**
+    /*
      * Appends an internal name, a type descriptor or a type signature to
      * {@link #buf buf}.
      *
@@ -1198,7 +1198,7 @@ public class Textifier extends Printer {
         }
     }
 
-    /**
+    /*
      * Appends the name of the given label to {@link #buf buf}. Creates a new
      * label name if the given label does not yet have one.
      *
@@ -1217,7 +1217,7 @@ public class Textifier extends Printer {
         buf.append(name);
     }
 
-    /**
+    /*
      * Appends the information about the given handle to {@link #buf buf}.
      *
      * @param h
@@ -1276,7 +1276,7 @@ public class Textifier extends Printer {
         }
     }
 
-    /**
+    /*
      * Appends a string representation of the given access modifiers to
      * {@link #buf buf}.
      *

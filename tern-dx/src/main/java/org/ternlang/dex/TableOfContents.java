@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
-/**
+/*
  * The file header and map.
  */
 public final class TableOfContents {

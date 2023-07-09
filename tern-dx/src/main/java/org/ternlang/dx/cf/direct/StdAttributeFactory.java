@@ -58,24 +58,24 @@ import org.ternlang.dx.rop.type.TypeList;
 import org.ternlang.dx.util.ByteArray;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Standard subclass of {@link AttributeFactory}, which knows how to parse
  * all the standard attribute types.
  */
 public class StdAttributeFactory
     extends AttributeFactory {
-    /** {@code non-null;} shared instance of this class */
+    /* {@code non-null;} shared instance of this class */
     public static final StdAttributeFactory THE_ONE =
         new StdAttributeFactory();
 
-    /**
+    /*
      * Constructs an instance.
      */
     public StdAttributeFactory() {
         // This space intentionally left blank.
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected Attribute parse0(DirectClassFile cf, int context, String name,
             int offset, int length, ParseObserver observer) {
@@ -189,7 +189,7 @@ public class StdAttributeFactory
         return super.parse0(cf, context, name, offset, length, observer);
     }
 
-    /**
+    /*
      * Parses an {@code AnnotationDefault} attribute.
      */
     private Attribute annotationDefault(DirectClassFile cf,
@@ -205,7 +205,7 @@ public class StdAttributeFactory
         return new AttAnnotationDefault(cst, length);
     }
 
-    /**
+    /*
      * Parses a {@code Code} attribute.
      */
     private Attribute code(DirectClassFile cf, int offset, int length,
@@ -309,7 +309,7 @@ public class StdAttributeFactory
         return new AttCode(maxStack, maxLocals, code, catches, attributes);
     }
 
-    /**
+    /*
      * Parses a {@code ConstantValue} attribute.
      */
     private Attribute constantValue(DirectClassFile cf, int offset, int length,
@@ -331,7 +331,7 @@ public class StdAttributeFactory
         return result;
     }
 
-    /**
+    /*
      * Parses a {@code Deprecated} attribute.
      */
     private Attribute deprecated(DirectClassFile cf, int offset, int length,
@@ -343,7 +343,7 @@ public class StdAttributeFactory
         return new AttDeprecated();
     }
 
-    /**
+    /*
      * Parses an {@code EnclosingMethod} attribute.
      */
     private Attribute enclosingMethod(DirectClassFile cf, int offset,
@@ -372,7 +372,7 @@ public class StdAttributeFactory
         return result;
     }
 
-    /**
+    /*
      * Parses an {@code Exceptions} attribute.
      */
     private Attribute exceptions(DirectClassFile cf, int offset, int length,
@@ -400,7 +400,7 @@ public class StdAttributeFactory
         return new AttExceptions(list);
     }
 
-    /**
+    /*
      * Parses an {@code InnerClasses} attribute.
      */
     private Attribute innerClasses(DirectClassFile cf, int offset, int length,
@@ -457,7 +457,7 @@ public class StdAttributeFactory
         return new AttInnerClasses(list);
     }
 
-    /**
+    /*
      * Parses a {@code LineNumberTable} attribute.
      */
     private Attribute lineNumberTable(DirectClassFile cf, int offset,
@@ -498,7 +498,7 @@ public class StdAttributeFactory
         return new AttLineNumberTable(list);
     }
 
-    /**
+    /*
      * Parses a {@code LocalVariableTable} attribute.
      */
     private Attribute localVariableTable(DirectClassFile cf, int offset,
@@ -521,7 +521,7 @@ public class StdAttributeFactory
         return new AttLocalVariableTable(list);
     }
 
-    /**
+    /*
      * Parses a {@code LocalVariableTypeTable} attribute.
      */
     private Attribute localVariableTypeTable(DirectClassFile cf, int offset,
@@ -544,7 +544,7 @@ public class StdAttributeFactory
         return new AttLocalVariableTypeTable(list);
     }
 
-    /**
+    /*
      * Parse the table part of either a {@code LocalVariableTable}
      * or a {@code LocalVariableTypeTable}.
      *
@@ -602,7 +602,7 @@ public class StdAttributeFactory
         return list;
     }
 
-    /**
+    /*
      * Parses a {@code RuntimeInvisibleAnnotations} attribute.
      */
     private Attribute runtimeInvisibleAnnotations(DirectClassFile cf,
@@ -619,7 +619,7 @@ public class StdAttributeFactory
         return new AttRuntimeInvisibleAnnotations(annotations, length);
     }
 
-    /**
+    /*
      * Parses a {@code RuntimeVisibleAnnotations} attribute.
      */
     private Attribute runtimeVisibleAnnotations(DirectClassFile cf,
@@ -636,7 +636,7 @@ public class StdAttributeFactory
         return new AttRuntimeVisibleAnnotations(annotations, length);
     }
 
-    /**
+    /*
      * Parses a {@code RuntimeInvisibleParameterAnnotations} attribute.
      */
     private Attribute runtimeInvisibleParameterAnnotations(DirectClassFile cf,
@@ -653,7 +653,7 @@ public class StdAttributeFactory
         return new AttRuntimeInvisibleParameterAnnotations(list, length);
     }
 
-    /**
+    /*
      * Parses a {@code RuntimeVisibleParameterAnnotations} attribute.
      */
     private Attribute runtimeVisibleParameterAnnotations(DirectClassFile cf,
@@ -670,7 +670,7 @@ public class StdAttributeFactory
         return new AttRuntimeVisibleParameterAnnotations(list, length);
     }
 
-    /**
+    /*
      * Parses a {@code Signature} attribute.
      */
     private Attribute signature(DirectClassFile cf, int offset, int length,
@@ -692,7 +692,7 @@ public class StdAttributeFactory
         return result;
     }
 
-    /**
+    /*
      * Parses a {@code SourceFile} attribute.
      */
     private Attribute sourceFile(DirectClassFile cf, int offset, int length,
@@ -714,7 +714,7 @@ public class StdAttributeFactory
         return result;
     }
 
-    /**
+    /*
      * Parses a {@code Synthetic} attribute.
      */
     private Attribute synthetic(DirectClassFile cf, int offset, int length,
@@ -726,7 +726,7 @@ public class StdAttributeFactory
         return new AttSynthetic();
     }
 
-    /**
+    /*
      * Throws the right exception when a known attribute has a way too short
      * length.
      *
@@ -737,7 +737,7 @@ public class StdAttributeFactory
         throw new ParseException("severely truncated attribute");
     }
 
-    /**
+    /*
      * Throws the right exception when a known attribute has a too short
      * length.
      *
@@ -748,7 +748,7 @@ public class StdAttributeFactory
         throw new ParseException("truncated attribute");
     }
 
-    /**
+    /*
      * Throws the right exception when an attribute has an unexpected length
      * (given its contents).
      *

@@ -16,7 +16,7 @@
 
 package org.ternlang.dex.util;
 
-/**
+/*
  * Unsigned arithmetic over Java's signed types.
  */
 public final class Unsigned {

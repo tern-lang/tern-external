@@ -18,7 +18,7 @@ package org.ternlang.dx.cf.code;
 
 import org.ternlang.dex.util.ExceptionWithContext;
 
-/**
+/*
  * Exception from simulation.
  */
 public class SimException

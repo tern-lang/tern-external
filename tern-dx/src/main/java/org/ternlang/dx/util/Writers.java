@@ -19,18 +19,18 @@ package org.ternlang.dx.util;
 import java.io.PrintWriter;
 import java.io.Writer;
 
-/**
+/*
  * Utilities for dealing with {@code Writer}s.
  */
 public final class Writers {
-    /**
+    /*
      * This class is uninstantiable.
      */
     private Writers() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Makes a {@code PrintWriter} for the given {@code Writer},
      * returning the given writer if it already happens to be the right
      * class.

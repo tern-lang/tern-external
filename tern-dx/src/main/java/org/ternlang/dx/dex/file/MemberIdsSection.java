@@ -24,12 +24,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.ternlang.dex.DexFormat;
 import org.ternlang.dex.DexIndexOverflowException;
 
-/**
+/*
  * Member (field or method) refs list section of a {@code .dex} file.
  */
 public abstract class MemberIdsSection extends UniformItemSection {
 
-    /**
+    /*
      * Constructs an instance. The file offset is initially unknown.
      *
      * @param name {@code null-ok;} the name of this instance, for annotation
@@ -40,7 +40,7 @@ public abstract class MemberIdsSection extends UniformItemSection {
         super(name, file, 4);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void orderItems() {
         int idx = 0;

@@ -20,27 +20,27 @@ import org.ternlang.dx.rop.code.RegisterSpecList;
 import org.ternlang.dx.rop.code.SourcePosition;
 import org.ternlang.dx.rop.cst.Constant;
 
-/**
+/*
  * Instruction which has a single constant argument in addition
  * to all the normal instruction information.
  */
 public final class CstInsn extends FixedSizeInsn {
-    /** {@code non-null;} the constant argument for this instruction */
+    /* {@code non-null;} the constant argument for this instruction */
     private final Constant constant;
 
-    /**
+    /*
      * {@code >= -1;} the constant pool index for {@link #constant}, or
      * {@code -1} if not yet set
      */
     private int index;
 
-    /**
+    /*
      * {@code >= -1;} the constant pool index for the class reference in
      * {@link #constant} if any, or {@code -1} if not yet set
      */
     private int classIndex;
 
-    /**
+    /*
      * Constructs an instance. The output address of this instance is
      * initially unknown ({@code -1}) as is the constant pool index.
      *
@@ -64,7 +64,7 @@ public final class CstInsn extends FixedSizeInsn {
         this.classIndex = -1;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public DalvInsn withOpcode(Dop opcode) {
         CstInsn result =
@@ -81,7 +81,7 @@ public final class CstInsn extends FixedSizeInsn {
         return result;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public DalvInsn withRegisters(RegisterSpecList registers) {
         CstInsn result =
@@ -98,7 +98,7 @@ public final class CstInsn extends FixedSizeInsn {
         return result;
     }
 
-    /**
+    /*
      * Gets the constant argument.
      *
      * @return {@code non-null;} the constant argument
@@ -107,7 +107,7 @@ public final class CstInsn extends FixedSizeInsn {
         return constant;
     }
 
-    /**
+    /*
      * Gets the constant's index. It is only valid to call this after
      * {@link #setIndex} has been called.
      *
@@ -121,7 +121,7 @@ public final class CstInsn extends FixedSizeInsn {
         return index;
     }
 
-    /**
+    /*
      * Returns whether the constant's index has been set for this instance.
      *
      * @see #setIndex
@@ -132,7 +132,7 @@ public final class CstInsn extends FixedSizeInsn {
         return (index >= 0);
     }
 
-    /**
+    /*
      * Sets the constant's index. It is only valid to call this method once
      * per instance.
      *
@@ -150,7 +150,7 @@ public final class CstInsn extends FixedSizeInsn {
         this.index = index;
     }
 
-    /**
+    /*
      * Gets the constant's class index. It is only valid to call this after
      * {@link #setClassIndex} has been called.
      *
@@ -164,7 +164,7 @@ public final class CstInsn extends FixedSizeInsn {
         return classIndex;
     }
 
-    /**
+    /*
      * Returns whether the constant's class index has been set for this
      * instance.
      *
@@ -176,7 +176,7 @@ public final class CstInsn extends FixedSizeInsn {
         return (classIndex >= 0);
     }
 
-    /**
+    /*
      * Sets the constant's class index. This is the constant pool index
      * for the class referred to by this instance's constant. Only
      * reference constants have a class, so it is only on instances
@@ -197,7 +197,7 @@ public final class CstInsn extends FixedSizeInsn {
         this.classIndex = index;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected String argString() {
         return constant.toHuman();

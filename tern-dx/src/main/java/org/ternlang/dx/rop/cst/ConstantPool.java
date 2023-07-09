@@ -16,12 +16,12 @@
 
 package org.ternlang.dx.rop.cst;
 
-/**
+/*
  * Interface for constant pools, which are, more or less, just lists of
  * {@link Constant} objects.
  */
 public interface ConstantPool {
-    /**
+    /*
      * Get the "size" of the constant pool. This corresponds to the
      * class file field {@code constant_pool_count}, and is in fact
      * always at least one more than the actual size of the constant pool,
@@ -31,7 +31,7 @@ public interface ConstantPool {
      */
     public int size();
 
-    /**
+    /*
      * Get the {@code n}th entry in the constant pool, which must
      * be valid.
      *
@@ -42,7 +42,7 @@ public interface ConstantPool {
      */
     public Constant get(int n);
 
-    /**
+    /*
      * Get the {@code n}th entry in the constant pool, which must
      * be valid unless {@code n == 0}, in which case {@code null}
      * is returned.
@@ -54,7 +54,7 @@ public interface ConstantPool {
      */
     public Constant get0Ok(int n);
 
-    /**
+    /*
      * Get the {@code n}th entry in the constant pool, or
      * {@code null} if the index is in-range but invalid. In
      * particular, {@code null} is returned for index {@code 0}
@@ -68,7 +68,7 @@ public interface ConstantPool {
      */
     public Constant getOrNull(int n);
 
-    /**
+    /*
      * Get all entries in this constant pool.
      *
      * @return the returned array may contain null entries.

@@ -67,7 +67,7 @@ public final class ProxySample implements ProxySampleInterface_ReturnsObject, Pr
         return result.intValue();
     }
 
-    /**
+    /*
      * @see java.lang.Object#toString()
      */
     public String toString() {

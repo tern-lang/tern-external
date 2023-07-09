@@ -30,7 +30,7 @@ import org.ternlang.dex.util.ExceptionWithContext;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * A section of a {@code .dex} file which consists of a sequence of
  * {@link OffsettedItem} objects, which may each be of a different concrete
  * class and/or size.
@@ -40,17 +40,17 @@ import org.ternlang.dx.util.Hex;
  */
 public final class MixedItemSection extends Section {
     static enum SortType {
-        /** no sorting */
+        /* no sorting */
         NONE,
 
-        /** sort by type only */
+        /* sort by type only */
         TYPE,
 
-        /** sort in class-major order, with instances sorted per-class */
+        /* sort in class-major order, with instances sorted per-class */
         INSTANCE;
     };
 
-    /** {@code non-null;} sorter which sorts instances by type */
+    /* {@code non-null;} sorter which sorts instances by type */
     private static final Comparator<OffsettedItem> TYPE_SORTER =
         new Comparator<OffsettedItem>() {
         public int compare(OffsettedItem item1, OffsettedItem item2) {
@@ -60,22 +60,22 @@ public final class MixedItemSection extends Section {
         }
     };
 
-    /** {@code non-null;} the items in this part */
+    /* {@code non-null;} the items in this part */
     private final ArrayList<OffsettedItem> items;
 
-    /** {@code non-null;} items that have been explicitly interned */
+    /* {@code non-null;} items that have been explicitly interned */
     private final HashMap<OffsettedItem, OffsettedItem> interns;
 
-    /** {@code non-null;} how to sort the items */
+    /* {@code non-null;} how to sort the items */
     private final SortType sort;
 
-    /**
+    /*
      * {@code >= -1;} the current size of this part, in bytes, or {@code -1}
      * if not yet calculated
      */
     private int writeSize;
 
-    /**
+    /*
      * Constructs an instance. The file offset is initially unknown.
      *
      * @param name {@code null-ok;} the name of this instance, for annotation
@@ -95,27 +95,27 @@ public final class MixedItemSection extends Section {
         this.writeSize = -1;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Collection<? extends Item> items() {
         return items;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int writeSize() {
         throwIfNotPrepared();
         return writeSize;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int getAbsoluteItemOffset(Item item) {
         OffsettedItem oi = (OffsettedItem) item;
         return oi.getAbsoluteOffset();
     }
 
-    /**
+    /*
      * Gets the size of this instance, in items.
      *
      * @return {@code >= 0;} the size
@@ -124,7 +124,7 @@ public final class MixedItemSection extends Section {
         return items.size();
     }
 
-    /**
+    /*
      * Writes the portion of the file header that refers to this instance.
      *
      * @param out {@code non-null;} where to write
@@ -158,7 +158,7 @@ public final class MixedItemSection extends Section {
         out.writeInt(offset);
     }
 
-    /**
+    /*
      * Adds an item to this instance. This will in turn tell the given item
      * that it has been added to this instance. It is invalid to add the
      * same item to more than one instance, nor to add the same items
@@ -182,7 +182,7 @@ public final class MixedItemSection extends Section {
         items.add(item);
     }
 
-    /**
+    /*
      * Interns an item in this instance, returning the interned instance
      * (which may not be the one passed in). This will add the item if no
      * equal item has been added.
@@ -204,7 +204,7 @@ public final class MixedItemSection extends Section {
         return item;
     }
 
-    /**
+    /*
      * Gets an item which was previously interned.
      *
      * @param item {@code non-null;} the item to look for
@@ -222,7 +222,7 @@ public final class MixedItemSection extends Section {
         throw new NoSuchElementException(item.toString());
     }
 
-    /**
+    /*
      * Writes an index of contents of the items in this instance of the
      * given type. If there are none, this writes nothing. If there are any,
      * then the index is preceded by the given intro string.
@@ -258,7 +258,7 @@ public final class MixedItemSection extends Section {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void prepare0() {
         DexFile file = getFile();
@@ -282,7 +282,7 @@ public final class MixedItemSection extends Section {
         }
     }
 
-    /**
+    /*
      * Places all the items in this instance at particular offsets. This
      * will call {@link OffsettedItem#place} on each item. If an item
      * does not know its write size before the call to {@code place},
@@ -326,7 +326,7 @@ public final class MixedItemSection extends Section {
         writeSize = outAt;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void writeTo0(AnnotatedOutput out) {
         boolean annotates = out.annotates();

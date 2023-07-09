@@ -15,7 +15,7 @@
  */
 package org.ternlang.cglib.proxy;
 
-/**
+/*
  * {@link Enhancer} callback that simply returns the value to return
  * from the proxied method. No information about what method
  * is being called is available to the callback, and the type of
@@ -25,7 +25,7 @@ package org.ternlang.cglib.proxy;
  * to return a fixed value with little overhead.
  */
 public interface FixedValue extends Callback {
-    /**
+    /*
      * Return the object which the original method invocation should
      * return. This method is called for <b>every</b> method invocation.
      * @return an object matching the type of the return value for every

@@ -34,7 +34,7 @@ public class LoadingCache<K, KK, V> {
         return createEntry(key, cacheKey, v);
     }
 
-    /**
+    /*
      * Loads entry to the cache.
      * If entry is missing, put {@link FutureTask} first so other competing thread might wait for the result.
      * @param key original key that would be used to load the instance

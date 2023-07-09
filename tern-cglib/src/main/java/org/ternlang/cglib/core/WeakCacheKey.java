@@ -2,7 +2,7 @@ package org.ternlang.cglib.core;
 
 import java.lang.ref.WeakReference;
 
-/**
+/*
  * Allows to check for object equality, yet the class does not keep strong reference to the target.
  * {@link #equals(Object)} returns true if and only if the reference is not yet expired and target
  * objects are equal in terms of {@link #equals(Object)}.

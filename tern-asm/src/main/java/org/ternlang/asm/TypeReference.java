@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2013 INRIA, France Telecom
  * All rights reserved.
@@ -30,7 +30,7 @@
 
 package org.ternlang.asm;
 
-/**
+/*
  * A reference to a type appearing in a class, field or method declaration, or
  * on an instruction. Such a reference designates the part of the class where
  * the referenced type is appearing (e.g. an 'extends', 'implements' or 'throws'
@@ -41,144 +41,144 @@ package org.ternlang.asm;
  */
 public class TypeReference {
 
-    /**
+    /*
      * The sort of type references that target a type parameter of a generic
      * class. See {@link #getSort getSort}.
      */
     public final static int CLASS_TYPE_PARAMETER = 0x00;
 
-    /**
+    /*
      * The sort of type references that target a type parameter of a generic
      * method. See {@link #getSort getSort}.
      */
     public final static int METHOD_TYPE_PARAMETER = 0x01;
 
-    /**
+    /*
      * The sort of type references that target the super class of a class or one
      * of the interfaces it implements. See {@link #getSort getSort}.
      */
     public final static int CLASS_EXTENDS = 0x10;
 
-    /**
+    /*
      * The sort of type references that target a bound of a type parameter of a
      * generic class. See {@link #getSort getSort}.
      */
     public final static int CLASS_TYPE_PARAMETER_BOUND = 0x11;
 
-    /**
+    /*
      * The sort of type references that target a bound of a type parameter of a
      * generic method. See {@link #getSort getSort}.
      */
     public final static int METHOD_TYPE_PARAMETER_BOUND = 0x12;
 
-    /**
+    /*
      * The sort of type references that target the type of a field. See
      * {@link #getSort getSort}.
      */
     public final static int FIELD = 0x13;
 
-    /**
+    /*
      * The sort of type references that target the return type of a method. See
      * {@link #getSort getSort}.
      */
     public final static int METHOD_RETURN = 0x14;
 
-    /**
+    /*
      * The sort of type references that target the receiver type of a method.
      * See {@link #getSort getSort}.
      */
     public final static int METHOD_RECEIVER = 0x15;
 
-    /**
+    /*
      * The sort of type references that target the type of a formal parameter of
      * a method. See {@link #getSort getSort}.
      */
     public final static int METHOD_FORMAL_PARAMETER = 0x16;
 
-    /**
+    /*
      * The sort of type references that target the type of an exception declared
      * in the throws clause of a method. See {@link #getSort getSort}.
      */
     public final static int THROWS = 0x17;
 
-    /**
+    /*
      * The sort of type references that target the type of a local variable in a
      * method. See {@link #getSort getSort}.
      */
     public final static int LOCAL_VARIABLE = 0x40;
 
-    /**
+    /*
      * The sort of type references that target the type of a resource variable
      * in a method. See {@link #getSort getSort}.
      */
     public final static int RESOURCE_VARIABLE = 0x41;
 
-    /**
+    /*
      * The sort of type references that target the type of the exception of a
      * 'catch' clause in a method. See {@link #getSort getSort}.
      */
     public final static int EXCEPTION_PARAMETER = 0x42;
 
-    /**
+    /*
      * The sort of type references that target the type declared in an
      * 'instanceof' instruction. See {@link #getSort getSort}.
      */
     public final static int INSTANCEOF = 0x43;
 
-    /**
+    /*
      * The sort of type references that target the type of the object created by
      * a 'new' instruction. See {@link #getSort getSort}.
      */
     public final static int NEW = 0x44;
 
-    /**
+    /*
      * The sort of type references that target the receiver type of a
      * constructor reference. See {@link #getSort getSort}.
      */
     public final static int CONSTRUCTOR_REFERENCE = 0x45;
 
-    /**
+    /*
      * The sort of type references that target the receiver type of a method
      * reference. See {@link #getSort getSort}.
      */
     public final static int METHOD_REFERENCE = 0x46;
 
-    /**
+    /*
      * The sort of type references that target the type declared in an explicit
      * or implicit cast instruction. See {@link #getSort getSort}.
      */
     public final static int CAST = 0x47;
 
-    /**
+    /*
      * The sort of type references that target a type parameter of a generic
      * constructor in a constructor call. See {@link #getSort getSort}.
      */
     public final static int CONSTRUCTOR_INVOCATION_TYPE_ARGUMENT = 0x48;
 
-    /**
+    /*
      * The sort of type references that target a type parameter of a generic
      * method in a method call. See {@link #getSort getSort}.
      */
     public final static int METHOD_INVOCATION_TYPE_ARGUMENT = 0x49;
 
-    /**
+    /*
      * The sort of type references that target a type parameter of a generic
      * constructor in a constructor reference. See {@link #getSort getSort}.
      */
     public final static int CONSTRUCTOR_REFERENCE_TYPE_ARGUMENT = 0x4A;
 
-    /**
+    /*
      * The sort of type references that target a type parameter of a generic
      * method in a method reference. See {@link #getSort getSort}.
      */
     public final static int METHOD_REFERENCE_TYPE_ARGUMENT = 0x4B;
 
-    /**
+    /*
      * The type reference value in Java class file format.
      */
     private int value;
 
-    /**
+    /*
      * Creates a new TypeReference.
      * 
      * @param typeRef
@@ -190,7 +190,7 @@ public class TypeReference {
         this.value = typeRef;
     }
 
-    /**
+    /*
      * Returns a type reference of the given sort.
      * 
      * @param sort
@@ -207,7 +207,7 @@ public class TypeReference {
         return new TypeReference(sort << 24);
     }
 
-    /**
+    /*
      * Returns a reference to a type parameter of a generic class or method.
      * 
      * @param sort
@@ -222,7 +222,7 @@ public class TypeReference {
         return new TypeReference((sort << 24) | (paramIndex << 16));
     }
 
-    /**
+    /*
      * Returns a reference to a type parameter bound of a generic class or
      * method.
      * 
@@ -242,7 +242,7 @@ public class TypeReference {
                 | (boundIndex << 8));
     }
 
-    /**
+    /*
      * Returns a reference to the super class or to an interface of the
      * 'implements' clause of a class.
      * 
@@ -256,7 +256,7 @@ public class TypeReference {
         return new TypeReference((CLASS_EXTENDS << 24) | (itfIndex << 8));
     }
 
-    /**
+    /*
      * Returns a reference to the type of a formal parameter of a method.
      * 
      * @param paramIndex
@@ -269,7 +269,7 @@ public class TypeReference {
                 | (paramIndex << 16));
     }
 
-    /**
+    /*
      * Returns a reference to the type of an exception, in a 'throws' clause of
      * a method.
      * 
@@ -282,7 +282,7 @@ public class TypeReference {
         return new TypeReference((THROWS << 24) | (exceptionIndex << 8));
     }
 
-    /**
+    /*
      * Returns a reference to the type of the exception declared in a 'catch'
      * clause of a method.
      * 
@@ -297,7 +297,7 @@ public class TypeReference {
                 | (tryCatchBlockIndex << 8));
     }
 
-    /**
+    /*
      * Returns a reference to the type of a type argument in a constructor or
      * method call or reference.
      * 
@@ -320,7 +320,7 @@ public class TypeReference {
         return new TypeReference((sort << 24) | argIndex);
     }
 
-    /**
+    /*
      * Returns the sort of this type reference.
      * 
      * @return {@link #CLASS_TYPE_PARAMETER CLASS_TYPE_PARAMETER},
@@ -350,7 +350,7 @@ public class TypeReference {
         return value >>> 24;
     }
 
-    /**
+    /*
      * Returns the index of the type parameter referenced by this type
      * reference. This method must only be used for type references whose sort
      * is {@link #CLASS_TYPE_PARAMETER CLASS_TYPE_PARAMETER},
@@ -364,7 +364,7 @@ public class TypeReference {
         return (value & 0x00FF0000) >> 16;
     }
 
-    /**
+    /*
      * Returns the index of the type parameter bound, within the type parameter
      * {@link #getTypeParameterIndex}, referenced by this type reference. This
      * method must only be used for type references whose sort is
@@ -377,7 +377,7 @@ public class TypeReference {
         return (value & 0x0000FF00) >> 8;
     }
 
-    /**
+    /*
      * Returns the index of the "super type" of a class that is referenced by
      * this type reference. This method must only be used for type references
      * whose sort is {@link #CLASS_EXTENDS CLASS_EXTENDS}.
@@ -390,7 +390,7 @@ public class TypeReference {
         return (short) ((value & 0x00FFFF00) >> 8);
     }
 
-    /**
+    /*
      * Returns the index of the formal parameter whose type is referenced by
      * this type reference. This method must only be used for type references
      * whose sort is {@link #METHOD_FORMAL_PARAMETER METHOD_FORMAL_PARAMETER}.
@@ -401,7 +401,7 @@ public class TypeReference {
         return (value & 0x00FF0000) >> 16;
     }
 
-    /**
+    /*
      * Returns the index of the exception, in a 'throws' clause of a method,
      * whose type is referenced by this type reference. This method must only be
      * used for type references whose sort is {@link #THROWS THROWS}.
@@ -412,7 +412,7 @@ public class TypeReference {
         return (value & 0x00FFFF00) >> 8;
     }
 
-    /**
+    /*
      * Returns the index of the try catch block (using the order in which they
      * are visited with visitTryCatchBlock), whose 'catch' type is referenced by
      * this type reference. This method must only be used for type references
@@ -424,7 +424,7 @@ public class TypeReference {
         return (value & 0x00FFFF00) >> 8;
     }
 
-    /**
+    /*
      * Returns the index of the type argument referenced by this type reference.
      * This method must only be used for type references whose sort is
      * {@link #CAST CAST}, {@link #CONSTRUCTOR_INVOCATION_TYPE_ARGUMENT
@@ -440,7 +440,7 @@ public class TypeReference {
         return value & 0xFF;
     }
 
-    /**
+    /*
      * Returns the int encoded value of this type reference, suitable for use in
      * visit methods related to type annotations, like visitTypeAnnotation.
      * 

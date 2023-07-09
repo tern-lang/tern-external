@@ -24,7 +24,7 @@ import org.ternlang.cglib.core.ReflectUtils;
 
 import junit.framework.*;
 
-/**
+/*
  * @author Juozas Baliuka, Chris Nokleberg
  */
 public class TestBeanGenerator extends TestCase {

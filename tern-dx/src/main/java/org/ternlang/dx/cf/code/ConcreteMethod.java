@@ -30,38 +30,38 @@ import org.ternlang.dx.rop.cst.CstString;
 import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.rop.type.Prototype;
 
-/**
+/*
  * Container for all the giblets that make up a concrete Java bytecode method.
  * It implements {@link Method}, so it provides all the original access
  * (by delegation), but it also constructs and keeps useful versions of
  * stuff extracted from the method's {@code Code} attribute.
  */
 public final class ConcreteMethod implements Method {
-    /** {@code non-null;} method being wrapped */
+    /* {@code non-null;} method being wrapped */
     private final Method method;
 
-    /**
+    /*
      * {@code null-ok;} the class's {@code SourceFile} attribute value,
      * if any
      */
     private final CstString sourceFile;
 
-    /**
+    /*
      * whether the class that this method is part of is defined with
      * {@code ACC_SUPER}
      */
     private final boolean accSuper;
 
-    /** {@code non-null;} the code attribute */
+    /* {@code non-null;} the code attribute */
     private final AttCode attCode;
 
-    /** {@code non-null;} line number list */
+    /* {@code non-null;} line number list */
     private final LineNumberList lineNumbers;
 
-    /** {@code non-null;} local variable list */
+    /* {@code non-null;} local variable list */
     private final LocalVariableList localVariables;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param method {@code non-null;} the method to be based on
@@ -144,42 +144,42 @@ public final class ConcreteMethod implements Method {
         this.localVariables = localVariables;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public CstNat getNat() {
         return method.getNat();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public CstString getName() {
         return method.getName();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public CstString getDescriptor() {
         return method.getDescriptor();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int getAccessFlags() {
         return method.getAccessFlags();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public AttributeList getAttributes() {
         return method.getAttributes();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public CstType getDefiningClass() {
         return method.getDefiningClass();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Prototype getEffectiveDescriptor() {
         return method.getEffectiveDescriptor();
     }
 
-    /**
+    /*
      * Gets whether the class that this method is part of is defined with
      * {@code ACC_SUPER}.
      *
@@ -189,7 +189,7 @@ public final class ConcreteMethod implements Method {
         return accSuper;
     }
 
-    /**
+    /*
      * Gets the maximum stack size.
      *
      * @return {@code >= 0;} the maximum stack size
@@ -198,7 +198,7 @@ public final class ConcreteMethod implements Method {
         return attCode.getMaxStack();
     }
 
-    /**
+    /*
      * Gets the number of locals.
      *
      * @return {@code >= 0;} the number of locals
@@ -207,7 +207,7 @@ public final class ConcreteMethod implements Method {
         return attCode.getMaxLocals();
     }
 
-    /**
+    /*
      * Gets the bytecode array.
      *
      * @return {@code non-null;} the bytecode array
@@ -216,7 +216,7 @@ public final class ConcreteMethod implements Method {
         return attCode.getCode();
     }
 
-    /**
+    /*
      * Gets the exception table.
      *
      * @return {@code non-null;} the exception table
@@ -225,7 +225,7 @@ public final class ConcreteMethod implements Method {
         return attCode.getCatches();
     }
 
-    /**
+    /*
      * Gets the line number list.
      *
      * @return {@code non-null;} the line number list
@@ -234,7 +234,7 @@ public final class ConcreteMethod implements Method {
         return lineNumbers;
     }
 
-    /**
+    /*
      * Gets the local variable list.
      *
      * @return {@code non-null;} the local variable list
@@ -243,7 +243,7 @@ public final class ConcreteMethod implements Method {
         return localVariables;
     }
 
-    /**
+    /*
      * Returns a {@link SourcePosition} instance corresponding to the
      * given bytecode offset.
      *

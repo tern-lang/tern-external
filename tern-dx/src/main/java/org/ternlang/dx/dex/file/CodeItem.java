@@ -29,42 +29,42 @@ import org.ternlang.dx.rop.type.TypeList;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Representation of all the parts needed for concrete methods in a
  * {@code dex} file.
  */
 public final class CodeItem extends OffsettedItem {
-    /** file alignment of this class, in bytes */
+    /* file alignment of this class, in bytes */
     private static final int ALIGNMENT = 4;
 
-    /** write size of the header of this class, in bytes */
+    /* write size of the header of this class, in bytes */
     private static final int HEADER_SIZE = 16;
 
-    /** {@code non-null;} method that this code implements */
+    /* {@code non-null;} method that this code implements */
     private final CstMethodRef ref;
 
-    /** {@code non-null;} the bytecode instructions and associated data */
+    /* {@code non-null;} the bytecode instructions and associated data */
     private final DalvCode code;
 
-    /** {@code null-ok;} the catches, if needed; set in {@link #addContents} */
+    /* {@code null-ok;} the catches, if needed; set in {@link #addContents} */
     private CatchStructs catches;
 
-    /** whether this instance is for a {@code static} method */
+    /* whether this instance is for a {@code static} method */
     private final boolean isStatic;
 
-    /**
+    /*
      * {@code non-null;} list of possibly-thrown exceptions; just used in
      * generating debugging output (listings)
      */
     private final TypeList throwsList;
 
-    /**
+    /*
      * {@code null-ok;} the debug info or {@code null} if there is none;
      * set in {@link #addContents}
      */
     private DebugInfoItem debugInfo;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param ref {@code non-null;} method that this code implements
@@ -98,13 +98,13 @@ public final class CodeItem extends OffsettedItem {
         this.debugInfo = null;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public ItemType itemType() {
         return ItemType.TYPE_CODE_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void addContents(DexFile file) {
         MixedItemSection byteData = file.getByteData();
         TypeIdsSection typeIds = file.getTypeIds();
@@ -126,19 +126,19 @@ public final class CodeItem extends OffsettedItem {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         return "CodeItem{" + toHuman() + "}";
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toHuman() {
         return ref.toHuman();
     }
 
-    /**
+    /*
      * Gets the reference to the method this instance implements.
      *
      * @return {@code non-null;} the method reference
@@ -147,7 +147,7 @@ public final class CodeItem extends OffsettedItem {
         return ref;
     }
 
-    /**
+    /*
      * Does a human-friendly dump of this instance.
      *
      * @param out {@code non-null;} where to dump
@@ -179,7 +179,7 @@ public final class CodeItem extends OffsettedItem {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void place0(Section addedTo, int offset) {
         final DexFile file = addedTo.getFile();
@@ -220,7 +220,7 @@ public final class CodeItem extends OffsettedItem {
         setWriteSize(HEADER_SIZE + (insnsSize * 2) + catchesSize);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void writeTo0(DexFile file, AnnotatedOutput out) {
         boolean annotates = out.annotates();
@@ -280,7 +280,7 @@ public final class CodeItem extends OffsettedItem {
         }
     }
 
-    /**
+    /*
      * Helper for {@link #writeTo0} which writes out the actual bytecode.
      *
      * @param file {@code non-null;} file we are part of
@@ -297,7 +297,7 @@ public final class CodeItem extends OffsettedItem {
         }
     }
 
-    /**
+    /*
      * Get the in registers count.
      *
      * @return the count
@@ -306,7 +306,7 @@ public final class CodeItem extends OffsettedItem {
         return ref.getParameterWordCount(isStatic);
     }
 
-    /**
+    /*
      * Get the out registers count.
      *
      * @return the count
@@ -315,7 +315,7 @@ public final class CodeItem extends OffsettedItem {
         return code.getInsns().getOutsSize();
     }
 
-    /**
+    /*
      * Get the total registers count.
      *
      * @return the count

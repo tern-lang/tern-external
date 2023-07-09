@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -38,7 +38,7 @@ import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.tree.MethodNode;
 import org.ternlang.asm.tree.TryCatchBlockNode;
 
-/**
+/*
  * A {@link MethodVisitor} adapter to sort the exception handlers. The handlers
  * are sorted in a method innermost-to-outermost. This allows the programmer to
  * add handlers without worrying about ordering them correctly with respect to

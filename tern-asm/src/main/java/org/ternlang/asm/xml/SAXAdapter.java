@@ -1,4 +1,4 @@
-/***
+/**
  * ASM XML Adapter
  * Copyright (c) 2004-2011, Eugene Kuleshov
  * All rights reserved.
@@ -33,7 +33,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 
-/**
+/*
  * SAXAdapter
  * 
  * @author Eugene Kuleshov

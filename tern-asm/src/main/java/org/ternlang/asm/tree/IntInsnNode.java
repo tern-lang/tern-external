@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -33,19 +33,19 @@ import java.util.Map;
 
 import org.ternlang.asm.MethodVisitor;
 
-/**
+/*
  * A node that represents an instruction with a single int operand.
  * 
  * @author Eric Bruneton
  */
 public class IntInsnNode extends AbstractInsnNode {
 
-    /**
+    /*
      * The operand of this instruction.
      */
     public int operand;
 
-    /**
+    /*
      * Constructs a new {@link IntInsnNode}.
      * 
      * @param opcode
@@ -59,7 +59,7 @@ public class IntInsnNode extends AbstractInsnNode {
         this.operand = operand;
     }
 
-    /**
+    /*
      * Sets the opcode of this instruction.
      * 
      * @param opcode

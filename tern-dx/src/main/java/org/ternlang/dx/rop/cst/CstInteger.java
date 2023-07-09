@@ -19,36 +19,36 @@ package org.ternlang.dx.rop.cst;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Constants of type {@code CONSTANT_Integer_info}.
  */
 public final class CstInteger
         extends CstLiteral32 {
-    /** {@code non-null;} array of cached instances */
+    /* {@code non-null;} array of cached instances */
     private static final CstInteger[] cache = new CstInteger[511];
 
-    /** {@code non-null;} instance representing {@code -1} */
+    /* {@code non-null;} instance representing {@code -1} */
     public static final CstInteger VALUE_M1 = make(-1);
 
-    /** {@code non-null;} instance representing {@code 0} */
+    /* {@code non-null;} instance representing {@code 0} */
     public static final CstInteger VALUE_0 = make(0);
 
-    /** {@code non-null;} instance representing {@code 1} */
+    /* {@code non-null;} instance representing {@code 1} */
     public static final CstInteger VALUE_1 = make(1);
 
-    /** {@code non-null;} instance representing {@code 2} */
+    /* {@code non-null;} instance representing {@code 2} */
     public static final CstInteger VALUE_2 = make(2);
 
-    /** {@code non-null;} instance representing {@code 3} */
+    /* {@code non-null;} instance representing {@code 3} */
     public static final CstInteger VALUE_3 = make(3);
 
-    /** {@code non-null;} instance representing {@code 4} */
+    /* {@code non-null;} instance representing {@code 4} */
     public static final CstInteger VALUE_4 = make(4);
 
-    /** {@code non-null;} instance representing {@code 5} */
+    /* {@code non-null;} instance representing {@code 5} */
     public static final CstInteger VALUE_5 = make(5);
 
-    /**
+    /*
      * Makes an instance for the given value. This may (but does not
      * necessarily) return an already-allocated instance.
      *
@@ -73,7 +73,7 @@ public final class CstInteger
         return obj;
     }
 
-    /**
+    /*
      * Constructs an instance. This constructor is private; use {@link #make}.
      *
      * @param value the {@code int} value
@@ -82,30 +82,30 @@ public final class CstInteger
         super(value);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         int value = getIntBits();
         return "int{0x" + Hex.u4(value) + " / " + value + '}';
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Type getType() {
         return Type.INT;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String typeName() {
         return "int";
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return Integer.toString(getIntBits());
     }
 
-    /**
+    /*
      * Gets the {@code int} value.
      *
      * @return the value

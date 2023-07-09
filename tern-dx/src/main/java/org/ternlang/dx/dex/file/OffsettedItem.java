@@ -19,31 +19,31 @@ package org.ternlang.dx.dex.file;
 import org.ternlang.dex.util.ExceptionWithContext;
 import org.ternlang.dx.util.AnnotatedOutput;
 
-/**
+/*
  * An item in a Dalvik file which is referenced by absolute offset.
  */
 public abstract class OffsettedItem extends Item
         implements Comparable<OffsettedItem> {
-    /** {@code > 0;} alignment requirement */
+    /* {@code > 0;} alignment requirement */
     private final int alignment;
 
-    /** {@code >= -1;} the size of this instance when written, in bytes, or
+    /* {@code >= -1;} the size of this instance when written, in bytes, or
      * {@code -1} if not yet known */
     private int writeSize;
 
-    /**
+    /*
      * {@code null-ok;} section the item was added to, or {@code null} if
      * not yet added
      */
     private Section addedTo;
 
-    /**
+    /*
      * {@code >= -1;} assigned offset of the item from the start of its section,
      * or {@code -1} if not yet assigned
      */
     private int offset;
 
-    /**
+    /*
      * Gets the absolute offset of the given item, returning {@code 0}
      * if handed {@code null}.
      *
@@ -59,7 +59,7 @@ public abstract class OffsettedItem extends Item
         return item.getAbsoluteOffset();
     }
 
-    /**
+    /*
      * Constructs an instance. The offset is initially unassigned.
      *
      * @param alignment {@code > 0;} output alignment requirement; must be a
@@ -80,7 +80,7 @@ public abstract class OffsettedItem extends Item
         this.offset = -1;
     }
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * Comparisons for this class are defined to be type-major (if the
@@ -104,7 +104,7 @@ public abstract class OffsettedItem extends Item
         return (compareTo0(otherItem) == 0);
     }
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * Comparisons for this class are defined to be class-major (if the
@@ -126,7 +126,7 @@ public abstract class OffsettedItem extends Item
         return compareTo0(other);
     }
 
-    /**
+    /*
      * Sets the write size of this item. This may only be called once
      * per instance, and only if the size was unknown upon instance
      * creation.
@@ -145,7 +145,7 @@ public abstract class OffsettedItem extends Item
         this.writeSize = writeSize;
     }
 
-    /** {@inheritDoc}
+    /* {@inheritDoc}
      *
      * @throws UnsupportedOperationException thrown if the write size
      * is not yet known
@@ -159,7 +159,7 @@ public abstract class OffsettedItem extends Item
         return writeSize;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final void writeTo(DexFile file, AnnotatedOutput out) {
         out.alignTo(alignment);
@@ -178,7 +178,7 @@ public abstract class OffsettedItem extends Item
         writeTo0(file, out);
     }
 
-    /**
+    /*
      * Gets the relative item offset. The offset is from the start of
      * the section which the instance was written to.
      *
@@ -193,7 +193,7 @@ public abstract class OffsettedItem extends Item
         return offset;
     }
 
-    /**
+    /*
      * Gets the absolute item offset. The offset is from the start of
      * the file which the instance was written to.
      *
@@ -208,7 +208,7 @@ public abstract class OffsettedItem extends Item
         return addedTo.getAbsoluteOffset(offset);
     }
 
-    /**
+    /*
      * Indicates that this item has been added to the given section at
      * the given offset. It is only valid to call this method once per
      * instance.
@@ -244,7 +244,7 @@ public abstract class OffsettedItem extends Item
         return offset;
     }
 
-    /**
+    /*
      * Gets the alignment requirement of this instance. An instance should
      * only be written when so aligned.
      *
@@ -254,7 +254,7 @@ public abstract class OffsettedItem extends Item
         return alignment;
     }
 
-    /**
+    /*
      * Gets the absolute offset of this item as a string, suitable for
      * including in annotations.
      *
@@ -264,14 +264,14 @@ public abstract class OffsettedItem extends Item
         return '[' + Integer.toHexString(getAbsoluteOffset()) + ']';
     }
 
-    /**
+    /*
      * Gets a short human-readable string representing this instance.
      *
      * @return {@code non-null;} the human form
      */
     public abstract String toHuman();
 
-    /**
+    /*
      * Compares this instance to another which is guaranteed to be of
      * the same class. The default implementation of this method is to
      * throw an exception (unsupported operation). If a particular
@@ -286,7 +286,7 @@ public abstract class OffsettedItem extends Item
         throw new UnsupportedOperationException("unsupported");
     }
 
-    /**
+    /*
      * Does additional work required when placing an instance. The
      * default implementation of this method is a no-op. If a
      * particular class needs to do something special, then it should
@@ -302,7 +302,7 @@ public abstract class OffsettedItem extends Item
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Performs the actual write of the contents of this instance to
      * the given data section. This is called by {@link #writeTo},
      * which will have taken care of ensuring alignment.

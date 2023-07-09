@@ -18,20 +18,20 @@ package org.ternlang.dx.io.instructions;
 
 import org.ternlang.dx.io.IndexType;
 
-/**
+/*
  * A decoded Dalvik instruction which has three register arguments.
  */
 public final class ThreeRegisterDecodedInstruction extends DecodedInstruction {
-    /** register argument "A" */
+    /* register argument "A" */
     private final int a;
 
-    /** register argument "B" */
+    /* register argument "B" */
     private final int b;
 
-    /** register argument "C" */
+    /* register argument "C" */
     private final int c;
 
-    /**
+    /*
      * Constructs an instance.
      */
     public ThreeRegisterDecodedInstruction(InstructionCodec format, int opcode,
@@ -44,27 +44,27 @@ public final class ThreeRegisterDecodedInstruction extends DecodedInstruction {
         this.c = c;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public int getRegisterCount() {
         return 3;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public int getA() {
         return a;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public int getB() {
         return b;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public int getC() {
         return c;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public DecodedInstruction withIndex(int newIndex) {
         return new ThreeRegisterDecodedInstruction(
                 getFormat(), getOpcode(), newIndex, getIndexType(),

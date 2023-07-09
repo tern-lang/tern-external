@@ -22,7 +22,7 @@ import org.ternlang.cglib.beans.BulkBeanException;
 
 import junit.framework.*;
 
-/**
+/*
  *
  * @author baliuka
  */
@@ -101,7 +101,7 @@ public class TestBulkBean extends TestCase {
         return new TestSuite(TestBulkBean.class);
     }
     
-    /** Test of create method, of class net.sf.cglib.BulkBean. */
+    /* Test of create method, of class net.sf.cglib.BulkBean. */
     public void testGetInstance() throws Throwable {
         BulkBean mClass = BulkBean.create(MA.class, getters, setters, types);
       
@@ -261,7 +261,7 @@ public class TestBulkBean extends TestCase {
         
     }
     
-    /** Generated implementation of abstract class net.sf.cglib.BulkBean. Please fill dummy bodies of generated methods. */
+    /* Generated implementation of abstract class net.sf.cglib.BulkBean. Please fill dummy bodies of generated methods. */
     private static class BulkBeanReflectImpl extends BulkBean {
         
         private   Method gets[];

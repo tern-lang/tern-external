@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -41,36 +41,36 @@ import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.TypePath;
 
-/**
+/*
  * A node that represents a class.
  * 
  * @author Eric Bruneton
  */
 public class ClassNode extends ClassVisitor {
 
-    /**
+    /*
      * The class version.
      */
     public int version;
 
-    /**
+    /*
      * The class's access flags (see {@link org.ternlang.asm.Opcodes}). This
      * field also indicates if the class is deprecated.
      */
     public int access;
 
-    /**
+    /*
      * The internal name of the class (see
      * {@link org.ternlang.asm.Type#getInternalName() getInternalName}).
      */
     public String name;
 
-    /**
+    /*
      * The signature of the class. May be <tt>null</tt>.
      */
     public String signature;
 
-    /**
+    /*
      * The internal of name of the super class (see
      * {@link org.ternlang.asm.Type#getInternalName() getInternalName}). For
      * interfaces, the super class is {@link Object}. May be <tt>null</tt>, but
@@ -78,44 +78,44 @@ public class ClassNode extends ClassVisitor {
      */
     public String superName;
 
-    /**
+    /*
      * The internal names of the class's interfaces (see
      * {@link org.ternlang.asm.Type#getInternalName() getInternalName}). This
      * list is a list of {@link String} objects.
      */
     public List<String> interfaces;
 
-    /**
+    /*
      * The name of the source file from which this class was compiled. May be
      * <tt>null</tt>.
      */
     public String sourceFile;
 
-    /**
+    /*
      * Debug information to compute the correspondence between source and
      * compiled elements of the class. May be <tt>null</tt>.
      */
     public String sourceDebug;
 
-    /**
+    /*
      * The internal name of the enclosing class of the class. May be
      * <tt>null</tt>.
      */
     public String outerClass;
 
-    /**
+    /*
      * The name of the method that contains the class, or <tt>null</tt> if the
      * class is not enclosed in a method.
      */
     public String outerMethod;
 
-    /**
+    /*
      * The descriptor of the method that contains the class, or <tt>null</tt> if
      * the class is not enclosed in a method.
      */
     public String outerMethodDesc;
 
-    /**
+    /*
      * The runtime visible annotations of this class. This list is a list of
      * {@link AnnotationNode} objects. May be <tt>null</tt>.
      * 
@@ -124,7 +124,7 @@ public class ClassNode extends ClassVisitor {
      */
     public List<AnnotationNode> visibleAnnotations;
 
-    /**
+    /*
      * The runtime invisible annotations of this class. This list is a list of
      * {@link AnnotationNode} objects. May be <tt>null</tt>.
      * 
@@ -133,7 +133,7 @@ public class ClassNode extends ClassVisitor {
      */
     public List<AnnotationNode> invisibleAnnotations;
 
-    /**
+    /*
      * The runtime visible type annotations of this class. This list is a list
      * of {@link TypeAnnotationNode} objects. May be <tt>null</tt>.
      * 
@@ -142,7 +142,7 @@ public class ClassNode extends ClassVisitor {
      */
     public List<TypeAnnotationNode> visibleTypeAnnotations;
 
-    /**
+    /*
      * The runtime invisible type annotations of this class. This list is a list
      * of {@link TypeAnnotationNode} objects. May be <tt>null</tt>.
      * 
@@ -151,7 +151,7 @@ public class ClassNode extends ClassVisitor {
      */
     public List<TypeAnnotationNode> invisibleTypeAnnotations;
 
-    /**
+    /*
      * The non standard attributes of this class. This list is a list of
      * {@link Attribute} objects. May be <tt>null</tt>.
      * 
@@ -159,7 +159,7 @@ public class ClassNode extends ClassVisitor {
      */
     public List<Attribute> attrs;
 
-    /**
+    /*
      * Informations about the inner classes of this class. This list is a list
      * of {@link InnerClassNode} objects.
      * 
@@ -167,7 +167,7 @@ public class ClassNode extends ClassVisitor {
      */
     public List<InnerClassNode> innerClasses;
 
-    /**
+    /*
      * The fields of this class. This list is a list of {@link FieldNode}
      * objects.
      * 
@@ -175,7 +175,7 @@ public class ClassNode extends ClassVisitor {
      */
     public List<FieldNode> fields;
 
-    /**
+    /*
      * The methods of this class. This list is a list of {@link MethodNode}
      * objects.
      * 
@@ -183,7 +183,7 @@ public class ClassNode extends ClassVisitor {
      */
     public List<MethodNode> methods;
 
-    /**
+    /*
      * Constructs a new {@link ClassNode}. <i>Subclasses must not use this
      * constructor</i>. Instead, they must use the {@link #ClassNode(int)}
      * version.
@@ -198,7 +198,7 @@ public class ClassNode extends ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Constructs a new {@link ClassNode}.
      * 
      * @param api
@@ -322,7 +322,7 @@ public class ClassNode extends ClassVisitor {
     // Accept method
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Checks that this class node is compatible with the given ASM API version.
      * This methods checks that this node, and all its nodes recursively, do not
      * contain elements that were introduced in more recent versions of the ASM
@@ -351,7 +351,7 @@ public class ClassNode extends ClassVisitor {
         }
     }
 
-    /**
+    /*
      * Makes the given class visitor visit this class.
      * 
      * @param cv

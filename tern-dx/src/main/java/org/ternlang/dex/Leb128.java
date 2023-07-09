@@ -19,7 +19,7 @@ package org.ternlang.dex;
 import org.ternlang.dex.util.ByteInput;
 import org.ternlang.dex.util.ByteOutput;
 
-/**
+/*
  * Reads and writes DWARFv3 LEB 128 signed and unsigned integers. See DWARF v3
  * section 7.6.
  */
@@ -27,7 +27,7 @@ public final class Leb128 {
     private Leb128() {
     }
 
-    /**
+    /*
      * Gets the number of bytes in the unsigned LEB128 encoding of the
      * given value.
      *
@@ -48,7 +48,7 @@ public final class Leb128 {
         return count + 1;
     }
 
-    /**
+    /*
      * Gets the number of bytes in the signed LEB128 encoding of the
      * given value.
      *
@@ -75,7 +75,7 @@ public final class Leb128 {
         return count;
     }
 
-    /**
+    /*
      * Reads an signed integer from {@code in}.
      */
     public static int readSignedLeb128(ByteInput in) {
@@ -103,7 +103,7 @@ public final class Leb128 {
         return result;
     }
 
-    /**
+    /*
      * Reads an unsigned integer from {@code in}.
      */
     public static int readUnsignedLeb128(ByteInput in) {
@@ -124,7 +124,7 @@ public final class Leb128 {
         return result;
     }
 
-    /**
+    /*
      * Writes {@code value} as an unsigned integer to {@code out}, starting at
      * {@code offset}. Returns the number of bytes written.
      */
@@ -140,7 +140,7 @@ public final class Leb128 {
         out.writeByte((byte) (value & 0x7f));
     }
 
-    /**
+    /*
      * Writes {@code value} as a signed integer to {@code out}, starting at
      * {@code offset}. Returns the number of bytes written.
      */

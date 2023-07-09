@@ -27,47 +27,47 @@ import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.ByteArrayAnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * List of exception handlers (tuples of covered range, catch type,
  * handler address) for a particular piece of code. Instances of this
  * class correspond to a {@code try_item[]} and a
  * {@code catch_handler_item[]}.
  */
 public final class CatchStructs {
-    /**
+    /*
      * the size of a {@code try_item}: a {@code uint}
      * and two {@code ushort}s
      */
     private static final int TRY_ITEM_WRITE_SIZE = 4 + (2 * 2);
 
-    /** {@code non-null;} code that contains the catches */
+    /* {@code non-null;} code that contains the catches */
     private final DalvCode code;
 
-    /**
+    /*
      * {@code null-ok;} the underlying table; set in
      * {@link #finishProcessingIfNecessary}
      */
     private CatchTable table;
 
-    /**
+    /*
      * {@code null-ok;} the encoded handler list, if calculated; set in
      * {@link #encode}
      */
     private byte[] encodedHandlers;
 
-    /**
+    /*
      * length of the handlers header (encoded size), if known; used for
      * annotation
      */
     private int encodedHandlerHeaderSize;
 
-    /**
+    /*
      * {@code null-ok;} map from handler lists to byte offsets, if calculated; set in
      * {@link #encode}
      */
     private TreeMap<CatchHandlerList, Integer> handlerOffsets;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param code {@code non-null;} code that contains the catches
@@ -80,7 +80,7 @@ public final class CatchStructs {
         this.handlerOffsets = null;
     }
 
-    /**
+    /*
      * Finish processing the catches, if necessary.
      */
     private void finishProcessingIfNecessary() {
@@ -89,7 +89,7 @@ public final class CatchStructs {
         }
     }
 
-    /**
+    /*
      * Gets the size of the tries list, in entries.
      *
      * @return {@code >= 0;} the tries list size
@@ -99,7 +99,7 @@ public final class CatchStructs {
         return table.size();
     }
 
-    /**
+    /*
      * Does a human-friendly dump of this instance.
      *
      * @param out {@code non-null;} where to dump
@@ -109,7 +109,7 @@ public final class CatchStructs {
         annotateEntries(prefix, out, null);
     }
 
-    /**
+    /*
      * Encodes the handler lists.
      *
      * @param file {@code non-null;} file this instance is part of
@@ -174,7 +174,7 @@ public final class CatchStructs {
         encodedHandlers = out.toByteArray();
     }
 
-    /**
+    /*
      * Gets the write size of this instance, in bytes.
      *
      * @return {@code >= 0;} the write size
@@ -184,7 +184,7 @@ public final class CatchStructs {
                 + encodedHandlers.length;
     }
 
-    /**
+    /*
      * Writes this instance to the given stream.
      *
      * @param file {@code non-null;} file this instance is part of
@@ -218,7 +218,7 @@ public final class CatchStructs {
         out.write(encodedHandlers);
     }
 
-    /**
+    /*
      * Helper method to annotate or simply print the exception handlers.
      * Only one of {@code printTo} or {@code annotateTo} should
      * be non-null.
@@ -290,7 +290,7 @@ public final class CatchStructs {
                 subPrefix, printTo, annotateTo);
     }
 
-    /**
+    /*
      * Helper for {@link #annotateEntries} to annotate a catch handler list
      * while consuming it.
      *

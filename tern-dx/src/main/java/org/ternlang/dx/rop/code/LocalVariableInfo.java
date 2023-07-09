@@ -21,33 +21,33 @@ import java.util.HashMap;
 import org.ternlang.dx.rop.type.TypeBearer;
 import org.ternlang.dx.util.MutabilityControl;
 
-/**
+/*
  * Container for local variable information for a particular {@link
  * RopMethod}.
  */
 public final class LocalVariableInfo
         extends MutabilityControl {
-    /** {@code >= 0;} the register count for the method */
+    /* {@code >= 0;} the register count for the method */
     private final int regCount;
 
-    /**
+    /*
      * {@code non-null;} {@link RegisterSpecSet} to use when indicating a block
      * that has no locals; it is empty and immutable but has an appropriate
      * max size for the method
      */
     private final RegisterSpecSet emptySet;
 
-    /**
+    /*
      * {@code non-null;} array consisting of register sets representing the
      * sets of variables already assigned upon entry to each block,
      * where array indices correspond to block labels
      */
     private final RegisterSpecSet[] blockStarts;
 
-    /** {@code non-null;} map from instructions to the variable each assigns */
+    /* {@code non-null;} map from instructions to the variable each assigns */
     private final HashMap<Insn, RegisterSpec> insnAssignments;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param method {@code non-null;} the method being represented by this instance
@@ -69,7 +69,7 @@ public final class LocalVariableInfo
         emptySet.setImmutable();
     }
 
-    /**
+    /*
      * Sets the register set associated with the start of the block with
      * the given label.
      *
@@ -91,7 +91,7 @@ public final class LocalVariableInfo
         }
     }
 
-    /**
+    /*
      * Merges the given register set into the set for the block with the
      * given label. If there was not already an associated set, then this
      * is the same as calling {@link #setStarts}. Otherwise, this will
@@ -131,7 +131,7 @@ public final class LocalVariableInfo
         return true;
     }
 
-    /**
+    /*
      * Gets the register set associated with the start of the block
      * with the given label. This returns an empty set with the appropriate
      * max size if no set was associated with the block in question.
@@ -145,7 +145,7 @@ public final class LocalVariableInfo
         return (result != null) ? result : emptySet;
     }
 
-    /**
+    /*
      * Gets the register set associated with the start of the given
      * block. This is just convenient shorthand for
      * {@code getStarts(block.getLabel())}.
@@ -157,7 +157,7 @@ public final class LocalVariableInfo
         return getStarts(block.getLabel());
     }
 
-    /**
+    /*
      * Gets a mutable copy of the register set associated with the
      * start of the block with the given label. This returns a
      * newly-allocated empty {@link RegisterSpecSet} of appropriate
@@ -173,7 +173,7 @@ public final class LocalVariableInfo
             result.mutableCopy() : new RegisterSpecSet(regCount);
     }
 
-    /**
+    /*
      * Adds an assignment association for the given instruction and
      * register spec. This throws an exception if the instruction
      * doesn't actually perform a named variable assignment.
@@ -201,7 +201,7 @@ public final class LocalVariableInfo
         insnAssignments.put(insn, spec);
     }
 
-    /**
+    /*
      * Gets the named register being assigned by the given instruction, if
      * previously stored in this instance.
      *
@@ -212,7 +212,7 @@ public final class LocalVariableInfo
         return insnAssignments.get(insn);
     }
 
-    /**
+    /*
      * Gets the number of assignments recorded by this instance.
      *
      * @return {@code >= 0;} the number of assignments
@@ -235,7 +235,7 @@ public final class LocalVariableInfo
         }
     }
 
-    /**
+    /*
      * Helper method, to get the starts for a label, throwing the
      * right exception for range problems.
      *

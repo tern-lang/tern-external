@@ -15,7 +15,7 @@
  */
 package org.ternlang.cglib.proxysample;
 
-/**
+/*
  * @author neeme
  *
  */

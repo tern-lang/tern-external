@@ -16,12 +16,12 @@
 
 package org.ternlang.dex.util;
 
-/**
+/*
  * A byte sink.
  */
 public interface ByteOutput {
 
-    /**
+    /*
      * Writes a byte.
      *
      * @throws IndexOutOfBoundsException if all bytes have been written.

@@ -51,30 +51,30 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.ByteArray;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Parser for a constant pool embedded in a class file.
  */
 public final class ConstantPoolParser {
-    /** {@code non-null;} the bytes of the constant pool */
+    /* {@code non-null;} the bytes of the constant pool */
     private final ByteArray bytes;
 
-    /** {@code non-null;} actual parsed constant pool contents */
+    /* {@code non-null;} actual parsed constant pool contents */
     private final StdConstantPool pool;
 
-    /** {@code non-null;} byte offsets to each cst */
+    /* {@code non-null;} byte offsets to each cst */
     private final int[] offsets;
 
-    /**
+    /*
      * -1 || &gt;= 10; the end offset of this constant pool in the
      * {@code byte[]} which it came from or {@code -1} if not
      * yet parsed
      */
     private int endOffset;
 
-    /** {@code null-ok;} parse observer, if any */
+    /* {@code null-ok;} parse observer, if any */
     private ParseObserver observer;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param bytes {@code non-null;} the bytes of the file
@@ -88,7 +88,7 @@ public final class ConstantPoolParser {
         this.endOffset = -1;
     }
 
-    /**
+    /*
      * Sets the parse observer for this instance.
      *
      * @param observer {@code null-ok;} the observer
@@ -97,7 +97,7 @@ public final class ConstantPoolParser {
         this.observer = observer;
     }
 
-    /**
+    /*
      * Gets the end offset of this constant pool in the {@code byte[]}
      * which it came from.
      *
@@ -108,7 +108,7 @@ public final class ConstantPoolParser {
         return endOffset;
     }
 
-    /**
+    /*
      * Gets the actual constant pool.
      *
      * @return {@code non-null;} the constant pool
@@ -118,7 +118,7 @@ public final class ConstantPoolParser {
         return pool;
     }
 
-    /**
+    /*
      * Runs {@link #parse} if it has not yet been run successfully.
      */
     private void parseIfNecessary() {
@@ -127,7 +127,7 @@ public final class ConstantPoolParser {
         }
     }
 
-    /**
+    /*
      * Does the actual parsing.
      */
     private void parse() {
@@ -179,7 +179,7 @@ public final class ConstantPoolParser {
         }
     }
 
-    /**
+    /*
      * Populates {@link #offsets} and also completely parse utf8 constants.
      */
     private void determineOffsets() {
@@ -240,7 +240,7 @@ public final class ConstantPoolParser {
         endOffset = at;
     }
 
-    /**
+    /*
      * Parses the constant for the given index if it hasn't already been
      * parsed, also storing it in the constant pool. This will also
      * have the side effect of parsing any entries the indicated one
@@ -356,7 +356,7 @@ public final class ConstantPoolParser {
         return cst;
     }
 
-    /**
+    /*
      * Parses a utf8 constant.
      *
      * @param at offset to the start of the constant (where the tag byte is)

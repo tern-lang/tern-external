@@ -1,4 +1,4 @@
-/***
+/**
  * ASM XML Adapter
  * Copyright (c) 2004-2011, Eugene Kuleshov
  * All rights reserved.
@@ -42,7 +42,7 @@ import org.ternlang.asm.TypePath;
 import org.ternlang.asm.util.Printer;
 import org.xml.sax.helpers.AttributesImpl;
 
-/**
+/*
  * A {@link MethodVisitor} that generates SAX 2.0 events from the visited
  * method.
  * 
@@ -62,7 +62,7 @@ public final class SAXCodeAdapter extends MethodVisitor {
 
     private final Map<Label, String> labelNames;
 
-    /**
+    /*
      * Constructs a new {@link SAXCodeAdapter SAXCodeAdapter} object.
      * 
      * @param sa

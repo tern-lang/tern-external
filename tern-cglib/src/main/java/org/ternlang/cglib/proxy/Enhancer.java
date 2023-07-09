@@ -57,7 +57,7 @@ import org.ternlang.cglib.core.TypeUtils;
 import org.ternlang.cglib.core.VisibilityPredicate;
 import org.ternlang.cglib.core.WeakCacheKey;
 
-/**
+/*
  * Generates dynamic subclasses to enable method interception. This
  * class started as a substitute for the standard Dynamic Proxy support
  * included with JDK 1.3, but one that allowed the proxies to extend a
@@ -108,7 +108,7 @@ public class Enhancer extends AbstractClassGenerator
     private static final String SET_THREAD_CALLBACKS_NAME = "CGLIB$SET_THREAD_CALLBACKS";
     private static final String SET_STATIC_CALLBACKS_NAME = "CGLIB$SET_STATIC_CALLBACKS";
     private static final String CONSTRUCTED_FIELD = "CGLIB$CONSTRUCTED";
-    /**
+    /*
      * {@link org.ternlang.cglib.core.AbstractClassGenerator.ClassLoaderData#generatedClasses} requires to keep cache key
      * in a good shape (the keys should be up and running if the proxy class is alive), and one of the cache keys is
      * {@link CallbackFilter}. That is why the generated class contains static field that keeps strong reference to
@@ -167,7 +167,7 @@ public class Enhancer extends AbstractClassGenerator
     private EnhancerFactoryData currentData;
     private Object currentKey;
 
-    /** Internal interface, only public due to ClassLoader issues. */
+    /* Internal interface, only public due to ClassLoader issues. */
     public interface EnhancerKey {
         public Object newInstance(String type,
                                   String[] interfaces,
@@ -192,7 +192,7 @@ public class Enhancer extends AbstractClassGenerator
     private Long serialVersionUID;
     private boolean interceptDuringConstruction = true;
 
-    /**
+    /*
      * Create a new <code>Enhancer</code>. A new <code>Enhancer</code>
      * object should be used for each generated object, and should not
      * be shared across threads. To create additional instances of a
@@ -203,7 +203,7 @@ public class Enhancer extends AbstractClassGenerator
         super(SOURCE);
     }
 
-    /**
+    /*
      * Set the class which the generated class will extend. As a convenience,
      * if the supplied superclass is actually an interface, <code>setInterfaces</code>
      * will be called with the appropriate argument instead.
@@ -227,7 +227,7 @@ public class Enhancer extends AbstractClassGenerator
        this.beanInterfaces = beanInterfaces;
     }
 
-    /**
+    /*
      * Set the interfaces to implement. The <code>Factory</code> interface will
      * always be implemented regardless of what is specified here.
      * @param interfaces array of interfaces to implement, or null
@@ -237,7 +237,7 @@ public class Enhancer extends AbstractClassGenerator
         this.interfaces = interfaces;
     }
 
-    /**
+    /*
      * Set the {@link CallbackFilter} used to map the generated class' methods
      * to a particular callback index.
      * New object instances will always use the same mapping, but may use different
@@ -250,7 +250,7 @@ public class Enhancer extends AbstractClassGenerator
     }
 
 
-    /**
+    /*
      * Set the single {@link Callback} to use.
      * Ignored if you use {@link #createClass}.
      * @param callback the callback to use for all methods
@@ -260,7 +260,7 @@ public class Enhancer extends AbstractClassGenerator
         setCallbacks(new Callback[]{ callback });
     }
 
-    /**
+    /*
      * Set the array of callbacks to use.
      * Ignored if you use {@link #createClass}.
      * You must use a {@link CallbackFilter} to specify the index into this
@@ -276,7 +276,7 @@ public class Enhancer extends AbstractClassGenerator
         this.callbacks = callbacks;
     }
 
-    /**
+    /*
      * Set whether the enhanced object instances should implement
      * the {@link Factory} interface.
      * This was added for tools that need for proxies to be more
@@ -289,7 +289,7 @@ public class Enhancer extends AbstractClassGenerator
         this.useFactory = useFactory;
     }
 
-    /**
+    /*
      * Set whether methods called from within the proxy's constructer
      * will be intercepted. The default value is true. Unintercepted methods
      * will call the method of the proxy's base class, if it exists.
@@ -299,7 +299,7 @@ public class Enhancer extends AbstractClassGenerator
         this.interceptDuringConstruction = interceptDuringConstruction;
     }
 
-    /**
+    /*
      * Set the single type of {@link Callback} to use.
      * This may be used instead of {@link #setCallback} when calling
      * {@link #createClass}, since it may not be possible to have
@@ -311,7 +311,7 @@ public class Enhancer extends AbstractClassGenerator
         setCallbackTypes(new Class[]{ callbackType });
     }
     
-    /**
+    /*
      * Set the array of callback types to use.
      * This may be used instead of {@link #setCallbacks} when calling
      * {@link #createClass}, since it may not be possible to have
@@ -327,7 +327,7 @@ public class Enhancer extends AbstractClassGenerator
         this.callbackTypes = CallbackInfo.determineTypes(callbackTypes);
     }
 
-    /**
+    /*
      * Generate a new class if necessary and uses the specified
      * callbacks (if any) to create a new object instance.
      * Uses the no-arg constructor of the superclass.
@@ -339,7 +339,7 @@ public class Enhancer extends AbstractClassGenerator
         return createHelper();
     }
 
-    /**
+    /*
      * Generate a new class if necessary and uses the specified
      * callbacks (if any) to create a new object instance.
      * Uses the constructor of the superclass matching the <code>argumentTypes</code>
@@ -358,7 +358,7 @@ public class Enhancer extends AbstractClassGenerator
         return createHelper();
     }
 
-    /**
+    /*
      * Generate a new class if necessary and return it without creating a new instance.
      * This ignores any callbacks that have been set.
      * To create a new instance you will have to use reflection, and methods
@@ -371,7 +371,7 @@ public class Enhancer extends AbstractClassGenerator
         return (Class)createHelper();
     }
 
-    /**
+    /*
      * Insert a static serialVersionUID field into the generated class.
      * @param sUID the field value, or null to avoid generating field.
      */
@@ -431,7 +431,7 @@ public class Enhancer extends AbstractClassGenerator
         }
     }
 
-    /**
+    /*
      * The idea of the class is to cache relevant java.lang.reflect instances so
      * proxy-class can be instantiated faster that when using {@link ReflectUtils#newInstance(Class, Class[], Object[])}
      * and {@link Enhancer#setThreadCallbacks(Class, Callback[])}
@@ -458,7 +458,7 @@ public class Enhancer extends AbstractClassGenerator
             }
         }
 
-        /**
+        /*
          * Creates proxy instance for given argument types, and assigns the callbacks.
          * Ideally, for each proxy class, just one set of argument types should be used,
          * otherwise it would have to spend time on constructor lookup.
@@ -551,7 +551,7 @@ public class Enhancer extends AbstractClassGenerator
                              sig.getDescriptor());
     }
     
-    /**
+    /*
      * Finds all of the methods that will be extended by an
      * Enhancer-generated class using the specified superclass and
      * interfaces. This can be useful in building a list of Callback
@@ -761,7 +761,7 @@ public class Enhancer extends AbstractClassGenerator
        return combined;
     }
 
-    /**
+    /*
      * Filter the list of constructors from the superclass. The
      * constructors which remain will be included in the generated
      * class. The default implementation is to filter out all private
@@ -777,7 +777,7 @@ public class Enhancer extends AbstractClassGenerator
             throw new IllegalArgumentException("No visible constructors in " + sc);
     }
 
-    /**
+    /*
      * This method should not be called in regular flow.
      * Technically speaking {@link #wrapCachedClass(Class)} uses {@link EnhancerFactoryData} as a cache value,
      * and the latter enables faster instantiation than plain old reflection lookup and invoke.
@@ -844,7 +844,7 @@ public class Enhancer extends AbstractClassGenerator
         return super.unwrapCachedValue(cached);
     }
 
-    /**
+    /*
      * Call this method to register the {@link Callback} array to use before
      * creating a new instance of the generated class via reflection. If you are using
      * an instance of <code>Enhancer</code> or the {@link Factory} interface to create
@@ -871,7 +871,7 @@ public class Enhancer extends AbstractClassGenerator
         setThreadCallbacks(generatedClass, callbacks);
     }
 
-    /**
+    /*
      * Similar to {@link #registerCallbacks}, but suitable for use
      * when multiple threads will be creating instances of the generated class.
      * The thread-level callbacks will always override the static callbacks.
@@ -884,7 +884,7 @@ public class Enhancer extends AbstractClassGenerator
         setCallbacksHelper(generatedClass, callbacks, SET_STATIC_CALLBACKS_NAME);
     }
 
-    /**
+    /*
      * Determine if a class was generated using <code>Enhancer</code>.
      * @param type any class
      * @return whether the class was generated  using <code>Enhancer</code>
@@ -920,7 +920,7 @@ public class Enhancer extends AbstractClassGenerator
         return type.getDeclaredMethod(methodName, new Class[]{ Callback[].class });
     }
 
-    /**
+    /*
      * Instantiates a proxy instance and assigns callback values.
      * Implementation detail: java.lang.reflect instances are not cached, so this method should not
      * be used on a hot path.
@@ -948,7 +948,7 @@ public class Enhancer extends AbstractClassGenerator
         }
     }
 
-    /**
+    /*
      * Helper method to create an intercepted object.
      * For finer control over the generated instance, use a new instance of <code>Enhancer</code>
      * instead of this static method.
@@ -962,7 +962,7 @@ public class Enhancer extends AbstractClassGenerator
         return e.create();
     }
 
-    /**
+    /*
      * Helper method to create an intercepted object.
      * For finer control over the generated instance, use a new instance of <code>Enhancer</code>
      * instead of this static method.
@@ -978,7 +978,7 @@ public class Enhancer extends AbstractClassGenerator
         return e.create();
     }
 
-    /**
+    /*
      * Helper method to create an intercepted object.
      * For finer control over the generated instance, use a new instance of <code>Enhancer</code>
      * instead of this static method.

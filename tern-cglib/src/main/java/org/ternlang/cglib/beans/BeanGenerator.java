@@ -23,7 +23,7 @@ import org.ternlang.asm.ClassVisitor;
 import org.ternlang.asm.Type;
 import org.ternlang.cglib.core.*;
 
-/**
+/*
  * @author Juozas Baliuka, Chris Nokleberg
  */
 public class BeanGenerator extends AbstractClassGenerator
@@ -44,7 +44,7 @@ public class BeanGenerator extends AbstractClassGenerator
         super(SOURCE);
     }
 
-    /**
+    /*
      * Set the class which the generated class will extend. The class
      * must not be declared as final, and must have a non-private
      * no-argument constructor.

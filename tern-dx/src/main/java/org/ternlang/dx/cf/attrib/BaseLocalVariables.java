@@ -19,15 +19,15 @@ package org.ternlang.dx.cf.attrib;
 import org.ternlang.dx.cf.code.LocalVariableList;
 import org.ternlang.dx.util.MutabilityException;
 
-/**
+/*
  * Base attribute class for standard {@code LocalVariableTable}
  * and {@code LocalVariableTypeTable} attributes.
  */
 public abstract class BaseLocalVariables extends BaseAttribute {
-    /** {@code non-null;} list of local variable entries */
+    /* {@code non-null;} list of local variable entries */
     private final LocalVariableList localVariables;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param name {@code non-null;} attribute name
@@ -49,12 +49,12 @@ public abstract class BaseLocalVariables extends BaseAttribute {
         this.localVariables = localVariables;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public final int byteLength() {
         return 8 + localVariables.size() * 10;
     }
 
-    /**
+    /*
      * Gets the list of "local variable" entries associated with this instance.
      *
      * @return {@code non-null;} the list

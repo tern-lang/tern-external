@@ -22,15 +22,15 @@ import org.ternlang.dx.rop.type.TypeList;
 import org.ternlang.dx.util.FixedSizeList;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * List of catch entries, that is, the elements of an "exception table,"
  * which is part of a standard {@code Code} attribute.
  */
 public final class ByteCatchList extends FixedSizeList {
-    /** {@code non-null;} convenient zero-entry instance */
+    /* {@code non-null;} convenient zero-entry instance */
     public static final ByteCatchList EMPTY = new ByteCatchList(0);
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param count the number of elements to be in the table
@@ -39,7 +39,7 @@ public final class ByteCatchList extends FixedSizeList {
         super(count);
     }
 
-    /**
+    /*
      * Gets the total length of this structure in bytes, when included in
      * a {@code Code} attribute. The returned value includes the
      * two bytes for {@code exception_table_length}.
@@ -50,7 +50,7 @@ public final class ByteCatchList extends FixedSizeList {
         return 2 + size() * 8;
     }
 
-    /**
+    /*
      * Gets the indicated item.
      *
      * @param n {@code >= 0;} which item
@@ -60,7 +60,7 @@ public final class ByteCatchList extends FixedSizeList {
         return (Item) get0(n);
     }
 
-    /**
+    /*
      * Sets the item at the given index.
      *
      * @param n {@code >= 0, < size();} which entry to set
@@ -74,7 +74,7 @@ public final class ByteCatchList extends FixedSizeList {
         set0(n, item);
     }
 
-    /**
+    /*
      * Sets the item at the given index.
      *
      * @param n {@code >= 0, < size();} which entry to set
@@ -90,7 +90,7 @@ public final class ByteCatchList extends FixedSizeList {
         set0(n, new Item(startPc, endPc, handlerPc, exceptionClass));
     }
 
-    /**
+    /*
      * Gets the list of items active at the given address. The result is
      * automatically made immutable.
      *
@@ -124,7 +124,7 @@ public final class ByteCatchList extends FixedSizeList {
         return result;
     }
 
-    /**
+    /*
      * Helper method for {@link #listFor}, which tells whether a match
      * is <i>not</i> found for the exception type of the given item in
      * the given array. A match is considered to be either an exact type
@@ -148,7 +148,7 @@ public final class ByteCatchList extends FixedSizeList {
         return true;
     }
 
-    /**
+    /*
      * Returns a target list corresponding to this instance. The result
      * is a list of all the exception handler addresses, with the given
      * {@code noException} address appended if appropriate. The
@@ -196,7 +196,7 @@ public final class ByteCatchList extends FixedSizeList {
         return result;
     }
 
-    /**
+    /*
      * Returns a rop-style catches list equivalent to this one.
      *
      * @return {@code non-null;} the converted instance
@@ -217,24 +217,24 @@ public final class ByteCatchList extends FixedSizeList {
         return result;
     }
 
-    /**
+    /*
      * Item in an exception handler list.
      */
     public static class Item {
-        /** {@code >= 0;} the start pc (inclusive) of the handler's range */
+        /* {@code >= 0;} the start pc (inclusive) of the handler's range */
         private final int startPc;
 
-        /** {@code >= startPc;} the end pc (exclusive) of the handler's range */
+        /* {@code >= startPc;} the end pc (exclusive) of the handler's range */
         private final int endPc;
 
-        /** {@code >= 0;} the pc of the exception handler */
+        /* {@code >= 0;} the pc of the exception handler */
         private final int handlerPc;
 
-        /** {@code null-ok;} the exception class or {@code null} to catch all
+        /* {@code null-ok;} the exception class or {@code null} to catch all
          * exceptions with this handler */
         private final CstType exceptionClass;
 
-        /**
+        /*
          * Constructs an instance.
          *
          * @param startPc {@code >= 0;} the start pc (inclusive) of the
@@ -265,7 +265,7 @@ public final class ByteCatchList extends FixedSizeList {
             this.exceptionClass = exceptionClass;
         }
 
-        /**
+        /*
          * Gets the start pc (inclusive) of the handler's range.
          *
          * @return {@code >= 0;} the start pc (inclusive) of the handler's range.
@@ -274,7 +274,7 @@ public final class ByteCatchList extends FixedSizeList {
             return startPc;
         }
 
-        /**
+        /*
          * Gets the end pc (exclusive) of the handler's range.
          *
          * @return {@code >= startPc;} the end pc (exclusive) of the
@@ -284,7 +284,7 @@ public final class ByteCatchList extends FixedSizeList {
             return endPc;
         }
 
-        /**
+        /*
          * Gets the pc of the exception handler.
          *
          * @return {@code >= 0;} the pc of the exception handler
@@ -293,7 +293,7 @@ public final class ByteCatchList extends FixedSizeList {
             return handlerPc;
         }
 
-        /**
+        /*
          * Gets the class of exception handled.
          *
          * @return {@code non-null;} the exception class; {@link CstType#OBJECT}
@@ -304,7 +304,7 @@ public final class ByteCatchList extends FixedSizeList {
                 exceptionClass : CstType.OBJECT;
         }
 
-        /**
+        /*
          * Returns whether the given address is in the range of this item.
          *
          * @param pc the address

@@ -44,15 +44,15 @@ import org.ternlang.dx.dex.code.form.Form51l;
 import org.ternlang.dx.dex.code.form.SpecialFormat;
 import org.ternlang.dx.io.Opcodes;
 
-/**
+/*
  * Standard instances of {@link Dop} and utility methods for getting
  * them.
  */
 public final class Dops {
-    /** {@code non-null;} array containing all the standard instances */
+    /* {@code non-null;} array containing all the standard instances */
     private static final Dop[] DOPS;
 
-    /**
+    /*
      * pseudo-opcode used for nonstandard formatted "instructions"
      * (which are mostly not actually instructions, though they do
      * appear in instruction lists). TODO: Retire the usage of this
@@ -1165,14 +1165,14 @@ public final class Dops {
         // END(dops-init)
     }
 
-    /**
+    /*
      * This class is uninstantiable.
      */
     private Dops() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Gets the {@link Dop} for the given opcode value.
      *
      * @param opcode {@code Opcodes.MIN_VALUE..Opcodes.MAX_VALUE;} the
@@ -1194,7 +1194,7 @@ public final class Dops {
         throw new IllegalArgumentException("bogus opcode");
     }
 
-    /**
+    /*
      * Gets the next {@link Dop} in the instruction fitting chain after the
      * given instance, if any.
      *
@@ -1217,7 +1217,7 @@ public final class Dops {
       return opcode;
     }
 
-    /**
+    /*
      * Puts the given opcode into the table of all ops.
      *
      * @param opcode {@code non-null;} the opcode

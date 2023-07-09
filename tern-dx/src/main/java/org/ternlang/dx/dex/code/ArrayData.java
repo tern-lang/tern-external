@@ -28,29 +28,29 @@ import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Pseudo-instruction which holds fill array data.
  */
 public final class ArrayData extends VariableSizeInsn {
-    /**
+    /*
      * {@code non-null;} address representing the instruction that uses this
      * instance
      */
     private final CodeAddress user;
 
-    /** {@code non-null;} initial values to be filled into an array */
+    /* {@code non-null;} initial values to be filled into an array */
     private final ArrayList<Constant> values;
 
-    /** non-null: type of constant that initializes the array */
+    /* non-null: type of constant that initializes the array */
     private final Constant arrayType;
 
-    /** Width of the init value element */
+    /* Width of the init value element */
     private final int elemWidth;
 
-    /** Length of the init list */
+    /* Length of the init list */
     private final int initLength;
 
-    /**
+    /*
      * Constructs an instance. The output address of this instance is initially
      * unknown ({@code -1}).
      *
@@ -100,7 +100,7 @@ public final class ArrayData extends VariableSizeInsn {
         initLength = values.size();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int codeSize() {
         int sz = initLength;
@@ -108,7 +108,7 @@ public final class ArrayData extends VariableSizeInsn {
         return 4 + ((sz * elemWidth) + 1) / 2;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void writeTo(AnnotatedOutput out) {
         int sz = values.size();
@@ -158,13 +158,13 @@ public final class ArrayData extends VariableSizeInsn {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public DalvInsn withRegisters(RegisterSpecList registers) {
         return new ArrayData(getPosition(), user, values, arrayType);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected String argString() {
         StringBuffer sb = new StringBuffer(100);
@@ -180,7 +180,7 @@ public final class ArrayData extends VariableSizeInsn {
         return sb.toString();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected String listingString0(boolean noteIndices) {
         int baseAddress = user.getAddress();

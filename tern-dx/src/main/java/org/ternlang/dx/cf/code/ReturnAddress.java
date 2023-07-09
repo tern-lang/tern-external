@@ -20,7 +20,7 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeBearer;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Representation of a subroutine return address. In Java verification,
  * somewhat counterintuitively, the salient bit of information you need to
  * know about a return address is the <i>start address</i> of the subroutine
@@ -28,10 +28,10 @@ import org.ternlang.dx.util.Hex;
  * what instances of this class hang onto.
  */
 public final class ReturnAddress implements TypeBearer {
-    /** {@code >= 0;} the start address of the subroutine being returned from */
+    /* {@code >= 0;} the start address of the subroutine being returned from */
     private final int subroutineAddress;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param subroutineAddress {@code >= 0;} the start address of the
@@ -45,43 +45,43 @@ public final class ReturnAddress implements TypeBearer {
         this.subroutineAddress = subroutineAddress;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         return ("<addr:" + Hex.u2(subroutineAddress) + ">");
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return toString();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Type getType() {
         return Type.RETURN_ADDRESS;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public TypeBearer getFrameType() {
         return this;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int getBasicType() {
         return Type.RETURN_ADDRESS.getBasicType();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int getBasicFrameType() {
         return Type.RETURN_ADDRESS.getBasicFrameType();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public boolean isConstant() {
         return false;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof ReturnAddress)) {
@@ -91,13 +91,13 @@ public final class ReturnAddress implements TypeBearer {
         return subroutineAddress == ((ReturnAddress) other).subroutineAddress;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         return subroutineAddress;
     }
 
-    /**
+    /*
      * Gets the subroutine address.
      *
      * @return {@code >= 0;} the subroutine address

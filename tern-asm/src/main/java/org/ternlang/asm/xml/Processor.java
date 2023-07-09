@@ -1,4 +1,4 @@
-/***
+/**
  * ASM XML Adapter
  * Copyright (c) 2004-2011, Eugene Kuleshov
  * All rights reserved.
@@ -66,7 +66,7 @@ import org.xml.sax.helpers.AttributesImpl;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-/**
+/*
  * Processor is a command line tool that can be used for bytecode waving
  * directed by XSL transformation.
  * <p>
@@ -443,7 +443,7 @@ public class Processor {
                 .println("  <in format> and <out format> - code | xml | singlexml");
     }
 
-    /**
+    /*
      * IputStream wrapper class used to protect input streams from being closed
      * by some stupid XML parsers.
      */
@@ -475,14 +475,14 @@ public class Processor {
         }
     }
 
-    /**
+    /*
      * A {@link ContentHandlerFactory ContentHandlerFactory} is used to create
      * {@link org.xml.sax.ContentHandler ContentHandler} instances for concrete
      * context.
      */
     private static interface ContentHandlerFactory {
 
-        /**
+        /*
          * Creates an instance of the content handler.
          * 
          * @return content handler
@@ -491,7 +491,7 @@ public class Processor {
 
     }
 
-    /**
+    /*
      * SAXWriterFactory
      */
     private static final class SAXWriterFactory implements
@@ -511,7 +511,7 @@ public class Processor {
 
     }
 
-    /**
+    /*
      * ASMContentHandlerFactory
      */
     private static final class ASMContentHandlerFactory implements
@@ -538,7 +538,7 @@ public class Processor {
 
     }
 
-    /**
+    /*
      * TransformerHandlerFactory
      */
     private static final class TransformerHandlerFactory implements
@@ -568,7 +568,7 @@ public class Processor {
         }
     }
 
-    /**
+    /*
      * SubdocumentHandlerFactory
      */
     private static final class SubdocumentHandlerFactory implements
@@ -585,7 +585,7 @@ public class Processor {
 
     }
 
-    /**
+    /*
      * A {@link org.xml.sax.ContentHandler ContentHandler} and
      * {@link org.xml.sax.ext.LexicalHandler LexicalHandler} that serializes XML
      * from SAX 2.0 events into {@link java.io.Writer Writer}.
@@ -606,7 +606,7 @@ public class Processor {
 
         private int ident = 0;
 
-        /**
+        /*
          * Creates <code>SAXWriter</code>.
          * 
          * @param w
@@ -721,7 +721,7 @@ public class Processor {
             w.write(sb.toString());
         }
 
-        /**
+        /*
          * Encode string with escaping.
          * 
          * @param str
@@ -784,7 +784,7 @@ public class Processor {
 
     }
 
-    /**
+    /*
      * A {@link org.xml.sax.ContentHandler ContentHandler} that splits XML
      * documents into smaller chunks. Each chunk is processed by the nested
      * {@link org.xml.sax.ContentHandler ContentHandler} obtained from
@@ -805,7 +805,7 @@ public class Processor {
 
         private ContentHandler subdocumentHandler;
 
-        /**
+        /*
          * Constructs a new {@link InputSlicingHandler SubdocumentHandler}
          * object.
          * 
@@ -887,7 +887,7 @@ public class Processor {
 
     }
 
-    /**
+    /*
      * A {@link org.xml.sax.ContentHandler ContentHandler} that splits XML
      * documents into smaller chunks. Each chunk is processed by the nested
      * {@link org.xml.sax.ContentHandler ContentHandler} obtained from
@@ -911,7 +911,7 @@ public class Processor {
 
         private ContentHandler subdocumentHandler;
 
-        /**
+        /*
          * Constructs a new {@link OutputSlicingHandler SubdocumentHandler}
          * object.
          * 

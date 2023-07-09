@@ -20,7 +20,7 @@ import java.io.UTFDataFormatException;
 
 import org.ternlang.dex.util.ByteInput;
 
-/**
+/*
  * Modified UTF-8 as described in the dex file format spec.
  *
  * <p>Derived from libcore's MUTF-8 encoder at java.nio.charset.ModifiedUtf8.
@@ -28,7 +28,7 @@ import org.ternlang.dex.util.ByteInput;
 public final class Mutf8 {
     private Mutf8() {}
 
-    /**
+    /*
      * Decodes bytes from {@code in} into {@code out} until a delimiter 0x00 is
      * encountered. Returns a new string containing the decoded characters.
      */
@@ -61,7 +61,7 @@ public final class Mutf8 {
         }
     }
 
-    /**
+    /*
      * Returns the number of bytes the modified UTF8 representation of 's' would take.
      */
     private static long countBytes(String s, boolean shortLength) throws UTFDataFormatException {
@@ -83,7 +83,7 @@ public final class Mutf8 {
         return result;
     }
 
-    /**
+    /*
      * Encodes the modified UTF-8 bytes corresponding to {@code s} into  {@code
      * dst}, starting at {@code offset}.
      */
@@ -104,7 +104,7 @@ public final class Mutf8 {
         }
     }
 
-    /**
+    /*
      * Returns an array containing the <i>modified UTF-8</i> form of {@code s}.
      */
     public static byte[] encode(String s) throws UTFDataFormatException {

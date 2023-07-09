@@ -22,14 +22,14 @@ import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.ByteArray;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Representation of string data for a particular string, in a Dalvik file.
  */
 public final class StringDataItem extends OffsettedItem {
-    /** {@code non-null;} the string value */
+    /* {@code non-null;} the string value */
     private final CstString value;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param value {@code non-null;} the string value
@@ -40,7 +40,7 @@ public final class StringDataItem extends OffsettedItem {
         this.value = value;
     }
 
-    /**
+    /*
      * Gets the write size for a given value.
      *
      * @param value {@code non-null;} the string value
@@ -54,19 +54,19 @@ public final class StringDataItem extends OffsettedItem {
             + value.getUtf8Size() + 1;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public ItemType itemType() {
         return ItemType.TYPE_STRING_DATA_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void addContents(DexFile file) {
         // Nothing to do here.
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void writeTo0(DexFile file, AnnotatedOutput out) {
         ByteArray bytes = value.getBytes();
@@ -83,13 +83,13 @@ public final class StringDataItem extends OffsettedItem {
         out.writeByte(0);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toHuman() {
         return value.toQuoted();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected int compareTo0(OffsettedItem other) {
         StringDataItem otherData = (StringDataItem) other;

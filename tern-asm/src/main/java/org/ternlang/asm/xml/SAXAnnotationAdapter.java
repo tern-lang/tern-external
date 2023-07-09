@@ -1,4 +1,4 @@
-/***
+/**
  * ASM XML Adapter
  * Copyright (c) 2004-2011, Eugene Kuleshov
  * All rights reserved.
@@ -35,7 +35,7 @@ import org.ternlang.asm.Type;
 import org.ternlang.asm.TypePath;
 import org.xml.sax.helpers.AttributesImpl;
 
-/**
+/*
  * SAXAnnotationAdapter
  * 
  * @author Eugene Kuleshov

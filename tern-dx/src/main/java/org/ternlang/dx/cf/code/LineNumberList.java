@@ -18,15 +18,15 @@ package org.ternlang.dx.cf.code;
 
 import org.ternlang.dx.util.FixedSizeList;
 
-/**
+/*
  * List of "line number" entries, which are the contents of
  * {@code LineNumberTable} attributes.
  */
 public final class LineNumberList extends FixedSizeList {
-    /** {@code non-null;} zero-size instance */
+    /* {@code non-null;} zero-size instance */
     public static final LineNumberList EMPTY = new LineNumberList(0);
 
-    /**
+    /*
      * Returns an instance which is the concatenation of the two given
      * instances.
      *
@@ -56,7 +56,7 @@ public final class LineNumberList extends FixedSizeList {
         return result;
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param count the number of elements to be in the list
@@ -65,7 +65,7 @@ public final class LineNumberList extends FixedSizeList {
         super(count);
     }
 
-    /**
+    /*
      * Gets the indicated item.
      *
      * @param n {@code >= 0;} which item
@@ -75,7 +75,7 @@ public final class LineNumberList extends FixedSizeList {
         return (Item) get0(n);
     }
 
-    /**
+    /*
      * Sets the item at the given index.
      *
      * @param n {@code >= 0, < size();} which element
@@ -89,7 +89,7 @@ public final class LineNumberList extends FixedSizeList {
         set0(n, item);
     }
 
-    /**
+    /*
      * Sets the item at the given index.
      *
      * @param n {@code >= 0, < size();} which element
@@ -100,7 +100,7 @@ public final class LineNumberList extends FixedSizeList {
         set0(n, new Item(startPc, lineNumber));
     }
 
-    /**
+    /*
      * Gets the line number associated with the given address.
      *
      * @param pc {@code >= 0;} the address to look up
@@ -134,17 +134,17 @@ public final class LineNumberList extends FixedSizeList {
         return bestLine;
     }
 
-    /**
+    /*
      * Item in a line number table.
      */
     public static class Item {
-        /** {@code >= 0;} start pc of this item */
+        /* {@code >= 0;} start pc of this item */
         private final int startPc;
 
-        /** {@code >= 0;} corresponding line number */
+        /* {@code >= 0;} corresponding line number */
         private final int lineNumber;
 
-        /**
+        /*
          * Constructs an instance.
          *
          * @param startPc {@code >= 0;} start pc of this item
@@ -163,7 +163,7 @@ public final class LineNumberList extends FixedSizeList {
             this.lineNumber = lineNumber;
         }
 
-        /**
+        /*
          * Gets the start pc of this item.
          *
          * @return the start pc
@@ -172,7 +172,7 @@ public final class LineNumberList extends FixedSizeList {
             return startPc;
         }
 
-        /**
+        /*
          * Gets the line number of this item.
          *
          * @return the line number

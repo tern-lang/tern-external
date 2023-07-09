@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -37,7 +37,7 @@ import java.util.Map;
 import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 
-/**
+/*
  * A node that represents a stack map frame. These nodes are pseudo instruction
  * nodes in order to be inserted in an instruction list. In fact these nodes
  * must(*) be inserted <i>just before</i> any instruction node <b>i</b> that
@@ -53,7 +53,7 @@ import org.ternlang.asm.Opcodes;
  */
 public class FrameNode extends AbstractInsnNode {
 
-    /**
+    /*
      * The type of this frame. Must be {@link Opcodes#F_NEW} for expanded
      * frames, or {@link Opcodes#F_FULL}, {@link Opcodes#F_APPEND},
      * {@link Opcodes#F_CHOP}, {@link Opcodes#F_SAME} or
@@ -61,7 +61,7 @@ public class FrameNode extends AbstractInsnNode {
      */
     public int type;
 
-    /**
+    /*
      * The types of the local variables of this stack map frame. Elements of
      * this list can be Integer, String or LabelNode objects (for primitive,
      * reference and uninitialized types respectively - see
@@ -69,7 +69,7 @@ public class FrameNode extends AbstractInsnNode {
      */
     public List<Object> local;
 
-    /**
+    /*
      * The types of the operand stack elements of this stack map frame. Elements
      * of this list can be Integer, String or LabelNode objects (for primitive,
      * reference and uninitialized types respectively - see
@@ -81,7 +81,7 @@ public class FrameNode extends AbstractInsnNode {
         super(-1);
     }
 
-    /**
+    /*
      * Constructs a new {@link FrameNode}.
      * 
      * @param type
@@ -134,7 +134,7 @@ public class FrameNode extends AbstractInsnNode {
         return FRAME;
     }
 
-    /**
+    /*
      * Makes the given visitor visit this stack map frame.
      * 
      * @param mv

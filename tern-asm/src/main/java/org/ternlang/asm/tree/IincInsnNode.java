@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -34,24 +34,24 @@ import java.util.Map;
 import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 
-/**
+/*
  * A node that represents an IINC instruction.
  * 
  * @author Eric Bruneton
  */
 public class IincInsnNode extends AbstractInsnNode {
 
-    /**
+    /*
      * Index of the local variable to be incremented.
      */
     public int var;
 
-    /**
+    /*
      * Amount to increment the local variable by.
      */
     public int incr;
 
-    /**
+    /*
      * Constructs a new {@link IincInsnNode}.
      * 
      * @param var

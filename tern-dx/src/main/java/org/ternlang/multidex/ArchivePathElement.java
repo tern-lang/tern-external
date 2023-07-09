@@ -25,7 +25,7 @@ import java.util.NoSuchElementException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-/**
+/*
  * A zip element.
  */
 class ArchivePathElement implements ClassPathElement {

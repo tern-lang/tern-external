@@ -23,13 +23,13 @@ import org.ternlang.dx.rop.code.RegisterSpec;
 import org.ternlang.dx.rop.code.RopMethod;
 import org.ternlang.dx.util.IntIterator;
 
-/**
+/*
  * Converts ROP methods to SSA Methods
  */
 public class SsaConverter {
     public static final boolean DEBUG = false;
 
-    /**
+    /*
      * Returns an SSA representation, edge-split and with phi
      * functions placed.
      *
@@ -61,7 +61,7 @@ public class SsaConverter {
         return result;
     }
 
-    /**
+    /*
      * Updates an SSA representation, placing phi functions and renaming all
      * registers above a certain threshold number.
      *
@@ -74,7 +74,7 @@ public class SsaConverter {
         new SsaRenamer(ssaMeth, threshold).run();
     }
 
-    /**
+    /*
      * Returns an SSA represention with only the edge-splitter run.
      *
      * @param rmeth method to process
@@ -93,7 +93,7 @@ public class SsaConverter {
         return result;
     }
 
-    /**
+    /*
      * Returns an SSA represention with only the steps through the
      * phi placement run.
      *
@@ -117,7 +117,7 @@ public class SsaConverter {
         return result;
     }
 
-    /**
+    /*
      * See Appel section 19.1:
      *
      * Converts CFG into "edge-split" form, such that each node either a
@@ -137,7 +137,7 @@ public class SsaConverter {
         edgeSplitSuccessors(result);
     }
 
-    /**
+    /*
      * Inserts Z nodes as new predecessors for every node that has multiple
      * successors and multiple predecessors.
      *
@@ -158,7 +158,7 @@ public class SsaConverter {
         }
     }
 
-    /**
+    /*
      * @param block {@code non-null;} block in question
      * @return {@code true} if this node needs to have a unique
      * predecessor created for it
@@ -175,7 +175,7 @@ public class SsaConverter {
         return  (countPredecessors > 1 && countSuccessors > 1);
     }
 
-    /**
+    /*
      * In ROP form, move-exception must occur as the first insn in a block
      * immediately succeeding the insn that could thrown an exception.
      * We may need room to insert move insns later, so make sure to split
@@ -223,7 +223,7 @@ public class SsaConverter {
         }
     }
 
-    /**
+    /*
      * Inserts Z nodes for every node that needs a new
      * successor.
      *
@@ -253,7 +253,7 @@ public class SsaConverter {
         }
     }
 
-    /**
+    /*
      * Returns {@code true} if block and successor need a Z-node
      * between them. Presently, this is {@code true} if the final
      * instruction has any sources or results and the current
@@ -273,7 +273,7 @@ public class SsaConverter {
                 && succ.getPredecessors().cardinality() > 1;
     }
 
-    /**
+    /*
      * See Appel algorithm 19.6:
      *
      * Place Phi functions in appropriate locations.

@@ -49,7 +49,7 @@ import org.ternlang.dx.MethodId;
 import org.ternlang.dx.TypeId;
 
 
-/**
+/*
  * Creates dynamic proxies of concrete classes.
  * <p>
  * This is similar to the {@code java.lang.reflect.Proxy} class, but works for classes instead of
@@ -127,7 +127,7 @@ public final class ProxyBuilder<T> {
     private static final String FIELD_NAME_HANDLER = "$__handler";
     private static final String FIELD_NAME_METHODS = "$__methodArray";
 
-    /**
+    /*
      * A cache of all proxy classes ever generated. At the time of writing,
      * Android's runtime doesn't support class unloading so there's little
      * value in using weak references.
@@ -155,7 +155,7 @@ public final class ProxyBuilder<T> {
         return new ProxyBuilder<T>(clazz);
     }
 
-    /**
+    /*
      * Specifies the parent ClassLoader to use when creating the proxy.
      *
      * <p>If null, {@code ProxyBuilder.class.getClassLoader()} will be used.
@@ -170,7 +170,7 @@ public final class ProxyBuilder<T> {
         return this;
     }
 
-    /**
+    /*
      * Sets the directory where executable code is stored. See {@link
      * DexMaker#generateAndLoad DexMaker.generateAndLoad()} for guidance on
      * choosing a secure location for the dex cache.
@@ -211,7 +211,7 @@ public final class ProxyBuilder<T> {
         return this;
     }
 
-    /**
+    /*
      * Create a new instance of the class to proxy.
      *
      * @throws UnsupportedOperationException if the class we are trying to create a proxy for is
@@ -252,7 +252,7 @@ public final class ProxyBuilder<T> {
 
     // TODO: test coverage for this
 
-    /**
+    /*
      * Generate a proxy class. Note that new instances of this class will not automatically have an
      * an invocation handler, even if {@link #handler(InvocationHandler)} was called. The handler
      * must be set on each instance after it is created, using
@@ -367,7 +367,7 @@ public final class ProxyBuilder<T> {
         }
     }
 
-    /**
+    /*
      * Returns the proxy's {@link InvocationHandler}.
      *
      * @throws IllegalArgumentException if the object supplied is not a proxy created by this class.
@@ -385,7 +385,7 @@ public final class ProxyBuilder<T> {
         }
     }
 
-    /**
+    /*
      * Sets the proxy's {@link InvocationHandler}.
      * <p>
      * If you create a proxy with {@link #build()}, the proxy will already have a handler set,
@@ -412,7 +412,7 @@ public final class ProxyBuilder<T> {
 
     // TODO: test coverage for isProxyClass
     
-    /**
+    /*
      * Returns true if {@code c} is a proxy class created by this builder.
      */
     public static boolean isProxyClass(Class<?> c) {
@@ -684,7 +684,7 @@ public final class ProxyBuilder<T> {
         }
     }
 
-    /**
+    /*
      * The super method must include the return type, otherwise its ambiguous
      * for methods with covariant return types.
      */
@@ -834,7 +834,7 @@ public final class ProxyBuilder<T> {
        
     
     
-    /**
+    /*
      * Gets all {@link Method} objects we can proxy in the hierarchy of the
      * supplied class.
      */
@@ -1004,7 +1004,7 @@ public final class ProxyBuilder<T> {
        return combined;
     }
 
-    /**
+    /*
      * Calculates the correct return statement code for a method.
      * <p>
      * A void method will not return anything.  A method that returns a primitive will need to
@@ -1059,7 +1059,7 @@ public final class ProxyBuilder<T> {
         }
     }
 
-    /**
+    /*
      * Map from primitive type to method used to unbox a boxed version of the primitive.
      * <p>
      * This is required for methods whose return type is primitive, since the
@@ -1080,7 +1080,7 @@ public final class ProxyBuilder<T> {
         PRIMITIVE_TO_UNBOX_METHOD = map;
     }
 
-    /**
+    /*
      * Wrapper class to let us disambiguate {@link Method} objects.
      * <p>
      * The purpose of this class is to override the {@link #equals(Object)} and {@link #hashCode()}

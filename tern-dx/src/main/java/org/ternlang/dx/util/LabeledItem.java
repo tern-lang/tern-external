@@ -16,7 +16,7 @@
 
 package org.ternlang.dx.util;
 
-/**
+/*
  * An item that has an integer label.
  */
 public interface LabeledItem {

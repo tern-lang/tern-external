@@ -20,23 +20,23 @@ import org.ternlang.dx.rop.cst.CstArray;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.ByteArrayAnnotatedOutput;
 
-/**
+/*
  * Encoded array of constant values.
  */
 public final class EncodedArrayItem extends OffsettedItem {
-    /** the required alignment for instances of this class */
+    /* the required alignment for instances of this class */
     private static final int ALIGNMENT = 1;
 
-    /** {@code non-null;} the array to represent */
+    /* {@code non-null;} the array to represent */
     private final CstArray array;
 
-    /**
+    /*
      * {@code null-ok;} encoded form, ready for writing to a file; set during
      * {@link #place0}
      */
     private byte[] encodedForm;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param array {@code non-null;} array to represent
@@ -56,19 +56,19 @@ public final class EncodedArrayItem extends OffsettedItem {
         this.encodedForm = null;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public ItemType itemType() {
         return ItemType.TYPE_ENCODED_ARRAY_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         return array.hashCode();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected int compareTo0(OffsettedItem other) {
         EncodedArrayItem otherArray = (EncodedArrayItem) other;
@@ -76,18 +76,18 @@ public final class EncodedArrayItem extends OffsettedItem {
         return array.compareTo(otherArray.array);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toHuman() {
         return array.toHuman();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void addContents(DexFile file) {
         ValueEncoder.addContents(file, array);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void place0(Section addedTo, int offset) {
         // Encode the data and note the size.
@@ -100,7 +100,7 @@ public final class EncodedArrayItem extends OffsettedItem {
         setWriteSize(encodedForm.length);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void writeTo0(DexFile file, AnnotatedOutput out) {
         boolean annotates = out.annotates();

@@ -22,18 +22,18 @@ import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 import org.ternlang.dx.util.ToHuman;
 
-/**
+/*
  * Association of a method and its annotations.
  */
 public final class MethodAnnotationStruct
         implements ToHuman, Comparable<MethodAnnotationStruct> {
-    /** {@code non-null;} the method in question */
+    /* {@code non-null;} the method in question */
     private final CstMethodRef method;
 
-    /** {@code non-null;} the associated annotations */
+    /* {@code non-null;} the associated annotations */
     private AnnotationSetItem annotations;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param method {@code non-null;} the method in question
@@ -53,12 +53,12 @@ public final class MethodAnnotationStruct
         this.annotations = annotations;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int hashCode() {
         return method.hashCode();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public boolean equals(Object other) {
         if (! (other instanceof MethodAnnotationStruct)) {
             return false;
@@ -67,12 +67,12 @@ public final class MethodAnnotationStruct
         return method.equals(((MethodAnnotationStruct) other).method);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int compareTo(MethodAnnotationStruct other) {
         return method.compareTo(other.method);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void addContents(DexFile file) {
         MethodIdsSection methodIds = file.getMethodIds();
         MixedItemSection wordData = file.getWordData();
@@ -81,7 +81,7 @@ public final class MethodAnnotationStruct
         annotations = wordData.intern(annotations);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void writeTo(DexFile file, AnnotatedOutput out) {
         int methodIdx = file.getMethodIds().indexOf(method);
         int annotationsOff = annotations.getAbsoluteOffset();
@@ -97,12 +97,12 @@ public final class MethodAnnotationStruct
         out.writeInt(annotationsOff);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public String toHuman() {
         return method.toHuman() + ": " + annotations;
     }
 
-    /**
+    /*
      * Gets the method this item is for.
      *
      * @return {@code non-null;} the method
@@ -111,7 +111,7 @@ public final class MethodAnnotationStruct
         return method;
     }
 
-    /**
+    /*
      * Gets the associated annotations.
      *
      * @return {@code non-null;} the annotations

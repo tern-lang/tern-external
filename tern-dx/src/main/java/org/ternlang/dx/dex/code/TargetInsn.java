@@ -19,14 +19,14 @@ package org.ternlang.dx.dex.code;
 import org.ternlang.dx.rop.code.RegisterSpecList;
 import org.ternlang.dx.rop.code.SourcePosition;
 
-/**
+/*
  * Instruction which has a single branch target.
  */
 public final class TargetInsn extends FixedSizeInsn {
-    /** {@code non-null;} the branch target */
+    /* {@code non-null;} the branch target */
     private CodeAddress target;
 
-    /**
+    /*
      * Constructs an instance. The output address of this instance is initially
      * unknown ({@code -1}), and the target is initially
      * {@code null}.
@@ -49,19 +49,19 @@ public final class TargetInsn extends FixedSizeInsn {
         this.target = target;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public DalvInsn withOpcode(Dop opcode) {
         return new TargetInsn(opcode, getPosition(), getRegisters(), target);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public DalvInsn withRegisters(RegisterSpecList registers) {
         return new TargetInsn(getOpcode(), getPosition(), registers, target);
     }
 
-    /**
+    /*
      * Returns an instance that is just like this one, except that its
      * opcode has the opposite sense (as a test; e.g. a
      * {@code lt} test becomes a {@code ge}), and its branch
@@ -77,7 +77,7 @@ public final class TargetInsn extends FixedSizeInsn {
         return new TargetInsn(opcode, getPosition(), getRegisters(), target);
     }
 
-    /**
+    /*
      * Gets the unique branch target of this instruction.
      *
      * @return {@code non-null;} the branch target
@@ -86,7 +86,7 @@ public final class TargetInsn extends FixedSizeInsn {
         return target;
     }
 
-    /**
+    /*
      * Gets the target address of this instruction. This is only valid
      * to call if the target instruction has been assigned an address,
      * and it is merely a convenient shorthand for
@@ -98,7 +98,7 @@ public final class TargetInsn extends FixedSizeInsn {
         return target.getAddress();
     }
 
-    /**
+    /*
      * Gets the branch offset of this instruction. This is only valid to
      * call if both this and the target instruction each has been assigned
      * an address, and it is merely a convenient shorthand for
@@ -110,7 +110,7 @@ public final class TargetInsn extends FixedSizeInsn {
         return target.getAddress() - getAddress();
     }
 
-    /**
+    /*
      * Returns whether the target offset is known.
      *
      * @return {@code true} if the target offset is known or
@@ -120,7 +120,7 @@ public final class TargetInsn extends FixedSizeInsn {
         return hasAddress() && target.hasAddress();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected String argString() {
         if (target == null) {

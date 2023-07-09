@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -29,7 +29,7 @@
  */
 package org.ternlang.asm.signature;
 
-/**
+/*
  * A type signature parser to make a signature visitor visit an existing
  * signature.
  * 
@@ -38,12 +38,12 @@ package org.ternlang.asm.signature;
  */
 public class SignatureReader {
 
-    /**
+    /*
      * The signature to be read.
      */
     private final String signature;
 
-    /**
+    /*
      * Constructs a {@link SignatureReader} for the given signature.
      * 
      * @param signature
@@ -54,7 +54,7 @@ public class SignatureReader {
         this.signature = signature;
     }
 
-    /**
+    /*
      * Makes the given visitor visit the signature of this
      * {@link SignatureReader}. This signature is the one specified in the
      * constructor (see {@link #SignatureReader(String) SignatureReader}). This
@@ -112,7 +112,7 @@ public class SignatureReader {
         }
     }
 
-    /**
+    /*
      * Makes the given visitor visit the signature of this
      * {@link SignatureReader}. This signature is the one specified in the
      * constructor (see {@link #SignatureReader(String) SignatureReader}). This
@@ -130,7 +130,7 @@ public class SignatureReader {
         parseType(this.signature, 0, v);
     }
 
-    /**
+    /*
      * Parses a field type signature and makes the given visitor visit it.
      * 
      * @param signature

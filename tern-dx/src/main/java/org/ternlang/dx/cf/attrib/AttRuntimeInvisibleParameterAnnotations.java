@@ -18,17 +18,17 @@ package org.ternlang.dx.cf.attrib;
 
 import org.ternlang.dx.rop.annotation.AnnotationsList;
 
-/**
+/*
  * Attribute class for standard
  * {@code RuntimeInvisibleParameterAnnotations} attributes.
  */
 public final class AttRuntimeInvisibleParameterAnnotations
         extends BaseParameterAnnotations {
-    /** {@code non-null;} attribute name for attributes of this type */
+    /* {@code non-null;} attribute name for attributes of this type */
     public static final String ATTRIBUTE_NAME =
         "RuntimeInvisibleParameterAnnotations";
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param parameterAnnotations {@code non-null;} the parameter annotations

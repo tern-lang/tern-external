@@ -19,7 +19,7 @@ package org.ternlang.dx.rop.code;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeList;
 
-/**
+/*
  * Instruction which possibly throws. The {@code successors} list in the
  * basic block an instance of this class is inside corresponds in-order to
  * the list of exceptions handled by this instruction, with the
@@ -27,10 +27,10 @@ import org.ternlang.dx.rop.type.TypeList;
  */
 public final class ThrowingInsn
         extends Insn {
-    /** {@code non-null;} list of exceptions caught */
+    /* {@code non-null;} list of exceptions caught */
     private final TypeList catches;
 
-    /**
+    /*
      * Gets the string form of a register spec list to be used as a catches
      * list.
      *
@@ -51,7 +51,7 @@ public final class ThrowingInsn
         return sb.toString();
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param opcode {@code non-null;} the opcode
@@ -75,32 +75,32 @@ public final class ThrowingInsn
         this.catches = catches;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String getInlineString() {
         return toCatchString(catches);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public TypeList getCatches() {
         return catches;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void accept(Visitor visitor) {
         visitor.visitThrowingInsn(this);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withAddedCatch(Type type) {
         return new ThrowingInsn(getOpcode(), getPosition(),
                                 getSources(), catches.withAddedType(type));
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withRegisterOffset(int delta) {
         return new ThrowingInsn(getOpcode(), getPosition(),
@@ -108,7 +108,7 @@ public final class ThrowingInsn
                                 catches);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public Insn withNewRegisters(RegisterSpec result,
             RegisterSpecList sources) {

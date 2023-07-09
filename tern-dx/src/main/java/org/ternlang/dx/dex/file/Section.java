@@ -20,30 +20,30 @@ import java.util.Collection;
 
 import org.ternlang.dx.util.AnnotatedOutput;
 
-/**
+/*
  * A section of a {@code .dex} file. Each section consists of a list
  * of items of some sort or other.
  */
 public abstract class Section {
-    /** {@code null-ok;} name of this part, for annotation purposes */
+    /* {@code null-ok;} name of this part, for annotation purposes */
     private final String name;
 
-    /** {@code non-null;} file that this instance is part of */
+    /* {@code non-null;} file that this instance is part of */
     private final DexFile file;
 
-    /** {@code > 0;} alignment requirement for the final output;
+    /* {@code > 0;} alignment requirement for the final output;
      * must be a power of 2 */
     private final int alignment;
 
-    /** {@code >= -1;} offset from the start of the file to this part, or
+    /* {@code >= -1;} offset from the start of the file to this part, or
      * {@code -1} if not yet known */
     private int fileOffset;
 
-    /** whether {@link #prepare} has been called successfully on this
+    /* whether {@link #prepare} has been called successfully on this
      * instance */
     private boolean prepared;
 
-    /**
+    /*
      * Validates an alignment.
      *
      * @param alignment the alignment
@@ -57,7 +57,7 @@ public abstract class Section {
         }
     }
 
-    /**
+    /*
      * Constructs an instance. The file offset is initially unknown.
      *
      * @param name {@code null-ok;} the name of this instance, for annotation
@@ -80,7 +80,7 @@ public abstract class Section {
         this.prepared = false;
     }
 
-    /**
+    /*
      * Gets the file that this instance is part of.
      *
      * @return {@code non-null;} the file
@@ -89,7 +89,7 @@ public abstract class Section {
         return file;
     }
 
-    /**
+    /*
      * Gets the alignment for this instance's final output.
      *
      * @return {@code > 0;} the alignment
@@ -98,7 +98,7 @@ public abstract class Section {
         return alignment;
     }
 
-    /**
+    /*
      * Gets the offset from the start of the file to this part. This
      * throws an exception if the offset has not yet been set.
      *
@@ -112,7 +112,7 @@ public abstract class Section {
         return fileOffset;
     }
 
-    /**
+    /*
      * Sets the file offset. It is only valid to call this method once
      * once per instance.
      *
@@ -138,7 +138,7 @@ public abstract class Section {
         return fileOffset;
     }
 
-    /**
+    /*
      * Writes this instance to the given raw data object.
      *
      * @param out {@code non-null;} where to write to
@@ -168,7 +168,7 @@ public abstract class Section {
         writeTo0(out);
     }
 
-    /**
+    /*
      * Returns the absolute file offset, given an offset from the
      * start of this instance's output. This is only valid to call
      * once this instance has been assigned a file offset (via {@link
@@ -189,7 +189,7 @@ public abstract class Section {
         return fileOffset + relative;
     }
 
-    /**
+    /*
      * Returns the absolute file offset of the given item which must
      * be contained in this section. This is only valid to call
      * once this instance has been assigned a file offset (via {@link
@@ -203,7 +203,7 @@ public abstract class Section {
      */
     public abstract int getAbsoluteItemOffset(Item item);
 
-    /**
+    /*
      * Prepares this instance for writing. This performs any necessary
      * prerequisites, including particularly adding stuff to other
      * sections. This method may only be called once per instance;
@@ -215,7 +215,7 @@ public abstract class Section {
         prepared = true;
     }
 
-    /**
+    /*
      * Gets the collection of all the items in this section.
      * It is not valid to attempt to change the returned list.
      *
@@ -223,19 +223,19 @@ public abstract class Section {
      */
     public abstract Collection<? extends Item> items();
 
-    /**
+    /*
      * Does the main work of {@link #prepare}.
      */
     protected abstract void prepare0();
 
-    /**
+    /*
      * Gets the size of this instance when output, in bytes.
      *
      * @return {@code >= 0;} the size of this instance, in bytes
      */
     public abstract int writeSize();
 
-    /**
+    /*
      * Throws an exception if {@link #prepare} has not been
      * called on this instance.
      */
@@ -245,7 +245,7 @@ public abstract class Section {
         }
     }
 
-    /**
+    /*
      * Throws an exception if {@link #prepare} has already been called
      * on this instance.
      */
@@ -255,7 +255,7 @@ public abstract class Section {
         }
     }
 
-    /**
+    /*
      * Aligns the output of the given data to the alignment of this instance.
      *
      * @param out {@code non-null;} the output to align
@@ -264,7 +264,7 @@ public abstract class Section {
         out.alignTo(alignment);
     }
 
-    /**
+    /*
      * Writes this instance to the given raw data object. This gets
      * called by {@link #writeTo} after aligning the cursor of
      * {@code out} and verifying that either the assigned file
@@ -276,7 +276,7 @@ public abstract class Section {
      */
     protected abstract void writeTo0(AnnotatedOutput out);
 
-    /**
+    /*
      * Returns the name of this section, for annotation purposes.
      *
      * @return {@code null-ok;} name of this part, for annotation purposes

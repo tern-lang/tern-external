@@ -22,12 +22,12 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeBearer;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * {@link Machine} which keeps track of known values but does not do
  * smart/realistic reference type calculations.
  */
 public class ValueAwareMachine extends BaseMachine {
-    /**
+    /*
      * Constructs an instance.
      *
      * @param prototype {@code non-null;} the prototype for the associated
@@ -37,7 +37,7 @@ public class ValueAwareMachine extends BaseMachine {
         super(prototype);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void run(Frame frame, int offset, int opcode) {
         switch (opcode) {
             case ByteOps.NOP:

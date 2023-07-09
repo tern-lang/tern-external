@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -40,7 +40,7 @@ import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.Type;
 
-/**
+/*
  * A {@link MethodVisitor} that keeps track of stack map frame changes between
  * {@link #visitFrame(int, int, Object[], int, Object[]) visitFrame} calls. This
  * adapter must be used with the
@@ -61,7 +61,7 @@ import org.ternlang.asm.Type;
  */
 public class AnalyzerAdapter extends MethodVisitor {
 
-    /**
+    /*
      * <code>List</code> of the local variable slots for current execution
      * frame. Primitive types are represented by {@link Opcodes#TOP},
      * {@link Opcodes#INTEGER}, {@link Opcodes#FLOAT}, {@link Opcodes#LONG},
@@ -75,7 +75,7 @@ public class AnalyzerAdapter extends MethodVisitor {
      */
     public List<Object> locals;
 
-    /**
+    /*
      * <code>List</code> of the operand stack slots for current execution frame.
      * Primitive types are represented by {@link Opcodes#TOP},
      * {@link Opcodes#INTEGER}, {@link Opcodes#FLOAT}, {@link Opcodes#LONG},
@@ -89,13 +89,13 @@ public class AnalyzerAdapter extends MethodVisitor {
      */
     public List<Object> stack;
 
-    /**
+    /*
      * The labels that designate the next instruction to be visited. May be
      * <tt>null</tt>.
      */
     private List<Label> labels;
 
-    /**
+    /*
      * Information about uninitialized types in the current execution frame.
      * This map associates internal names to Label objects. Each label
      * designates a NEW instruction that created the currently uninitialized
@@ -104,22 +104,22 @@ public class AnalyzerAdapter extends MethodVisitor {
      */
     public Map<Object, Object> uninitializedTypes;
 
-    /**
+    /*
      * The maximum stack size of this method.
      */
     private int maxStack;
 
-    /**
+    /*
      * The maximum number of local variables of this method.
      */
     private int maxLocals;
 
-    /**
+    /*
      * The owner's class name.
      */
     private String owner;
 
-    /**
+    /*
      * Creates a new {@link AnalyzerAdapter}. <i>Subclasses must not use this
      * constructor</i>. Instead, they must use the
      * {@link #AnalyzerAdapter(int, String, int, String, String, MethodVisitor)}
@@ -147,7 +147,7 @@ public class AnalyzerAdapter extends MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Creates a new {@link AnalyzerAdapter}.
      * 
      * @param api

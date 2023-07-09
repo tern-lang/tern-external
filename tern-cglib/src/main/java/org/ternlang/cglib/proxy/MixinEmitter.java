@@ -22,7 +22,7 @@ import org.ternlang.asm.ClassVisitor;
 import org.ternlang.asm.Type;
 import org.ternlang.cglib.core.*;
 
-/**
+/*
  * @author Chris Nokleberg
  * @version $Id: MixinEmitter.java,v 1.9 2006/08/27 21:04:37 herbyderby Exp $
  */

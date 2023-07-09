@@ -22,7 +22,7 @@ import java.security.ProtectionDomain;
 import org.ternlang.asm.ClassVisitor;
 import org.ternlang.asm.Type;
 import org.ternlang.cglib.core.*;
-/**
+/*
  * @author Chris Nokleberg
  */
 public class ImmutableBean

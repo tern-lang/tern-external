@@ -26,49 +26,49 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.Bits;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * Utility that identifies basic blocks in bytecode.
  */
 public final class BasicBlocker implements BytecodeArray.Visitor {
-    /** {@code non-null;} method being converted */
+    /* {@code non-null;} method being converted */
     private final ConcreteMethod method;
 
-    /**
+    /*
      * {@code non-null;} work set; bits indicate offsets in need of
      * examination
      */
     private final int[] workSet;
 
-    /**
+    /*
      * {@code non-null;} live set; bits indicate potentially-live
      * opcodes; contrawise, a bit that isn't on is either in the
      * middle of an instruction or is a definitely-dead opcode
      */
     private final int[] liveSet;
 
-    /**
+    /*
      * {@code non-null;} block start set; bits indicate the starts of
      * basic blocks, including the opcodes that start blocks of
      * definitely-dead code
      */
     private final int[] blockSet;
 
-    /**
+    /*
      * {@code non-null, sparse;} for each instruction offset to a branch of
      * some sort, the list of targets for that instruction
      */
     private final IntList[] targetLists;
 
-    /**
+    /*
      * {@code non-null, sparse;} for each instruction offset to a throwing
      * instruction, the list of exception handlers for that instruction
      */
     private final ByteCatchList[] catchLists;
 
-    /** offset of the previously parsed bytecode */
+    /* offset of the previously parsed bytecode */
     private int previousOffset;
 
-    /**
+    /*
      * Identifies and enumerates the basic blocks in the given method,
      * returning a list of them. The returned list notably omits any
      * definitely-dead code that is identified in the process.
@@ -83,7 +83,7 @@ public final class BasicBlocker implements BytecodeArray.Visitor {
         return bb.getBlockList();
     }
 
-    /**
+    /*
      * Constructs an instance. This class is not publicly instantiable; use
      * {@link #identifyBlocks}.
      *
@@ -119,12 +119,12 @@ public final class BasicBlocker implements BytecodeArray.Visitor {
      * call these methods.
      */
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void visitInvalid(int opcode, int offset, int length) {
         visitCommon(offset, length, true);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void visitNoArgs(int opcode, int offset, int length, Type type) {
         switch (opcode) {
             case ByteOps.IRETURN:
@@ -184,7 +184,7 @@ public final class BasicBlocker implements BytecodeArray.Visitor {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void visitLocal(int opcode, int offset, int length,
             int idx, Type type, int value) {
         if (opcode == ByteOps.RET) {
@@ -195,7 +195,7 @@ public final class BasicBlocker implements BytecodeArray.Visitor {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void visitConstant(int opcode, int offset, int length,
             Constant cst, int value) {
         visitCommon(offset, length, true);
@@ -212,7 +212,7 @@ public final class BasicBlocker implements BytecodeArray.Visitor {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void visitBranch(int opcode, int offset, int length,
             int target) {
         switch (opcode) {
@@ -243,7 +243,7 @@ public final class BasicBlocker implements BytecodeArray.Visitor {
         addWorkIfNecessary(target, true);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void visitSwitch(int opcode, int offset, int length,
             SwitchList cases, int padding) {
         visitCommon(offset, length, false);
@@ -257,14 +257,14 @@ public final class BasicBlocker implements BytecodeArray.Visitor {
         targetLists[offset] = cases.getTargets();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void visitNewarray(int offset, int length, CstType type,
             ArrayList<Constant> intVals) {
         visitCommon(offset, length, true);
         visitThrowing(offset, length, true);
     }
 
-    /**
+    /*
      * Extracts the list of basic blocks from the bit sets.
      *
      * @return {@code non-null;} the list of basic blocks
@@ -322,7 +322,7 @@ public final class BasicBlocker implements BytecodeArray.Visitor {
         return result;
     }
 
-    /**
+    /*
      * Does basic block identification.
      */
     private void doit() {
@@ -365,7 +365,7 @@ public final class BasicBlocker implements BytecodeArray.Visitor {
         }
     }
 
-    /**
+    /*
      * Sets a bit in the work set, but only if the instruction in question
      * isn't yet known to be possibly-live.
      *
@@ -383,7 +383,7 @@ public final class BasicBlocker implements BytecodeArray.Visitor {
         }
     }
 
-    /**
+    /*
      * Helper method used by all the visitor methods.
      *
      * @param offset offset to the instruction
@@ -414,7 +414,7 @@ public final class BasicBlocker implements BytecodeArray.Visitor {
         }
     }
 
-    /**
+    /*
      * Helper method used by all the visitor methods that deal with
      * opcodes that possibly throw. This method should be called after calling
      * {@link #visitCommon}.
@@ -437,14 +437,14 @@ public final class BasicBlocker implements BytecodeArray.Visitor {
         targetLists[offset] = catches.toTargetList(nextIsLive ? next : -1);
     }
 
-    /**
+    /*
      * {@inheritDoc}
      */
     public void setPreviousOffset(int offset) {
         previousOffset = offset;
     }
 
-    /**
+    /*
      * {@inheritDoc}
      */
     public int getPreviousOffset() {

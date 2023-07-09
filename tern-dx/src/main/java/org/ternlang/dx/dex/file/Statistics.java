@@ -22,21 +22,21 @@ import java.util.TreeMap;
 
 import org.ternlang.dx.util.AnnotatedOutput;
 
-/**
+/*
  * Statistics about the contents of a file.
  */
 public final class Statistics {
-    /** {@code non-null;} data about each type of item */
+    /* {@code non-null;} data about each type of item */
     private final HashMap<String, Data> dataMap;
 
-    /**
+    /*
      * Constructs an instance.
      */
     public Statistics() {
         dataMap = new HashMap<String, Data>(50);
     }
 
-    /**
+    /*
      * Adds the given item to the statistics.
      *
      * @param item {@code non-null;} the item to add
@@ -52,7 +52,7 @@ public final class Statistics {
         }
     }
 
-    /**
+    /*
      * Adds the given list of items to the statistics.
      *
      * @param list {@code non-null;} the list of items to add
@@ -64,7 +64,7 @@ public final class Statistics {
         }
     }
 
-    /**
+    /*
      * Writes the statistics as an annotation.
      *
      * @param out {@code non-null;} where to write to
@@ -105,26 +105,26 @@ public final class Statistics {
         return sb.toString();
     }
 
-    /**
+    /*
      * Statistical data about a particular class.
      */
     private static class Data {
-        /** {@code non-null;} name to use as a label */
+        /* {@code non-null;} name to use as a label */
         private final String name;
 
-        /** {@code >= 0;} number of instances */
+        /* {@code >= 0;} number of instances */
         private int count;
 
-        /** {@code >= 0;} total size of instances in bytes */
+        /* {@code >= 0;} total size of instances in bytes */
         private int totalSize;
 
-        /** {@code >= 0;} largest size of any individual item */
+        /* {@code >= 0;} largest size of any individual item */
         private int largestSize;
 
-        /** {@code >= 0;} smallest size of any individual item */
+        /* {@code >= 0;} smallest size of any individual item */
         private int smallestSize;
 
-        /**
+        /*
          * Constructs an instance for the given item.
          *
          * @param item {@code non-null;} item in question
@@ -140,7 +140,7 @@ public final class Statistics {
             this.smallestSize = size;
         }
 
-        /**
+        /*
          * Incorporates a new item. This assumes the type name matches.
          *
          * @param item {@code non-null;} item to incorporate
@@ -160,7 +160,7 @@ public final class Statistics {
             }
         }
 
-        /**
+        /*
          * Writes this instance as an annotation.
          *
          * @param out {@code non-null;} where to write to
@@ -169,7 +169,7 @@ public final class Statistics {
             out.annotate(toHuman());
         }
 
-        /**
+        /*
          * Generates a human-readable string for this data item.
          *
          * @return string for human consumption.

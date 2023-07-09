@@ -25,7 +25,7 @@ import org.ternlang.cglib.core.*;
 
 // TODO: don't require exact match for return type
 
-/**
+/*
  * <b>DOCUMENTATION FROM APACHE AVALON DELEGATE CLASS</b>
  *
  * <p>

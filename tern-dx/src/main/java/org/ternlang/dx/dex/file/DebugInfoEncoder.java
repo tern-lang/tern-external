@@ -49,7 +49,7 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.ByteArrayAnnotatedOutput;
 
-/**
+/*
  * An encoder for the dex debug info state machine format. The format
  * for each method enrty is as follows:
  * <ol>
@@ -65,10 +65,10 @@ import org.ternlang.dx.util.ByteArrayAnnotatedOutput;
 public final class DebugInfoEncoder {
     private static final boolean DEBUG = false;
 
-    /** {@code null-ok;} positions (line numbers) to encode */
+    /* {@code null-ok;} positions (line numbers) to encode */
     private final PositionList positions;
 
-    /** {@code null-ok;} local variables to encode */
+    /* {@code null-ok;} local variables to encode */
     private final LocalList locals;
 
     private final ByteArrayAnnotatedOutput output;
@@ -79,31 +79,31 @@ public final class DebugInfoEncoder {
     private final Prototype desc;
     private final boolean isStatic;
 
-    /** current encoding state: bytecode address */
+    /* current encoding state: bytecode address */
     private int address = 0;
 
-    /** current encoding state: line number */
+    /* current encoding state: line number */
     private int line = 1;
 
-    /**
+    /*
      * if non-null: the output to write annotations to. No normal
      * output is written to this.
      */
     private AnnotatedOutput annotateTo;
 
-    /** if non-null: another possible output for annotations */
+    /* if non-null: another possible output for annotations */
     private PrintWriter debugPrint;
 
-    /** if non-null: the prefix for each annotation or debugPrint line */
+    /* if non-null: the prefix for each annotation or debugPrint line */
     private String prefix;
 
-    /** true if output should be consumed during annotation */
+    /* true if output should be consumed during annotation */
     private boolean shouldConsume;
 
-    /** indexed by register; last local alive in register */
+    /* indexed by register; last local alive in register */
     private final LocalList.Entry[] lastEntryForReg;
 
-    /**
+    /*
      * Creates an instance.
      *
      * @param positions {@code null-ok;} positions (line numbers) to encode
@@ -130,7 +130,7 @@ public final class DebugInfoEncoder {
         lastEntryForReg = new LocalList.Entry[regSize];
     }
 
-    /**
+    /*
      * Annotates or writes a message to the {@code debugPrint} writer
      * if applicable.
      *
@@ -151,7 +151,7 @@ public final class DebugInfoEncoder {
         }
     }
 
-    /**
+    /*
      * Converts this (PositionList, LocalList) pair into a state machine
      * sequence.
      *
@@ -176,7 +176,7 @@ public final class DebugInfoEncoder {
         }
     }
 
-    /**
+    /*
      * Converts and produces annotations on a stream. Does not write
      * actual bits to the {@code AnnotatedOutput}.
      *
@@ -275,7 +275,7 @@ public final class DebugInfoEncoder {
         return output.toByteArray();
     }
 
-    /**
+    /*
      * Emits all local variable activity that occurs at the current
      * {@link #address} starting at the given index into {@code
      * locals} and including all subsequent activity at the same
@@ -347,7 +347,7 @@ public final class DebugInfoEncoder {
         return curLocalIdx;
     }
 
-    /**
+    /*
      * Emits all positions that occur at the current {@code address}
      *
      * @param curPositionIdx Current index in sortedPositions
@@ -367,7 +367,7 @@ public final class DebugInfoEncoder {
         return curPositionIdx;
     }
 
-    /**
+    /*
      * Emits the header sequence, which consists of LEB128-encoded initial
      * line number and string indicies for names of all non-"this" arguments.
      *
@@ -488,7 +488,7 @@ public final class DebugInfoEncoder {
         }
     }
 
-    /**
+    /*
      * Builds a list of position entries, sorted by ascending address.
      *
      * @return A sorted positions list
@@ -514,7 +514,7 @@ public final class DebugInfoEncoder {
         return result;
     }
 
-    /**
+    /*
      * Gets the register that begins the method's parameter range (including
      * the 'this' parameter for non-static methods). The range continues until
      * {@code regSize}
@@ -526,7 +526,7 @@ public final class DebugInfoEncoder {
                 - desc.getParameterTypes().getWordCount() - (isStatic? 0 : 1);
     }
 
-    /**
+    /*
      * Extracts method arguments from a locals list. These will be collected
      * from the input list and sorted by ascending register in the
      * returned list.
@@ -572,7 +572,7 @@ public final class DebugInfoEncoder {
         return result;
     }
 
-    /**
+    /*
      * Returns a string representation of this LocalList entry that is
      * appropriate for emitting as an annotation.
      *
@@ -611,7 +611,7 @@ public final class DebugInfoEncoder {
         return sb.toString();
     }
 
-    /**
+    /*
      * Emits a {@link DebugInfoConstants#DBG_RESTART_LOCAL DBG_RESTART_LOCAL}
      * sequence.
      *
@@ -637,7 +637,7 @@ public final class DebugInfoEncoder {
         }
     }
 
-    /**
+    /*
      * Emits a string index as an unsigned LEB128. The actual value written
      * is shifted by 1, so that the '0' value is reserved for "null". The
      * null symbol is used in some cases by the parameter name list
@@ -660,7 +660,7 @@ public final class DebugInfoEncoder {
         }
     }
 
-    /**
+    /*
      * Emits a type index as an unsigned LEB128. The actual value written
      * is shifted by 1, so that the '0' value is reserved for "null".
      *
@@ -681,7 +681,7 @@ public final class DebugInfoEncoder {
         }
     }
 
-    /**
+    /*
      * Emits a {@link DebugInfoConstants#DBG_START_LOCAL DBG_START_LOCAL} or
      * {@link DebugInfoConstants#DBG_START_LOCAL_EXTENDED
      * DBG_START_LOCAL_EXTENDED} sequence.
@@ -716,7 +716,7 @@ public final class DebugInfoEncoder {
         }
     }
 
-    /**
+    /*
      * Emits a {@link DebugInfoConstants#DBG_START_LOCAL_EXTENDED
      * DBG_START_LOCAL_EXTENDED} sequence.
      *
@@ -746,7 +746,7 @@ public final class DebugInfoEncoder {
         }
     }
 
-    /**
+    /*
      * Emits a {@link DebugInfoConstants#DBG_END_LOCAL DBG_END_LOCAL} sequence.
      *
      * @param entry {@code entry non-null;} entry associated with end.
@@ -771,7 +771,7 @@ public final class DebugInfoEncoder {
         }
     }
 
-    /**
+    /*
      * Emits the necessary byte sequences to emit the given position table
      * entry. This will typically be a single special opcode, although
      * it may also require DBG_ADVANCE_PC or DBG_ADVANCE_LINE.
@@ -827,7 +827,7 @@ public final class DebugInfoEncoder {
         }
     }
 
-    /**
+    /*
      * Computes a special opcode that will encode the given position change.
      * If the return value is > 0xff, then the request cannot be fulfilled.
      * Essentially the same as described in "DWARF Debugging Format Version 3"
@@ -850,7 +850,7 @@ public final class DebugInfoEncoder {
             + (DBG_LINE_RANGE * deltaAddress) + DBG_FIRST_SPECIAL;
     }
 
-    /**
+    /*
      * Emits an {@link DebugInfoConstants#DBG_ADVANCE_LINE DBG_ADVANCE_LINE}
      * sequence.
      *
@@ -874,7 +874,7 @@ public final class DebugInfoEncoder {
         }
     }
 
-    /**
+    /*
      * Emits an  {@link DebugInfoConstants#DBG_ADVANCE_PC DBG_ADVANCE_PC}
      * sequence.
      *
@@ -898,7 +898,7 @@ public final class DebugInfoEncoder {
         }
     }
 
-    /**
+    /*
      * Emits an unsigned LEB128 value.
      *
      * @param n {@code >= 0;} value to emit. Note that, although this can
@@ -916,7 +916,7 @@ public final class DebugInfoEncoder {
         output.writeUleb128(n);
     }
 
-    /**
+    /*
      * Emits the {@link DebugInfoConstants#DBG_END_SEQUENCE DBG_END_SEQUENCE}
      * bytecode.
      */

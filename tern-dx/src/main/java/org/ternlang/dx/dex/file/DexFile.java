@@ -36,74 +36,74 @@ import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.ByteArrayAnnotatedOutput;
 
-/**
+/*
  * Representation of an entire {@code .dex} (Dalvik EXecutable)
  * file, which itself consists of a set of Dalvik classes.
  */
 public final class DexFile {
-    /** options controlling the creation of the file */
+    /* options controlling the creation of the file */
     private DexOptions dexOptions;
 
-    /** {@code non-null;} word data section */
+    /* {@code non-null;} word data section */
     private final MixedItemSection wordData;
 
-    /**
+    /*
      * {@code non-null;} type lists section. This is word data, but separating
      * it from {@link #wordData} helps break what would otherwise be a
      * circular dependency between the that and {@link #protoIds}.
      */
     private final MixedItemSection typeLists;
 
-    /**
+    /*
      * {@code non-null;} map section. The map needs to be in a section by itself
      * for the self-reference mechanics to work in a reasonably
      * straightforward way. See {@link MapItem#addMap} for more detail.
      */
     private final MixedItemSection map;
 
-    /** {@code non-null;} string data section */
+    /* {@code non-null;} string data section */
     private final MixedItemSection stringData;
 
-    /** {@code non-null;} string identifiers section */
+    /* {@code non-null;} string identifiers section */
     private final StringIdsSection stringIds;
 
-    /** {@code non-null;} type identifiers section */
+    /* {@code non-null;} type identifiers section */
     private final TypeIdsSection typeIds;
 
-    /** {@code non-null;} prototype identifiers section */
+    /* {@code non-null;} prototype identifiers section */
     private final ProtoIdsSection protoIds;
 
-    /** {@code non-null;} field identifiers section */
+    /* {@code non-null;} field identifiers section */
     private final FieldIdsSection fieldIds;
 
-    /** {@code non-null;} method identifiers section */
+    /* {@code non-null;} method identifiers section */
     private final MethodIdsSection methodIds;
 
-    /** {@code non-null;} class definitions section */
+    /* {@code non-null;} class definitions section */
     private final ClassDefsSection classDefs;
 
-    /** {@code non-null;} class data section */
+    /* {@code non-null;} class data section */
     private final MixedItemSection classData;
 
-    /** {@code non-null;} byte data section */
+    /* {@code non-null;} byte data section */
     private final MixedItemSection byteData;
 
-    /** {@code non-null;} file header */
+    /* {@code non-null;} file header */
     private final HeaderSection header;
 
-    /**
+    /*
      * {@code non-null;} array of sections in the order they will appear in the
      * final output file
      */
     private final Section[] sections;
 
-    /** {@code >= -1;} total file size or {@code -1} if unknown */
+    /* {@code >= -1;} total file size or {@code -1} if unknown */
     private int fileSize;
 
-    /** {@code >= 40;} maximum width of the file dump */
+    /* {@code >= 40;} maximum width of the file dump */
     private int dumpWidth;
 
-    /**
+    /*
      * Constructs an instance. It is initially empty.
      */
     public DexFile(DexOptions dexOptions) {
@@ -137,21 +137,21 @@ public final class DexFile {
         dumpWidth = 79;
     }
 
-    /**
+    /*
      * Returns true if this dex doesn't contain any class defs.
      */
     public boolean isEmpty() {
         return classDefs.items().isEmpty();
     }
 
-    /**
+    /*
      * Gets the dex-creation options object.
      */
     public DexOptions getDexOptions() {
         return dexOptions;
     }
 
-    /**
+    /*
      * Adds a class to this instance. It is illegal to attempt to add more
      * than one class with the same name.
      *
@@ -161,7 +161,7 @@ public final class DexFile {
         classDefs.add(clazz);
     }
 
-    /**
+    /*
      * Gets the class definition with the given name, if any.
      *
      * @param name {@code non-null;} the class name to look for
@@ -178,7 +178,7 @@ public final class DexFile {
         }
     }
 
-    /**
+    /*
      * Writes the contents of this instance as either a binary or a
      * human-readable form, or both.
      *
@@ -200,7 +200,7 @@ public final class DexFile {
         }
     }
 
-    /**
+    /*
      * Returns the contents of this instance as a {@code .dex} file,
      * in {@code byte[]} form.
      *
@@ -220,7 +220,7 @@ public final class DexFile {
         return result.getArray();
     }
 
-    /**
+    /*
      * Sets the maximum width of the human-oriented dump of the instance.
      *
      * @param dumpWidth {@code >= 40;} the width
@@ -233,7 +233,7 @@ public final class DexFile {
         this.dumpWidth = dumpWidth;
     }
 
-    /**
+    /*
      * Gets the total file size, if known.
      *
      * <p>This is package-scope in order to allow
@@ -250,7 +250,7 @@ public final class DexFile {
         return fileSize;
     }
 
-    /**
+    /*
      * Gets the string data section.
      *
      * <p>This is package-scope in order to allow
@@ -263,7 +263,7 @@ public final class DexFile {
         return stringData;
     }
 
-    /**
+    /*
      * Gets the word data section.
      *
      * <p>This is package-scope in order to allow
@@ -276,7 +276,7 @@ public final class DexFile {
         return wordData;
     }
 
-    /**
+    /*
      * Gets the type lists section.
      *
      * <p>This is package-scope in order to allow
@@ -289,7 +289,7 @@ public final class DexFile {
         return typeLists;
     }
 
-    /**
+    /*
      * Gets the map section.
      *
      * <p>This is package-scope in order to allow the header section
@@ -301,7 +301,7 @@ public final class DexFile {
         return map;
     }
 
-    /**
+    /*
      * Gets the string identifiers section.
      *
      * <p>This is package-scope in order to allow
@@ -314,7 +314,7 @@ public final class DexFile {
         return stringIds;
     }
 
-    /**
+    /*
      * Gets the class definitions section.
      *
      * <p>This is package-scope in order to allow
@@ -327,7 +327,7 @@ public final class DexFile {
         return classDefs;
     }
 
-    /**
+    /*
      * Gets the class data section.
      *
      * <p>This is package-scope in order to allow
@@ -340,7 +340,7 @@ public final class DexFile {
         return classData;
     }
 
-    /**
+    /*
      * Gets the type identifiers section.
      *
      * <p>This is public in order to allow
@@ -353,7 +353,7 @@ public final class DexFile {
         return typeIds;
     }
 
-    /**
+    /*
      * Gets the prototype identifiers section.
      *
      * <p>This is package-scope in order to allow
@@ -366,7 +366,7 @@ public final class DexFile {
         return protoIds;
     }
 
-    /**
+    /*
      * Gets the field identifiers section.
      *
      * <p>This is public in order to allow
@@ -379,7 +379,7 @@ public final class DexFile {
         return fieldIds;
     }
 
-    /**
+    /*
      * Gets the method identifiers section.
      *
      * <p>This is public in order to allow
@@ -392,7 +392,7 @@ public final class DexFile {
         return methodIds;
     }
 
-    /**
+    /*
      * Gets the byte data section.
      *
      * <p>This is package-scope in order to allow
@@ -405,7 +405,7 @@ public final class DexFile {
         return byteData;
     }
 
-    /**
+    /*
      * Gets the first section of the file that is to be considered
      * part of the data section.
      *
@@ -418,7 +418,7 @@ public final class DexFile {
         return wordData;
     }
 
-    /**
+    /*
      * Gets the last section of the file that is to be considered
      * part of the data section.
      *
@@ -431,7 +431,7 @@ public final class DexFile {
         return map;
     }
 
-    /**
+    /*
      * Interns the given constant in the appropriate section of this
      * instance, or do nothing if the given constant isn't the sort
      * that should be interned.
@@ -454,7 +454,7 @@ public final class DexFile {
         }
     }
 
-    /**
+    /*
      * Gets the {@link IndexedItem} corresponding to the given constant,
      * if it is a constant that has such a correspondence, or return
      * {@code null} if it isn't such a constant. This will throw
@@ -481,7 +481,7 @@ public final class DexFile {
         }
     }
 
-    /**
+    /*
      * Returns the contents of this instance as a {@code .dex} file,
      * in a {@link ByteArrayAnnotatedOutput} instance.
      *
@@ -599,7 +599,7 @@ public final class DexFile {
         return out;
     }
 
-    /**
+    /*
      * Generates and returns statistics for all the items in the file.
      *
      * @return {@code non-null;} the statistics
@@ -614,7 +614,7 @@ public final class DexFile {
         return stats;
     }
 
-    /**
+    /*
      * Calculates the signature for the {@code .dex} file in the
      * given array, and modify the array to contain it.
      *
@@ -642,7 +642,7 @@ public final class DexFile {
         }
     }
 
-    /**
+    /*
      * Calculates the checksum for the {@code .dex} file in the
      * given array, and modify the array to contain it.
      *

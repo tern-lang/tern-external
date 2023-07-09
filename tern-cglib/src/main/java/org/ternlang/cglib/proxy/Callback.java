@@ -15,7 +15,7 @@
  */
 package org.ternlang.cglib.proxy;
 
-/**
+/*
  * All callback interfaces used by {@link Enhancer} extend this interface.
  * @see MethodInterceptor
  * @see NoOp

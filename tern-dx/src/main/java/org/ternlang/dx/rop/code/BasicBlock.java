@@ -21,30 +21,30 @@ import org.ternlang.dx.util.Hex;
 import org.ternlang.dx.util.IntList;
 import org.ternlang.dx.util.LabeledItem;
 
-/**
+/*
  * Basic block of register-based instructions.
  */
 public final class BasicBlock implements LabeledItem {
-    /** {@code >= 0;} target label for this block */
+    /* {@code >= 0;} target label for this block */
     private final int label;
 
-    /** {@code non-null;} list of instructions in this block */
+    /* {@code non-null;} list of instructions in this block */
     private final InsnList insns;
 
-    /**
+    /*
      * {@code non-null;} full list of successors that this block may
      * branch to
      */
     private final IntList successors;
 
-    /**
+    /*
      * {@code >= -1;} the primary / standard-flow / "default" successor, or
      * {@code -1} if this block has no successors (that is, it
      * exits the function/method)
      */
     private final int primarySuccessor;
 
-    /**
+    /*
      * Constructs an instance. The predecessor set is set to {@code null}.
      *
      * @param label {@code >= 0;} target label for this block
@@ -112,7 +112,7 @@ public final class BasicBlock implements LabeledItem {
         this.primarySuccessor = primarySuccessor;
     }
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * Instances of this class compare by identity. That is,
@@ -123,7 +123,7 @@ public final class BasicBlock implements LabeledItem {
         return (this == other);
     }
 
-    /**
+    /*
      * {@inheritDoc}
      *
      * Return the identity hashcode of this instance. This is proper,
@@ -134,7 +134,7 @@ public final class BasicBlock implements LabeledItem {
         return System.identityHashCode(this);
     }
 
-    /**
+    /*
      * Gets the target label of this block.
      *
      * @return {@code >= 0;} the label
@@ -143,7 +143,7 @@ public final class BasicBlock implements LabeledItem {
         return label;
     }
 
-    /**
+    /*
      * Gets the list of instructions inside this block.
      *
      * @return {@code non-null;} the instruction list
@@ -152,7 +152,7 @@ public final class BasicBlock implements LabeledItem {
         return insns;
     }
 
-    /**
+    /*
      * Gets the list of successors that this block may branch to.
      *
      * @return {@code non-null;} the successors list
@@ -161,7 +161,7 @@ public final class BasicBlock implements LabeledItem {
         return successors;
     }
 
-    /**
+    /*
      * Gets the primary successor of this block.
      *
      * @return {@code >= -1;} the primary successor, or {@code -1} if this
@@ -171,7 +171,7 @@ public final class BasicBlock implements LabeledItem {
         return primarySuccessor;
     }
 
-    /**
+    /*
      * Gets the secondary successor of this block. It is only valid to call
      * this method on blocks that have exactly two successors.
      *
@@ -191,7 +191,7 @@ public final class BasicBlock implements LabeledItem {
         return succ;
     }
 
-    /**
+    /*
      * Gets the first instruction of this block. This is just a
      * convenient shorthand for {@code getInsns().get(0)}.
      *
@@ -201,7 +201,7 @@ public final class BasicBlock implements LabeledItem {
         return insns.get(0);
     }
 
-    /**
+    /*
      * Gets the last instruction of this block. This is just a
      * convenient shorthand for {@code getInsns().getLast()}.
      *
@@ -211,7 +211,7 @@ public final class BasicBlock implements LabeledItem {
         return insns.getLast();
     }
 
-    /**
+    /*
      * Returns whether this block might throw an exception. This is
      * just a convenient shorthand for {@code getLastInsn().canThrow()}.
      *
@@ -222,7 +222,7 @@ public final class BasicBlock implements LabeledItem {
         return insns.getLast().canThrow();
     }
 
-    /**
+    /*
      * Returns whether this block has any associated exception handlers.
      * This is just a shorthand for inspecting the last instruction in
      * the block to see if it could throw, and if so, whether it in fact
@@ -236,7 +236,7 @@ public final class BasicBlock implements LabeledItem {
         return lastInsn.getCatches().size() != 0;
     }
 
-    /**
+    /*
      * Returns the exception handler types associated with this block,
      * if any. This is just a shorthand for inspecting the last
      * instruction in the block to see if it could throw, and if so,
@@ -251,7 +251,7 @@ public final class BasicBlock implements LabeledItem {
         return lastInsn.getCatches();
     }
 
-    /**
+    /*
      * Returns an instance that is identical to this one, except that
      * the registers in each instruction are offset by the given
      * amount.
@@ -268,11 +268,11 @@ public final class BasicBlock implements LabeledItem {
         return '{' + Hex.u2(label) + '}';
     }
 
-    /**
+    /*
      * BasicBlock visitor interface
      */
     public interface Visitor {
-        /**
+        /*
          * Visits a basic block
          * @param b block visited
          */

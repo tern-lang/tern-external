@@ -16,11 +16,11 @@
 
 package org.ternlang.dx.cf.iface;
 
-/**
+/*
  * Interface for lists of attributes.
  */
 public interface AttributeList {
-    /**
+    /*
      * Get whether this instance is mutable. Note that the
      * {@code AttributeList} interface itself doesn't provide any means
      * of mutation, but that doesn't mean that there isn't a non-interface
@@ -30,14 +30,14 @@ public interface AttributeList {
      */
     public boolean isMutable();
 
-    /**
+    /*
      * Get the number of attributes in the list.
      *
      * @return the size
      */
     public int size();
 
-    /**
+    /*
      * Get the {@code n}th attribute.
      *
      * @param n {@code n >= 0, n < size();} which attribute
@@ -45,7 +45,7 @@ public interface AttributeList {
      */
     public Attribute get(int n);
 
-    /**
+    /*
      * Get the total length of this list in bytes, when part of a
      * class file. The returned value includes the two bytes for the
      * {@code attributes_count} length indicator.
@@ -54,7 +54,7 @@ public interface AttributeList {
      */
     public int byteLength();
 
-    /**
+    /*
      * Get the first attribute in the list with the given name, if any.
      *
      * @param name {@code non-null;} attribute name
@@ -63,7 +63,7 @@ public interface AttributeList {
      */
     public Attribute findFirst(String name);
 
-    /**
+    /*
      * Get the next attribute in the list after the given one, with the same
      * name, if any.
      *

@@ -18,12 +18,12 @@ package org.ternlang.dx.rop.code;
 
 import org.ternlang.dx.util.FixedSizeList;
 
-/**
+/*
  * List of {@link Insn} instances.
  */
 public final class InsnList
         extends FixedSizeList {
-    /**
+    /*
      * Constructs an instance. All indices initially contain {@code null}.
      *
      * @param size the size of the list
@@ -32,7 +32,7 @@ public final class InsnList
         super(size);
     }
 
-    /**
+    /*
      * Gets the element at the given index. It is an error to call
      * this with the index for an element which was never set; if you
      * do that, this will throw {@code NullPointerException}.
@@ -44,7 +44,7 @@ public final class InsnList
         return (Insn) get0(n);
     }
 
-    /**
+    /*
      * Sets the instruction at the given index.
      *
      * @param n {@code >= 0, < size();} which index
@@ -54,7 +54,7 @@ public final class InsnList
         set0(n, insn);
     }
 
-    /**
+    /*
      * Gets the last instruction. This is just a convenient shorthand for
      * {@code get(size() - 1)}.
      *
@@ -64,7 +64,7 @@ public final class InsnList
         return get(size() - 1);
     }
 
-    /**
+    /*
      * Visits each instruction in the list, in order.
      *
      * @param visitor {@code non-null;} visitor to use
@@ -77,7 +77,7 @@ public final class InsnList
         }
     }
 
-    /**
+    /*
      * Compares the contents of this {@code InsnList} with another.
      * The blocks must have the same number of insns, and each Insn must
      * also return true to {@code Insn.contentEquals()}.
@@ -101,7 +101,7 @@ public final class InsnList
         return true;
     }
 
-    /**
+    /*
      * Returns an instance that is identical to this one, except that
      * the registers in each instruction are offset by the given
      * amount. Mutability of the result is inherited from the

@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -31,7 +31,7 @@ package org.ternlang.asm.tree.analysis;
 
 import org.ternlang.asm.Type;
 
-/**
+/*
  * A {@link Value} that is represented by its type in a seven types type system.
  * This type system distinguishes the UNINITIALZED, INT, FLOAT, LONG, DOUBLE,
  * REFERENCE and RETURNADDRESS types.

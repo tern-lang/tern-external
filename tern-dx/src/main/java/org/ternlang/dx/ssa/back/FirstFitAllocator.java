@@ -27,22 +27,22 @@ import org.ternlang.dx.ssa.SsaMethod;
 import org.ternlang.dx.util.BitIntSet;
 import org.ternlang.dx.util.IntSet;
 
-/**
+/*
  * Allocates registers via a naive n^2 register allocator.
  * This allocator does not try to co-locate local variables or deal
  * intelligently with different size register uses.
  */
 public class FirstFitAllocator extends RegisterAllocator {
-    /**
+    /*
      * If true, allocator places parameters at the top of the frame
      * in calling-convention order.
      */
     private static final boolean PRESLOT_PARAMS = true;
 
-    /** indexed by old reg; the set of old regs we've mapped */
+    /* indexed by old reg; the set of old regs we've mapped */
     private final BitSet mapped;
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public FirstFitAllocator(
             final SsaMethod ssaMeth, final InterferenceGraph interference) {
         super(ssaMeth, interference);
@@ -50,13 +50,13 @@ public class FirstFitAllocator extends RegisterAllocator {
         mapped = new BitSet(ssaMeth.getRegCount());
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public boolean wantsParamsMovedHigh() {
         return PRESLOT_PARAMS;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public RegisterMapper allocateRegisters() {
         int oldRegCount = ssaMeth.getRegCount();
@@ -137,7 +137,7 @@ public class FirstFitAllocator extends RegisterAllocator {
         return mapper;
     }
 
-    /**
+    /*
      * Returns the parameter number that this move-param insn refers to
      * @param ndefInsn a move-param insn (otherwise, exceptions will be thrown)
      * @return parameter number (offset in the total parameter width)

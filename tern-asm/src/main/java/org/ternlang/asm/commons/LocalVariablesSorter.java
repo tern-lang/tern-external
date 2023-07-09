@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -36,7 +36,7 @@ import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.Type;
 import org.ternlang.asm.TypePath;
 
-/**
+/*
  * A {@link MethodVisitor} that renumbers local variables in their order of
  * appearance. This adapter allows one to easily add new local variables to a
  * method. It may be used by inheriting from this class, but the preferred way
@@ -53,29 +53,29 @@ public class LocalVariablesSorter extends MethodVisitor {
     private static final Type OBJECT_TYPE = Type
             .getObjectType("java/lang/Object");
 
-    /**
+    /*
      * Mapping from old to new local variable indexes. A local variable at index
      * i of size 1 is remapped to 'mapping[2*i]', while a local variable at
      * index i of size 2 is remapped to 'mapping[2*i+1]'.
      */
     private int[] mapping = new int[40];
 
-    /**
+    /*
      * Array used to store stack map local variable types after remapping.
      */
     private Object[] newLocals = new Object[20];
 
-    /**
+    /*
      * Index of the first local variable, after formal parameters.
      */
     protected final int firstLocal;
 
-    /**
+    /*
      * Index of the next local variable to be created by {@link #newLocal}.
      */
     protected int nextLocal;
 
-    /**
+    /*
      * Creates a new {@link LocalVariablesSorter}. <i>Subclasses must not use
      * this constructor</i>. Instead, they must use the
      * {@link #LocalVariablesSorter(int, int, String, MethodVisitor)} version.
@@ -97,7 +97,7 @@ public class LocalVariablesSorter extends MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Creates a new {@link LocalVariablesSorter}.
      * 
      * @param api
@@ -252,7 +252,7 @@ public class LocalVariablesSorter extends MethodVisitor {
 
     // -------------
 
-    /**
+    /*
      * Creates a new local variable of the given type.
      * 
      * @param type
@@ -292,7 +292,7 @@ public class LocalVariablesSorter extends MethodVisitor {
         return local;
     }
 
-    /**
+    /*
      * Notifies subclasses that a new stack map frame is being visited. The
      * array argument contains the stack map frame types corresponding to the
      * local variables added with {@link #newLocal}. This method can update
@@ -314,7 +314,7 @@ public class LocalVariablesSorter extends MethodVisitor {
     protected void updateNewLocals(Object[] newLocals) {
     }
     
-    /**
+    /*
      * Notifies subclasses that a local variable has been added or remapped. The
      * default implementation of this method does nothing.
      * 

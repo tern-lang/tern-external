@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -29,7 +29,7 @@
  */
 package org.ternlang.asm;
 
-/**
+/*
  * A dynamically extensible vector of bytes. This class is roughly equivalent to
  * a DataOutputStream on top of a ByteArrayOutputStream, but is more efficient.
  * 
@@ -37,17 +37,17 @@ package org.ternlang.asm;
  */
 public class ByteVector {
 
-    /**
+    /*
      * The content of this vector.
      */
     byte[] data;
 
-    /**
+    /*
      * Actual number of bytes in this vector.
      */
     int length;
 
-    /**
+    /*
      * Constructs a new {@link ByteVector ByteVector} with a default initial
      * size.
      */
@@ -55,7 +55,7 @@ public class ByteVector {
         data = new byte[64];
     }
 
-    /**
+    /*
      * Constructs a new {@link ByteVector ByteVector} with the given initial
      * size.
      * 
@@ -66,7 +66,7 @@ public class ByteVector {
         data = new byte[initialSize];
     }
 
-    /**
+    /*
      * Puts a byte into this byte vector. The byte vector is automatically
      * enlarged if necessary.
      * 
@@ -84,7 +84,7 @@ public class ByteVector {
         return this;
     }
 
-    /**
+    /*
      * Puts two bytes into this byte vector. The byte vector is automatically
      * enlarged if necessary.
      * 
@@ -106,7 +106,7 @@ public class ByteVector {
         return this;
     }
 
-    /**
+    /*
      * Puts a short into this byte vector. The byte vector is automatically
      * enlarged if necessary.
      * 
@@ -126,7 +126,7 @@ public class ByteVector {
         return this;
     }
 
-    /**
+    /*
      * Puts a byte and a short into this byte vector. The byte vector is
      * automatically enlarged if necessary.
      * 
@@ -149,7 +149,7 @@ public class ByteVector {
         return this;
     }
 
-    /**
+    /*
      * Puts an int into this byte vector. The byte vector is automatically
      * enlarged if necessary.
      * 
@@ -171,7 +171,7 @@ public class ByteVector {
         return this;
     }
 
-    /**
+    /*
      * Puts a long into this byte vector. The byte vector is automatically
      * enlarged if necessary.
      * 
@@ -199,7 +199,7 @@ public class ByteVector {
         return this;
     }
 
-    /**
+    /*
      * Puts an UTF8 string into this byte vector. The byte vector is
      * automatically enlarged if necessary.
      * 
@@ -238,7 +238,7 @@ public class ByteVector {
         return this;
     }
 
-    /**
+    /*
      * Puts an UTF8 string into this byte vector. The byte vector is
      * automatically enlarged if necessary. The string length is encoded in two
      * bytes before the encoded characters, if there is space for that (i.e. if
@@ -298,7 +298,7 @@ public class ByteVector {
         return this;
     }
 
-    /**
+    /*
      * Puts an array of bytes into this byte vector. The byte vector is
      * automatically enlarged if necessary.
      * 
@@ -322,7 +322,7 @@ public class ByteVector {
         return this;
     }
 
-    /**
+    /*
      * Enlarge this byte vector so that it can receive n more bytes.
      * 
      * @param size

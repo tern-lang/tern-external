@@ -1,4 +1,4 @@
-/***
+/**
  * ASM XML Adapter
  * Copyright (c) 2004-2011, Eugene Kuleshov
  * All rights reserved.
@@ -38,7 +38,7 @@ import org.ternlang.asm.TypePath;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.helpers.AttributesImpl;
 
-/**
+/*
  * A {@link org.ternlang.asm.ClassVisitor ClassVisitor} that generates SAX 2.0
  * events from the visited class. It can feed any kind of
  * {@link org.xml.sax.ContentHandler ContentHandler}, e.g. XML serializer, XSLT
@@ -55,22 +55,22 @@ public final class SAXClassAdapter extends ClassVisitor {
 
     private final boolean singleDocument;
 
-    /**
+    /*
      * Pseudo access flag used to distinguish class access flags.
      */
     private static final int ACCESS_CLASS = 262144;
 
-    /**
+    /*
      * Pseudo access flag used to distinguish field access flags.
      */
     private static final int ACCESS_FIELD = 524288;
 
-    /**
+    /*
      * Pseudo access flag used to distinguish inner class flags.
      */
     private static final int ACCESS_INNER = 1048576;
 
-    /**
+    /*
      * Constructs a new {@link SAXClassAdapter SAXClassAdapter} object.
      * 
      * @param h

@@ -1,4 +1,4 @@
-/**
+/*
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -33,7 +33,7 @@ import java.util.Map;
 
 import org.ternlang.asm.Label;
 
-/**
+/*
  * An {@link org.ternlang.asm.Attribute Attribute} that can print the ASM code
  * to create an equivalent attribute.
  * 
@@ -41,7 +41,7 @@ import org.ternlang.asm.Label;
  */
 public interface ASMifiable {
 
-    /**
+    /*
      * Prints the ASM code to create an attribute equal to this attribute.
      * 
      * @param buf

@@ -19,34 +19,34 @@ package org.ternlang.dx.dex.code;
 import org.ternlang.dx.rop.code.SourcePosition;
 import org.ternlang.dx.util.FixedSizeList;
 
-/**
+/*
  * List of source position entries. This class includes a utility
  * method to extract an instance out of a {@link DalvInsnList}.
  */
 public final class PositionList extends FixedSizeList {
-    /** {@code non-null;} empty instance */
+    /* {@code non-null;} empty instance */
     public static final PositionList EMPTY = new PositionList(0);
 
-    /**
+    /*
      * constant for {@link #make} to indicate that no actual position
      * information should be returned
      */
     public static final int NONE = 1;
 
-    /**
+    /*
      * constant for {@link #make} to indicate that only line number
      * transitions should be returned
      */
     public static final int LINES = 2;
 
-    /**
+    /*
      * constant for {@link #make} to indicate that only "important" position
      * information should be returned. This includes block starts and
      * instructions that might throw.
      */
     public static final int IMPORTANT = 3;
 
-    /**
+    /*
      * Extracts and returns the source position information out of an
      * instruction list.
      *
@@ -111,7 +111,7 @@ public final class PositionList extends FixedSizeList {
         return result;
     }
 
-    /**
+    /*
      * Constructs an instance. All indices initially contain {@code null}.
      *
      * @param size {@code >= 0;} the size of the list
@@ -120,7 +120,7 @@ public final class PositionList extends FixedSizeList {
         super(size);
     }
 
-    /**
+    /*
      * Gets the element at the given index. It is an error to call
      * this with the index for an element which was never set; if you
      * do that, this will throw {@code NullPointerException}.
@@ -132,7 +132,7 @@ public final class PositionList extends FixedSizeList {
         return (Entry) get0(n);
     }
 
-    /**
+    /*
      * Sets the entry at the given index.
      *
      * @param n {@code >= 0, < size();} which index
@@ -142,17 +142,17 @@ public final class PositionList extends FixedSizeList {
         set0(n, entry);
     }
 
-    /**
+    /*
      * Entry in a position list.
      */
     public static class Entry {
-        /** {@code >= 0;} address of this entry */
+        /* {@code >= 0;} address of this entry */
         private final int address;
 
-        /** {@code non-null;} corresponding source position information */
+        /* {@code non-null;} corresponding source position information */
         private final SourcePosition position;
 
-        /**
+        /*
          * Constructs an instance.
          *
          * @param address {@code >= 0;} address of this entry
@@ -171,7 +171,7 @@ public final class PositionList extends FixedSizeList {
             this.position = position;
         }
 
-        /**
+        /*
          * Gets the address.
          *
          * @return {@code >= 0;} the address
@@ -180,7 +180,7 @@ public final class PositionList extends FixedSizeList {
             return address;
         }
 
-        /**
+        /*
          * Gets the source position information.
          *
          * @return {@code non-null;} the position information

@@ -20,16 +20,16 @@ import org.ternlang.dex.util.ExceptionWithContext;
 import org.ternlang.dx.util.Hex;
 import org.ternlang.dx.util.MutabilityControl;
 
-/**
+/*
  * Standard implementation of {@link ConstantPool}, which directly stores
  * an array of {@link Constant} objects and can be made immutable.
  */
 public final class StdConstantPool
         extends MutabilityControl implements ConstantPool {
-    /** {@code non-null;} array of entries */
+    /* {@code non-null;} array of entries */
     private final Constant[] entries;
 
-    /**
+    /*
      * Constructs an instance. All indices initially contain {@code null}.
      *
      * @param size the size of the pool; this corresponds to the
@@ -47,12 +47,12 @@ public final class StdConstantPool
         entries = new Constant[size];
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int size() {
         return entries.length;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Constant getOrNull(int n) {
         try {
             return entries[n];
@@ -62,7 +62,7 @@ public final class StdConstantPool
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Constant get0Ok(int n) {
         if (n == 0) {
             return null;
@@ -71,7 +71,7 @@ public final class StdConstantPool
         return get(n);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Constant get(int n) {
         try {
             Constant result = entries[n];
@@ -87,7 +87,7 @@ public final class StdConstantPool
         }
     }
 
-    /**
+    /*
      * Get all entries in this constant pool.
      *
      * @return the returned array may contain null entries.
@@ -96,7 +96,7 @@ public final class StdConstantPool
         return entries;
     }
 
-    /**
+    /*
      * Sets the entry at the given index.
      *
      * @param n {@code >= 1, < size();} which entry
@@ -134,7 +134,7 @@ public final class StdConstantPool
         entries[n] = cst;
     }
 
-    /**
+    /*
      * Throws the right exception for an invalid cpi.
      *
      * @param idx the bad cpi

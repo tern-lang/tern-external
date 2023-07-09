@@ -21,27 +21,27 @@ import org.ternlang.dx.rop.annotation.Annotations;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Set of annotations, where no annotation type appears more than once.
  */
 public final class AnnotationSetItem extends OffsettedItem {
-    /** the required alignment for instances of this class */
+    /* the required alignment for instances of this class */
     private static final int ALIGNMENT = 4;
 
-    /** the size of an entry int the set: one {@code uint} */
+    /* the size of an entry int the set: one {@code uint} */
     private static final int ENTRY_WRITE_SIZE = 4;
 
-    /** {@code non-null;} the set of annotations */
+    /* {@code non-null;} the set of annotations */
     private final Annotations annotations;
 
-    /**
+    /*
      * {@code non-null;} set of annotations as individual items in an array.
      * <b>Note:</b> The contents have to get sorted by type id before
      * writing.
      */
     private final AnnotationItem[] items;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param annotations {@code non-null;} set of annotations
@@ -60,7 +60,7 @@ public final class AnnotationSetItem extends OffsettedItem {
         }
     }
 
-    /**
+    /*
      * Gets the write size for the given set.
      *
      * @param annotations {@code non-null;} the set
@@ -77,7 +77,7 @@ public final class AnnotationSetItem extends OffsettedItem {
         }
     }
 
-    /**
+    /*
      * Gets the underlying annotations of this instance
      *
      * @return {@code non-null;} the annotations
@@ -86,13 +86,13 @@ public final class AnnotationSetItem extends OffsettedItem {
         return annotations;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int hashCode() {
         return annotations.hashCode();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected int compareTo0(OffsettedItem other) {
         AnnotationSetItem otherSet = (AnnotationSetItem) other;
@@ -100,19 +100,19 @@ public final class AnnotationSetItem extends OffsettedItem {
         return annotations.compareTo(otherSet.annotations);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public ItemType itemType() {
         return ItemType.TYPE_ANNOTATION_SET_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toHuman() {
         return annotations.toString();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void addContents(DexFile file) {
         MixedItemSection byteData = file.getByteData();
         int size = items.length;
@@ -122,14 +122,14 @@ public final class AnnotationSetItem extends OffsettedItem {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void place0(Section addedTo, int offset) {
         // Sort the array to be in type id index order.
         AnnotationItem.sortByTypeIdIndex(items);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void writeTo0(DexFile file, AnnotatedOutput out) {
         boolean annotates = out.annotates();

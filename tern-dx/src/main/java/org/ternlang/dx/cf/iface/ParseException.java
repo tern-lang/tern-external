@@ -18,7 +18,7 @@ package org.ternlang.dx.cf.iface;
 
 import org.ternlang.dex.util.ExceptionWithContext;
 
-/**
+/*
  * Exception from parsing.
  */
 public class ParseException

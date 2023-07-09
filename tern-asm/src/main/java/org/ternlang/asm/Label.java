@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -29,7 +29,7 @@
  */
 package org.ternlang.asm;
 
-/**
+/*
  * A label represents a position in the bytecode of a method. Labels are used
  * for jump, goto, and switch instructions, and for try catch blocks. A label
  * designates the <i>instruction</i> that is just after. Note however that there
@@ -40,7 +40,7 @@ package org.ternlang.asm;
  */
 public class Label {
 
-    /**
+    /*
      * Indicates if this label is only used for debug attributes. Such a label
      * is not the start of a basic block, the target of a jump instruction, or
      * an exception handler. It can be safely ignored in control flow graph
@@ -48,66 +48,66 @@ public class Label {
      */
     static final int DEBUG = 1;
 
-    /**
+    /*
      * Indicates if the position of this label is known.
      */
     static final int RESOLVED = 2;
 
-    /**
+    /*
      * Indicates if this label has been updated, after instruction resizing.
      */
     static final int RESIZED = 4;
 
-    /**
+    /*
      * Indicates if this basic block has been pushed in the basic block stack.
      * See {@link MethodWriter#visitMaxs visitMaxs}.
      */
     static final int PUSHED = 8;
 
-    /**
+    /*
      * Indicates if this label is the target of a jump instruction, or the start
      * of an exception handler.
      */
     static final int TARGET = 16;
 
-    /**
+    /*
      * Indicates if a stack map frame must be stored for this label.
      */
     static final int STORE = 32;
 
-    /**
+    /*
      * Indicates if this label corresponds to a reachable basic block.
      */
     static final int REACHABLE = 64;
 
-    /**
+    /*
      * Indicates if this basic block ends with a JSR instruction.
      */
     static final int JSR = 128;
 
-    /**
+    /*
      * Indicates if this basic block ends with a RET instruction.
      */
     static final int RET = 256;
 
-    /**
+    /*
      * Indicates if this basic block is the start of a subroutine.
      */
     static final int SUBROUTINE = 512;
 
-    /**
+    /*
      * Indicates if this subroutine basic block has been visited by a
      * visitSubroutine(null, ...) call.
      */
     static final int VISITED = 1024;
 
-    /**
+    /*
      * Indicates if this subroutine basic block has been visited by a
      * visitSubroutine(!null, ...) call.
      */
     static final int VISITED2 = 2048;
 
-    /**
+    /*
      * Field used to associate user information to a label. Warning: this field
      * is used by the ASM tree package. In order to use it with the ASM tree
      * package you must override the
@@ -115,7 +115,7 @@ public class Label {
      */
     public Object info;
 
-    /**
+    /*
      * Flags that indicate the status of this label.
      * 
      * @see #DEBUG
@@ -130,7 +130,7 @@ public class Label {
      */
     int status;
 
-    /**
+    /*
      * The line number corresponding to this label, if known. If there are
      * several lines, each line is stored in a separate label, all linked via
      * their next field (these links are created in ClassReader and removed just
@@ -139,17 +139,17 @@ public class Label {
      */
     int line;
 
-    /**
+    /*
      * The position of this label in the code, if known.
      */
     int position;
 
-    /**
+    /*
      * Number of forward references to this label, times two.
      */
     private int referenceCount;
 
-    /**
+    /*
      * Informations about forward references. Each forward reference is
      * described by two consecutive integers in this array: the first one is the
      * position of the first byte of the bytecode instruction that contains the
@@ -193,7 +193,7 @@ public class Label {
      * absolute input frames.
      */
 
-    /**
+    /*
      * Start of the output stack relatively to the input stack. The exact
      * semantics of this field depends on the algorithm that is used.
      * 
@@ -210,20 +210,20 @@ public class Label {
      */
     int inputStackTop;
 
-    /**
+    /*
      * Maximum height reached by the output stack, relatively to the top of the
      * input stack. This maximum is always positive or null.
      */
     int outputStackMax;
 
-    /**
+    /*
      * Information about the input and output stack map frames of this basic
      * block. This field is only used when {@link ClassWriter#COMPUTE_FRAMES}
      * option is used.
      */
     Frame frame;
 
-    /**
+    /*
      * The successor of this label, in the order they are visited. This linked
      * list does not include labels used for debug info only. If
      * {@link ClassWriter#COMPUTE_FRAMES} option is used then, in addition, it
@@ -232,14 +232,14 @@ public class Label {
      */
     Label successor;
 
-    /**
+    /*
      * The successors of this node in the control flow graph. These successors
      * are stored in a linked list of {@link Edge Edge} objects, linked to each
      * other by their {@link Edge#next} field.
      */
     Edge successors;
 
-    /**
+    /*
      * The next basic block in the basic block stack. This stack is used in the
      * main loop of the fix point algorithm used in the second step of the
      * control flow analysis algorithms. It is also used in
@@ -254,7 +254,7 @@ public class Label {
     // Constructor
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Constructs a new label.
      */
     public Label() {
@@ -264,7 +264,7 @@ public class Label {
     // Methods to compute offsets and to manage forward references
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Returns the offset corresponding to this label. This offset is computed
      * from the start of the method's bytecode. <i>This method is intended for
      * {@link Attribute} sub classes, and is normally not needed by class
@@ -282,7 +282,7 @@ public class Label {
         return position;
     }
 
-    /**
+    /*
      * Puts a reference to this label in the bytecode of a method. If the
      * position of the label is known, the offset is computed and written
      * directly. Otherwise, a null offset is written and a new forward reference
@@ -320,7 +320,7 @@ public class Label {
         }
     }
 
-    /**
+    /*
      * Adds a forward reference to this label. This method must be called only
      * for a true forward reference, i.e. only if this label is not resolved
      * yet. For backward references, the offset of the reference can be, and
@@ -348,7 +348,7 @@ public class Label {
         srcAndRefPositions[referenceCount++] = referencePosition;
     }
 
-    /**
+    /*
      * Resolves all forward references to this label. This method must be called
      * when this label is added to the bytecode of the method, i.e. when its
      * position becomes known. This method fills in the blanks that where left
@@ -415,7 +415,7 @@ public class Label {
         return needUpdate;
     }
 
-    /**
+    /*
      * Returns the first label of the series to which this label belongs. For an
      * isolated label or for the first label in a series of successive labels,
      * this method returns the label itself. For other labels it returns the
@@ -431,7 +431,7 @@ public class Label {
     // Methods related to subroutines
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Returns true is this basic block belongs to the given subroutine.
      * 
      * @param id
@@ -445,7 +445,7 @@ public class Label {
         return false;
     }
 
-    /**
+    /*
      * Returns true if this basic block and the given one belong to a common
      * subroutine.
      * 
@@ -466,7 +466,7 @@ public class Label {
         return false;
     }
 
-    /**
+    /*
      * Marks this basic block as belonging to the given subroutine.
      * 
      * @param id
@@ -482,7 +482,7 @@ public class Label {
         srcAndRefPositions[(int) (id >>> 32)] |= (int) id;
     }
 
-    /**
+    /*
      * Finds the basic blocks that belong to a given subroutine, and marks these
      * blocks as belonging to this subroutine. This method follows the control
      * flow graph to find all the blocks that are reachable from the current
@@ -552,7 +552,7 @@ public class Label {
     // Overriden Object methods
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Returns a string representation of this label.
      * 
      * @return a string representation of this label.

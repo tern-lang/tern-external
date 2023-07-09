@@ -20,13 +20,13 @@ import org.ternlang.dx.rop.code.RegisterSpecList;
 import org.ternlang.dx.rop.code.SourcePosition;
 import org.ternlang.dx.util.AnnotatedOutput;
 
-/**
+/*
  * Base class for instructions which are of a fixed code size and
  * which use {@link InsnFormat} methods to write themselves. This
  * includes most &mdash; but not all &mdash; instructions.
  */
 public abstract class FixedSizeInsn extends DalvInsn {
-    /**
+    /*
      * Constructs an instance. The output address of this instance is initially
      * unknown ({@code -1}).
      *
@@ -47,25 +47,25 @@ public abstract class FixedSizeInsn extends DalvInsn {
         super(opcode, position, registers);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final int codeSize() {
         return getOpcode().getFormat().codeSize();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final void writeTo(AnnotatedOutput out) {
         getOpcode().getFormat().writeTo(out, this);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final DalvInsn withRegisterOffset(int delta) {
         return withRegisters(getRegisters().withOffset(delta));
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected final String listingString0(boolean noteIndices) {
         return getOpcode().getFormat().listingString(this, noteIndices);

@@ -23,31 +23,31 @@ import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * Pseudo-instruction which holds switch data. The switch data is
  * a map of values to target addresses, and this class writes the data
  * in either a "packed" or "sparse" form.
  */
 public final class SwitchData extends VariableSizeInsn {
-    /**
+    /*
      * {@code non-null;} address representing the instruction that uses this
      * instance
      */
     private final CodeAddress user;
 
-    /** {@code non-null;} sorted list of switch cases (keys) */
+    /* {@code non-null;} sorted list of switch cases (keys) */
     private final IntList cases;
 
-    /**
+    /*
      * {@code non-null;} corresponding list of code addresses; the branch
      * target for each case
      */
     private final CodeAddress[] targets;
 
-    /** whether the output table will be packed (vs. sparse) */
+    /* whether the output table will be packed (vs. sparse) */
     private final boolean packed;
 
-    /**
+    /*
      * Constructs an instance. The output address of this instance is initially
      * unknown ({@code -1}).
      *
@@ -90,14 +90,14 @@ public final class SwitchData extends VariableSizeInsn {
         this.packed = shouldPack(cases);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int codeSize() {
         return packed ? (int) packedCodeSize(cases) :
             (int) sparseCodeSize(cases);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void writeTo(AnnotatedOutput out) {
         int baseAddress = user.getAddress();
@@ -143,13 +143,13 @@ public final class SwitchData extends VariableSizeInsn {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public DalvInsn withRegisters(RegisterSpecList registers) {
         return new SwitchData(getPosition(), user, cases, targets);
     }
 
-    /**
+    /*
      * Returns whether or not this instance's data will be output as packed.
      *
      * @return {@code true} iff the data is to be packed
@@ -158,7 +158,7 @@ public final class SwitchData extends VariableSizeInsn {
         return packed;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected String argString() {
         StringBuffer sb = new StringBuffer(100);
@@ -174,7 +174,7 @@ public final class SwitchData extends VariableSizeInsn {
         return sb.toString();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected String listingString0(boolean noteIndices) {
         int baseAddress = user.getAddress();
@@ -199,7 +199,7 @@ public final class SwitchData extends VariableSizeInsn {
         return sb.toString();
     }
 
-    /**
+    /*
      * Gets the size of a packed table for the given cases, in 16-bit code
      * units.
      *
@@ -216,7 +216,7 @@ public final class SwitchData extends VariableSizeInsn {
         return (result <= 0x7fffffff) ? result : -1;
     }
 
-    /**
+    /*
      * Gets the size of a sparse table for the given cases, in 16-bit code
      * units.
      *
@@ -229,7 +229,7 @@ public final class SwitchData extends VariableSizeInsn {
         return (sz * 4L) + 2;
     }
 
-    /**
+    /*
      * Determines whether the given list of cases warrant being packed.
      *
      * @param cases {@code non-null;} sorted list of cases

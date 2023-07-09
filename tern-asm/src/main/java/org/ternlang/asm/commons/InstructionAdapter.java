@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -36,7 +36,7 @@ import org.ternlang.asm.MethodVisitor;
 import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.Type;
 
-/**
+/*
  * A {@link MethodVisitor} providing a more detailed API to generate and
  * transform instructions.
  * 
@@ -46,7 +46,7 @@ public class InstructionAdapter extends MethodVisitor {
 
     public final static Type OBJECT_TYPE = Type.getType("Ljava/lang/Object;");
 
-    /**
+    /*
      * Creates a new {@link InstructionAdapter}. <i>Subclasses must not use this
      * constructor</i>. Instead, they must use the
      * {@link #InstructionAdapter(int, MethodVisitor)} version.
@@ -63,7 +63,7 @@ public class InstructionAdapter extends MethodVisitor {
         }
     }
 
-    /**
+    /*
      * Creates a new {@link InstructionAdapter}.
      * 
      * @param api

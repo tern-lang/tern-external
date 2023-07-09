@@ -38,26 +38,26 @@ import org.ternlang.dx.ssa.SsaMethod;
 import org.ternlang.dx.util.Hex;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * Converts a method in SSA form to ROP form.
  */
 public class SsaToRop {
-    /** local debug flag */
+    /* local debug flag */
     private static final boolean DEBUG = false;
 
-    /** {@code non-null;} method to process */
+    /* {@code non-null;} method to process */
     private final SsaMethod ssaMeth;
 
-    /**
+    /*
      * {@code true} if the converter should attempt to minimize
      * the rop-form register count
      */
     private final boolean minimizeRegisters;
 
-    /** {@code non-null;} interference graph */
+    /* {@code non-null;} interference graph */
     private final InterferenceGraph interference;
 
-    /**
+    /*
      * Converts a method in SSA form to ROP form.
      *
      * @param ssaMeth {@code non-null;} method to process
@@ -70,7 +70,7 @@ public class SsaToRop {
         return new SsaToRop(ssaMeth, minimizeRegisters).convert();
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param ssaMeth {@code non-null;} method to process
@@ -84,7 +84,7 @@ public class SsaToRop {
             LivenessAnalyzer.constructInterferenceGraph(ssaMethod);
     }
 
-    /**
+    /*
      * Performs the conversion.
      *
      * @return {@code non-null;} rop-form output
@@ -128,7 +128,7 @@ public class SsaToRop {
         return ropMethod;
     }
 
-    /**
+    /*
      * Removes all blocks containing only GOTOs from the control flow.
      * Although much of this work will be done later when converting
      * from rop to dex, not all simplification cases can be handled
@@ -158,7 +158,7 @@ public class SsaToRop {
         });
     }
 
-    /**
+    /*
      * See Appel 19.6. To remove the phi instructions in an edge-split
      * SSA representation we know we can always insert a move in a
      * predecessor block.
@@ -183,7 +183,7 @@ public class SsaToRop {
         }
     }
 
-    /**
+    /*
      * Helper for {@link #removePhiFunctions}: PhiSuccessorUpdater for
      * adding move instructions to predecessors based on phi insns.
      */
@@ -209,7 +209,7 @@ public class SsaToRop {
         }
     }
 
-    /**
+    /*
      * Moves the parameter registers, which allocateRegisters() places
      * at the bottom of the frame, up to the top of the frame to match
      * Dalvik calling convention.
@@ -236,7 +236,7 @@ public class SsaToRop {
         ssaMeth.mapRegisters(mapper);
     }
 
-    /**
+    /*
      * @return rop-form basic block list
      */
     private BasicBlockList convertBasicBlocks() {
@@ -270,7 +270,7 @@ public class SsaToRop {
         return result;
     }
 
-    /**
+    /*
      * Validates that a basic block is a valid end predecessor. It must
      * end in a RETURN or a THROW. Throws a runtime exception on error.
      *
@@ -289,7 +289,7 @@ public class SsaToRop {
         }
     }
 
-    /**
+    /*
      * Converts a single basic block to rop form.
      *
      * @param block SSA block to process
@@ -328,7 +328,7 @@ public class SsaToRop {
         return result;
     }
 
-    /**
+    /*
      * Converts an insn list to rop form.
      *
      * @param ssaInsns {@code non-null;} old instructions
@@ -347,7 +347,7 @@ public class SsaToRop {
         return result;
     }
 
-    /**
+    /*
      * <b>Note:</b> This method is not presently used.
      *
      * @return a list of registers ordered by most-frequently-used to

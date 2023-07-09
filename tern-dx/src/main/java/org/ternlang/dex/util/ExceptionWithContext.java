@@ -19,14 +19,14 @@ package org.ternlang.dex.util;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 
-/**
+/*
  * Exception which carries around structured context.
  */
 public class ExceptionWithContext extends RuntimeException {
-    /** {@code non-null;} human-oriented context of the exception */
+    /* {@code non-null;} human-oriented context of the exception */
     private StringBuffer context;
 
-    /**
+    /*
      * Augments the given exception with the given context, and return the
      * result. The result is either the given exception if it was an
      * {@link ExceptionWithContext}, or a newly-constructed exception if it
@@ -49,7 +49,7 @@ public class ExceptionWithContext extends RuntimeException {
         return ewc;
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param message human-oriented message
@@ -58,7 +58,7 @@ public class ExceptionWithContext extends RuntimeException {
         this(message, null);
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param cause {@code null-ok;} exception that caused this one
@@ -67,7 +67,7 @@ public class ExceptionWithContext extends RuntimeException {
         this(null, cause);
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param message human-oriented message
@@ -87,21 +87,21 @@ public class ExceptionWithContext extends RuntimeException {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void printStackTrace(PrintStream out) {
         super.printStackTrace(out);
         out.println(context);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void printStackTrace(PrintWriter out) {
         super.printStackTrace(out);
         out.println(context);
     }
 
-    /**
+    /*
      * Adds a line of context to this instance.
      *
      * @param str {@code non-null;} new context
@@ -117,7 +117,7 @@ public class ExceptionWithContext extends RuntimeException {
         }
     }
 
-    /**
+    /*
      * Gets the context.
      *
      * @return {@code non-null;} the context
@@ -126,7 +126,7 @@ public class ExceptionWithContext extends RuntimeException {
         return context.toString();
     }
 
-    /**
+    /*
      * Prints the message and context.
      *
      * @param out {@code non-null;} where to print to
@@ -136,7 +136,7 @@ public class ExceptionWithContext extends RuntimeException {
         out.print(context);
     }
 
-    /**
+    /*
      * Prints the message and context.
      *
      * @param out {@code non-null;} where to print to

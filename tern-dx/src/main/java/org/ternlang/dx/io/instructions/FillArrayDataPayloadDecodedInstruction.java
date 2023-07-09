@@ -16,22 +16,22 @@
 
 package org.ternlang.dx.io.instructions;
 
-/**
+/*
  * A decoded Dalvik instruction which contains the payload for
  * a {@code packed-switch} instruction.
  */
 public final class FillArrayDataPayloadDecodedInstruction
         extends DecodedInstruction {
-    /** data array */
+    /* data array */
     private final Object data;
 
-    /** number of elements */
+    /* number of elements */
     private final int size;
 
-    /** element width */
+    /* element width */
     private final int elementWidth;
 
-    /**
+    /*
      * Constructs an instance. This private instance doesn't check the
      * type of the data array.
      */
@@ -44,7 +44,7 @@ public final class FillArrayDataPayloadDecodedInstruction
         this.elementWidth = elementWidth;
     }
 
-    /**
+    /*
      * Constructs an instance.
      */
     public FillArrayDataPayloadDecodedInstruction(InstructionCodec format,
@@ -52,7 +52,7 @@ public final class FillArrayDataPayloadDecodedInstruction
         this(format, opcode, data, data.length, 1);
     }
 
-    /**
+    /*
      * Constructs an instance.
      */
     public FillArrayDataPayloadDecodedInstruction(InstructionCodec format,
@@ -60,7 +60,7 @@ public final class FillArrayDataPayloadDecodedInstruction
         this(format, opcode, data, data.length, 2);
     }
 
-    /**
+    /*
      * Constructs an instance.
      */
     public FillArrayDataPayloadDecodedInstruction(InstructionCodec format,
@@ -68,7 +68,7 @@ public final class FillArrayDataPayloadDecodedInstruction
         this(format, opcode, data, data.length, 4);
     }
 
-    /**
+    /*
      * Constructs an instance.
      */
     public FillArrayDataPayloadDecodedInstruction(InstructionCodec format,
@@ -76,7 +76,7 @@ public final class FillArrayDataPayloadDecodedInstruction
         this(format, opcode, data, data.length, 8);
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public int getRegisterCount() {
         return 0;
     }
@@ -93,7 +93,7 @@ public final class FillArrayDataPayloadDecodedInstruction
         return data;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public DecodedInstruction withIndex(int newIndex) {
         throw new UnsupportedOperationException("no index in instruction");
     }

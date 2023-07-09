@@ -1,7 +1,7 @@
 
 package org.ternlang.cglib.transform.impl;
 
-/**
+/*
  *
  * @author  baliuka
  */

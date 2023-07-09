@@ -17,7 +17,7 @@ package org.ternlang.cglib.core;
 
 import org.ternlang.asm.Type;
 
-/**
+/*
  * A representation of a method signature, containing the method name,
  * return type, and parameter types.
  */

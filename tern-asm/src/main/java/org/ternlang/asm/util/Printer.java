@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -39,26 +39,26 @@ import org.ternlang.asm.Label;
 import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.TypePath;
 
-/**
+/*
  * An abstract converter from visit events to text.
  * 
  * @author Eric Bruneton
  */
 public abstract class Printer {
 
-    /**
+    /*
      * The names of the Java Virtual Machine opcodes.
      */
     public static final String[] OPCODES;
 
-    /**
+    /*
      * The names of the for <code>operand</code> parameter values of the
      * {@link org.ternlang.asm.MethodVisitor#visitIntInsn} method when
      * <code>opcode</code> is <code>NEWARRAY</code>.
      */
     public static final String[] TYPES;
 
-    /**
+    /*
      * The names of the <code>tag</code> field values for
      * {@link org.ternlang.asm.Handle}.
      */
@@ -115,18 +115,18 @@ public abstract class Printer {
         }
     }
 
-    /**
+    /*
      * The ASM API version implemented by this class. The value of this field
      * must be one of {@link Opcodes#ASM4} or {@link Opcodes#ASM5}.
      */
     protected final int api;
 
-    /**
+    /*
      * A buffer that can be used to create strings.
      */
     protected final StringBuffer buf;
 
-    /**
+    /*
      * The text to be printed. Since the code of methods is not necessarily
      * visited in sequential order, one method after the other, but can be
      * interlaced (some instructions from method one, then some instructions
@@ -140,7 +140,7 @@ public abstract class Printer {
      */
     public final List<Object> text;
 
-    /**
+    /*
      * Constructs a new {@link Printer}.
      *
      * @param api
@@ -153,7 +153,7 @@ public abstract class Printer {
         this.text = new ArrayList<Object>();
     }
 
-    /**
+    /*
      * Class header.
      * See {@link org.ternlang.asm.ClassVisitor#visit}.
      *
@@ -183,7 +183,7 @@ public abstract class Printer {
             final String name, final String signature, final String superName,
             final String[] interfaces);
 
-    /**
+    /*
      * Class source.
      * See {@link org.ternlang.asm.ClassVisitor#visitSource}.
      *
@@ -197,7 +197,7 @@ public abstract class Printer {
      */
     public abstract void visitSource(final String source, final String debug);
 
-    /**
+    /*
      * Class outer class.
      * See {@link org.ternlang.asm.ClassVisitor#visitOuterClass}.
      *
@@ -218,7 +218,7 @@ public abstract class Printer {
     public abstract void visitOuterClass(final String owner, final String name,
             final String desc);
 
-    /**
+    /*
      * Class annotation.
      * See {@link org.ternlang.asm.ClassVisitor#visitAnnotation}.
      *
@@ -231,7 +231,7 @@ public abstract class Printer {
     public abstract Printer visitClassAnnotation(final String desc,
             final boolean visible);
 
-    /**
+    /*
      * Class type annotation.
      * See {@link org.ternlang.asm.ClassVisitor#visitTypeAnnotation}.
      *
@@ -257,7 +257,7 @@ public abstract class Printer {
         throw new RuntimeException("Must be overriden");
     }
 
-    /**
+    /*
      * Class attribute.
      * See {@link org.ternlang.asm.ClassVisitor#visitAttribute}.
      *
@@ -266,7 +266,7 @@ public abstract class Printer {
      */
     public abstract void visitClassAttribute(final Attribute attr);
 
-    /**
+    /*
      * Class inner name.
      * See {@link org.ternlang.asm.ClassVisitor#visitInnerClass}.
      *
@@ -287,7 +287,7 @@ public abstract class Printer {
     public abstract void visitInnerClass(final String name,
             final String outerName, final String innerName, final int access);
 
-    /**
+    /*
      * Class field.
      * See {@link org.ternlang.asm.ClassVisitor#visitField}.
      *
@@ -316,7 +316,7 @@ public abstract class Printer {
     public abstract Printer visitField(final int access, final String name,
             final String desc, final String signature, final Object value);
 
-    /**
+    /*
      * Class method.
      * See {@link org.ternlang.asm.ClassVisitor#visitMethod}.
      *
@@ -341,7 +341,7 @@ public abstract class Printer {
     public abstract Printer visitMethod(final int access, final String name,
             final String desc, final String signature, final String[] exceptions);
 
-    /**
+    /*
      * Class end. See {@link org.ternlang.asm.ClassVisitor#visitEnd}.
      */
     public abstract void visitClassEnd();
@@ -350,7 +350,7 @@ public abstract class Printer {
     // Annotations
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Annotation value.
      * See {@link org.ternlang.asm.AnnotationVisitor#visit}.
      *
@@ -369,7 +369,7 @@ public abstract class Printer {
      */
     public abstract void visit(final String name, final Object value);
 
-    /**
+    /*
      * Annotation enum value.
      * See {@link org.ternlang.asm.AnnotationVisitor#visitEnum}.
      *
@@ -385,7 +385,7 @@ public abstract class Printer {
     public abstract void visitEnum(final String name, final String desc,
             final String value);
 
-    /**
+    /*
      * Nested annotation value.
      * See {@link org.ternlang.asm.AnnotationVisitor#visitAnnotation}.
      *
@@ -397,7 +397,7 @@ public abstract class Printer {
      */
     public abstract Printer visitAnnotation(final String name, final String desc);
 
-    /**
+    /*
      * Annotation array value.
      * See {@link org.ternlang.asm.AnnotationVisitor#visitArray}.
      *
@@ -412,7 +412,7 @@ public abstract class Printer {
      */
     public abstract Printer visitArray(final String name);
 
-    /**
+    /*
      * Annotation end. See {@link org.ternlang.asm.AnnotationVisitor#visitEnd}.
      */
     public abstract void visitAnnotationEnd();
@@ -421,7 +421,7 @@ public abstract class Printer {
     // Fields
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Field annotation.
      * See {@link org.ternlang.asm.FieldVisitor#visitAnnotation}.
      *
@@ -434,7 +434,7 @@ public abstract class Printer {
     public abstract Printer visitFieldAnnotation(final String desc,
             final boolean visible);
 
-    /**
+    /*
      * Field type annotation.
      * See {@link org.ternlang.asm.FieldVisitor#visitTypeAnnotation}.
      *
@@ -457,7 +457,7 @@ public abstract class Printer {
         throw new RuntimeException("Must be overriden");
     }
 
-    /**
+    /*
      * Field attribute.
      * See {@link org.ternlang.asm.FieldVisitor#visitAttribute}.
      *
@@ -466,7 +466,7 @@ public abstract class Printer {
      */
     public abstract void visitFieldAttribute(final Attribute attr);
 
-    /**
+    /*
      * Field end.
      * See {@link org.ternlang.asm.FieldVisitor#visitEnd}.
      */
@@ -476,7 +476,7 @@ public abstract class Printer {
     // Methods
     // ------------------------------------------------------------------------
 
-    /**
+    /*
      * Method parameter.
      * See {@link org.ternlang.asm.MethodVisitor#visitParameter(String, int)}.
      *
@@ -491,7 +491,7 @@ public abstract class Printer {
         throw new RuntimeException("Must be overriden");
     }
 
-    /**
+    /*
      * Method default annotation.
      * See {@link org.ternlang.asm.MethodVisitor#visitAnnotationDefault}.
      *
@@ -499,7 +499,7 @@ public abstract class Printer {
      */
     public abstract Printer visitAnnotationDefault();
 
-    /**
+    /*
      * Method annotation.
      * See {@link org.ternlang.asm.MethodVisitor#visitAnnotation}.
      *
@@ -512,7 +512,7 @@ public abstract class Printer {
     public abstract Printer visitMethodAnnotation(final String desc,
             final boolean visible);
 
-    /**
+    /*
      * Method type annotation.
      * See {@link org.ternlang.asm.MethodVisitor#visitTypeAnnotation}.
      *
@@ -535,7 +535,7 @@ public abstract class Printer {
         throw new RuntimeException("Must be overriden");
     }
 
-    /**
+    /*
      * Method parameter annotation.
      * See {@link org.ternlang.asm.MethodVisitor#visitParameterAnnotation}.
      *
@@ -550,7 +550,7 @@ public abstract class Printer {
     public abstract Printer visitParameterAnnotation(final int parameter,
             final String desc, final boolean visible);
 
-    /**
+    /*
      * Method attribute.
      * See {@link org.ternlang.asm.MethodVisitor#visitAttribute}.
      *
@@ -559,13 +559,13 @@ public abstract class Printer {
      */
     public abstract void visitMethodAttribute(final Attribute attr);
 
-    /**
+    /*
      * Method start.
      * See {@link org.ternlang.asm.MethodVisitor#visitCode}.
      */
     public abstract void visitCode();
 
-    /**
+    /*
      * Method stack frame.
      * See {@link org.ternlang.asm.MethodVisitor#visitFrame}.
      *
@@ -646,7 +646,7 @@ public abstract class Printer {
     public abstract void visitFrame(final int type, final int nLocal,
             final Object[] local, final int nStack, final Object[] stack);
 
-    /**
+    /*
      * Method instruction.
      * See {@link org.ternlang.asm.MethodVisitor#visitInsn}
      *
@@ -669,7 +669,7 @@ public abstract class Printer {
      */
     public abstract void visitInsn(final int opcode);
 
-    /**
+    /*
      * Method instruction.
      * See {@link org.ternlang.asm.MethodVisitor#visitIntInsn}.
      *
@@ -690,7 +690,7 @@ public abstract class Printer {
      */
     public abstract void visitIntInsn(final int opcode, final int operand);
 
-    /**
+    /*
      * Method instruction.
      * See {@link org.ternlang.asm.MethodVisitor#visitVarInsn}.
      *
@@ -704,11 +704,11 @@ public abstract class Printer {
      */
     public abstract void visitVarInsn(final int opcode, final int var);
 
-    /**
+    /*
      * Method instruction.
      * See {@link org.ternlang.asm.MethodVisitor#visitTypeInsn}.
      *
-    /**
+    /*
      * Visits a type instruction. A type instruction is an instruction that
      * takes the internal name of a class as parameter.
      *
@@ -722,7 +722,7 @@ public abstract class Printer {
      */
     public abstract void visitTypeInsn(final int opcode, final String type);
 
-    /**
+    /*
      * Method instruction.
      * See {@link org.ternlang.asm.MethodVisitor#visitFieldInsn}.
      *
@@ -740,7 +740,7 @@ public abstract class Printer {
     public abstract void visitFieldInsn(final int opcode, final String owner,
             final String name, final String desc);
 
-    /**
+    /*
      * Method instruction.
      * See {@link org.ternlang.asm.MethodVisitor#visitMethodInsn}.
      *
@@ -767,7 +767,7 @@ public abstract class Printer {
         throw new RuntimeException("Must be overriden");
     }
 
-    /**
+    /*
      * Method instruction.
      * See {@link org.ternlang.asm.MethodVisitor#visitMethodInsn}.
      *
@@ -798,7 +798,7 @@ public abstract class Printer {
         throw new RuntimeException("Must be overriden");
     }
 
-    /**
+    /*
      * Method instruction.
      * See {@link org.ternlang.asm.MethodVisitor#visitInvokeDynamicInsn}.
      *
@@ -820,7 +820,7 @@ public abstract class Printer {
     public abstract void visitInvokeDynamicInsn(String name, String desc,
             Handle bsm, Object... bsmArgs);
 
-    /**
+    /*
      * Method jump instruction.
      * See {@link org.ternlang.asm.MethodVisitor#visitJumpInsn}.
      *
@@ -836,7 +836,7 @@ public abstract class Printer {
      */
     public abstract void visitJumpInsn(final int opcode, final Label label);
 
-    /**
+    /*
      * Method label.
      * See {@link org.ternlang.asm.MethodVisitor#visitLabel}.
      *
@@ -845,7 +845,7 @@ public abstract class Printer {
      */
     public abstract void visitLabel(final Label label);
 
-    /**
+    /*
      * Method instruction.
      * See {@link org.ternlang.asm.MethodVisitor#visitLdcInsn}.
      *
@@ -894,7 +894,7 @@ public abstract class Printer {
      */
     public abstract void visitLdcInsn(final Object cst);
 
-    /**
+    /*
      * Method instruction.
      * See {@link org.ternlang.asm.MethodVisitor#visitIincInsn}.
      *
@@ -905,7 +905,7 @@ public abstract class Printer {
      */
     public abstract void visitIincInsn(final int var, final int increment);
 
-    /**
+    /*
      * Method instruction.
      * See {@link org.ternlang.asm.MethodVisitor#visitTableSwitchInsn}.
      *
@@ -922,7 +922,7 @@ public abstract class Printer {
     public abstract void visitTableSwitchInsn(final int min, final int max,
             final Label dflt, final Label... labels);
 
-    /**
+    /*
      * Method instruction.
      * See {@link org.ternlang.asm.MethodVisitor#visitLookupSwitchInsn}.
      *
@@ -937,7 +937,7 @@ public abstract class Printer {
     public abstract void visitLookupSwitchInsn(final Label dflt,
             final int[] keys, final Label[] labels);
 
-    /**
+    /*
      * Method instruction.
      * See {@link org.ternlang.asm.MethodVisitor#visitMultiANewArrayInsn}.
      *
@@ -949,7 +949,7 @@ public abstract class Printer {
     public abstract void visitMultiANewArrayInsn(final String desc,
             final int dims);
 
-    /**
+    /*
      * Instruction type annotation.
      * See {@link org.ternlang.asm.MethodVisitor#visitInsnAnnotation}.
      *
@@ -980,7 +980,7 @@ public abstract class Printer {
         throw new RuntimeException("Must be overriden");
     }
 
-    /**
+    /*
      * Method exception handler.
      * See {@link org.ternlang.asm.MethodVisitor#visitTryCatchBlock}.
      *
@@ -1001,7 +1001,7 @@ public abstract class Printer {
     public abstract void visitTryCatchBlock(final Label start, final Label end,
             final Label handler, final String type);
 
-    /**
+    /*
      * Try catch block type annotation.
      * See {@link org.ternlang.asm.MethodVisitor#visitTryCatchAnnotation}.
      *
@@ -1025,7 +1025,7 @@ public abstract class Printer {
         throw new RuntimeException("Must be overriden");
     }
 
-    /**
+    /*
      * Method debug info.
      * See {@link org.ternlang.asm.MethodVisitor#visitLocalVariable}.
      *
@@ -1053,7 +1053,7 @@ public abstract class Printer {
             final String desc, final String signature, final Label start,
             final Label end, final int index);
 
-    /**
+    /*
      * Local variable type annotation.
      * See {@link org.ternlang.asm.MethodVisitor#visitTryCatchAnnotation}.
      *
@@ -1089,7 +1089,7 @@ public abstract class Printer {
         throw new RuntimeException("Must be overriden");
     }
 
-    /**
+    /*
      * Method debug info.
      * See {@link org.ternlang.asm.MethodVisitor#visitLineNumber}.
      *
@@ -1104,7 +1104,7 @@ public abstract class Printer {
      */
     public abstract void visitLineNumber(final int line, final Label start);
 
-    /**
+    /*
      * Method max stack and max locals.
      * See {@link org.ternlang.asm.MethodVisitor#visitMaxs}.
      *
@@ -1115,13 +1115,13 @@ public abstract class Printer {
      */
     public abstract void visitMaxs(final int maxStack, final int maxLocals);
 
-    /**
+    /*
      * Method end.
      * See {@link org.ternlang.asm.MethodVisitor#visitEnd}.
      */
     public abstract void visitMethodEnd();
 
-    /**
+    /*
      * Returns the text constructed by this visitor.
      * 
      * @return the text constructed by this visitor.
@@ -1130,7 +1130,7 @@ public abstract class Printer {
         return text;
     }
 
-    /**
+    /*
      * Prints the text constructed by this visitor.
      * 
      * @param pw
@@ -1140,7 +1140,7 @@ public abstract class Printer {
         printList(pw, text);
     }
 
-    /**
+    /*
      * Appends a quoted string to a given buffer.
      * 
      * @param buf
@@ -1177,7 +1177,7 @@ public abstract class Printer {
         buf.append('\"');
     }
 
-    /**
+    /*
      * Prints the given string tree.
      * 
      * @param pw

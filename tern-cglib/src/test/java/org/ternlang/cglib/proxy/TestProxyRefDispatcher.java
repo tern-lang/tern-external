@@ -27,7 +27,7 @@ import org.ternlang.cglib.proxy.ProxyRefDispatcher;
 
 import junit.framework.*;
 
-/**
+/*
  * @author Chris Nokleberg, Bob Lee
  * @version $Id: TestProxyRefDispatcher.java,v 1.1 2004/12/10 08:48:43 herbyderby Exp $
  */

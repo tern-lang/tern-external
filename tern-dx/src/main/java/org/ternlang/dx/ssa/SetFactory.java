@@ -21,12 +21,12 @@ import org.ternlang.dx.util.IntSet;
 import org.ternlang.dx.util.ListIntSet;
 
 
-/**
+/*
  * Makes int sets for various parts of the optimizer.
  */
 public final class SetFactory {
 
-    /**
+    /*
      * BitIntSet/ListIntSet threshold for dominance frontier sets. These
      * sets are kept per basic block until phi placement and tend to be,
      * like the CFG itself, very sparse at large sizes.
@@ -35,7 +35,7 @@ public final class SetFactory {
      */
     private static final int DOMFRONT_SET_THRESHOLD_SIZE = 3072;
 
-    /**
+    /*
      * BitIntSet/ListIntSet threshold for interference graph sets. These
      * sets are kept per register until register allocation is done.
      *
@@ -43,7 +43,7 @@ public final class SetFactory {
      */
     private static final int INTERFERENCE_SET_THRESHOLD_SIZE = 3072;
 
-    /**
+    /*
      * BitIntSet/ListIntSet threshold for the live in/out sets kept by
      * {@link SsaBasicBlock}. These are sets of SSA registers kept per basic
      * block during register allocation.
@@ -56,7 +56,7 @@ public final class SetFactory {
     private static final int LIVENESS_SET_THRESHOLD_SIZE = 3072;
 
 
-    /**
+    /*
      * Make IntSet for the dominance-frontier sets.
      *
      * @param szBlocks {@code >=0;} count of basic blocks in method
@@ -68,7 +68,7 @@ public final class SetFactory {
                 : new ListIntSet();
     }
 
-    /**
+    /*
      * Make IntSet for the interference graph sets. Public because
      * InterferenceGraph is in another package.
      *
@@ -81,7 +81,7 @@ public final class SetFactory {
                 : new ListIntSet();
     }
 
-    /**
+    /*
      * Make IntSet for register live in/out sets.
      *
      * @param countRegs {@code >=0;} count of SSA registers used in method

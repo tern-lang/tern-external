@@ -21,7 +21,7 @@ import java.util.*;
 
 import org.ternlang.cglib.core.KeyFactory;
 
-/**
+/*
  * @author Chris Nokleberg <a href="mailto:chris@nokleberg.com">chris@nokleberg.com</a>
  * @version $Id: TestKeyFactory.java,v 1.7 2012/07/27 16:02:50 baliuka Exp $
  */

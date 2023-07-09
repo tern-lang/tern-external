@@ -29,7 +29,7 @@ import org.ternlang.cglib.transform.impl.InterceptFieldEnabled;
 import org.ternlang.cglib.transform.impl.InterceptFieldFilter;
 import org.ternlang.cglib.transform.impl.InterceptFieldTransformer;
 
-/**
+/*
  *
  * @author  baliuka
  */

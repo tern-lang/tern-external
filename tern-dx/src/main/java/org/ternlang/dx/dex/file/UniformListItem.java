@@ -21,7 +21,7 @@ import java.util.List;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Class that represents a contiguous list of uniform items. Each
  * item in the list, in particular, must have the same write size and
  * alignment.
@@ -35,16 +35,16 @@ import org.ternlang.dx.util.Hex;
  */
 public final class UniformListItem<T extends OffsettedItem>
         extends OffsettedItem {
-    /** the size of the list header */
+    /* the size of the list header */
     private static final int HEADER_SIZE = 4;
 
-    /** {@code non-null;} the item type */
+    /* {@code non-null;} the item type */
     private final ItemType itemType;
 
-    /** {@code non-null;} the contents */
+    /* {@code non-null;} the contents */
     private final List<T> items;
 
-    /**
+    /*
      * Constructs an instance. It is illegal to modify the given list once
      * it is used to construct an instance of this class.
      *
@@ -62,7 +62,7 @@ public final class UniformListItem<T extends OffsettedItem>
         this.itemType = itemType;
     }
 
-    /**
+    /*
      * Helper for {@link #UniformListItem}, which returns the alignment
      * requirement implied by the given list. See the header comment for
      * more details.
@@ -83,7 +83,7 @@ public final class UniformListItem<T extends OffsettedItem>
         }
     }
 
-    /**
+    /*
      * Calculates the write size for the given list.
      *
      * @param items {@code non-null;} the list in question
@@ -98,13 +98,13 @@ public final class UniformListItem<T extends OffsettedItem>
         return (items.size() * first.writeSize()) + getAlignment(items);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public ItemType itemType() {
         return itemType;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer(100);
@@ -115,7 +115,7 @@ public final class UniformListItem<T extends OffsettedItem>
         return sb.toString();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void addContents(DexFile file) {
         for (OffsettedItem i : items) {
@@ -123,7 +123,7 @@ public final class UniformListItem<T extends OffsettedItem>
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public final String toHuman() {
         StringBuffer sb = new StringBuffer(100);
@@ -144,7 +144,7 @@ public final class UniformListItem<T extends OffsettedItem>
         return sb.toString();
     }
 
-    /**
+    /*
      * Gets the underlying list of items.
      *
      * @return {@code non-null;} the list
@@ -153,7 +153,7 @@ public final class UniformListItem<T extends OffsettedItem>
         return items;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void place0(Section addedTo, int offset) {
         offset += headerSize();
@@ -183,7 +183,7 @@ public final class UniformListItem<T extends OffsettedItem>
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected void writeTo0(DexFile file, AnnotatedOutput out) {
         int size = items.size();
@@ -200,7 +200,7 @@ public final class UniformListItem<T extends OffsettedItem>
         }
     }
 
-    /**
+    /*
      * Get the size of the header of this list.
      *
      * @return {@code >= 0;} the header size

@@ -21,7 +21,7 @@ import java.util.Comparator;
 import org.ternlang.dex.ClassDef;
 import org.ternlang.dex.Dex;
 
-/**
+/*
  * Name and structure of a type. Used to order types such that each type is
  * preceded by its supertype and implemented interfaces.
  */
@@ -71,7 +71,7 @@ final class SortableType {
         return classDef.getTypeIndex();
     }
 
-    /**
+    /*
      * Assigns this type's depth if the depths of its supertype and implemented
      * interfaces are known. Returns false if the depth couldn't be computed
      * yet.

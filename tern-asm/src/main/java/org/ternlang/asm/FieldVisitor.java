@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -29,7 +29,7 @@
  */
 package org.ternlang.asm;
 
-/**
+/*
  * A visitor to visit a Java field. The methods of this class must be called in
  * the following order: ( <tt>visitAnnotation</tt> |
  * <tt>visitTypeAnnotation</tt> | <tt>visitAttribute</tt> )* <tt>visitEnd</tt>.
@@ -38,19 +38,19 @@ package org.ternlang.asm;
  */
 public abstract class FieldVisitor {
 
-    /**
+    /*
      * The ASM API version implemented by this visitor. The value of this field
      * must be one of {@link Opcodes#ASM4} or {@link Opcodes#ASM5}.
      */
     protected final int api;
 
-    /**
+    /*
      * The field visitor to which this visitor must delegate method calls. May
      * be null.
      */
     protected FieldVisitor fv;
 
-    /**
+    /*
      * Constructs a new {@link FieldVisitor}.
      * 
      * @param api
@@ -61,7 +61,7 @@ public abstract class FieldVisitor {
         this(api, null);
     }
 
-    /**
+    /*
      * Constructs a new {@link FieldVisitor}.
      * 
      * @param api
@@ -79,7 +79,7 @@ public abstract class FieldVisitor {
         this.fv = fv;
     }
 
-    /**
+    /*
      * Visits an annotation of the field.
      * 
      * @param desc
@@ -96,7 +96,7 @@ public abstract class FieldVisitor {
         return null;
     }
 
-    /**
+    /*
      * Visits an annotation on the type of the field.
      * 
      * @param typeRef
@@ -125,7 +125,7 @@ public abstract class FieldVisitor {
         return null;
     }
 
-    /**
+    /*
      * Visits a non standard attribute of the field.
      * 
      * @param attr
@@ -137,7 +137,7 @@ public abstract class FieldVisitor {
         }
     }
 
-    /**
+    /*
      * Visits the end of the field. This method, which is the last one to be
      * called, is used to inform the visitor that all the annotations and
      * attributes of the field have been visited.

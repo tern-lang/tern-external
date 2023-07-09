@@ -21,15 +21,15 @@ import org.ternlang.dx.rop.cst.CstNat;
 import org.ternlang.dx.rop.cst.CstType;
 import org.ternlang.dx.rop.type.Prototype;
 
-/**
+/*
  * Standard implementation of {@link Method}, which directly stores
  * all the associated data.
  */
 public final class StdMethod extends StdMember implements Method {
-    /** {@code non-null;} the effective method descriptor */
+    /* {@code non-null;} the effective method descriptor */
     private final Prototype effectiveDescriptor;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param definingClass {@code non-null;} the defining class
@@ -48,7 +48,7 @@ public final class StdMethod extends StdMember implements Method {
                                     nat.isInstanceInit());
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Prototype getEffectiveDescriptor() {
         return effectiveDescriptor;
     }

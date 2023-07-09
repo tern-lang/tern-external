@@ -22,31 +22,31 @@ import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.io.Writer;
 
-/**
+/*
  * Class that takes a combined output destination and provides two
  * output writers, one of which ends up writing to the left column and
  * one which goes on the right.
  */
 public final class TwoColumnOutput {
-    /** {@code non-null;} underlying writer for final output */
+    /* {@code non-null;} underlying writer for final output */
     private final Writer out;
 
-    /** {@code > 0;} the left column width */
+    /* {@code > 0;} the left column width */
     private final int leftWidth;
 
-    /** {@code non-null;} pending left column output */
+    /* {@code non-null;} pending left column output */
     private final StringBuffer leftBuf;
 
-    /** {@code non-null;} pending right column output */
+    /* {@code non-null;} pending right column output */
     private final StringBuffer rightBuf;
 
-    /** {@code non-null;} left column writer */
+    /* {@code non-null;} left column writer */
     private final IndentingWriter leftColumn;
 
-    /** {@code non-null;} right column writer */
+    /* {@code non-null;} right column writer */
     private final IndentingWriter rightColumn;
 
-    /**
+    /*
      * Turns the given two strings (with widths) and spacer into a formatted
      * two-column string.
      *
@@ -77,7 +77,7 @@ public final class TwoColumnOutput {
         return sw.toString();
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param out {@code non-null;} writer to send final output to
@@ -115,7 +115,7 @@ public final class TwoColumnOutput {
             new IndentingWriter(rightWriter, rightWidth, spacer);
     }
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param out {@code non-null;} stream to send final output to
@@ -128,7 +128,7 @@ public final class TwoColumnOutput {
         this(new OutputStreamWriter(out), leftWidth, rightWidth, spacer);
     }
 
-    /**
+    /*
      * Gets the writer to use to write to the left column.
      *
      * @return {@code non-null;} the left column writer
@@ -137,7 +137,7 @@ public final class TwoColumnOutput {
         return leftColumn;
     }
 
-    /**
+    /*
      * Gets the writer to use to write to the right column.
      *
      * @return {@code non-null;} the right column writer
@@ -146,7 +146,7 @@ public final class TwoColumnOutput {
         return rightColumn;
     }
 
-    /**
+    /*
      * Flushes the output. If there are more lines of pending output in one
      * column, then the other column will get filled with blank lines.
      */
@@ -162,7 +162,7 @@ public final class TwoColumnOutput {
         }
     }
 
-    /**
+    /*
      * Outputs to the final destination as many full line pairs as
      * there are in the pending output, removing those lines from
      * their respective buffers. This method terminates when at
@@ -196,7 +196,7 @@ public final class TwoColumnOutput {
         }
     }
 
-    /**
+    /*
      * Flushes the left column buffer, printing it and clearing the buffer.
      * If the buffer is already empty, this does nothing.
      */
@@ -209,7 +209,7 @@ public final class TwoColumnOutput {
         }
     }
 
-    /**
+    /*
      * Flushes the right column buffer, printing it and clearing the buffer.
      * If the buffer is already empty, this does nothing.
      */
@@ -222,7 +222,7 @@ public final class TwoColumnOutput {
         }
     }
 
-    /**
+    /*
      * Appends a newline to the given buffer via the given writer, but
      * only if it isn't empty and doesn't already end with one.
      *
@@ -239,7 +239,7 @@ public final class TwoColumnOutput {
         }
     }
 
-    /**
+    /*
      * Writes the given number of spaces to the given writer.
      *
      * @param out {@code non-null;} where to write

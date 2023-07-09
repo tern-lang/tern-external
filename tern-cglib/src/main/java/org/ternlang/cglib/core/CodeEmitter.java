@@ -20,7 +20,7 @@ import java.util.*;
 
 import org.ternlang.asm.*;
 
-/**
+/*
  * @author Juozas Baliuka, Chris Nokleberg
  */
 public class CodeEmitter extends LocalVariablesSorter {
@@ -246,7 +246,7 @@ public class CodeEmitter extends LocalVariablesSorter {
     public void array_load(Type type) { mv.visitInsn(type.getOpcode(Constants.IALOAD)); }
     public void array_store(Type type) { mv.visitInsn(type.getOpcode(Constants.IASTORE)); }
 
-    /**
+    /*
      * Casts from one primitive numeric type to another
      */
     public void cast_numeric(Type from, Type to) {
@@ -360,14 +360,14 @@ public class CodeEmitter extends LocalVariablesSorter {
         mv.visitVarInsn(Constants.ALOAD, 0);
     }
     
-    /**
+    /*
      * Pushes all of the arguments of the current method onto the stack.
      */
     public void load_args() {
         load_args(0, state.argumentTypes.length);
     }
 
-    /**
+    /*
      * Pushes the specified argument of the current method onto the stack.
      * @param index the zero-based index into the argument list
      */
@@ -679,7 +679,7 @@ public class CodeEmitter extends LocalVariablesSorter {
         push(value ? 1 : 0);
     }
 
-    /**
+    /*
      * Toggles the integer on the top of the stack from 1 to 0 or vice versa
      */
     public void not() {
@@ -695,7 +695,7 @@ public class CodeEmitter extends LocalVariablesSorter {
         athrow();
     }
 
-    /**
+    /*
      * If the argument is a primitive class, replaces the primitive value
      * on the top of the stack with the wrapped (Object) equivalent. For
      * example, char -> Character.
@@ -724,7 +724,7 @@ public class CodeEmitter extends LocalVariablesSorter {
         }
     }
     
-    /**
+    /*
      * If the argument is a primitive class, replaces the object
      * on the top of the stack with the unwrapped (primitive)
      * equivalent. For example, Character -> char.
@@ -768,7 +768,7 @@ public class CodeEmitter extends LocalVariablesSorter {
         }
     }
 
-    /**
+    /*
      * Allocates and fills an Object[] array with the arguments to the
      * current method. Primitive values are inserted as their boxed
      * (Object) equivalents.
@@ -790,7 +790,7 @@ public class CodeEmitter extends LocalVariablesSorter {
     }
 
 
-    /**
+    /*
      * Pushes a zero onto the stack if the argument is a primitive class, or a null otherwise.
      */
     public void zero_or_null(Type type) {
@@ -815,7 +815,7 @@ public class CodeEmitter extends LocalVariablesSorter {
         }
     }
 
-    /**
+    /*
      * Unboxes the object on the top of the stack. If the object is null, the
      * unboxed primitive value becomes zero.
      */

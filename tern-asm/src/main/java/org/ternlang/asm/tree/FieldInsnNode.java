@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -33,7 +33,7 @@ import java.util.Map;
 
 import org.ternlang.asm.MethodVisitor;
 
-/**
+/*
  * A node that represents a field instruction. A field instruction is an
  * instruction that loads or stores the value of a field of an object.
  * 
@@ -41,23 +41,23 @@ import org.ternlang.asm.MethodVisitor;
  */
 public class FieldInsnNode extends AbstractInsnNode {
 
-    /**
+    /*
      * The internal name of the field's owner class (see
      * {@link org.ternlang.asm.Type#getInternalName() getInternalName}).
      */
     public String owner;
 
-    /**
+    /*
      * The field's name.
      */
     public String name;
 
-    /**
+    /*
      * The field's descriptor (see {@link org.ternlang.asm.Type}).
      */
     public String desc;
 
-    /**
+    /*
      * Constructs a new {@link FieldInsnNode}.
      * 
      * @param opcode
@@ -80,7 +80,7 @@ public class FieldInsnNode extends AbstractInsnNode {
         this.desc = desc;
     }
 
-    /**
+    /*
      * Sets the opcode of this instruction.
      * 
      * @param opcode

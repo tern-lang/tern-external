@@ -19,30 +19,30 @@ package org.ternlang.dx.rop.code;
 import org.ternlang.dx.rop.cst.CstInteger;
 import org.ternlang.dx.rop.type.Type;
 
-/**
+/*
  * Implementation of {@link TranslationAdvice} which represents what
  * the dex format will be able to represent.
  */
 public final class DexTranslationAdvice
         implements TranslationAdvice {
-    /** {@code non-null;} standard instance of this class */
+    /* {@code non-null;} standard instance of this class */
     public static final DexTranslationAdvice THE_ONE =
         new DexTranslationAdvice();
 
-    /** debug advice for disabling invoke-range optimization */
+    /* debug advice for disabling invoke-range optimization */
     public static final DexTranslationAdvice NO_SOURCES_IN_ORDER =
         new DexTranslationAdvice(true);
 
-    /**
+    /*
      * The minimum source width, in register units, for an invoke
      * instruction that requires its sources to be in order and contiguous.
      */
     private static final int MIN_INVOKE_IN_ORDER = 6;
 
-    /** when true: always returns false for requiresSourcesInOrder */
+    /* when true: always returns false for requiresSourcesInOrder */
     private final boolean disableSourcesInOrder;
 
-    /**
+    /*
      * This class is not publicly instantiable. Use {@link #THE_ONE}.
      */
     private DexTranslationAdvice() {
@@ -53,7 +53,7 @@ public final class DexTranslationAdvice
         this.disableSourcesInOrder = disableInvokeRange;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public boolean hasConstantOperation(Rop opcode,
             RegisterSpec sourceA, RegisterSpec sourceB) {
         if (sourceA.getType() != Type.INT) {
@@ -98,7 +98,7 @@ public final class DexTranslationAdvice
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public boolean requiresSourcesInOrder(Rop opcode,
             RegisterSpecList sources) {
 
@@ -106,7 +106,7 @@ public final class DexTranslationAdvice
                 && totalRopWidth(sources) >= MIN_INVOKE_IN_ORDER;
     }
 
-    /**
+    /*
      * Calculates the total rop width of the list of SSA registers
      *
      * @param sources {@code non-null;} list of SSA registers
@@ -123,7 +123,7 @@ public final class DexTranslationAdvice
         return total;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int getMaxOptimalRegisterCount() {
         return 16;
     }

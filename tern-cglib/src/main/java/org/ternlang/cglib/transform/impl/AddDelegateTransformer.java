@@ -23,7 +23,7 @@ import org.ternlang.asm.Type;
 import org.ternlang.cglib.core.*;
 import org.ternlang.cglib.transform.*;
 
-/**
+/*
  * @author Juozas Baliuka
  */
 public class AddDelegateTransformer extends ClassEmitterTransformer {
@@ -35,7 +35,7 @@ public class AddDelegateTransformer extends ClassEmitterTransformer {
     private Class delegateImpl;
     private Type delegateType;
     
-    /** Creates a new instance of AddDelegateTransformer */
+    /* Creates a new instance of AddDelegateTransformer */
     public AddDelegateTransformer(Class delegateIf[], Class delegateImpl) {
         try {
             delegateImpl.getConstructor(new Class[]{ Object.class });

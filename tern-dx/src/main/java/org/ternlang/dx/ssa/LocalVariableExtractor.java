@@ -24,7 +24,7 @@ import org.ternlang.dx.rop.code.RegisterSpec;
 import org.ternlang.dx.rop.code.RegisterSpecSet;
 import org.ternlang.dx.util.IntList;
 
-/**
+/*
  * Code to figure out which local variables are active at which points in
  * a method. Stolen and retrofitted from
  * com.android.dx.rop.code.LocalVariableExtractor
@@ -33,19 +33,19 @@ import org.ternlang.dx.util.IntList;
  * converted, and adapted through edge-splitting.
  */
 public class LocalVariableExtractor {
-    /** {@code non-null;} method being extracted from */
+    /* {@code non-null;} method being extracted from */
     private final SsaMethod method;
 
-    /** {@code non-null;} block list for the method */
+    /* {@code non-null;} block list for the method */
     private final ArrayList<SsaBasicBlock> blocks;
 
-    /** {@code non-null;} result in-progress */
+    /* {@code non-null;} result in-progress */
     private final LocalVariableInfo resultInfo;
 
-    /** {@code non-null;} work set indicating blocks needing to be processed */
+    /* {@code non-null;} work set indicating blocks needing to be processed */
     private final BitSet workSet;
 
-    /**
+    /*
      * Extracts out all the local variable information from the given method.
      *
      * @param method {@code non-null;} the method to extract from
@@ -56,7 +56,7 @@ public class LocalVariableExtractor {
         return lve.doit();
     }
 
-    /**
+    /*
      * Constructs an instance. This method is private. Use {@link #extract}.
      *
      * @param method {@code non-null;} the method to extract from
@@ -74,7 +74,7 @@ public class LocalVariableExtractor {
         this.workSet = new BitSet(blocks.size());
     }
 
-    /**
+    /*
      * Does the extraction.
      *
      * @return {@code non-null;} the extracted information
@@ -95,7 +95,7 @@ public class LocalVariableExtractor {
         return resultInfo;
     }
 
-    /**
+    /*
      * Processes a single block.
      *
      * @param blockIndex {@code >= 0;} block index of the block to process

@@ -18,24 +18,24 @@ package org.ternlang.dx.util;
 
 import java.util.Arrays;
 
-/**
+/*
  * A list of labeled items, allowing easy lookup by label.
  */
 public class LabeledList extends FixedSizeList {
-    /**
+    /*
      * Sparse array indexed by label to FixedSizeList index;
      * {@code -1} for an invalid label.
      */
     private final IntList labelToIndex;
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     public LabeledList(int size) {
         super(size);
 
         labelToIndex = new IntList(size);
     }
 
-    /**
+    /*
      * Constructs a new instance that is a copy of the old instance.
      *
      * @param old instance to copy
@@ -54,7 +54,7 @@ public class LabeledList extends FixedSizeList {
         }
     }
 
-    /**
+    /*
      * Gets the maximum label (exclusive) of any block added to this instance.
      *
      * @return {@code >= 0;} the maximum label
@@ -74,7 +74,7 @@ public class LabeledList extends FixedSizeList {
         return newSize;
     }
 
-    /**
+    /*
      * Removes a label from the label-to-index mapping.
      *
      * @param oldLabel label to remove
@@ -83,7 +83,7 @@ public class LabeledList extends FixedSizeList {
         labelToIndex.set(oldLabel, -1);
     }
 
-    /**
+    /*
      * Adds a label and index to the label-to-index mapping.
      *
      * @param label new label
@@ -99,7 +99,7 @@ public class LabeledList extends FixedSizeList {
         labelToIndex.set(label, index);
     }
 
-    /**
+    /*
      * Gets the index of the first item in the list with the given
      * label, if any.
      *
@@ -115,7 +115,7 @@ public class LabeledList extends FixedSizeList {
         }
     }
 
-    /**
+    /*
      * Gets an array containing all of the labels used in this instance,
      * in order. The returned array is freshly-allocated and so may be
      * modified safely by the caller without impacting this instance.
@@ -140,7 +140,7 @@ public class LabeledList extends FixedSizeList {
         return result;
     }
 
-    /** @inheritDoc */
+    /* @inheritDoc */
     @Override
     public void shrinkToFit() {
         super.shrinkToFit();
@@ -148,7 +148,7 @@ public class LabeledList extends FixedSizeList {
         rebuildLabelToIndex();
     }
 
-    /**
+    /*
      * Rebuilds the label-to-index mapping after a {@code shrinkToFit()}.
      * Note: This assumes that the labels that are in the list are the
      * same, although the indicies may have changed.
@@ -165,7 +165,7 @@ public class LabeledList extends FixedSizeList {
         }
     }
 
-    /**
+    /*
      * Sets the element at the given index.
      *
      * @param n {@code >= 0, < size();} which element

@@ -30,12 +30,12 @@ import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.FixedSizeList;
 import org.ternlang.dx.util.IndentingWriter;
 
-/**
+/*
  * List of {@link DalvInsn} instances.
  */
 public final class DalvInsnList extends FixedSizeList {
 
-    /**
+    /*
      * The amount of register space, in register units, required for this
      * code block. This may be greater than the largest observed register+
      * category because the method this code block exists in may
@@ -43,7 +43,7 @@ public final class DalvInsnList extends FixedSizeList {
      */
     private final int regCount;
 
-    /**
+    /*
      * Constructs and returns an immutable instance whose elements are
      * identical to the ones in the given list, in the same order.
      *
@@ -66,7 +66,7 @@ public final class DalvInsnList extends FixedSizeList {
         return result;
     }
 
-    /**
+    /*
      * Constructs an instance. All indices initially contain {@code null}.
      *
      * @param size the size of the list
@@ -76,7 +76,7 @@ public final class DalvInsnList extends FixedSizeList {
         this.regCount = regCount;
     }
 
-    /**
+    /*
      * Gets the element at the given index. It is an error to call
      * this with the index for an element which was never set; if you
      * do that, this will throw {@code NullPointerException}.
@@ -88,7 +88,7 @@ public final class DalvInsnList extends FixedSizeList {
         return (DalvInsn) get0(n);
     }
 
-    /**
+    /*
      * Sets the instruction at the given index.
      *
      * @param n {@code >= 0, < size();} which index
@@ -98,7 +98,7 @@ public final class DalvInsnList extends FixedSizeList {
         set0(n, insn);
     }
 
-    /**
+    /*
      * Gets the size of this instance, in 16-bit code units. This will only
      * return a meaningful result if the instructions in this instance all
      * have valid addresses.
@@ -116,7 +116,7 @@ public final class DalvInsnList extends FixedSizeList {
         return last.getNextAddress();
     }
 
-    /**
+    /*
      * Writes all the instructions in this instance to the given output
      * destination.
      *
@@ -167,7 +167,7 @@ public final class DalvInsnList extends FixedSizeList {
         }
     }
 
-    /**
+    /*
      * Gets the minimum required register count implied by this
      * instance.  This includes any unused parameters that could
      * potentially be at the top of the register space.
@@ -177,7 +177,7 @@ public final class DalvInsnList extends FixedSizeList {
         return regCount;
     }
 
-    /**
+    /*
      * Gets the size of the outgoing arguments area required by this
      * method. This is equal to the largest argument word count of any
      * method referred to by this instance.
@@ -214,7 +214,7 @@ public final class DalvInsnList extends FixedSizeList {
         return result;
     }
 
-    /**
+    /*
      * Does a human-friendly dump of this instance.
      *
      * @param out {@code non-null;} where to dump
@@ -248,7 +248,7 @@ public final class DalvInsnList extends FixedSizeList {
         }
     }
 
-    /**
+    /*
      * Does a human-friendly dump of this instance.
      *
      * @param out {@code non-null;} where to dump

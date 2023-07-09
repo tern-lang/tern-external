@@ -18,13 +18,13 @@ package org.ternlang.dx.util;
 
 import org.ternlang.dex.util.ByteOutput;
 
-/**
+/*
  * Interface for a sink for binary output. This is similar to
  * {@code java.util.DataOutput}, but no {@code IOExceptions}
  * are declared, and multibyte output is defined to be little-endian.
  */
 public interface Output extends ByteOutput {
-    /**
+    /*
      * Gets the current cursor position. This is the same as the number of
      * bytes written to this instance.
      *
@@ -32,7 +32,7 @@ public interface Output extends ByteOutput {
      */
     public int getCursor();
 
-    /**
+    /*
      * Asserts that the cursor is the given value.
      *
      * @param expectedCursor the expected cursor value
@@ -41,35 +41,35 @@ public interface Output extends ByteOutput {
      */
     public void assertCursor(int expectedCursor);
 
-    /**
+    /*
      * Writes a {@code byte} to this instance.
      *
      * @param value the value to write; all but the low 8 bits are ignored
      */
     public void writeByte(int value);
 
-    /**
+    /*
      * Writes a {@code short} to this instance.
      *
      * @param value the value to write; all but the low 16 bits are ignored
      */
     public void writeShort(int value);
 
-    /**
+    /*
      * Writes an {@code int} to this instance.
      *
      * @param value the value to write
      */
     public void writeInt(int value);
 
-    /**
+    /*
      * Writes a {@code long} to this instance.
      *
      * @param value the value to write
      */
     public void writeLong(long value);
 
-    /**
+    /*
      * Writes a DWARFv3-style unsigned LEB128 integer. For details,
      * see the "Dalvik Executable Format" document or DWARF v3 section
      * 7.6.
@@ -79,7 +79,7 @@ public interface Output extends ByteOutput {
      */
     public int writeUleb128(int value);
 
-    /**
+    /*
      * Writes a DWARFv3-style unsigned LEB128 integer. For details,
      * see the "Dalvik Executable Format" document or DWARF v3 section
      * 7.6.
@@ -89,14 +89,14 @@ public interface Output extends ByteOutput {
      */
     public int writeSleb128(int value);
 
-    /**
+    /*
      * Writes a {@link ByteArray} to this instance.
      *
      * @param bytes {@code non-null;} the array to write
      */
     public void write(ByteArray bytes);
 
-    /**
+    /*
      * Writes a portion of a {@code byte[]} to this instance.
      *
      * @param bytes {@code non-null;} the array to write
@@ -106,7 +106,7 @@ public interface Output extends ByteOutput {
      */
     public void write(byte[] bytes, int offset, int length);
 
-    /**
+    /*
      * Writes a {@code byte[]} to this instance. This is just
      * a convenient shorthand for {@code write(bytes, 0, bytes.length)}.
      *
@@ -114,14 +114,14 @@ public interface Output extends ByteOutput {
      */
     public void write(byte[] bytes);
 
-    /**
+    /*
      * Writes the given number of {@code 0} bytes.
      *
      * @param count {@code >= 0;} the number of zeroes to write
      */
     public void writeZeroes(int count);
 
-    /**
+    /*
      * Adds extra bytes if necessary (with value {@code 0}) to
      * force alignment of the output cursor as given.
      *

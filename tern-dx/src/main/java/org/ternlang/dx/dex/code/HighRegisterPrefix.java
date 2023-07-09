@@ -21,7 +21,7 @@ import org.ternlang.dx.rop.code.RegisterSpecList;
 import org.ternlang.dx.rop.code.SourcePosition;
 import org.ternlang.dx.util.AnnotatedOutput;
 
-/**
+/*
  * Combination instruction which turns into a variable number of
  * {@code move*} instructions to move a set of registers into
  * registers starting at {@code 0} sequentially. This is used
@@ -29,10 +29,10 @@ import org.ternlang.dx.util.AnnotatedOutput;
  * be met using a straightforward choice of a single opcode.
  */
 public final class HighRegisterPrefix extends VariableSizeInsn {
-    /** {@code null-ok;} cached instructions, if constructed */
+    /* {@code null-ok;} cached instructions, if constructed */
     private SimpleInsn[] insns;
 
-    /**
+    /*
      * Constructs an instance. The output address of this instance is initially
      * unknown ({@code -1}).
      *
@@ -50,7 +50,7 @@ public final class HighRegisterPrefix extends VariableSizeInsn {
         insns = null;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int codeSize() {
         int result = 0;
@@ -64,7 +64,7 @@ public final class HighRegisterPrefix extends VariableSizeInsn {
         return result;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void writeTo(AnnotatedOutput out) {
         calculateInsnsIfNecessary();
@@ -74,7 +74,7 @@ public final class HighRegisterPrefix extends VariableSizeInsn {
         }
     }
 
-    /**
+    /*
      * Helper for {@link #codeSize} and {@link #writeTo} which sets up
      * {@link #insns} if not already done.
      */
@@ -95,19 +95,19 @@ public final class HighRegisterPrefix extends VariableSizeInsn {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public DalvInsn withRegisters(RegisterSpecList registers) {
         return new HighRegisterPrefix(getPosition(), registers);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected String argString() {
         return null;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     protected String listingString0(boolean noteIndices) {
         RegisterSpecList registers = getRegisters();
@@ -130,7 +130,7 @@ public final class HighRegisterPrefix extends VariableSizeInsn {
         return sb.toString();
     }
 
-    /**
+    /*
      * Returns the proper move instruction for the given source spec
      * and destination index.
      *

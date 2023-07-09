@@ -21,59 +21,59 @@ import java.io.PrintStream;
 import org.ternlang.dx.dex.code.DalvCode;
 import org.ternlang.dx.rop.code.RopMethod;
 
-/**
+/*
  * Static methods and variables for collecting statistics on generated
  * code.
  */
 public final class CodeStatistics {
-    /** set to {@code true} to enable development-time debugging code */
+    /* set to {@code true} to enable development-time debugging code */
     private static final boolean DEBUG = false;
 
-    /**
+    /*
      * running sum of the number of registers added/removed in
      * SSA form by the optimizer
      */
     public static int runningDeltaRegisters = 0;
 
-    /**
+    /*
      * running sum of the number of insns added/removed in
      * SSA form by the optimizer
      */
     public static int runningDeltaInsns = 0;
 
-    /** running sum of the total number of Rop insns processed */
+    /* running sum of the total number of Rop insns processed */
     public static int runningTotalInsns = 0;
 
-    /**
+    /*
      * running sum of the number of dex-form registers added/removed in
      * SSA form by the optimizer. Only valid if args.statistics is true.
      */
     public static int dexRunningDeltaRegisters = 0;
 
-    /**
+    /*
      * running sum of the number of dex-form insns (actually code
      * units) added/removed in SSA form by the optimizer. Only valid
      * if args.statistics is true.
      */
     public static int dexRunningDeltaInsns = 0;
 
-    /**
+    /*
      * running sum of the total number of dex insns (actually code
      * units) processed
      */
     public static int dexRunningTotalInsns = 0;
 
-    /** running sum of original class bytecode bytes */
+    /* running sum of original class bytecode bytes */
     public static int runningOriginalBytes = 0;
 
-    /**
+    /*
      * This class is uninstantiable.
      */
     private CodeStatistics() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Updates the number of original bytecode bytes processed.
      *
      * @param count {@code >= 0;} the number of bytes to add
@@ -82,7 +82,7 @@ public final class CodeStatistics {
         runningOriginalBytes += count;
     }
 
-    /**
+    /*
      * Updates the dex statistics.
      *
      * @param nonOptCode non-optimized code block
@@ -111,7 +111,7 @@ public final class CodeStatistics {
         dexRunningTotalInsns += code.getInsns().codeSize();
     }
 
-    /**
+    /*
      * Updates the ROP statistics.
      *
      * @param nonOptRmeth non-optimized method
@@ -143,7 +143,7 @@ public final class CodeStatistics {
         runningTotalInsns += newCountInsns;
     }
 
-    /**
+    /*
      * Prints out the collected statistics.
      *
      * @param out {@code non-null;} where to output to

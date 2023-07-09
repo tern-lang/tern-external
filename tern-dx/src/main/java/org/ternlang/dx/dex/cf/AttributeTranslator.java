@@ -47,19 +47,19 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeList;
 import org.ternlang.dx.util.Warning;
 
-/**
+/*
  * Utility methods that translate various classfile attributes
  * into forms suitable for use in creating {@code dex} files.
  */
 /*package*/ class AttributeTranslator {
-    /**
+    /*
      * This class is uninstantiable.
      */
     private AttributeTranslator() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Gets the list of thrown exceptions for a given method.
      *
      * @param method {@code non-null;} the method in question
@@ -77,7 +77,7 @@ import org.ternlang.dx.util.Warning;
         return exceptions.getExceptions();
     }
 
-    /**
+    /*
      * Gets the annotations out of a given {@link AttributeList}. This
      * combines both visible and invisible annotations into a single
      * result set and also adds in a system annotation for the
@@ -97,7 +97,7 @@ import org.ternlang.dx.util.Warning;
         return result;
     }
 
-    /**
+    /*
      * Gets the annotations out of a given class, similar to {@link
      * #getAnnotations}, also including annotations for translations
      * of class-level attributes {@code EnclosingMethod} and
@@ -143,7 +143,7 @@ import org.ternlang.dx.util.Warning;
         return result;
     }
 
-    /**
+    /*
      * Gets the annotations out of a given method, similar to {@link
      * #getAnnotations}, also including an annotation for the translation
      * of the method-specific attribute {@code Exceptions}.
@@ -164,7 +164,7 @@ import org.ternlang.dx.util.Warning;
         return result;
     }
 
-    /**
+    /*
      * Helper method for {@link #getAnnotations} which just gets the
      * existing annotations, per se.
      *
@@ -196,7 +196,7 @@ import org.ternlang.dx.util.Warning;
                 invisible.getAnnotations());
     }
 
-    /**
+    /*
      * Gets the {@code Signature} attribute out of a given
      * {@link AttributeList}, if any, translating it to an annotation.
      *
@@ -215,7 +215,7 @@ import org.ternlang.dx.util.Warning;
         return AnnotationUtils.makeSignature(signature.getSignature());
     }
 
-    /**
+    /*
      * Gets the {@code EnclosingMethod} attribute out of a given
      * {@link AttributeList}, if any, translating it to an annotation.
      * If the class really has an enclosing method, this returns an
@@ -253,7 +253,7 @@ import org.ternlang.dx.util.Warning;
                 new CstMethodRef(enclosingClass, nat));
     }
 
-    /**
+    /*
      * Gets the {@code InnerClasses} attribute out of a given
      * {@link AttributeList}, if any, translating it to one or more of an
      * {@code InnerClass}, {@code EnclosingClass}, or
@@ -346,7 +346,7 @@ import org.ternlang.dx.util.Warning;
         return result;
     }
 
-    /**
+    /*
      * Gets the parameter annotations out of a given method. This
      * combines both visible and invisible annotations into a single
      * result set.
@@ -383,7 +383,7 @@ import org.ternlang.dx.util.Warning;
                 invisible.getParameterAnnotations());
     }
 
-    /**
+    /*
      * Gets the {@code AnnotationDefault} attributes out of a
      * given class, if any, reforming them as an
      * {@code AnnotationDefault} annotation.

@@ -1,4 +1,4 @@
-/***
+/**
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
@@ -33,26 +33,26 @@ import org.ternlang.asm.Opcodes;
 import org.ternlang.asm.TypePath;
 import org.ternlang.asm.TypeReference;
 
-/**
+/*
  * A node that represents a type annotationn.
  * 
  * @author Eric Bruneton
  */
 public class TypeAnnotationNode extends AnnotationNode {
 
-    /**
+    /*
      * A reference to the annotated type. See {@link TypeReference}.
      */
     public int typeRef;
 
-    /**
+    /*
      * The path to the annotated type argument, wildcard bound, array element
      * type, or static outer type within the referenced type. May be
      * <tt>null</tt> if the annotation targets 'typeRef' as a whole.
      */
     public TypePath typePath;
 
-    /**
+    /*
      * Constructs a new {@link AnnotationNode}. <i>Subclasses must not use this
      * constructor</i>. Instead, they must use the
      * {@link #TypeAnnotationNode(int, int, TypePath, String)} version.
@@ -76,7 +76,7 @@ public class TypeAnnotationNode extends AnnotationNode {
         }
     }
 
-    /**
+    /*
      * Constructs a new {@link AnnotationNode}.
      * 
      * @param api

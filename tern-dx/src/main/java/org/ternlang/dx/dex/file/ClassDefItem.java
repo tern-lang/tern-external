@@ -36,44 +36,44 @@ import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 import org.ternlang.dx.util.Writers;
 
-/**
+/*
  * Representation of a Dalvik class, which is basically a set of
  * members (fields or methods) along with a few more pieces of
  * information.
  */
 public final class ClassDefItem extends IndexedItem {
 
-    /** {@code non-null;} type constant for this class */
+    /* {@code non-null;} type constant for this class */
     private final CstType thisClass;
 
-    /** access flags */
+    /* access flags */
     private final int accessFlags;
 
-    /**
+    /*
      * {@code null-ok;} superclass or {@code null} if this class is a/the
      * root class
      */
     private final CstType superclass;
 
-    /** {@code null-ok;} list of implemented interfaces */
+    /* {@code null-ok;} list of implemented interfaces */
     private TypeListItem interfaces;
 
-    /** {@code null-ok;} source file name or {@code null} if unknown */
+    /* {@code null-ok;} source file name or {@code null} if unknown */
     private final CstString sourceFile;
 
-    /** {@code non-null;} associated class data object */
+    /* {@code non-null;} associated class data object */
     private final ClassDataItem classData;
 
-    /**
+    /*
      * {@code null-ok;} item wrapper for the static values, initialized
      * in {@link #addContents}
      */
     private EncodedArrayItem staticValuesItem;
 
-    /** {@code non-null;} annotations directory */
+    /* {@code non-null;} annotations directory */
     private AnnotationsDirectoryItem annotationsDirectory;
 
-    /**
+    /*
      * Constructs an instance. Its sets of members and annotations are
      * initially empty.
      *
@@ -111,19 +111,19 @@ public final class ClassDefItem extends IndexedItem {
         this.annotationsDirectory = new AnnotationsDirectoryItem();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public ItemType itemType() {
         return ItemType.TYPE_CLASS_DEF_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int writeSize() {
         return SizeOf.CLASS_DEF_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void addContents(DexFile file) {
         TypeIdsSection typeIds = file.getTypeIds();
@@ -166,7 +166,7 @@ public final class ClassDefItem extends IndexedItem {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void writeTo(DexFile file, AnnotatedOutput out) {
         boolean annotates = out.annotates();
@@ -218,7 +218,7 @@ public final class ClassDefItem extends IndexedItem {
         out.writeInt(staticValuesOff);
     }
 
-    /**
+    /*
      * Gets the constant corresponding to this class.
      *
      * @return {@code non-null;} the constant
@@ -227,7 +227,7 @@ public final class ClassDefItem extends IndexedItem {
         return thisClass;
     }
 
-    /**
+    /*
      * Gets the access flags.
      *
      * @return the access flags
@@ -236,7 +236,7 @@ public final class ClassDefItem extends IndexedItem {
         return accessFlags;
     }
 
-    /**
+    /*
      * Gets the superclass.
      *
      * @return {@code null-ok;} the superclass or {@code null} if
@@ -246,7 +246,7 @@ public final class ClassDefItem extends IndexedItem {
         return superclass;
     }
 
-    /**
+    /*
      * Gets the list of interfaces implemented.
      *
      * @return {@code non-null;} the interfaces list
@@ -259,7 +259,7 @@ public final class ClassDefItem extends IndexedItem {
         return interfaces.getList();
     }
 
-    /**
+    /*
      * Gets the source file name.
      *
      * @return {@code null-ok;} the source file name or {@code null} if unknown
@@ -268,7 +268,7 @@ public final class ClassDefItem extends IndexedItem {
         return sourceFile;
     }
 
-    /**
+    /*
      * Adds a static field.
      *
      * @param field {@code non-null;} the field to add
@@ -278,7 +278,7 @@ public final class ClassDefItem extends IndexedItem {
         classData.addStaticField(field, value);
     }
 
-    /**
+    /*
      * Adds an instance field.
      *
      * @param field {@code non-null;} the field to add
@@ -287,7 +287,7 @@ public final class ClassDefItem extends IndexedItem {
         classData.addInstanceField(field);
     }
 
-    /**
+    /*
      * Adds a direct ({@code static} and/or {@code private}) method.
      *
      * @param method {@code non-null;} the method to add
@@ -296,7 +296,7 @@ public final class ClassDefItem extends IndexedItem {
         classData.addDirectMethod(method);
     }
 
-    /**
+    /*
      * Adds a virtual method.
      *
      * @param method {@code non-null;} the method to add
@@ -305,7 +305,7 @@ public final class ClassDefItem extends IndexedItem {
         classData.addVirtualMethod(method);
     }
 
-    /**
+    /*
      * Gets all the methods in this class. The returned list is not linked
      * in any way to the underlying lists contained in this instance, but
      * the objects contained in the list are shared.
@@ -316,7 +316,7 @@ public final class ClassDefItem extends IndexedItem {
         return classData.getMethods();
     }
 
-    /**
+    /*
      * Sets the direct annotations on this class. These are annotations
      * made on the class, per se, as opposed to on one of its members.
      * It is only valid to call this method at most once per instance.
@@ -328,7 +328,7 @@ public final class ClassDefItem extends IndexedItem {
         annotationsDirectory.setClassAnnotations(annotations, dexFile);
     }
 
-    /**
+    /*
      * Adds a field annotations item to this class.
      *
      * @param field {@code non-null;} field in question
@@ -340,7 +340,7 @@ public final class ClassDefItem extends IndexedItem {
         annotationsDirectory.addFieldAnnotations(field, annotations, dexFile);
     }
 
-    /**
+    /*
      * Adds a method annotations item to this class.
      *
      * @param method {@code non-null;} method in question
@@ -352,7 +352,7 @@ public final class ClassDefItem extends IndexedItem {
         annotationsDirectory.addMethodAnnotations(method, annotations, dexFile);
     }
 
-    /**
+    /*
      * Adds a parameter annotations item to this class.
      *
      * @param method {@code non-null;} method in question
@@ -364,7 +364,7 @@ public final class ClassDefItem extends IndexedItem {
         annotationsDirectory.addParameterAnnotations(method, list, dexFile);
     }
 
-    /**
+    /*
      * Gets the method annotations for a given method, if any. This is
      * meant for use by debugging / dumping code.
      *
@@ -375,7 +375,7 @@ public final class ClassDefItem extends IndexedItem {
         return annotationsDirectory.getMethodAnnotations(method);
     }
 
-    /**
+    /*
      * Gets the parameter annotations for a given method, if any. This is
      * meant for use by debugging / dumping code.
      *
@@ -386,7 +386,7 @@ public final class ClassDefItem extends IndexedItem {
         return annotationsDirectory.getParameterAnnotations(method);
     }
 
-    /**
+    /*
      * Prints out the contents of this instance, in a debugging-friendly
      * way.
      *

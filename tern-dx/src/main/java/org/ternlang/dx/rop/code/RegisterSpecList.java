@@ -22,15 +22,15 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.rop.type.TypeList;
 import org.ternlang.dx.util.FixedSizeList;
 
-/**
+/*
  * List of {@link RegisterSpec} instances.
  */
 public final class RegisterSpecList
         extends FixedSizeList implements TypeList {
-    /** {@code non-null;} no-element instance */
+    /* {@code non-null;} no-element instance */
     public static final RegisterSpecList EMPTY = new RegisterSpecList(0);
 
-    /**
+    /*
      * Makes a single-element instance.
      *
      * @param spec {@code non-null;} the element
@@ -42,7 +42,7 @@ public final class RegisterSpecList
         return result;
     }
 
-    /**
+    /*
      * Makes a two-element instance.
      *
      * @param spec0 {@code non-null;} the first element
@@ -57,7 +57,7 @@ public final class RegisterSpecList
         return result;
     }
 
-    /**
+    /*
      * Makes a three-element instance.
      *
      * @param spec0 {@code non-null;} the first element
@@ -74,7 +74,7 @@ public final class RegisterSpecList
         return result;
     }
 
-    /**
+    /*
      * Makes a four-element instance.
      *
      * @param spec0 {@code non-null;} the first element
@@ -94,7 +94,7 @@ public final class RegisterSpecList
         return result;
     }
 
-    /**
+    /*
      * Constructs an instance. All indices initially contain {@code null}.
      *
      * @param size the size of the list
@@ -103,12 +103,12 @@ public final class RegisterSpecList
         super(size);
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public Type getType(int n) {
         return get(n).getType().getType();
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public int getWordCount() {
         int sz = size();
         int result = 0;
@@ -120,12 +120,12 @@ public final class RegisterSpecList
         return result;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public TypeList withAddedType(Type type) {
         throw new UnsupportedOperationException("unsupported");
     }
 
-    /**
+    /*
      * Gets the indicated element. It is an error to call this with the
      * index for an element which was never set; if you do that, this
      * will throw {@code NullPointerException}.
@@ -137,7 +137,7 @@ public final class RegisterSpecList
         return (RegisterSpec) get0(n);
     }
 
-    /**
+    /*
      * Returns a RegisterSpec in this list that uses the specified register,
      * or null if there is none in this list.
      * @param reg Register to find
@@ -158,7 +158,7 @@ public final class RegisterSpecList
         return null;
     }
 
-    /**
+    /*
      * Returns the index of a RegisterSpec in this list that uses the specified
      * register, or -1 if none in this list uses the register.
      * @param reg Register to find
@@ -179,7 +179,7 @@ public final class RegisterSpecList
         return -1;
     }
 
-    /**
+    /*
      * Sets the element at the given index.
      *
      * @param n {@code >= 0, < size();} which element
@@ -189,7 +189,7 @@ public final class RegisterSpecList
         set0(n, spec);
     }
 
-    /**
+    /*
      * Gets the minimum required register count implied by this
      * instance. This is equal to the highest register number referred
      * to plus the widest width (largest category) of the type used in
@@ -214,7 +214,7 @@ public final class RegisterSpecList
         return result;
     }
 
-    /**
+    /*
      * Returns a new instance, which is the same as this instance,
      * except that it has an additional element prepended to the original.
      * Mutability of the result is inherited from the original.
@@ -238,7 +238,7 @@ public final class RegisterSpecList
         return result;
     }
 
-    /**
+    /*
      * Returns a new instance, which is the same as this instance,
      * except that its first element is removed. Mutability of the
      * result is inherited from the original.
@@ -265,7 +265,7 @@ public final class RegisterSpecList
         return result;
     }
 
-    /**
+    /*
      * Returns a new instance, which is the same as this instance,
      * except that its last element is removed. Mutability of the
      * result is inherited from the original.
@@ -292,7 +292,7 @@ public final class RegisterSpecList
         return result;
     }
 
-    /**
+    /*
      * Returns a new instance, which contains a subset of the elements
      * specified by the given BitSet. Indexes in the BitSet with a zero
      * are included, while indexes with a one are excluded. Mutability
@@ -325,7 +325,7 @@ public final class RegisterSpecList
         return result;
     }
 
-    /**
+    /*
      * Returns an instance that is identical to this one, except that
      * all register numbers are offset by the given amount. Mutability
      * of the result is inherited from the original.
@@ -357,7 +357,7 @@ public final class RegisterSpecList
         return result;
     }
 
-    /**
+    /*
      * Returns an instance that is identical to this one, except that
      * all incompatible register numbers are renumbered sequentially from
      * the given base, with the first number duplicated if indicated. If

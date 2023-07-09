@@ -25,34 +25,34 @@ import org.ternlang.dx.rop.cst.CstString;
 import org.ternlang.dx.util.ByteArray;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Factory capable of instantiating various {@link Attribute} subclasses
  * depending on the context and name.
  */
 public class AttributeFactory {
-    /** context for attributes on class files */
+    /* context for attributes on class files */
     public static final int CTX_CLASS = 0;
 
-    /** context for attributes on fields */
+    /* context for attributes on fields */
     public static final int CTX_FIELD = 1;
 
-    /** context for attributes on methods */
+    /* context for attributes on methods */
     public static final int CTX_METHOD = 2;
 
-    /** context for attributes on code attributes */
+    /* context for attributes on code attributes */
     public static final int CTX_CODE = 3;
 
-    /** number of contexts */
+    /* number of contexts */
     public static final int CTX_COUNT = 4;
 
-    /**
+    /*
      * Constructs an instance.
      */
     public AttributeFactory() {
         // This space intentionally left blank.
     }
 
-    /**
+    /*
      * Parses and makes an attribute based on the bytes at the
      * indicated position in the given array. This method figures out
      * the name, and then does all the setup to call on to {@link #parse0},
@@ -103,7 +103,7 @@ public class AttributeFactory {
         }
     }
 
-    /**
+    /*
      * Parses attribute content. The base class implements this by constructing
      * an instance of {@link RawAttribute}. Subclasses are expected to
      * override this to do something better in most cases.

@@ -18,12 +18,12 @@ package org.ternlang.dx.cf.iface;
 
 import org.ternlang.dx.rop.cst.TypedConstant;
 
-/**
+/*
  * Interface representing fields of class files.
  */
 public interface Field
         extends Member {
-    /**
+    /*
      * Get the constant value for this field, if any. This only returns
      * non-{@code null} for a {@code static final} field which
      * includes a {@code ConstantValue} attribute.

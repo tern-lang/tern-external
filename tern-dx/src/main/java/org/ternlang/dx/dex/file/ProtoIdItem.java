@@ -24,23 +24,23 @@ import org.ternlang.dx.rop.type.Type;
 import org.ternlang.dx.util.AnnotatedOutput;
 import org.ternlang.dx.util.Hex;
 
-/**
+/*
  * Representation of a method prototype reference inside a Dalvik file.
  */
 public final class ProtoIdItem extends IndexedItem {
-    /** {@code non-null;} the wrapped prototype */
+    /* {@code non-null;} the wrapped prototype */
     private final Prototype prototype;
 
-    /** {@code non-null;} the short-form of the prototype */
+    /* {@code non-null;} the short-form of the prototype */
     private final CstString shortForm;
 
-    /**
+    /*
      * {@code null-ok;} the list of parameter types or {@code null} if this
      * prototype has no parameters
      */
     private TypeListItem parameterTypes;
 
-    /**
+    /*
      * Constructs an instance.
      *
      * @param prototype {@code non-null;} the constant for the prototype
@@ -58,7 +58,7 @@ public final class ProtoIdItem extends IndexedItem {
             : new TypeListItem(parameters);
     }
 
-    /**
+    /*
      * Creates the short-form of the given prototype.
      *
      * @param prototype {@code non-null;} the prototype
@@ -78,7 +78,7 @@ public final class ProtoIdItem extends IndexedItem {
         return new CstString(sb.toString());
     }
 
-    /**
+    /*
      * Gets the short-form character for the given type.
      *
      * @param type {@code non-null;} the type
@@ -94,19 +94,19 @@ public final class ProtoIdItem extends IndexedItem {
         return descriptorChar;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public ItemType itemType() {
         return ItemType.TYPE_PROTO_ID_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public int writeSize() {
         return SizeOf.PROTO_ID_ITEM;
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void addContents(DexFile file) {
         StringIdsSection stringIds = file.getStringIds();
@@ -121,7 +121,7 @@ public final class ProtoIdItem extends IndexedItem {
         }
     }
 
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     @Override
     public void writeTo(DexFile file, AnnotatedOutput out) {
         int shortyIdx = file.getStringIds().indexOf(shortForm);
