@@ -9,5 +9,4 @@ mvn clean install
 # perform release
 mvn clean deploy
 
-# not sure -P release is needed
-mvn clean deploy -P release
+<!-- mvn clean deploy -P release -->
